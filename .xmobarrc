@@ -1,0 +1,17 @@
+Config { font         = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"  
+       , bgColor      = "#000000"
+       , fgColor      = "#00FFFF"
+       , position     =  Top
+       , lowerOnStart = False
+       , commands     = [ Run Network "wlan0" ["-L","0","-H","32","-l", "green", "--normal","orange","--high","red"] 10
+                        , Run Cpu ["<cpu0>/<cpu1>","-L","3","-H","50","-l","green","--normal","orange","--high","red"] 40
+                        , Run Memory ["-t","Mem: <usedratio>%", "-l", "green", "--normal","orange","--high","red"] 40
+                        , Run Date "%a %b %_d %H:%M" "date" 60
+                        , Run Battery ["-L","10","-H","80","--high","green","--normal","yellow", "--low", "red"] 100
+                        , Run Weather "KSBN" ["-t","KSBD: <tempF>F, rh: <rh>%","-L","30","-H","70","--normal","green","--high","red","--low","lightblue"] 36000
+                        , Run StdinReader
+                        ]
+       , sepChar      = "%"
+       , alignSep     = "}{"
+       , template     = " %StdinReader% }{ %KSBN% <fc=#0033FF>|</fc> %cpu% <fc=#0033FF>|</fc> %memory% <fc=#0033FF>|</fc> %wlan0% <fc=#0033FF>|</fc> %battery% <fc=#0033FF>|</fc> %date%"
+       }
