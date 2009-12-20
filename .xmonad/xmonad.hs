@@ -8,21 +8,10 @@ import XMonad.Hooks.SetWMName
 
 import XMonad.Layout.Accordion
 import XMonad.Layout.LayoutCombinators
-import XMonad.Layout.Magnifier
 import XMonad.Layout.NoBorders
-import XMonad.Layout.SimpleFloat
-import XMonad.Layout.Tabbed
 import XMonad.Layout.WindowArranger
 
-import XMonad.Prompt
-import XMonad.Prompt.Shell
-import XMonad.Prompt.Ssh
-import XMonad.Prompt.Theme
-import XMonad.Prompt.Window
-import XMonad.Prompt.XMonad
 
-import XMonad.Util.Run
-import XMonad.Util.Themes
 
 main = do
   xmonad =<< xmobar
@@ -30,9 +19,9 @@ main = do
              modMask     = mod4Mask
            , terminal    = myTerminal
 	   , borderWidth = 2
-           , workspaces = myWorkspaces
-           , layoutHook = myLayoutHook
-           , manageHook = myManageHook
+           , workspaces  = myWorkspaces
+           , layoutHook  = myLayoutHook
+           , manageHook  = myManageHook
            , startupHook = myStartupHook
            }
 
