@@ -21,13 +21,14 @@ import qualified XMonad.StackSet as W -- sho shift and float windows
 main = do
   xmonad =<< xmobar
            kde4Config {
-             modMask     = mod4Mask
-           , terminal    = myTerminal
-	   , borderWidth = 1
-           , workspaces  = myWorkspaces
-           , layoutHook  = myLayoutHook
-           , manageHook  = myManageHook
-           , startupHook = myStartupHook
+             modMask           = mod4Mask
+           , terminal          = myTerminal
+	   , borderWidth       = 1
+           , focusFollowsMouse = False
+           , workspaces        = myWorkspaces
+           , layoutHook        = myLayoutHook
+           , manageHook        = myManageHook
+           , startupHook       = myStartupHook
            }
 
 myTerminal = "urxvt -bg darkgrey -fg green -cr green -vb +sb -bc -tr -tint black -sh 10"
