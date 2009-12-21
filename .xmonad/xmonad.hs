@@ -1,4 +1,5 @@
 import XMonad hiding ((|||))
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
@@ -11,11 +12,15 @@ import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.NoBorders
 import XMonad.Layout.WindowArranger
 
+import XMonad.Config.Kde
+
+import qualified XMonad.StackSet as W -- sho shift and float windows
+
 
 
 main = do
   xmonad =<< xmobar
-           defaultConfig {
+           kde4Config {
              modMask     = mod4Mask
            , terminal    = myTerminal
 	   , borderWidth = 2
@@ -35,10 +40,20 @@ myLogHook = fadeInactiveLogHook fadeAmount
 
 myLayoutHook = mine
     where default' = layoutHook defaultConfig
-          mine = avoidStruts $ windowArrange $ 
-                 noBorders Full ||| Mirror tiled ||| Accordion ||| tiled
-              where tiled = Tall 1 (3/100) (1/2)
+          mine     = avoidStruts . windowArrange $ 
+                     noBorders Full ||| Mirror tiled ||| tiled
+          tiled    = Tall 1 (3/100) (1/2)
 
-myManageHook = composeOne [ isFullscreen -?> doFullFloat ]
+myManageHook = composeOne [ isFullscreen -?> doFullFloat ] 
+               <+> manageHook kde4Config
+               <+> hooks
+    where
+      hooks     = composeAll . concat $
+                  [ [ manageDocks ]
+                  , [ className =? c --> doFloat | c <- myFloats ]
+                  ]
+
+      myFloats  = ["plasma-desktop", "Plasma-desktop", "plasma"]
+
 
 myStartupHook = setWMName "LG3D"

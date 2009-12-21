@@ -1,0 +1,1 @@
+KDEWM=/usr/bin/xmonad
