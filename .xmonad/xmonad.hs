@@ -23,7 +23,7 @@ main = do
            kde4Config {
              modMask     = mod4Mask
            , terminal    = myTerminal
-	   , borderWidth = 2
+	   , borderWidth = 1
            , workspaces  = myWorkspaces
            , layoutHook  = myLayoutHook
            , manageHook  = myManageHook
