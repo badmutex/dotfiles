@@ -53,7 +53,7 @@ myManageHook = composeOne [ isFullscreen -?> doFullFloat ]
                   , [ className =? c --> doFloat | c <- myFloats ]
                   ]
 
-      myFloats  = ["plasma-desktop", "Plasma-desktop", "plasma"]
+      myFloats  = ["plasma-desktop", "Plasma-desktop", "plasma", "kmix", "Kmix"]
 
 
 myStartupHook = setWMName "LG3D"
