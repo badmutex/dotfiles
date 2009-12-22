@@ -52,11 +52,15 @@ ex ()
   fi
 }
 
-# vim stuff
-export EDITOR=vim
-export VISUAL=vim
-alias vi=vim
+
+export EDITOR=emacs
+export VISUAL=emacs
+
 
 
 # prompt
 PS1='[\u@\h \W]\$ '
+
+
+# path
+export PATH=$PATH:$HOME/.cabal/bin
