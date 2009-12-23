@@ -24,8 +24,9 @@ import System.IO
 
 
 main = do
-  xmproc <- spawnPipe "xmobar"
-  xmonad myConfig {
+  -- xmproc <- spawnPipe "xmobar"
+  xmonad =<< xmobar 
+           myConfig {
                modMask           = mod4Mask
              , terminal          = myTerminal
 	     , borderWidth       = 1
@@ -34,7 +35,7 @@ main = do
              , layoutHook        = myLayoutHook
              , manageHook        = myManageHook
              , startupHook       = myStartupHook
-             , logHook           = myLogHook xmproc
+             -- , logHook           = myLogHook xmproc
              }
 
 myConfig = defaultConfig
@@ -44,11 +45,11 @@ myTerminal = "urxvt -bg darkgrey -fg green -cr green -vb +sb -bc -tr -tint black
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = map show [1..9]
 
-myLogHook xmproc = myXmobarPP -- fadeInactiveLogHook fadeAmount <+> 
+myLogHook = fadeInactiveLogHook fadeAmount
     where fadeAmount = 0.4
-          myXmobarPP = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc
-                                                   , ppTitle = xmobarColor "white" "" . shorten 50
-                                                   }
+          -- myXmobarPP = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc
+          --                                          , ppTitle = xmobarColor "white" "" . shorten 50
+          --                                          }
 
 myLayoutHook = mine
     where mine     = avoidStruts $ windowArrange $ 
