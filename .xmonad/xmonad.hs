@@ -12,42 +12,53 @@ import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.NoBorders
 import XMonad.Layout.WindowArranger
 
+import XMonad.Util.Run (spawnPipe)
+
 import XMonad.Config.Kde
 
 import qualified XMonad.StackSet as W -- sho shift and float windows
 
 
+import System.IO
+
+
 
 main = do
-  xmonad =<< xmobar
-           kde4Config {
-             modMask           = mod4Mask
-           , terminal          = myTerminal
-	   , borderWidth       = 1
-           , focusFollowsMouse = False
-           , workspaces        = myWorkspaces
-           , layoutHook        = myLayoutHook
-           , manageHook        = myManageHook
-           , startupHook       = myStartupHook
-           }
+  xmproc <- spawnPipe "xmobar"
+  xmonad myConfig {
+               modMask           = mod4Mask
+             , terminal          = myTerminal
+	     , borderWidth       = 1
+             , focusFollowsMouse = False
+             , workspaces        = myWorkspaces
+             , layoutHook        = myLayoutHook
+             , manageHook        = myManageHook
+             , startupHook       = myStartupHook
+             , logHook           = myLogHook xmproc
+             }
+
+myConfig = defaultConfig
 
 myTerminal = "urxvt -bg darkgrey -fg green -cr green -vb +sb -bc -tr -tint black -sh 10"
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = map show [1..9]
 
-myLogHook = fadeInactiveLogHook fadeAmount
+myLogHook xmproc = myXmobarPP -- fadeInactiveLogHook fadeAmount <+> 
     where fadeAmount = 0.4
+          myXmobarPP = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc
+                                                   , ppTitle = xmobarColor "white" "" . shorten 50
+                                                   }
 
 myLayoutHook = mine
-    where default' = layoutHook defaultConfig
-          mine     = avoidStruts . windowArrange $ 
+    where mine     = avoidStruts $ windowArrange $ 
                      noBorders Full ||| Mirror tiled ||| tiled
           tiled    = Tall 1 (3/100) (1/2)
 
-myManageHook = composeOne [ isFullscreen -?> doFullFloat ] 
-               <+> manageHook kde4Config
+myManageHook = manageDocks
+               <+> manageHook myConfig
                <+> hooks
+               <+> composeOne [ isFullscreen -?> doFullFloat ] 
     where
       hooks     = composeAll . concat $
                   [ [ manageDocks ]
