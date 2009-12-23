@@ -50,7 +50,7 @@ myXmobarPP xmproc = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc
 
 myConfig = defaultConfig
 
-myTerminal = "urxvt -bg darkgrey -fg green -cr green -vb +sb -bc -tr -tint black -sh 10"
+myTerminal = "urxvt -bg darkgrey -fg grey -cr grey -vb +sb -bc -tr -tint black -sh 25"
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = map show [1..9]
