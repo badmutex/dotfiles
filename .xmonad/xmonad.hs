@@ -24,19 +24,23 @@ import System.IO
 
 
 main = do
-  -- xmproc <- spawnPipe "xmobar"
+  xmproc <- spawnPipe "xmobar"
   xmonad =<< xmobar 
            myConfig {
-               modMask           = mod4Mask
-             , terminal          = myTerminal
-	     , borderWidth       = 1
-             , focusFollowsMouse = False
-             , workspaces        = myWorkspaces
-             , layoutHook        = myLayoutHook
-             , manageHook        = myManageHook
-             , startupHook       = myStartupHook
-             -- , logHook           = myLogHook xmproc
-             }
+             modMask           = mod4Mask
+           , terminal          = myTerminal
+	   , borderWidth       = 1
+           , focusFollowsMouse = False
+           , workspaces        = map show [1..9]
+           , layoutHook        = myLayoutHook
+           , manageHook        = myManageHook
+           , startupHook       = myStartupHook
+           , logHook           = myXmobarPP xmproc
+           }
+
+myXmobarPP xmproc = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc
+                                                , ppTitle = xmobarColor "white" "" . shorten 60
+                                                }
 
 myConfig = defaultConfig
 
@@ -47,23 +51,20 @@ myWorkspaces = map show [1..9]
 
 myLogHook = fadeInactiveLogHook fadeAmount
     where fadeAmount = 0.4
-          -- myXmobarPP = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc
-          --                                          , ppTitle = xmobarColor "white" "" . shorten 50
-          --                                          }
+
 
 myLayoutHook = mine
     where mine     = avoidStruts $ windowArrange $ 
                      noBorders Full ||| Mirror tiled ||| tiled
           tiled    = Tall 1 (3/100) (1/2)
 
-myManageHook = manageDocks
-               <+> manageHook myConfig
+myManageHook = manageHook myConfig
                <+> hooks
+               <+> manageDocks
                <+> composeOne [ isFullscreen -?> doFullFloat ] 
     where
       hooks     = composeAll . concat $
-                  [ [ manageDocks ]
-                  , [ className =? c --> doFloat | c <- myFloats ]
+                  [ [ className =? c --> doFloat | c <- myFloats ]
                   ]
 
       myFloats  = [ "plasma-desktop", "Plasma-desktop", "plasma", "kmix", "Kmix"
