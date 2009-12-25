@@ -14,6 +14,7 @@ trayer \
 	--alpha 0 &
 
 
+mpd ~/.mpd/mpd.conf &
 nm-applet --sm-disable &
 gnome-power-manager &
 kmix &
