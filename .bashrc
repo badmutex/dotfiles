@@ -64,3 +64,4 @@ PS1='[\u@\h \W]\$ '
 
 # path
 export PATH=$PATH:$HOME/.cabal/bin
+source $HOME/.fahanalysis
