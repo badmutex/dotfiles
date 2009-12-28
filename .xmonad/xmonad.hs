@@ -69,13 +69,20 @@ myManageHook = manageHook myConfig
                <+> manageDocks
                <+> composeOne [ isFullscreen -?> doFullFloat ] 
     where
-      hooks     = composeAll . concat $
-                  [ [ className =? c --> doFloat | c <- myFloats ]
-                  ]
+      hooks     = composeAll $
+                  [ check =? val --> doFloat | (check, val) <- myFloats ]
 
-      myFloats  = [ "plasma-desktop", "Plasma-desktop", "plasma", "kmix", "Kmix"
-                  , "vlc", "Vlc"
-                  ]
+
+      myFloats  = let props f = map (\val -> (f, val))
+                      desktop = props className
+                                [ "plasma-desktop", "Plasma-desktop", "plasma", "kmix", "Kmix"
+                                , "vlc", "Vlc"
+                                ]
+                      vmd     = props (stringProperty "WM_NAME")
+                                [ "Graphical Representations" -- VMD
+                                ]
+                  in concat [desktop, vmd]
+
 
 
 myStartupHook = setWMName "LG3D"
