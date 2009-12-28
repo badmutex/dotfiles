@@ -8,6 +8,7 @@ import System.Exit             (ExitCode)
 import System.FilePath         ((</>), (<.>), takeExtension)
 import System.Process          (createProcess,shell,ProcessHandle,waitForProcess)
 import System.Random           (getStdRandom,randomR)
+import System.Time
 import Text.Printf             (printf)
 import qualified Data.Map as M (fromList,lookup,keys,Map)
 
@@ -93,8 +94,9 @@ loop confile cache csize = do
   let img                        = images conf /> chooseImage cache ix
       exe                        = buildExec conf img
       Directory d /> ImageFile f = ImageFile (d </> f)
-  putStrLn $ show exe
+  time <- getClockTime
   changeBackground exe
+  putStrLn $ printf "[%s] %s" (show time) (show exe)
   sleep (shiftTime conf)
   loop confile cache csize
 

@@ -19,7 +19,7 @@ nm-applet --sm-disable &
 gnome-power-manager &
 kmix &
 kmixctrl &
-$HOME/.xmonad/random-background.hs &
+$HOME/.xmonad/random-background.hs > $HOME/.xmonad/random-background.log &
 
 
 
