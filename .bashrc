@@ -1,3 +1,7 @@
+if [ -f /etc/profile ]; then
+	. /etc/profile
+fi
+
 if [ -f /etc/bash_completion ]; then
 	    . /etc/bash_completion
 fi
@@ -57,7 +61,7 @@ export EDITOR=emacs
 export VISUAL=emacs
 
 
-xmodmap ~/.xmodmap
+# xmodmap ~/.xmodmap
 
 # prompt
 PS1='[\u@\h \W]\$ '
