@@ -71,3 +71,4 @@ PS1='[\u@\h \W]\$ '
 export PATH=$PATH:$HOME/.cabal/bin
 source $HOME/.fahanalysis
 export PATH=$PATH:$HOME/apps/vmd/bin
+export PATH=$PATH:$HOME/apps/leiningen
