@@ -57,6 +57,7 @@ export EDITOR=emacs
 export VISUAL=emacs
 
 
+xmodmap ~/.xmodmap
 
 # prompt
 PS1='[\u@\h \W]\$ '
