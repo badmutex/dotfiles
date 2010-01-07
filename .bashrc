@@ -1,3 +1,7 @@
+if [ -f /etc/profile ]; then
+	. /etc/profile
+fi
+
 if [ -f /etc/bash_completion ]; then
 	    . /etc/bash_completion
 fi
@@ -57,6 +61,7 @@ export EDITOR=emacs
 export VISUAL=emacs
 
 
+# xmodmap ~/.xmodmap
 
 # prompt
 PS1='[\u@\h \W]\$ '
@@ -65,3 +70,5 @@ PS1='[\u@\h \W]\$ '
 # path
 export PATH=$PATH:$HOME/.cabal/bin
 source $HOME/.fahanalysis
+export PATH=$PATH:$HOME/apps/vmd/bin
+export PATH=$PATH:$HOME/apps/leiningen

@@ -3,8 +3,8 @@ Config { font         = "-*-terminus-*-*-*-*-11-*-*-*-*-*-*-u"
        , fgColor      = "grey"
        , position     =  Static { xpos = 0, ypos = 0, width = 1520, height = 16 }
        , lowerOnStart = False
-       , commands     = [ Run Network "wlan0" ["-L","0","-H","32","-l", "green", "--normal","orange","--high","red"] 10
-                        , Run Cpu ["<cpu0>/<cpu1>","-L","3","-H","50","-l","green","--normal","orange","--high","red"] 40
+       , commands     = [ Run Network "wlan0" ["-L","10","-H","100","-l", "green", "--normal","orange","--high","red"] 5
+                        , Run Cpu ["<cpu0>/<cpu1>","-L","3","-H","50","-l","green","--normal","orange","--high","red"] 5
                         , Run Memory ["-t","Mem: <usedratio>%", "-l", "green", "--normal","orange","--high","red"] 40
                         , Run Date "%a %b %_d %H:%M" "date" 60
                         , Run Battery ["-L","10","-H","80","--high","green","--normal","yellow", "--low", "red"] 100
