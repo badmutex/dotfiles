@@ -93,6 +93,7 @@ myStartupHook = setWMName "LG3D"
 
 myAdditionalKeys = [ ((myModMask .|. shiftMask, xK_b), withFocused toggleBorder)
                    , ((myModMask .|. controlMask, xK_Return) , spawn emptyTerm)
+                   , ((myModMask .|. controlMask, xK_m), spawn "qmpdclient")
                    ]
 
 
