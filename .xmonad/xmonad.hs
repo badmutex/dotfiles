@@ -16,7 +16,7 @@ import XMonad.Layout.WindowArranger
 import XMonad.Layout.Dishes
 import XMonad.Layout.Spiral
 
-import XMonad.Util.Run (spawnPipe)
+import XMonad.Util.Run (spawnPipe,safeSpawn)
 import XMonad.Util.EZConfig (additionalKeys)
 
 import XMonad.Config.Kde
@@ -33,7 +33,7 @@ main = do
   xmonad =<< xmobar (conf xmproc)
 
 conf xmproc = myConfig {
-                modMask           = mod4Mask
+                modMask           = myModMask
               , terminal          = myTerminal
 	      , borderWidth       = 1
               , focusFollowsMouse = False
@@ -48,9 +48,12 @@ myXmobarPP xmproc = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc
                                                 , ppTitle = xmobarColor "white" "" . shorten 60
                                                 }
 
+myModMask = mod4Mask
+
 myConfig = defaultConfig
 
 myTerminal = "urxvt -bg black -fg grey -cr grey -vb +sb -bc -tr -tint black -sh 25"
+emptyTerm  = "urxvt +sb"
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = map show [1..9]
@@ -88,5 +91,10 @@ myManageHook = manageHook myConfig
 myStartupHook = setWMName "LG3D"
 
 
-myAdditionalKeys = [ ((mod4Mask .|. shiftMask, xK_b), withFocused toggleBorder)
+myAdditionalKeys = [ ((myModMask .|. shiftMask, xK_b), withFocused toggleBorder)
+                   , ((myModMask .|. controlMask, xK_Return) , spawn emptyTerm)
+                   , ((myModMask .|. controlMask, xK_m), spawn "qmpdclient")
+                   , ((myModMask .|. controlMask, xK_c), spawn "chromium")
                    ]
+
+
