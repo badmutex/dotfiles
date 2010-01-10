@@ -16,7 +16,6 @@ trayer \
 
 mpd ~/.mpd/mpd.conf &
 nm-applet --sm-disable &
-gnome-power-manager &
 kmix &
 kmixctrl &
 
