@@ -119,7 +119,7 @@ mainloop = do
   loop defaultConfigFile cache size
 
 
-main = lock mainloop
+main = mainloop
 
 
 -- ---------------------------------------- --
