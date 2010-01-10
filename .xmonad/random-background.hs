@@ -5,6 +5,7 @@ import Control.Concurrent      (threadDelay)
 import Data.Maybe              (fromJust)
 import System.Directory        (getDirectoryContents)
 import System.Exit             (ExitCode)
+import System.Posix.Files      (fileExist, touchFile, removeLink)
 import System.FilePath         ((</>), (<.>), takeExtension)
 import System.Process          (createProcess,shell,ProcessHandle,waitForProcess)
 import System.Random           (getStdRandom,randomR)
@@ -101,7 +102,26 @@ loop confile cache csize = do
   loop confile cache csize
 
 
-main = do
+lock :: IO () -> IO ()
+lock io = do
+  exists <- fileExist _lockfile
+  if exists
+    then do putStrLn "Already running!"
+            return ()
+    else do writeFile _lockfile ""
+            io
+            removeLink _lockfile
+
+
+mainloop = do
   cache <- buildCache defaultSuffixes (images defaultConfig)
   let size = length $ M.keys cache
   loop defaultConfigFile cache size
+
+
+main = lock mainloop
+
+
+-- ---------------------------------------- --
+_lockfile = "/home/badi/.xmonad/random-background.lock"
+-- ---------------------------------------- --

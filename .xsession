@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 #
 # ~/.xsession
@@ -20,11 +20,7 @@ gnome-power-manager &
 kmix &
 kmixctrl &
 
-screen -d -m -S bg $HOME/.xmonad/random-background.hs
-
-pushd ~/gitit
-screen -d -m -S gitit gitit
-popd
+$HOME/.init.sh
 
 
 
