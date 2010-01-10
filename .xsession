@@ -19,7 +19,12 @@ nm-applet --sm-disable &
 gnome-power-manager &
 kmix &
 kmixctrl &
-$HOME/.xmonad/random-background.hs > $HOME/.xmonad/random-background.log &
+
+screen -d -m -S bg $HOME/.xmonad/random-background.hs
+
+pushd ~/gitit
+screen -d -m -S gitit gitit
+popd
 
 
 
