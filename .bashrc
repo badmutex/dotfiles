@@ -72,3 +72,10 @@ export PATH=$PATH:$HOME/.cabal/bin
 source $HOME/.fahanalysis
 export PATH=$PATH:$HOME/apps/vmd/bin
 export PATH=$PATH:$HOME/apps/leiningen
+export PATH=$PATH:$HOME/apps/protomol
+export PATH=$PATH:$HOME/apps/cctools/`arch`/current/bin
+export PATH=$PATH:$HOME/apps/weaver/bin
+export PATH=$PATH:$HOME/apps/netblast-2.2.23/bin
+export PYTHONPATH=:$HOME/apps/weaver/lib/python2.6/site-packages
+export VMDHOME=$HOME/apps/vmd
+export LHS2TEX=/usr/share/lhs2tex-1.15/
