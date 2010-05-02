@@ -8,7 +8,7 @@ Config { font         = "-*-terminus-*-*-*-*-11-*-*-*-*-*-*-u"
                         , Run Memory ["-t","Mem: <usedratio>%", "-l", "green", "--normal","orange","--high","red"] 40
                         , Run Date "%a %b %_d %l:%M %p" "date" 60
                         , Run Battery ["-L","10","-H","80","--high","green","--normal","yellow", "--low", "red"] 100
-                        , Run Weather "KSBN" ["-t","KSBD: <tempF>F, rh: <rh>%","-L","30","-H","70","--normal","green","--high","red","--low","lightblue"] 36000
+                        , Run Weather "KSBN" ["-t","KSBD: <tempF>°F, rh: <rh>%","-L","30","-H","70","--normal","green","--high","red","--low","lightblue"] 36000
                         , Run StdinReader
                         ]
        , sepChar      = "%"
