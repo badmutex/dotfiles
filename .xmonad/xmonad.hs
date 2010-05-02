@@ -53,7 +53,8 @@ myModMask = mod4Mask
 myConfig = defaultConfig
 
 myTerminal = "urxvt -bg black -fg grey -cr grey -vb +sb -bc -tr -tint black -sh 25"
-emptyTerm  = "urxvt +sb"
+emptyTerm = "konsole"
+-- emptyTerm  = "urxvt +sb"
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = map show [1..9]
