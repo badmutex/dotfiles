@@ -1,0 +1,27 @@
+*background: #000000
+*foreground: #ffffff
+
+! BLACK
+*color0: #262729
+*color8: #554444
+! MAGENTA
+*color1: #F92672
+*color9: #FF669D
+! BLUE
+*color2: #7441ff
+*color10: #391f80
+! YELLOW
+*color3: #FFD800
+*color11: #CCAD00
+! GREEN
+*color4: #21802f
+*color12: #52fc6f
+! PERIWINKLE
+*color5: #9E6FFE
+*color13: #9E6FFE
+! LIGHT BLUE
+*color6: #66D9EF
+*color14: #66D9EF
+! WHITE
+*color7: #CCCCC6
+*color15: #F8F8F2
