@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 #
 # ~/.xsession
@@ -14,12 +14,11 @@ trayer \
 	--alpha 0 &
 
 
-mpd ~/.mpd/mpd.conf &
 nm-applet --sm-disable &
-gnome-power-manager &
 kmix &
 kmixctrl &
-$HOME/.xmonad/random-background.hs > $HOME/.xmonad/random-background.log &
+
+$HOME/.init.sh
 
 
 

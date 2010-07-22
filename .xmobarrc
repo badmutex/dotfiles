@@ -4,14 +4,14 @@ Config { font         = "-*-terminus-*-*-*-*-11-*-*-*-*-*-*-u"
        , position     =  Static { xpos = 0, ypos = 0, width = 1520, height = 16 }
        , lowerOnStart = False
        , commands     = [ Run Network "wlan0" ["-L","10","-H","100","-l", "green", "--normal","orange","--high","red"] 5
-                        , Run Cpu ["<cpu0>/<cpu1>","-L","3","-H","50","-l","green","--normal","orange","--high","red"] 5
+                        , Run MultiCpu ["-t","Cpu:<total0><total1>","-L","3","-H","50","--normal","#CEFFAC","--high","#FFB6B0","-w","5"] 10
                         , Run Memory ["-t","Mem: <usedratio>%", "-l", "green", "--normal","orange","--high","red"] 40
                         , Run Date "%a %b %_d %l:%M %p" "date" 60
                         , Run Battery ["-L","10","-H","80","--high","green","--normal","yellow", "--low", "red"] 100
-                        , Run Weather "KSBN" ["-t","KSBD: <tempF>F, rh: <rh>%","-L","30","-H","70","--normal","green","--high","red","--low","lightblue"] 36000
+                        , Run Weather "KSBN" ["-t","KSBD: <tempF>°F, rh: <rh>%","-L","30","-H","70","--normal","green","--high","red","--low","lightblue"] 36000
                         , Run StdinReader
                         ]
        , sepChar      = "%"
        , alignSep     = "}{"
-       , template     = " %StdinReader% }{ %KSBN% <fc=#0033FF>|</fc> %cpu% <fc=#0033FF>|</fc> %memory% <fc=#0033FF>|</fc> %wlan0% <fc=#0033FF>|</fc> %battery% <fc=#0033FF>|</fc> %date%"
+       , template     = " %StdinReader% }{ %KSBN% <fc=#0033FF>|</fc> %multicpu% <fc=#0033FF>|</fc> %memory% <fc=#0033FF>|</fc> %wlan0% <fc=#0033FF>|</fc> %battery% <fc=#0033FF>|</fc> %date%"
        }
