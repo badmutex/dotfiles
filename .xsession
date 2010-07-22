@@ -14,7 +14,6 @@ trayer \
 	--alpha 0 &
 
 
-mpd ~/.mpd/mpd.conf &
 nm-applet --sm-disable &
 kmix &
 kmixctrl &
