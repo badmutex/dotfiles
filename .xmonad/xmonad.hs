@@ -1,6 +1,7 @@
 import XMonad hiding ((|||))
 
 import XMonad.Actions.NoBorders
+import XMonad.Actions.GridSelect
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -30,7 +31,9 @@ import System.IO
 
 main = do
   xmproc <- spawnPipe "xmobar"
-  xmonad =<< xmobar (conf xmproc)
+  let config = conf xmproc
+      keys   = myAdditionalKeys
+  xmonad =<< xmobar (config `additionalKeys` keys)
 
 conf xmproc = myConfig {
                 modMask           = myModMask
@@ -42,7 +45,7 @@ conf xmproc = myConfig {
               , manageHook        = myManageHook
               , startupHook       = myStartupHook
               , logHook           = myXmobarPP xmproc
-              } `additionalKeys` myAdditionalKeys
+              } 
 
 myXmobarPP xmproc = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc
                                                 , ppTitle = xmobarColor "white" "" . shorten 60
@@ -96,6 +99,8 @@ myAdditionalKeys = [ ((myModMask .|. shiftMask, xK_b), withFocused toggleBorder)
                    , ((myModMask .|. controlMask, xK_Return) , spawn emptyTerm)
                    , ((myModMask .|. controlMask, xK_m), spawn "qmpdclient")
                    , ((myModMask .|. controlMask, xK_c), spawn "chromium")
+                   , ((myModMask, xK_g), goToSelected defaultGSConfig)
                    ]
+
 
 
