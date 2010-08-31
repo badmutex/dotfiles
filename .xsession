@@ -17,7 +17,7 @@ trayer \
 nm-applet --sm-disable &
 kmix &
 kmixctrl &
-
+xscreensaver &
 $HOME/.init.sh
 
 
