@@ -100,7 +100,5 @@ myAdditionalKeys = [ ((myModMask .|. shiftMask, xK_b), withFocused toggleBorder)
                    , ((myModMask .|. controlMask, xK_m), spawn "qmpdclient")
                    , ((myModMask .|. controlMask, xK_c), spawn "chromium")
                    , ((myModMask, xK_g), goToSelected defaultGSConfig)
+                   , ((myModMask .|. controlMask, xK_l), spawn "xscreensaver-command -activate")
                    ]
-
-
-
