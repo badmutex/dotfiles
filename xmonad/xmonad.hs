@@ -1,4 +1,6 @@
 
+import Control.Concurrent (forkIO, threadDelay)
+import Control.Monad (forever)
 import System.IO
 import System.Exit
 import XMonad
@@ -59,6 +61,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
          , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
          , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
          , ((modm               , xK_g)    , goToSelected myGSConfig)
+         , ((modm .|. shiftMask , xK_b)    , io (randomBackground>>return ()))
          ]
 
 
@@ -78,12 +81,27 @@ defaults =
   }
 
 
+startCompositing = spawnPID "xcompmgr"
+randomBackground = spawnPID "feh --no-fehbg --randomize --bg-scale $HOME/Backgrounds"
+
+
+-- | convert minutes into microseconds
+minutes :: Int -> Int
+minutes m = m * 10^6 * 60
+
+periodicRandomBackground interval =
+    forkIO $ forever $ do
+      randomBackground
+      threadDelay interval
+
 
 main = do
-  xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
+  startCompositing
+  periodicRandomBackground (minutes 30)
+  xmobarProc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
   xmonad $  defaults {
     logHook = dynamicLogWithPP $ xmobarPP {
-      ppOutput = hPutStrLn xmproc
+      ppOutput = hPutStrLn xmobarProc
     , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
     , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
     , ppSep = "    "
