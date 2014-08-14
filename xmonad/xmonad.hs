@@ -3,20 +3,26 @@ import Control.Concurrent (forkIO, threadDelay)
 import Control.Monad (forever)
 import System.IO
 import System.Exit
+
 import XMonad
+
 import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
+
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
+
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
