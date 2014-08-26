@@ -27,7 +27,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
 
-myTerminal = "terminator"
+myTerminal = "konsole"
 myModMask = mod4Mask
 
 
