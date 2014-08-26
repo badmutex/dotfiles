@@ -20,7 +20,7 @@ cd $HOME
 
 for cfg in ${cfgs[@]}; do
 
-;    dst=.$cfg
+    dst=.$cfg
 
     if test -e $dst; then
 	echo "WARNING $dst already exists, creating backup"
