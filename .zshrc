@@ -78,3 +78,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+test -f /etc/zlogin && source /etc/zlogin
+module load use.own nix texlive anaconda
