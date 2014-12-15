@@ -80,4 +80,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 test -f /etc/zlogin && source /etc/zlogin
-module load use.own nix texlive anaconda
+type module 2>&1 >/dev/null && module load use.own nix texlive anaconda
