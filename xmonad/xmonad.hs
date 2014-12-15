@@ -3,6 +3,8 @@ import Control.Concurrent (forkIO, threadDelay)
 import Control.Monad (forever)
 import System.IO
 import System.Exit
+import System.Posix.Process (getProcessID)
+import System.Posix.Signals (signalProcess, sigTERM)
 
 import XMonad
 
@@ -103,7 +105,7 @@ periodicRandomBackground interval =
 
 main = do
   startCompositing
-  periodicRandomBackground (minutes 30)
+  bgPID <- periodicRandomBackground (minutes 30)
   xmobarProc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
   xmonad $  defaults {
     logHook = dynamicLogWithPP $ xmobarPP {
