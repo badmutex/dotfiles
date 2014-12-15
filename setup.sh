@@ -4,6 +4,7 @@ cfgs=(
     synergy.conf
     tmux.conf
     xmonad
+    zshrc
 )
 
 with-home() {
