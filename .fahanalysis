@@ -1,3 +1,0 @@
-
-export PATH="/home/badi/src/FAHAnalysis3/Helpers:$PATH"
-export PYTHONPATH="/home/badi/src:$PYTHONPATH"
