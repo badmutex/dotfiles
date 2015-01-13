@@ -21,6 +21,10 @@
       # misc tools
       tmux
 
+      # nix-related tools
+      nix-repl
+      strategoPackages.strategoxt # provides `pp-aterm` for printing .drv files
+
      ];
 
     in {
