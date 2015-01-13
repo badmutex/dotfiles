@@ -1,0 +1,14 @@
+[color]
+        ui = always
+[user]
+        name = Badi' Abdul-Wahid
+        email = abdulwahidc@gmail.com
+[merge]
+        summary = true
+        tool = emerge
+[core]
+        excludesfile = /Users/badi/.gitignore_global
+        editor = emacs
+        pager = less -F -X
+[push]
+        default = matching
