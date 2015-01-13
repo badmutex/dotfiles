@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 cfgs=(
+    oh-my-zsh
     synergy.conf
     tmux.conf
     xmonad
-    oh-my-zsh
     zshrc
 )
 
