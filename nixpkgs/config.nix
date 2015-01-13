@@ -20,6 +20,7 @@
 
       # misc tools
       tmux
+      keepass
 
       # nix-related tools
       nix-repl
