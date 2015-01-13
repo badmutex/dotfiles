@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 cfgs=(
+    gitconfig
+    nixpkgs
     oh-my-zsh
     synergy.conf
     tmux.conf
