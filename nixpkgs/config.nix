@@ -18,6 +18,9 @@
       biber
       texmaker
 
+      # misc tools
+      tmux
+
      ];
 
     in {
