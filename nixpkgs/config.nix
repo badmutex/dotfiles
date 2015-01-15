@@ -22,6 +22,7 @@
       tmux
       keepass
       colordiff
+      unzip
 
       # nix-related tools
       nix-repl
