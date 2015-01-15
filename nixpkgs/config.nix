@@ -21,6 +21,7 @@
       # misc tools
       tmux
       keepass
+      colordiff
 
       # nix-related tools
       nix-repl
