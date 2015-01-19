@@ -6,10 +6,13 @@ import System.Exit
 import System.Posix.Process (getProcessID)
 import System.Posix.Signals (signalProcess, sigTERM)
 
+import Graphics.X11.ExtraTypes.XF86
+
 import XMonad
 
 import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
+import XMonad.Actions.Volume
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -72,8 +75,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
          , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
          , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
          , ((modm               , xK_g)    , goToSelected myGSConfig)
+         , ((0,   xF86XK_AudioLowerVolume) , lowerVol 3 >> return ())
+         , ((0,   xF86XK_AudioRaiseVolume) , raiseVol 3 >> return ())
+         , ((0,   xF86XK_AudioMute       ) , toggleMute >> return ())
          -- , ((modm .|. shiftMask , xK_b)    , io (randomBackground>>return ()))
          ]
+    where lowerVol = lowerVolumeChannels ["Master"]
+          raiseVol = raiseVolumeChannels ["Master"]
 
 
 defaults =
