@@ -58,7 +58,10 @@ myLayout = avoidStruts (
 
 
 
-myManageHook = manageHook defaultConfig
+myManageHook = composeAll [
+                 className =? "kmix" --> doFloat
+               , className =? "Kmix" --> doFloat
+               ]
 
 myGSConfig = defaultGSConfig
 
@@ -82,6 +85,9 @@ defaults =
 
   -- hooks, layouts
   , layoutHook = smartBorders $ myLayout
+
+  , manageHook = manageDocks <+> myManageHook <+> manageHook cfg
+
 
   -- key bindings
   , keys = myKeys <+> keys cfg
