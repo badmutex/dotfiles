@@ -22,7 +22,11 @@
       keepass
       colordiff
       unzip
+
+      # xmonad
+      dmenu
       trayer
+      haskellPackages.xmobar
 
       # nix-related tools
       nix-repl
