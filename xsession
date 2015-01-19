@@ -5,6 +5,7 @@ start-if-cmd-exists () {
 }
 
 with-dbus () {
+    echo "Running $@" 1>&2
     start-if-cmd-exists dbus-launch --exit-with-session $*
 }
 
