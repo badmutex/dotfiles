@@ -4,7 +4,6 @@
 
       # web
       chromium
-      firefox
 
       # office
       evince
