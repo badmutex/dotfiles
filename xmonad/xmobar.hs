@@ -2,7 +2,7 @@
 
 Config {
     position = TopW L 90,
-    font = "xft:Fixed-6",
+    font = "xft:Fixed-7",
     bgColor = "#000000",
     fgColor = "#ffffff",
     lowerOnStart = False,

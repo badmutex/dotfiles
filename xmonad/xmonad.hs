@@ -56,14 +56,16 @@ myLayout = avoidStruts (
     Tall 1 (3/100) (1/2) |||
     Mirror (Tall 1 (3/100) (1/2)) |||
     tabbed shrinkText tabConfig |||
-    Full |||
-    spiral (6/7))
+    Full
+    )
 
 
 
 myManageHook = composeAll [
                  className =? "kmix" --> doFloat
                , className =? "Kmix" --> doFloat
+               , className =? "plasma-desktop" --> doFloat
+               , className =? "Plasma-desktop" --> doFloat
                ]
 
 myGSConfig = defaultGSConfig
@@ -75,13 +77,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
          , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
          , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
          , ((modm               , xK_g)    , goToSelected myGSConfig)
-         , ((0,   xF86XK_AudioLowerVolume) , lowerVol 3 >> return ())
-         , ((0,   xF86XK_AudioRaiseVolume) , raiseVol 3 >> return ())
-         , ((0,   xF86XK_AudioMute       ) , toggleMute >> return ())
+         -- , ((0,   xF86XK_AudioLowerVolume) , lowerVol 3 >> return ())
+         -- , ((0,   xF86XK_AudioRaiseVolume) , raiseVol 3 >> return ())
+         -- , ((0,   xF86XK_AudioMute       ) , toggleMute >> return ())
          -- , ((modm .|. shiftMask , xK_b)    , io (randomBackground>>return ()))
          ]
-    where lowerVol = lowerVolumeChannels ["Master"]
-          raiseVol = raiseVolumeChannels ["Master"]
+    -- where lowerVol = lowerVolumeChannels ["Master"]
+    --       raiseVol = raiseVolumeChannels ["Master"]
 
 
 defaults =
