@@ -23,6 +23,7 @@
       keepass
       colordiff
       unzip
+      trayer
 
       # nix-related tools
       nix-repl
