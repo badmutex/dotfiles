@@ -1,4 +1,7 @@
 {
+
+  allowUnfree = true;
+
   packageOverrides = pkgs: with pkgs;
     let allPkgs = [
 
