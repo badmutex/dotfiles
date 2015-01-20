@@ -26,6 +26,7 @@
       keepass
       colordiff
       unzip
+      spotify
 
       # nix-related tools
       nix-repl
