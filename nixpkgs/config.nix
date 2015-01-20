@@ -25,6 +25,7 @@
       keepass
       colordiff
       unzip
+      spotify
 
       # xmonad
       dmenu
