@@ -46,6 +46,12 @@
           name = "badi-dain-packages";
 	  paths = allPkgs;
         };
+
+        fangorn = buildEnv {
+          name = "badi-fangorn-packages";
+	  paths = allPkgs;
+        };
+
       };
     };
 }
