@@ -3,6 +3,7 @@
 cfgs=(
     config/autostart/Dropbox.desktop
     config/autostart/KMix.desktop
+    config/autostart/Spotify.desktop
     config/autostart/xfce4-volumed.desktop
     config/autostart/XCompMGR.desktop
     config/xfce4/helpers.rc
