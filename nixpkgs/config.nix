@@ -40,18 +40,15 @@
 
      ];
 
+     mkEnv = name: paths: buildEnv {
+       name = "badi-" + name + "-packages";
+       paths = paths;
+     };
+
     in {
       badi = {
-        dain = buildEnv {
-          name = "badi-dain-packages";
-	  paths = allPkgs;
-        };
-
-        fangorn = buildEnv {
-          name = "badi-fangorn-packages";
-	  paths = allPkgs;
-        };
-
+        dain = mkEnv "dain" allPkgs;
+        fangorn = mkEnv "fangorn" allPkgs;
       };
     };
 }
