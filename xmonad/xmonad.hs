@@ -66,6 +66,8 @@ myManageHook = composeAll [
                , className =? "Kmix" --> doFloat
                , className =? "plasma-desktop" --> doFloat
                , className =? "Plasma-desktop" --> doFloat
+               , className =? ".xfce4-panel-wrapped" --> doFloat
+               , className =? ".xfce4-panel-wrapped" --> doFloat
                ]
 
 myGSConfig = defaultGSConfig
