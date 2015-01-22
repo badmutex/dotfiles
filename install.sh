@@ -2,6 +2,7 @@
 
 cfgs=(
     config/autostart/Dropbox.desktop
+    config/autostart/KMix.desktop
     config/autostart/xfce4-volumed.desktop
     config/autostart/XCompMGR.desktop
     gitconfig
