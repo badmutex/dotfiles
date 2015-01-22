@@ -7,6 +7,7 @@ cfgs=(
     config/autostart/XCompMGR.desktop
     config/xfce4/helpers.rc
     config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+    config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
     gitconfig
     nixpkgs
     oh-my-zsh
