@@ -32,6 +32,7 @@
       trayer
       haskellPackages.xmobar
       xcompmgr
+      networkmanagerapplet
 
       # nix-related tools
       nix-repl
