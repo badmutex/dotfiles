@@ -23,6 +23,9 @@ cd $(dirname $0)
 
 dotfilesdir=$PWD
 
+now=$(date "+%f-%T")
+echo $now >> $dotfilesdir/revert.log
+
 for cfg in ${cfgs[@]}; do
 
     cd $HOME
@@ -31,7 +34,7 @@ for cfg in ${cfgs[@]}; do
 
     if test -e $dst; then
 	echo "WARNING $dst already exists, creating backup"
-	mv -v $dst $dst.backup.$(date "+%F-%T")
+	mv -v $dst $dst.backup.$now
     fi
 
     dstdir=$(dirname $dst)
