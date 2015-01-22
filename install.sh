@@ -5,6 +5,7 @@ cfgs=(
     config/autostart/KMix.desktop
     config/autostart/xfce4-volumed.desktop
     config/autostart/XCompMGR.desktop
+    config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
     gitconfig
     nixpkgs
     oh-my-zsh
