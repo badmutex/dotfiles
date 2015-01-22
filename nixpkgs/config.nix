@@ -31,6 +31,7 @@
       dmenu
       trayer
       haskellPackages.xmobar
+      xcompmgr
 
       # nix-related tools
       nix-repl
