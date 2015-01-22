@@ -74,7 +74,9 @@ myGSConfig = defaultGSConfig
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) =
     M.fromList [
-           ((modm               , xK_Right), nextWS)
+           ((modm               , xK_q)    , return ())
+         , ((modm .|. shiftMask , xK_q)    , return ())
+         , ((modm               , xK_Right), nextWS)
          , ((modm               , xK_Left) , prevWS)
          , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
          , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
