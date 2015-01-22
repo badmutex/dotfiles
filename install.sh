@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 cfgs=(
+    config/autostart/Dropbox.desktop
+    config/autostart/xfce4-volumed.desktop
+    config/autostart/XCompMGR.desktop
     gitconfig
     nixpkgs
     oh-my-zsh
@@ -18,19 +21,23 @@ with-home() {
 
 cd $(dirname $0)
 
-dotfilesdir=$(basename $PWD)
-
-cd $HOME
+dotfilesdir=$PWD
 
 for cfg in ${cfgs[@]}; do
 
+    cd $HOME
     dst=.$cfg
+    src=$dotfilesdir/$cfg
 
     if test -e $dst; then
 	echo "WARNING $dst already exists, creating backup"
 	mv -v $dst $dst.backup.$(date "+%F-%T")
     fi
 
-    ln -sv $dotfilesdir/$cfg $dst
+    dstdir=$(dirname $dst)
+    test -d "$dstdir" || mkdir -vp "$dstdir"
+    cd "$dstdir"
+    dst=$(basename $dst)
+    ln -sv $src $dst
 
 done
