@@ -2,8 +2,12 @@
 
 cfgs=(
     config/autostart/Dropbox.desktop
+    config/autostart/KMix.desktop
     config/autostart/xfce4-volumed.desktop
     config/autostart/XCompMGR.desktop
+    config/xfce4/helpers.rc
+    config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+    config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
     gitconfig
     nixpkgs
     oh-my-zsh
