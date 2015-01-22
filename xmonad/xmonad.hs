@@ -82,7 +82,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
          -- , ((0,   xF86XK_AudioLowerVolume) , lowerVol 3 >> return ())
          -- , ((0,   xF86XK_AudioRaiseVolume) , raiseVol 3 >> return ())
          -- , ((0,   xF86XK_AudioMute       ) , toggleMute >> return ())
-         -- , ((modm .|. shiftMask , xK_b)    , io (randomBackground>>return ()))
+         , ((modm .|. shiftMask , xK_b)    , io (randomBackground>>return ()))
          ]
     -- where lowerVol = lowerVolumeChannels ["Master"]
     --       raiseVol = raiseVolumeChannels ["Master"]
@@ -106,24 +106,23 @@ defaults =
 
   }
 
+randomBackground = spawnPID "feh --no-fehbg --randomize --bg-scale $HOME/Backgrounds"
 
--- startCompositing = spawnPID "xcompmgr"
--- randomBackground = spawnPID "feh --no-fehbg --randomize --bg-scale $HOME/Backgrounds"
+-- | convert minutes into microseconds
+minutes :: Int -> Int
+minutes m = m * 10^6 * 60
 
-
--- -- | convert minutes into microseconds
--- minutes :: Int -> Int
--- minutes m = m * 10^6 * 60
-
--- periodicRandomBackground interval =
---     forkIO $ forever $ do
---       randomBackground
---       threadDelay interval
+periodicRandomBackground interval =
+    forkIO $ forever $ do
+      randomBackground
+      threadDelay interval
 
 
 main = do
   -- startCompositing
   -- bgPID <- periodicRandomBackground (minutes 30)
+  spawn "xfdesktop --quit"
+  periodicRandomBackground (minutes 30)
   xmobarProc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
   xmonad $  defaults {
     logHook = dynamicLogWithPP $ xmobarPP {
