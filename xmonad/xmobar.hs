@@ -1,7 +1,7 @@
 
 
 Config {
-    position = TopW L 90,
+    position = Top,
     font = "xft:Fixed-7",
     bgColor = "#000000",
     fgColor = "#ffffff",
