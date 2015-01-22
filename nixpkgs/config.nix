@@ -33,6 +33,7 @@
       haskellPackages.xmobar
       xcompmgr
       networkmanagerapplet
+      kde4.kmix
 
       # nix-related tools
       nix-repl
