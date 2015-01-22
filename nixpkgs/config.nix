@@ -36,10 +36,17 @@
 
     in {
       badi = {
+
         dain = buildEnv {
           name = "badi-dain-packages";
 	  paths = allPkgs;
         };
+
+        fangorn = buildEnv {
+          name = "badi-fangorn-packages";
+	  paths = allPkgs;
+        };
+
       };
     };
 }
