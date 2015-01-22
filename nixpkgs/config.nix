@@ -7,7 +7,6 @@
 
       # web
       chromium
-      firefox
 
       # office
       evince
@@ -28,6 +27,13 @@
       unzip
       spotify
 
+      # xmonad
+      dmenu
+      trayer
+      haskellPackages.xmobar
+      xcompmgr
+      networkmanagerapplet
+
       # nix-related tools
       nix-repl
       strategoPackages.strategoxt # provides `pp-aterm` for printing .drv files
@@ -36,7 +42,6 @@
 
     in {
       badi = {
-
         dain = buildEnv {
           name = "badi-dain-packages";
 	  paths = allPkgs;

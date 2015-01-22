@@ -6,10 +6,13 @@ import System.Exit
 import System.Posix.Process (getProcessID)
 import System.Posix.Signals (signalProcess, sigTERM)
 
+import Graphics.X11.ExtraTypes.XF86
+
 import XMonad
 
 import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
+import XMonad.Actions.Volume
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -53,12 +56,19 @@ myLayout = avoidStruts (
     Tall 1 (3/100) (1/2) |||
     Mirror (Tall 1 (3/100) (1/2)) |||
     tabbed shrinkText tabConfig |||
-    Full |||
-    spiral (6/7))
+    Full
+    )
 
 
 
-myManageHook = manageHook defaultConfig
+myManageHook = composeAll [
+                 className =? "kmix" --> doFloat
+               , className =? "Kmix" --> doFloat
+               , className =? "plasma-desktop" --> doFloat
+               , className =? "Plasma-desktop" --> doFloat
+               , className =? ".xfce4-panel-wrapped" --> doFloat
+               , className =? ".xfce4-panel-wrapped" --> doFloat
+               ]
 
 myGSConfig = defaultGSConfig
 
@@ -69,8 +79,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
          , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
          , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
          , ((modm               , xK_g)    , goToSelected myGSConfig)
+         -- , ((0,   xF86XK_AudioLowerVolume) , lowerVol 3 >> return ())
+         -- , ((0,   xF86XK_AudioRaiseVolume) , raiseVol 3 >> return ())
+         -- , ((0,   xF86XK_AudioMute       ) , toggleMute >> return ())
          , ((modm .|. shiftMask , xK_b)    , io (randomBackground>>return ()))
          ]
+    -- where lowerVol = lowerVolumeChannels ["Master"]
+    --       raiseVol = raiseVolumeChannels ["Master"]
 
 
 defaults =
@@ -83,15 +98,15 @@ defaults =
   -- hooks, layouts
   , layoutHook = smartBorders $ myLayout
 
+  , manageHook = manageDocks <+> myManageHook <+> manageHook cfg
+
+
   -- key bindings
   , keys = myKeys <+> keys cfg
 
   }
 
-
-startCompositing = spawnPID "xcompmgr"
 randomBackground = spawnPID "feh --no-fehbg --randomize --bg-scale $HOME/Backgrounds"
-
 
 -- | convert minutes into microseconds
 minutes :: Int -> Int
@@ -104,8 +119,10 @@ periodicRandomBackground interval =
 
 
 main = do
-  startCompositing
-  bgPID <- periodicRandomBackground (minutes 30)
+  -- startCompositing
+  -- bgPID <- periodicRandomBackground (minutes 30)
+  spawn "xfdesktop --quit"
+  periodicRandomBackground (minutes 30)
   xmobarProc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
   xmonad $  defaults {
     logHook = dynamicLogWithPP $ xmobarPP {
