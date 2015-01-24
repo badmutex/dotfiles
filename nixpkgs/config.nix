@@ -14,6 +14,7 @@
       dropbox
       libreoffice
       inkscape
+      (callPackage ./apps/mendeley.nix {})
 
       # latex
       texLiveFull
