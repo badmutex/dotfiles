@@ -28,7 +28,7 @@ cd $(dirname $0)
 
 dotfilesdir=$PWD
 
-now=$(date "+%f-%T")
+now=$(date "+%F-%T")
 echo $now >> $dotfilesdir/revert.log
 
 for cfg in ${cfgs[@]}; do
