@@ -58,8 +58,9 @@ stdenv.mkDerivation {
 
   meta = {
     homepage = http://www.mendeley.com;
-    description = "Mendeley is a free reference manager and academic social network.";
+    description = "A reference manager and academic social network";
     license = stdenv.lib.licenses.unfree;
+    platforms = stdenv.lib.platforms.linux;
   };
 
 }
