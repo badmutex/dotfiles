@@ -16,6 +16,9 @@
       inkscape
       (callPackage ./apps/mendeley.nix {})
 
+      # science
+      (callPackage ./apps/vmd.nix {})
+
       # latex
       texLiveFull
       biber
