@@ -30,6 +30,7 @@
       colordiff
       unzip
       spotify
+      xclip
 
       # xmonad
       dmenu
