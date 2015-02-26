@@ -15,6 +15,8 @@
       libreoffice
       inkscape
       (callPackage ./apps/mendeley.nix {})
+      aspell
+      aspellDicts.en
 
       # science
       (callPackage ./apps/vmd.nix {})
