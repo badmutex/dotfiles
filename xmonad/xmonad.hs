@@ -55,7 +55,6 @@ xmobarCurrentWorkspaceColor = "#CEFFAC"
 myLayout = avoidStruts (
     Tall 1 (3/100) (1/2) |||
     threeCol |||
-    Mirror (Tall 1 (3/100) (1/2)) |||
     tabbed shrinkText tabConfig |||
     Full
     )
