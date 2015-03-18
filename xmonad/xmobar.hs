@@ -5,7 +5,7 @@ Config {
     font = "xft:Fixed-11",
     bgColor = "#000000",
     fgColor = "#ffffff",
-    lowerOnStart = False,
+    lowerOnStart = True,
     commands = [
         Run Weather "KBMG" ["-t","<tempF>F <skyCondition>","-L","64","-H","77","-n","#CEFFAC","-h","#FFB6B0","-l","#96CBFE"] 36000,
         Run MultiCpu ["-t","Cpu: <autototal>","-L","30","-H","60","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC","-w","3"] 10,
