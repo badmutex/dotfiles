@@ -127,10 +127,13 @@ main = do
   -- bgPID <- periodicRandomBackground (minutes 30)
   spawn "xfdesktop --quit"
   periodicRandomBackground (minutes 30)
-  xmobarProc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
+  xmobarProcLeft <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobar.hs"
+  xmobarProcRight <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobar.hs"
   xmonad $  defaults {
     logHook = dynamicLogWithPP $ xmobarPP {
-      ppOutput = hPutStrLn xmobarProc
+      ppOutput = \s -> do
+                   hPutStrLn xmobarProcLeft  s
+                   hPutStrLn xmobarProcRight s
     , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
     , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
     , ppSep = "    "
