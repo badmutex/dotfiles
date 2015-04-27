@@ -18,6 +18,7 @@
       (callPackage ./apps/mendeley.nix {})
       aspell
       aspellDicts.en
+      thunderbird
 
       # science
       (callPackage ./apps/vmd.nix {})
