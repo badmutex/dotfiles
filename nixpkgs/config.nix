@@ -9,6 +9,7 @@
       chromium
 
       # office
+      emacs
       evince
       kde4.gwenview
       dropbox
