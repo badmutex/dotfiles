@@ -3,7 +3,17 @@
   allowUnfree = true;
 
   packageOverrides = pkgs: with pkgs;
-    let allPkgs = [
+    let
+
+      pythonDevel = with python27Packages; [
+        python
+        jedi
+        pyflakes
+        pip
+        virtualenv
+      ];
+
+    allPkgs = [
 
       # web
       chromium
@@ -50,7 +60,9 @@
       nix-repl
       strategoPackages.strategoxt # provides `pp-aterm` for printing .drv files
 
-     ];
+     ]
+     ++
+     pythonDevel;
 
      mkEnv = name: paths: buildEnv {
        name = "badi-" + name + "-packages";
