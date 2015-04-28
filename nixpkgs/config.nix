@@ -36,6 +36,7 @@
       spotify
       xclip
       yubikey-personalization-gui
+      (callPackage ./apps/wesnoth.nix {})
 
       # xmonad
       dmenu
