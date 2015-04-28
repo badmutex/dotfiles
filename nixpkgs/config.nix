@@ -30,7 +30,7 @@
 
       # misc tools
       tmux
-      keepass
+      keepass xdotool
       colordiff
       unzip
       spotify
