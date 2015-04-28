@@ -59,7 +59,7 @@
     in {
       badi = {
         dain = mkEnv "dain" allPkgs;
-        fangorn = mkEnv "fangorn" allPkgs;
+        fangorn = mkEnv "fangorn" (lib.lists.remove libreoffice allPkgs);
       };
     };
 }
