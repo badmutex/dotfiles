@@ -35,6 +35,7 @@
       unzip
       spotify
       xclip
+      yubikey-personalization-gui
 
       # xmonad
       dmenu
