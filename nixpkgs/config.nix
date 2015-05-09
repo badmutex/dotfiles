@@ -45,7 +45,7 @@
         unzip
         spotify
         xclip
-        yubikey-personalization-gui
+        (callPackage ./apps/yubikey-personalization-gui.nix { qt=qt4; })
         (callPackage ./apps/wesnoth.nix {})
   
         # xmonad
