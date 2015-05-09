@@ -6,7 +6,7 @@
     let
 
       pythonDevel = with python27Packages; [
-        python
+        pythonFull
         jedi
         pyflakes
         pip
