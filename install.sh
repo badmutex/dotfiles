@@ -15,6 +15,7 @@ cfgs=(
     synergy.conf
     tmux.conf
     xmonad
+    xsession
     zshrc
 )
 
