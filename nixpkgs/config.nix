@@ -13,66 +13,86 @@
         virtualenv
       ];
 
-      allPkgs = [
-  
-        # web
-        chromium
-  
-        # office
-        emacs
-        evince
-        kde4.gwenview
-        dropbox
-        libreoffice
-        inkscape
-        (callPackage ./apps/mendeley.nix {})
-        aspell
-        aspellDicts.en
-        thunderbird
-  
-        # science
-        (callPackage ./apps/vmd.nix {})
-  
-        # latex
-        texLiveFull
-        biber
-        texmaker
-  
-        # misc tools
-        tmux
-        keepass xdotool
-        colordiff
-        unzip
-        spotify
-        xclip
-        (callPackage ./apps/yubikey-personalization-gui.nix { qt=qt4; })
-        (callPackage ./apps/wesnoth.nix {})
-  
-        # xmonad
-        dmenu
-        trayer
-        haskellPackages.xmobar
-        xcompmgr
-        networkmanagerapplet
-        kde4.kmix
-  
-        # nix-related tools
-        nix-repl
-        strategoPackages.strategoxt # provides `pp-aterm` for printing .drv files
-  
-       ]
-       ++
-       pythonDevel;
+       compression = [
+         unzipNLS
+         zip
+       ];
 
-     mkEnv = name: paths: buildEnv {
-       name = "badi-" + name + "-packages";
-       paths = paths;
-     };
+       web = [
+         chromium
+       ];
+
+       editors = [
+         emacs
+       ];
+
+       office = [
+         evince
+         kde4.gwenview
+         # libreoffice
+         inkscape
+         aspell
+         aspellDicts.en
+         thunderbird
+       ];
+
+       latex = [
+         texLiveFull
+         biber
+         texmaker
+       ];
+
+       password_management = [
+         keepass
+         xdotool
+         (callPackage ./apps/yubikey-personalization-gui.nix { qt=qt4; })
+       ];
+
+       games = [
+         (callPackage ./apps/wesnoth.nix {})
+       ];
+
+       x11 = [
+         terminator
+         synergy
+         feh
+         xclip
+         spotify
+
+         gtk
+         gtk-engine-murrine
+         gtk_engines
+         oxygen_gtk
+         lxappearance
+         gnome.gnomeicontheme
+         hicolor_icon_theme
+       ];
+
+       xmonad = [
+         dmenu
+         trayer
+         xcompmgr
+         kde4.kmix
+         haskellPackages.xmobar
+         networkmanagerapplet
+       ];
+
+       tools = [
+         colordiff
+       ];
+
+       mkEnv = name: paths: buildEnv {
+         name = "badi-" + name + "-packages";
+         paths = paths;
+       };
 
     in {
       badi = {
-        dain = mkEnv "dain" allPkgs;
-        fangorn = mkEnv "fangorn" allPkgs;
+        fangorn = mkEnv "fangorn" (
+          pythonDevel ++
+          compression ++ web ++ editors ++ office ++ tools ++
+          password_management ++ games ++ x11 ++ xmonad
+        );
       };
     };
 }
