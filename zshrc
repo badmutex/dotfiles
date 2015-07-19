@@ -105,6 +105,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Enable more extensive tab completion
+autoload -U compinit
+compinit
+
 test -f /etc/zlogin && source /etc/zlogin
 export MODULE_LOAD_CMD=""
 if `type module 2>&1 >/dev/null`; then
