@@ -112,6 +112,10 @@ compinit
 # Tab completion on both ends
 setopt completeinword
 
+# Change the definition of "word"
+autoload select-word-style
+select-word-style shell
+
 test -f /etc/zlogin && source /etc/zlogin
 export MODULE_LOAD_CMD=""
 if `type module 2>&1 >/dev/null`; then
