@@ -109,6 +109,9 @@ source $ZSH/oh-my-zsh.sh
 autoload -U compinit
 compinit
 
+# Tab completion on both ends
+setopt completeinword
+
 test -f /etc/zlogin && source /etc/zlogin
 export MODULE_LOAD_CMD=""
 if `type module 2>&1 >/dev/null`; then
