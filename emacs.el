@@ -424,4 +424,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (badi/switch-system-name '(("sulimo" . (set-face-attribute 'default nil :height 80))))
+(badi/switch-system-name '(("gambit" . (set-face-attribute 'default nil :height 80))))
 (badi/switch-system-name '(("lorien" . (set-face-attribute 'default nil :height 120))))
