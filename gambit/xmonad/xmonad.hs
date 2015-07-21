@@ -44,11 +44,22 @@ myLayout = smartBorders $ avoidStruts (
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) =
     M.fromList [
-           ((modm               , xK_Right), nextWS)
-         , ((modm               , xK_Left) , prevWS)
-         , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
-         , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
-         , ((controlMask .|. mod1Mask, xK_l), spawn "cinnamon-screensaver-command --lock")
+
+           ((modm , xK_Right),
+            nextWS)
+
+         , ((modm , xK_Left) ,
+            prevWS)
+
+         , ((modm .|. shiftMask , xK_Right),
+            shiftToNext >> nextWS)
+
+         , ((modm .|. shiftMask , xK_Left) ,
+            shiftToPrev >> prevWS)
+
+         , ((controlMask .|. mod1Mask, xK_l),
+            spawn "cinnamon-screensaver-command --lock")
+
          ]
 
 
