@@ -32,6 +32,7 @@
         - thunderbird
         - chromium
         - libreoffice
+        - cups
 
         # virtualization
         - vagrant
@@ -56,6 +57,7 @@
       provision_services:
         - name: libvirtd
           state: restarted
+        - name: cups
 
       provision_users:
         - name: badi
