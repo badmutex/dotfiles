@@ -56,7 +56,6 @@
 
       provision_services:
         - name: libvirtd
-          state: restarted
         - name: cups
 
       provision_users:
