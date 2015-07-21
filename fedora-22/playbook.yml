@@ -25,6 +25,9 @@
 
         # office
         - dropbox
+        - keepass
+        - keepass-doc
+        - xdotool
         - spotify-client
         - thunderbird
         - chromium
