@@ -253,7 +253,18 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
+;; indentation configuration
+;; https://github.com/haskell/haskell-mode/wiki/Indentation
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
+;; (setq haskell-indentation-show-indentations t)
+;; (setq haskell-indentation-show-indentations-after-eol t)
+(eval-after-load "haskell-mode"
+  '(progn
+     (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
+     (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right)))
+
+(speedbar-add-supported-extension ".hs")
+(
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; hungry delete
 (global-hungry-delete-mode)
