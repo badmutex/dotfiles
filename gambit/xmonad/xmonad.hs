@@ -48,6 +48,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
          , ((modm               , xK_Left) , prevWS)
          , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
          , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
+         , ((controlMask .|. mod1Mask, xK_l), spawn "cinnamon-screensaver-command --lock")
          ]
 
 
