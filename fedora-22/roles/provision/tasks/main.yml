@@ -25,3 +25,10 @@
     enabled: "{{ item.enabled | default('yes') }}"
     state: "{{ item.state | default('started') }}"
   with_items: provision_services
+
+- name: Manage users
+  user:
+    name: "{{ item.name }}"
+    groups: "{{ ','.join(item.groups) | default([]) }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: provision_users
