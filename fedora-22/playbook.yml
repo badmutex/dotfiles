@@ -51,3 +51,7 @@
 
         # misc
         - xclip
+
+      provision_services:
+        - name: libvirtd
+          state: restarted
