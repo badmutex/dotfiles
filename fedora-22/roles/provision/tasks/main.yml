@@ -1,0 +1,20 @@
+---
+
+- name: Enable repositories
+  yum_repo:
+    url: "{{ item }}"
+  with_items: provision_repositories
+
+- name: Enable rpmfusion
+  when: provision_enable_rpmfusion
+  dnf:
+    name={{ item }}
+    state=present
+  with_items: provision_rpmfusion_rpms
+
+- name: Install packages
+  dnf:
+    name: "{{ item }}"
+    state: present
+    disable_gpg_check: yes
+  with_items: provision_packages
