@@ -37,6 +37,7 @@
         - vagrant
         - libvirt
         - libvirt-devel
+        - virt-manager
         - vagrant-libvirt
         - vagrant-libvirt-doc
         - vagrant-lxc
