@@ -56,3 +56,10 @@
       provision_services:
         - name: libvirtd
           state: restarted
+
+      provision_users:
+        - name: badi
+          groups:
+            - badi
+            - wheel
+            - libvirt
