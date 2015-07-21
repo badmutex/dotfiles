@@ -252,6 +252,9 @@
               (magit-key-mode-toggle-option (quote committing) "--verbose")))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
+(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; hungry delete
 (global-hungry-delete-mode)
 
