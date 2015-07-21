@@ -18,7 +18,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
 
 
-myTerminal = "mate-terminal"
+myTerminal = "gnome-terminal"
 
 myModMask = mod4Mask
 
