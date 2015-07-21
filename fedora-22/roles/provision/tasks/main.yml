@@ -18,3 +18,10 @@
     state: present
     disable_gpg_check: yes
   with_items: provision_packages
+
+- name: Manage services
+  service:
+    name: "{{ item.name }}"
+    enabled: "{{ item.enabled | default('yes') }}"
+    state: "{{ item.state | default('started') }}"
+  with_items: provision_services
