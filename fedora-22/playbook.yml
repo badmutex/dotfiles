@@ -23,6 +23,7 @@
 
         # management
         - openssh-server
+        - keychain
 
         # office
         - dropbox
