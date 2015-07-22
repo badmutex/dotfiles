@@ -267,7 +267,6 @@
      (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right)))
 
 (speedbar-add-supported-extension ".hs")
-(
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; hungry delete
 (global-hungry-delete-mode)
