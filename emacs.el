@@ -184,6 +184,9 @@
    yaml-mode
    ))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; speed bar
+(require 'speedbar)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
 ;; globally enable auto-complete
 ;; (global-auto-complete-mode t)
