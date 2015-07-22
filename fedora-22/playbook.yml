@@ -19,6 +19,7 @@
         - python-virtualenv
         - git
         - gitk
+        - screen
 
         # management
         - openssh-server
