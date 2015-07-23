@@ -108,6 +108,10 @@
    ;; https://github.com/ankurdave/color-identifiers-mode
    color-identifiers-mode
 
+   ;; enforce the 80 columns rule
+   ;; https://github.com/jordonbiondo/column-enforce-mode/
+   column-enforce-mode
+
    ;; csv-mode for editing csv files
    ;; http://emacswiki.org/emacs/CsvMode
    csv-mode
@@ -115,10 +119,6 @@
    ;; expande syntactic regions
    ;; https://github.com/magnars/expand-region.el
    expand-region
-
-   ;; indicate the location of the fill column with a vertical rule
-   ;; https://github.com/alpaker/Fill-Column-Indicator
-   fill-column-indicator
 
    ;; flexible string matching
    flx
@@ -192,10 +192,8 @@
 (require 'speedbar)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 80 column rules
-(require 'fill-column-indicator)
-(dolist (hook (list
-               'fci-mode))
-  (add-hook 'prog-mode-hook hook))
+(require 'column-enforce-mode)
+(add-hook 'prog-mode-hook 'column-enforce-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
 ;; globally enable auto-complete
