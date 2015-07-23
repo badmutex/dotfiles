@@ -172,6 +172,10 @@
    ;; https://nixos.org
    nix-mode
 
+   ;; mark delimiters with different colors
+   ;; https://github.com/Fanael/rainbow-delimiters
+   rainbow-delimiters
+
    ;; enhance M-x with IDO
    ;; https://github.com/nonsequitur/smex
    smex
@@ -195,6 +199,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 80 column rules
 (require 'column-enforce-mode)
 (add-hook 'prog-mode-hook 'column-enforce-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; rainbow delimiters
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
 ;; globally enable auto-complete
