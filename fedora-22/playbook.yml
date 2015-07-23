@@ -1,0 +1,67 @@
+---
+
+- hosts: localhost
+  sudo: yes
+  roles:
+    - role: provision
+
+      provision_repositories:
+        - "https://repos.fedorapeople.org/repos/spot/chromium/fedora-chromium-stable.repo"
+        - "http://negativo17.org/repos/fedora-spotify.repo"
+
+      provision_enable_rpmfusion: yes
+
+      provision_packages:
+        # development
+        - emacs
+        - emacs-color-theme
+        - python-pip
+        - python-virtualenv
+        - git
+        - gitk
+        - screen
+
+        # management
+        - openssh-server
+
+        # office
+        - dropbox
+        - keepass
+        - keepass-doc
+        - xdotool
+        - spotify-client
+        - thunderbird
+        - chromium
+        - libreoffice
+        - cups
+
+        # virtualization
+        - vagrant
+        - libvirt
+        - libvirt-devel
+        - virt-manager
+        - vagrant-libvirt
+        - vagrant-libvirt-doc
+        - vagrant-lxc
+        - vagrant-lxc-doc
+
+        # xmonad
+        - xmonad
+        - xmonad-mate
+        - ghc-xmonad-devel
+        - ghc-xmonad-contrib
+        - ghc-xmonad-contrib-devel
+
+        # misc
+        - xclip
+
+      provision_services:
+        - name: libvirtd
+        - name: cups
+
+      provision_users:
+        - name: badi
+          groups:
+            - badi
+            - wheel
+            - libvirt
