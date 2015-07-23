@@ -191,6 +191,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; speed bar
 (require 'speedbar)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 80 column rules
+(require 'fill-column-indicator)
+(dolist (hook (list
+               'fci-mode))
+  (add-hook 'prog-mode-hook hook))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
 ;; globally enable auto-complete
 ;; (global-auto-complete-mode t)
