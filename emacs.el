@@ -116,6 +116,10 @@
    ;; https://github.com/magnars/expand-region.el
    expand-region
 
+   ;; indicate the location of the fill column with a vertical rule
+   ;; https://github.com/alpaker/Fill-Column-Indicator
+   fill-column-indicator
+
    ;; flexible string matching
    flx
    flx-ido
