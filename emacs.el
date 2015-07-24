@@ -270,6 +270,11 @@
             (lambda ()
               (magit-key-mode-toggle-option (quote committing) "--verbose")))
 
+;; see issue #9
+;; also:
+;; https://github.com/magit/magit/commit/325a4fff
+(setq magit-push-always-verify nil)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
 ;; indentation configuration
