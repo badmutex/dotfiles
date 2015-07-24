@@ -73,3 +73,5 @@
           parameters:
             - nested=y
           state: reloaded
+
+      provision_secure_sshd: yes

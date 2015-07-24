@@ -5,3 +5,7 @@ provision_rpmfusion_rpms:
   - "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-22.noarch.rpm"
 
 provision_services: []
+
+sshd_config_path: /etc/ssh/sshd_config
+
+sshd_login_grace_time: 30

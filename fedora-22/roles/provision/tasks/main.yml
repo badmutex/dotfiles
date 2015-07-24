@@ -55,3 +55,27 @@
     params: "{{ ','.join(item.parameters) | default('') }}"
     state: present
   with_items: provision_kernel_modules
+
+- name: Secure sshd
+  sshd_config:
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    validate: "sshd -t -f"
+  with_items:
+
+    - option: Protocol
+      value: 2
+
+    - option: PermitRootLogin
+      value: 'no'
+
+    - option: PasswordAuthentication
+      value: 'no'
+
+    - option: PubKeyAuthentication
+      value: 'yes'
+
+    - option: LoginGraceTime
+      value: "{{ sshd_login_grace_time }}"
+
+  notify: restart sshd
