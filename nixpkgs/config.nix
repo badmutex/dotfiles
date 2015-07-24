@@ -25,7 +25,7 @@
        ];
 
        web = [
-         chromium
+         chromiumDev
        ];
 
        editors = [
