@@ -2,53 +2,53 @@
 ;; additional useful functions and variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun badi/package-install (package)
+(defun my/package-install (package)
   "Install a package if it is not present already"
   (unless (package-installed-p package)
     (package-install package)))
 
-(defun badi/package-install-list (package-list)
+(defun my/package-install-list (package-list)
   "Install a list of packages if necessary"
   (dolist (package package-list)
-    (badi/package-install package)))
+    (my/package-install package)))
 
-(defun badi/joindirs (root &rest dirs)
+(defun my/joindirs (root &rest dirs)
   "Joins a series of directories together, like Python's os.path.join,
   (dotemacs-joindirs \"/tmp\" \"a\" \"b\" \"c\") => /tmp/a/b/c"
   (if (not dirs)
       root
-    (apply 'badi/joindirs
+    (apply 'my/joindirs
            (expand-file-name (car dirs) root)
            (cdr dirs))))
 
-(defun badi/package/refresh-contents ()
+(defun my/package/refresh-contents ()
   "Refresh the package contents if necessary"
   (let ((package/archive-file-exists-p
          (lambda (name)
-           (let* ((archive (badi/joindirs package-user-dir
-                                          "archives"
-                                          name
-                                          "archive-contents")))
+           (let* ((archive (my/joindirs package-user-dir
+                                        "archives"
+                                        name
+                                        "archive-contents")))
              (message
-              "[badi/package/archive-file-exists-p] checking %s" archive)
+              "[my/package/archive-file-exists-p] checking %s" archive)
              (file-exists-p archive)))))
     (dolist (package package-archives)
       (unless (funcall package/archive-file-exists-p (car package))
         (package-refresh-contents)))))
 
-(defun badi/package/emacs-compat-fix ()
+(defun my/package/emacs-compat-fix ()
   "Add gnu packages when emacs is v23 or less for libs like cl-lib"
   (when (< emacs-major-version 24)
     (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))))
 
-(defun badi/package/update ()
+(defun my/package/update ()
   "Updated installed packages"
   (interactive)
   (package-list-packages)
   (package-menu-mark-upgrades)
   (package-menu-execute))
 
-(defun badi/switch-system-name (names-and-bodies)
+(defun my/switch-system-name (names-and-bodies)
   "Load overrides based on hostname
    NAMES-AND-BODEIS is a list where individual elements have the form
    (\"hostname\" . (sexpr)), where (sexpr) will be evaluated when the
@@ -81,9 +81,9 @@
            ))
   (add-to-list 'package-archives archive))
 
-(badi/package/emacs-compat-fix)
+(my/package/emacs-compat-fix)
 (package-initialize)
-(badi/package/refresh-contents)
+(my/package/refresh-contents)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -99,7 +99,7 @@
 ;;      - autocompletion (company-mode is recommended)
  
 
-(badi/package-install-list
+(my/package-install-list
  '(
    ;; auto-complete mode
    ;; http://emacswiki.org/emacs/AutoComplete
@@ -396,7 +396,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; themes
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(badi/package-install 'atom-dark-theme)
+(my/package-install 'atom-dark-theme)
 (load-theme 'atom-dark t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -411,9 +411,9 @@
 ;; sphinx-doc: autoinsert sphinx-doc docstrings
 ;;             (C-c M-d at function def)
 (setq python-ide-package-list '(elpy flymake sphinx-doc))
-(badi/package-install-list '(elpy
-                             flymake
-                             sphinx-doc))
+(my/package-install-list '(elpy
+                           flymake
+                           sphinx-doc))
 
 (elpy-enable)
 (add-hook 'python-mode-hook (lambda ()
@@ -434,11 +434,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; automatically change entry to DONE when all children are DONE
-(defun badi/org/summary-todo (n-done n-not-done)
+(defun my/org/summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
   (let (org-log-done org-log-states)   ; turn off logging
     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
-(add-hook 'org-after-todo-statistics-hook 'badi/org/summary-todo)
+(add-hook 'org-after-todo-statistics-hook 'my/org/summary-todo)
 
 (setq org-hide-leading-stars t)
 
@@ -457,11 +457,11 @@
 ;; load specific overrides based on system type
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(badi/switch-system-name
+(my/switch-system-name
  '(("sulimo" . (set-face-attribute 'default nil :height 80))))
 
-(badi/switch-system-name
+(my/switch-system-name
  '(("gambit" . (set-face-attribute 'default nil :height 80))))
 
-(badi/switch-system-name
+(my/switch-system-name
  '(("lorien" . (set-face-attribute 'default nil :height 120))))
