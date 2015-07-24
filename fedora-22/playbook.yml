@@ -66,3 +66,9 @@
             - badi
             - wheel
             - libvirt
+
+      provision_kernel_modules:
+        - name: kvm-intel
+          parameters:
+            - nested=y
+          state: reloaded

@@ -32,3 +32,26 @@
     groups: "{{ ','.join(item.groups) | default([]) }}"
     state: "{{ item.state | default('present') }}"
   with_items: provision_users
+
+- name: Persist kernel modules
+  when: "item.persist | default(True)"
+  lineinfile:
+    dest: "/etc/modules-load.d/{{ item.name }}.conf"
+    line: "{{ item.name }} {{ ' '.join(item.parameters) | default('') }}"
+    create: yes
+  with_items: provision_kernel_modules
+
+- name: Unload kernel modules
+  when: "item.state == 'reloaded' or item.state == 'absent'"
+  modprobe:
+    name: "{{ item.name }}"
+    state: absent
+  with_items: provision_kernel_modules
+
+- name: Load kernel modules
+  when: "item.state == 'reloaded' or item.state == 'present'"
+  modprobe:
+    name: "{{ item.name }}"
+    params: "{{ ','.join(item.parameters) | default('') }}"
+    state: present
+  with_items: provision_kernel_modules
