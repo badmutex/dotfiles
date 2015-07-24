@@ -2,52 +2,53 @@
 ;; additional useful functions and variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun badi/package-install (package)
+(defun my/package-install (package)
   "Install a package if it is not present already"
   (unless (package-installed-p package)
     (package-install package)))
 
-(defun badi/package-install-list (package-list)
+(defun my/package-install-list (package-list)
   "Install a list of packages if necessary"
   (dolist (package package-list)
-    (badi/package-install package)))
+    (my/package-install package)))
 
-(defun badi/joindirs (root &rest dirs)
+(defun my/joindirs (root &rest dirs)
   "Joins a series of directories together, like Python's os.path.join,
   (dotemacs-joindirs \"/tmp\" \"a\" \"b\" \"c\") => /tmp/a/b/c"
   (if (not dirs)
       root
-    (apply 'badi/joindirs
+    (apply 'my/joindirs
            (expand-file-name (car dirs) root)
            (cdr dirs))))
 
-(defun badi/package/refresh-contents ()
+(defun my/package/refresh-contents ()
   "Refresh the package contents if necessary"
   (let ((package/archive-file-exists-p
          (lambda (name)
-           (let* ((archive (badi/joindirs package-user-dir
-                                          "archives"
-                                          name
-                                          "archive-contents")))
-             (message "[badi/package/archive-file-exists-p] checking %s" archive)
+           (let* ((archive (my/joindirs package-user-dir
+                                        "archives"
+                                        name
+                                        "archive-contents")))
+             (message
+              "[my/package/archive-file-exists-p] checking %s" archive)
              (file-exists-p archive)))))
     (dolist (package package-archives)
       (unless (funcall package/archive-file-exists-p (car package))
         (package-refresh-contents)))))
 
-(defun badi/package/emacs-compat-fix ()
+(defun my/package/emacs-compat-fix ()
   "Add gnu packages when emacs is v23 or less for libs like cl-lib"
   (when (< emacs-major-version 24)
     (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))))
 
-(defun badi/package/update ()
+(defun my/package/update ()
   "Updated installed packages"
   (interactive)
   (package-list-packages)
   (package-menu-mark-upgrades)
   (package-menu-execute))
 
-(defun badi/switch-system-name (names-and-bodies)
+(defun my/switch-system-name (names-and-bodies)
   "Load overrides based on hostname
    NAMES-AND-BODEIS is a list where individual elements have the form
    (\"hostname\" . (sexpr)), where (sexpr) will be evaluated when the
@@ -80,9 +81,9 @@
            ))
   (add-to-list 'package-archives archive))
 
-(badi/package/emacs-compat-fix)
+(my/package/emacs-compat-fix)
 (package-initialize)
-(badi/package/refresh-contents)
+(my/package/refresh-contents)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -98,7 +99,7 @@
 ;;      - autocompletion (company-mode is recommended)
  
 
-(badi/package-install-list
+(my/package-install-list
  '(
    ;; auto-complete mode
    ;; http://emacswiki.org/emacs/AutoComplete
@@ -107,6 +108,10 @@
    ;; Color variables differently
    ;; https://github.com/ankurdave/color-identifiers-mode
    color-identifiers-mode
+
+   ;; enforce the 80 columns rule
+   ;; https://github.com/jordonbiondo/column-enforce-mode/
+   column-enforce-mode
 
    ;; csv-mode for editing csv files
    ;; http://emacswiki.org/emacs/CsvMode
@@ -167,6 +172,10 @@
    ;; https://nixos.org
    nix-mode
 
+   ;; mark delimiters with different colors
+   ;; https://github.com/Fanael/rainbow-delimiters
+   rainbow-delimiters
+
    ;; enhance M-x with IDO
    ;; https://github.com/nonsequitur/smex
    smex
@@ -184,26 +193,33 @@
    yaml-mode
    ))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; speed bar
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; speed bar
 (require 'speedbar)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 80 column rules
+(require 'column-enforce-mode)
+(add-hook 'prog-mode-hook 'column-enforce-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; rainbow delimiters
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
 ;; globally enable auto-complete
 ;; (global-auto-complete-mode t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; color identifiers
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; color identifiers
 ;; globally enable color-identifiers-mode
 (add-hook 'after-init-hook 'global-color-identifiers-mode)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; csv mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; csv mode
 (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; expand region
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; expand region
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C--") 'er/contract-region)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ido
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ido
 ;; Interactively do things
 (ido-mode 1)
 (ido-everywhere t)
@@ -221,12 +237,12 @@
 (setq ido-vertical-define-keys 'C-n-C-p-up-and-down) ; for arrow keys
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; flycheck
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; flycheck
 (require 'flycheck-color-mode-line)
 (eval-after-load "flycheck"
   '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; git
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; git
 (when (window-system)
   (when (require 'git-gutter-fringe nil t)
     (global-git-gutter-mode 1)
@@ -240,13 +256,13 @@
 
 (global-set-key (kbd "C-c C-g") 'magit-status)
 
-;; magit-status full-screen
-;; http://whattheemacsd.com/setup-magit.el-01.html
-(defadvice magit-status (around magit-fullscreen activate)
-  (window-configuration-to-register :magit-fullscreen)
-  ad-do-it
-  (delete-other-windows))
+;; restore windows after exiting magit buffers
+;; http://magit.vc/manual/magit.html#Modes-and-Buffers
+(setq magit-restore-window-configuration t)
 
+;; automatic save
+;; http://magit.vc/manual/magit.html#Automatic-save
+(setq magit-save-repository-buffers t)
 
 ;; pass -v to commit so we can see the staged hunk
 ;; http://emacs.stackexchange.com/questions/3893
@@ -254,8 +270,13 @@
             (lambda ()
               (magit-key-mode-toggle-option (quote committing) "--verbose")))
 
+;; see issue #9
+;; also:
+;; https://github.com/magit/magit/commit/325a4fff
+(setq magit-push-always-verify nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
 ;; indentation configuration
 ;; https://github.com/haskell/haskell-mode/wiki/Indentation
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
@@ -268,11 +289,11 @@
 
 (speedbar-add-supported-extension ".hs")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; hungry delete
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; hungry delete
 (global-hungry-delete-mode)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Latex
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Latex
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
@@ -285,19 +306,19 @@
 ; compile to PDF
 (setq TeX-PDF-mode t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; markdown
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; markdown
 (autoload 'markdown-mode "markdown-mode")
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; matlab
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; matlab
 (autoload 'matlab-mode "matlab" "Matlab Editing  Mode" t)
 (add-to-list 'auto-mode-alist '("\\.m$" . matlab-mode))
 (setq matlab-indent-function t)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; multiple cursors
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; multiple cursors
 (require 'multiple-cursors)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -305,12 +326,12 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; nix mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; nix mode
 (autoload 'nix-mode "nix-mode" "Major mode for editing Nix expressions." t)
 (push '("\\.nix\\'" . nix-mode) auto-mode-alist)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
 (require 'smex)
 (smex-initialize)
 
@@ -321,7 +342,7 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; visual regexp
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; visual regexp
 (require 'visual-regexp-steroids)
 (global-set-key (kbd "C-s")   'isearch-forward)
 (global-set-key (kbd "C-r")   'isearch-backward)
@@ -329,11 +350,11 @@
 (global-set-key (kbd "C-c r") 'vr/isearch-backward)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; yasnippet
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; yaml-mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; yaml-mode
 (autoload 'yaml-mode "yaml-mode")
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
@@ -380,7 +401,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; themes
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(badi/package-install 'atom-dark-theme)
+(my/package-install 'atom-dark-theme)
 (load-theme 'atom-dark t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -395,9 +416,9 @@
 ;; sphinx-doc: autoinsert sphinx-doc docstrings
 ;;             (C-c M-d at function def)
 (setq python-ide-package-list '(elpy flymake sphinx-doc))
-(badi/package-install-list '(elpy
-                             flymake
-                             sphinx-doc))
+(my/package-install-list '(elpy
+                           flymake
+                           sphinx-doc))
 
 (elpy-enable)
 (add-hook 'python-mode-hook (lambda ()
@@ -405,8 +426,10 @@
                               (sphinx-doc-mode t)))
 
 ;; configure nose for testing
-;; ;TODO: see elpy docs for more details: http://elpy.readthedocs.org/en/latest/ide.html#testing
-;; ;TODO: checkout tdd.el: https://github.com/jorgenschaefer/emacs-tdd/
+;; TODO: see elpy docs for more details:
+;;       http://elpy.readthedocs.org/en/latest/ide.html#testing
+;; TODO: checkout tdd.el:
+;;       https://github.com/jorgenschaefer/emacs-tdd/
 (setq elpy-test-runner 'elpy-test-nose-runner)
 (setq elpy-test-nose-runner-command '("nosetests" "--all-modules" "-s"))
 
@@ -416,11 +439,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; automatically change entry to DONE when all children are DONE
-(defun badi/org/summary-todo (n-done n-not-done)
+(defun my/org/summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
   (let (org-log-done org-log-states)   ; turn off logging
     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
-(add-hook 'org-after-todo-statistics-hook 'badi/org/summary-todo)
+(add-hook 'org-after-todo-statistics-hook 'my/org/summary-todo)
 
 (setq org-hide-leading-stars t)
 
@@ -439,6 +462,11 @@
 ;; load specific overrides based on system type
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(badi/switch-system-name '(("sulimo" . (set-face-attribute 'default nil :height 80))))
-(badi/switch-system-name '(("gambit" . (set-face-attribute 'default nil :height 80))))
-(badi/switch-system-name '(("lorien" . (set-face-attribute 'default nil :height 120))))
+(my/switch-system-name
+ '(("sulimo" . (set-face-attribute 'default nil :height 80))))
+
+(my/switch-system-name
+ '(("gambit" . (set-face-attribute 'default nil :height 80))))
+
+(my/switch-system-name
+ '(("lorien" . (set-face-attribute 'default nil :height 120))))
