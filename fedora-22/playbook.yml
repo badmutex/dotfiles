@@ -60,6 +60,8 @@
       provision_services:
         - name: libvirtd
         - name: cups
+        - name: sshd
+        - name: firewalld
 
       provision_users:
         - name: badi
