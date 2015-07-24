@@ -17,6 +17,7 @@
         - emacs-color-theme
         - python-pip
         - python-virtualenv
+        - pyflakes
         - git
         - gitk
         - screen
