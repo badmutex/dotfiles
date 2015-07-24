@@ -94,11 +94,16 @@
 
     in {
       badi = {
-        fangorn = mkEnv "fangorn" (
-          pythonDevel ++
-          compression ++ web ++ editors ++ office ++ tools ++
-          password_management ++ games ++ x11 ++ xmonad
-        );
+        fangorn = {
+          unstable = mkEnv "fangorn-unstable" (
+            pythonDevel ++
+            compression ++ web ++ editors ++ office ++ tools ++
+            games ++ x11 ++ xmonad
+          );
+          stable = mkEnv "fangorn-stable" (
+            password_management
+          );
+        };
       };
     };
 }
