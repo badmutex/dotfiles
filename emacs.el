@@ -256,13 +256,13 @@
 
 (global-set-key (kbd "C-c C-g") 'magit-status)
 
-;; magit-status full-screen
-;; http://whattheemacsd.com/setup-magit.el-01.html
-(defadvice magit-status (around magit-fullscreen activate)
-  (window-configuration-to-register :magit-fullscreen)
-  ad-do-it
-  (delete-other-windows))
+;; restore windows after exiting magit buffers
+;; http://magit.vc/manual/magit.html#Modes-and-Buffers
+(setq magit-restore-window-configuration t)
 
+;; automatic save
+;; http://magit.vc/manual/magit.html#Automatic-save
+(setq magit-save-repository-buffers t)
 
 ;; pass -v to commit so we can see the staged hunk
 ;; http://emacs.stackexchange.com/questions/3893
