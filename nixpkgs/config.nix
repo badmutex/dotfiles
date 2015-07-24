@@ -39,6 +39,7 @@
          inkscape
          aspell
          aspellDicts.en
+         dropbox
          thunderbird
        ];
 
