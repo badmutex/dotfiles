@@ -79,3 +79,22 @@
       value: "{{ sshd_login_grace_time }}"
 
   notify: restart sshd
+
+- name: Enable IPsec
+  when: enable_ipsec
+  firewalld:
+    zone: public
+    service: ipsec
+    permanent: yes
+    state: enabled
+  notify: restart firewalld
+
+- name: Rate-limit ssh connections
+  firewalld:
+    rich_rule: >-
+      rule
+      service name="ssh"
+      log prefix="Rate Limit" level="warning" limit value="1/m"
+    permanent: yes
+    state: enabled
+  notify: restart firwalld
