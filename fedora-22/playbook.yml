@@ -21,6 +21,7 @@
         - git
         - gitk
         - screen
+        - colordiff
 
         # management
         - openssh-server
