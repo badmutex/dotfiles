@@ -13,6 +13,15 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
 export PATH
 
+
+######################################################################
+# add Nixpkgs if not already done so
+
+profile=$HOME/.nix-profile/etc/profile.d/nix.sh
+if [ -f $profile ] && [ -z $NIX_PATH ]; then
+    source $profile
+fi
+
 ######################################################################
 # keychain
 
