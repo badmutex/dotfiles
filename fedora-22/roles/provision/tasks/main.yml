@@ -98,3 +98,6 @@
     permanent: yes
     state: enabled
   notify: restart firwalld
+
+- include: yubikey.yml
+  when: provision_yubikey

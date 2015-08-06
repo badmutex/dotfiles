@@ -78,3 +78,5 @@
           state: reloaded
 
       provision_secure_sshd: yes
+
+      provision_yubikey: yes

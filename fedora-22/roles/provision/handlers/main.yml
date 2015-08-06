@@ -10,3 +10,7 @@
   service:
     name: firewalld
     state: restarted
+
+- name: reload udev rules
+  command: >-
+    udevadm control -R
