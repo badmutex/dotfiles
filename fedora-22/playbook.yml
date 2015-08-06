@@ -15,13 +15,7 @@
         # development
         - emacs
         - emacs-color-theme
-        - python-pip
-        - python-virtualenv
-        - pyflakes
-        - git
-        - gitk
         - screen
-        - colordiff
 
         # management
         - openssh-server
@@ -32,9 +26,7 @@
         - keepass
         - keepass-doc
         - xdotool
-        - spotify-client
         - thunderbird
-        - chromium
         - libreoffice
         - cups
 
