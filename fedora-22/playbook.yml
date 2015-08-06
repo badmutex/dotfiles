@@ -23,9 +23,6 @@
 
         # office
         - dropbox
-        - keepass
-        - keepass-doc
-        - xdotool
         - thunderbird
         - libreoffice
         - cups
