@@ -22,6 +22,8 @@
         pkgs.nix-repl
         pkgs.chromium
         pkgs.spotify
+        pkgs.keepass
+        pkgs.xdotool
       ]
       ++ myGitTools
       ++ myDevEnvs
