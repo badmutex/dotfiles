@@ -9,3 +9,5 @@ provision_services: []
 sshd_config_path: /etc/ssh/sshd_config
 
 sshd_login_grace_time: 30
+
+enable_ipsec: yes
