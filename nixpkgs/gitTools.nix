@@ -10,6 +10,5 @@ with pkgs.gitAndTools;
   git2cl
   gitFastExport
   gitflow
-  qgit
   topGit
 ]
