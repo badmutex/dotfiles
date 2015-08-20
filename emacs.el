@@ -146,6 +146,9 @@
    auctex
    auto-complete-auctex
 
+   ;; jinja
+   jinja2-mode
+
    ;; matlab
    matlab-mode
 
@@ -305,6 +308,10 @@
 
 ; compile to PDF
 (setq TeX-PDF-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; jinja2
+(autoload 'jinja2-mode "jinja2-mode")
+(add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; markdown
 (autoload 'markdown-mode "markdown-mode")
