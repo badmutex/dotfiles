@@ -1,8 +1,5 @@
 {
 
-
-  allowBroken = true;
-
   allowUnfree = true;
 
   chromium = {
