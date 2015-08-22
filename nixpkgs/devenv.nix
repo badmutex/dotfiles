@@ -11,5 +11,6 @@ in
 myGitTools ++
 [
   emacs
+  colordiff
   python27DevEnv
 ]
