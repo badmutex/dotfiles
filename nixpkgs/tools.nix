@@ -20,6 +20,7 @@ in
   aspellDicts.en
   bc
   irssi
+  nix-repl
   terminator
   unzipNLS
   xclip
