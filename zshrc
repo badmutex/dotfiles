@@ -114,7 +114,7 @@ setopt completeinword
 
 # Change the definition of "word"
 autoload select-word-style
-select-word-style shell
+select-word-style bash
 
 test -f /etc/zlogin && source /etc/zlogin
 export MODULE_LOAD_CMD=""
