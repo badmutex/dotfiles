@@ -4,4 +4,4 @@
 
 with stdenv.lib;
 with pkgs;
-optional withChromium chromiumDev
+optional withChromium chromium
