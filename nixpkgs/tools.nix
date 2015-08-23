@@ -22,6 +22,7 @@ in
   gnupg
   irssi
   nix-repl
+  screen
   terminator
   unzipNLS
   xclip
