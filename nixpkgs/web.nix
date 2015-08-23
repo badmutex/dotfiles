@@ -1,7 +1,9 @@
 { pkgs, stdenv
 , withChromium ? stdenv.isLinux
-}:
+, ...}:
 
-with stdenv.lib;
 with pkgs;
+let
+  inherit (stdenv.lib) optional;
+in
 optional withChromium chromium

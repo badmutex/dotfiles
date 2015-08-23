@@ -1,8 +1,12 @@
-{ pkgs, stdenv,
-}:
+{ pkgs, stdenv
+, ...}:
 
-if ! stdenv.isLinux then []
-else with pkgs; [
+let
+  inherit (stdenv.lib) optionals;
+in
+with pkgs;
+
+optionals (! stdenv.isLinux) [
   spotify
   feh
   gtk

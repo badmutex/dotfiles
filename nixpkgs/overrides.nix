@@ -1,4 +1,5 @@
 { pkgs
+, stdenv
 , ...
 }:
 
@@ -6,21 +7,34 @@ with pkgs;
 
 let
 
+  inherit (stdenv.lib) optional;
   mylib = callPackage ./_lib.nix { } ;
+  myOptions = callPackage ./_withOptions.nix { };
 
-  myDevEnvs = callPackage ./devenv.nix { } ;
-  myXmonad = callPackage ./xmonad.nix { } ;
-  myGames = callPackage ./games.nix { } ;
-  myCloudFS = callPackage ./cloudfs.nix { } ;
-  myTools = callPackage ./tools.nix {
-    withLibreOffice=false;
-  };
-  myX11 = callPackage ./x11.nix { } ;
-  myWeb = callPackage ./web.nix { } ;
+  args = {inherit pkgs config stdenv;} // myOptions;
+
+in
+
+with myOptions;
+
+let
+
+  myDevEnvs = callPackage ./devenv.nix args ;
+  myXmonad = callPackage ./xmonad.nix args ;
+  myGames = callPackage ./games.nix args ;
+  myCloudFS = callPackage ./cloudfs.nix args ;
+  myTools = callPackage ./tools.nix args ;
+  myX11 = callPackage ./x11.nix args ;
+  myWeb = callPackage ./web.nix args ;
 
   all =
-    myDevEnvs ++ myXmonad ++ myGames
-    ++ myCloudFS ++ myTools ++ myX11 ++ myWeb
+    myDevEnvs
+    ++ myCloudFS
+    ++ myTools
+    ++ myWeb
+    ++ optional withGames myGames
+    ++ optional withXmonad myXmonad
+    ++ optional withX11 myX11
     ;
 
   office = [

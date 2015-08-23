@@ -7,12 +7,12 @@
 , withSynergy     ? stdenv.isLinux
 , withThunderbird ? stdenv.isLinux
 , withYubikey     ? stdenv.isLinux
+, ...
 }:
 
-
-with stdenv.lib;
 with pkgs;
 let
+  inherit (stdenv.lib) optional optionals;
   yubikey = callPackage ./apps/yubikey-personalization-gui.nix { qt=qt4; };
 in
 [
