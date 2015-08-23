@@ -19,6 +19,7 @@ in
   aspell
   aspellDicts.en
   bc
+  gnupg
   irssi
   nix-repl
   terminator
