@@ -130,3 +130,7 @@ if `type module 2>&1 >/dev/null`; then
     esac
 fi
 
+
+# Local Variables:
+# mode: shell-script
+# End:
