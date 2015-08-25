@@ -23,6 +23,7 @@ in
   keychain
   irssi
   nix-repl
+  patchelf
   terminator
   unzipNLS
   xclip
