@@ -25,6 +25,7 @@ in
   nix-repl
   patchelf
   terminator
+  tmux
   unzipNLS
   xclip
   zip
