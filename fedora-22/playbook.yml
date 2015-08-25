@@ -12,14 +12,7 @@
       provision_enable_rpmfusion: yes
 
       provision_packages:
-        # development
-        - emacs
-        - emacs-color-theme
-        - screen
-
-        # management
         - openssh-server
-        - keychain
 
         # office
         - dropbox
@@ -43,9 +36,6 @@
         - ghc-xmonad-devel
         - ghc-xmonad-contrib
         - ghc-xmonad-contrib-devel
-
-        # misc
-        - xclip
 
       provision_services:
         - name: libvirtd

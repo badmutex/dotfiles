@@ -20,6 +20,7 @@ in
   aspellDicts.en
   bc
   gnupg
+  keychain
   irssi
   nix-repl
   terminator
