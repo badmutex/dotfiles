@@ -5,6 +5,8 @@ card deploy {
 
   . -> dotfiles
 
+  shell_shortcuts -> .shell_shortcuts
+
   bash_profile -> .bash_profile
   bashrc -> .bashrc
   emacs.el -> .emacs.el
