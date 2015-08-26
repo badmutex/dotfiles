@@ -131,6 +131,6 @@ if `type module 2>&1 >/dev/null`; then
 fi
 
 
-;; Local Variables:
-;; mode: shell-script
-;; End:
+## Local Variables:
+## mode: shell-script
+## End:
