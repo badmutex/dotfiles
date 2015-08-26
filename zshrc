@@ -57,7 +57,7 @@ plugins=(
     encode64 urlencode jsontools
 
     # git
-    git git-extras
+    git git-extras git-flow github
 
     # python
     python autopep8 pep8 pip
