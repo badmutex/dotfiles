@@ -29,6 +29,7 @@
 - name: Manage users
   user:
     name: "{{ item.name }}"
+    shell: "{{ item.shell | default('/bin/bash') }}"
     groups: "{{ ','.join(item.groups) | default([]) }}"
     state: "{{ item.state | default('present') }}"
   with_items: provision_users

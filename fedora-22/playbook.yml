@@ -47,6 +47,7 @@
 
       provision_users:
         - name: badi
+          shell: /bin/zsh
           groups:
             - badi
             - wheel
