@@ -22,6 +22,7 @@ card deploy {
   xmonad -> .xmonad
 
   zshrc -> .zshrc
+  zprofile -> .zprofile
   oh-my-zsh -> .oh-my-zsh
 
 }

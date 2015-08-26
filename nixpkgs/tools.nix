@@ -29,7 +29,6 @@ in
   unzipNLS
   xclip
   zip
-  zsh
 ]
 ++ optional  withEvince      evince
 ++ optional  withInkscape    inkscape
