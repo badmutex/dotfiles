@@ -4,6 +4,8 @@
   yum_repo:
     url: "{{ item }}"
   with_items: provision_repositories
+  tags:
+    - packages
 
 - name: Enable rpmfusion
   when: provision_enable_rpmfusion
@@ -11,6 +13,8 @@
     name={{ item }}
     state=present
   with_items: provision_rpmfusion_rpms
+  tags:
+    - packages
 
 - name: Install packages
   dnf:
@@ -18,6 +22,8 @@
     state: present
     disable_gpg_check: yes
   with_items: provision_packages
+  tags:
+    - packages
 
 - name: Manage services
   service:
@@ -25,6 +31,8 @@
     enabled: "{{ item.enabled | default('yes') }}"
     state: "{{ item.state | default('started') }}"
   with_items: provision_services
+  tags:
+    - services
 
 - name: Manage users
   user:
@@ -33,6 +41,8 @@
     groups: "{{ ','.join(item.groups) | default([]) }}"
     state: "{{ item.state | default('present') }}"
   with_items: provision_users
+  tags:
+    - users
 
 - name: Persist kernel modules
   when: "item.persist | default(True)"
@@ -41,6 +51,8 @@
     line: "{{ item.name }} {{ ' '.join(item.parameters) | default('') }}"
     create: yes
   with_items: provision_kernel_modules
+  tags:
+    - kernel-modules
 
 - name: Unload kernel modules
   when: "item.state == 'reloaded' or item.state == 'absent'"
@@ -48,6 +60,8 @@
     name: "{{ item.name }}"
     state: absent
   with_items: provision_kernel_modules
+  tags:
+    - kernel-modules
 
 - name: Load kernel modules
   when: "item.state == 'reloaded' or item.state == 'present'"
@@ -56,6 +70,8 @@
     params: "{{ ','.join(item.parameters) | default('') }}"
     state: present
   with_items: provision_kernel_modules
+  tags:
+    - kernel-modules
 
 - name: Secure sshd
   sshd_config:
@@ -80,6 +96,8 @@
       value: "{{ sshd_login_grace_time }}"
 
   notify: restart sshd
+  tags:
+    - security
 
 - name: Enable IPsec
   when: enable_ipsec
@@ -89,6 +107,8 @@
     permanent: yes
     state: enabled
   notify: restart firewalld
+  tags:
+    - security
 
 - name: Rate-limit ssh connections
   firewalld:
@@ -99,6 +119,10 @@
     permanent: yes
     state: enabled
   notify: restart firwalld
+  tags:
+    - security
 
 - include: yubikey.yml
   when: provision_yubikey
+  tags:
+    - yubikey
