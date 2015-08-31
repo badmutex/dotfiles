@@ -33,7 +33,7 @@ in
 ]
 ++ optional  withEvince      evince
 ++ optional  withInkscape    inkscape
-++ optionals withKeepass     [keepass xdotool]
+++ optionals withKeepass     [keepass keepassx2 xdotool]
 ++ optionals withLatex       [texLiveFull biber texmaker]
 ++ optional  withLibreOffice libreoffice
 ++ optional  withSynergy     synergy
