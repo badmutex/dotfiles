@@ -24,9 +24,9 @@ in
   keychain
   irssi
   nix-repl
-  patchelf
-  terminator
+  screen
   tmux
+  terminator
   unzipNLS
   xclip
   zip
