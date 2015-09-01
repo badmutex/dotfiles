@@ -1,0 +1,30 @@
+card deploy {
+
+  alternatives $(HOSTNAME) $(HOST) .
+  into ~
+
+  . -> dotfiles
+
+  shell_shortcuts -> .shell_shortcuts
+
+  bash_profile -> .bash_profile
+  bashrc -> .bashrc
+  emacs.el -> .emacs.el
+  gitconfig -> .gitconfig
+  nixpkgs -> .nixpkgs
+  screenrc -> .screenrc
+  synergy.conf -> .synergy.conf
+
+  tmux.conf -> .tmux.conf
+  {
+    into .tmux/plugins
+    tmux-plugin-manager -> tpm
+  }
+
+  xmonad -> .xmonad
+
+  zshrc -> .zshrc
+  zprofile -> .zprofile
+  oh-my-zsh -> .oh-my-zsh
+
+}

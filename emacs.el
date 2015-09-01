@@ -376,9 +376,10 @@
     (server-start))
 
 (unless window-system (menu-bar-mode -1))
-(when window-system
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1))
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
 
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message nil)

@@ -16,10 +16,12 @@ let
   yubikey = callPackage ./apps/yubikey-personalization-gui.nix { qt=qt4; };
 in
 [
+  aria
   aspell
   aspellDicts.en
   bc
   gnupg
+  keychain
   irssi
   nix-repl
   screen

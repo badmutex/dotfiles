@@ -1,4 +1,2 @@
-emacs
-yum-plugin-fs-snapshot
 python-pip
 python-virtualenv

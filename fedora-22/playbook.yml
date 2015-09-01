@@ -12,14 +12,9 @@
       provision_enable_rpmfusion: yes
 
       provision_packages:
-        # development
-        - emacs
-        - emacs-color-theme
-        - screen
-
-        # management
+        - adwaita-gtk2-theme
         - openssh-server
-        - keychain
+        - zsh
 
         # office
         - dropbox
@@ -44,9 +39,6 @@
         - ghc-xmonad-contrib
         - ghc-xmonad-contrib-devel
 
-        # misc
-        - xclip
-
       provision_services:
         - name: libvirtd
         - name: cups
@@ -55,6 +47,7 @@
 
       provision_users:
         - name: badi
+          shell: /bin/zsh
           groups:
             - badi
             - wheel
@@ -69,3 +62,15 @@
       provision_secure_sshd: yes
 
       provision_yubikey: yes
+
+  tasks:
+    - name: setup gtkrc
+      sudo: no
+      file:
+        src: /usr/share/themes/Adwaita/gtk-2.0/gtkrc
+        path: "/home/{{ item }}/.gtkrc-2.0"
+        state: link
+        owner: badi
+        group: badi
+      with_items:
+        - badi

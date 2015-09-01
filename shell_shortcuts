@@ -1,0 +1,7 @@
+alias e='emacsclient -t '
+alias x='emacsclient -c '
+alias xn='emacsclient -c -n '
+
+# Local Variables:
+# mode: shell-script
+# End:

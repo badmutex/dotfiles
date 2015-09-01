@@ -20,6 +20,7 @@ let
 
 in
 {
+  withDropbox     = isHomeMachine;
   withGames       = isHomeMachine;
   withLatex       = false;
   withLibreOffice = false;

@@ -24,7 +24,7 @@ ZSH_THEME="blinks"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -57,7 +57,7 @@ plugins=(
     encode64 urlencode jsontools
 
     # git
-    git git-extras
+    git git-extras git-flow github
 
     # python
     python autopep8 pep8 pip
@@ -83,27 +83,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+test -f $HOME/.shell_shortcuts && source $HOME/.shell_shortcuts
 
 # Enable more extensive tab completion
 autoload -U compinit
@@ -117,20 +97,7 @@ autoload select-word-style
 select-word-style bash
 
 test -f /etc/zlogin && source /etc/zlogin
-export MODULE_LOAD_CMD=""
-if `type module 2>&1 >/dev/null`; then
-    module load use.own
 
-    case `hostname` in;
-	lorien)
-	    module load homebrew
-	    ;;
-	olorin)
-	    module load nix texlive anaconda
-    esac
-fi
-
-
-# Local Variables:
-# mode: shell-script
-# End:
+## Local Variables:
+## mode: shell-script
+## End:
