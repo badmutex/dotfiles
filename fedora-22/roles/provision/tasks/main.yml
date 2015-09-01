@@ -7,6 +7,12 @@
   tags:
     - packages
 
+- name: Enable manual repositories
+  copy:
+    dest: "/etc/yum.repos.d/{{ item.name }}.repo"
+    content: "{{ item.content }}"
+  with_items: provision_repositories_manual
+
 - name: Enable rpmfusion
   when: provision_enable_rpmfusion
   dnf:

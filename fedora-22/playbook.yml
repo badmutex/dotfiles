@@ -9,6 +9,16 @@
         - "https://repos.fedorapeople.org/repos/spot/chromium/fedora-chromium-stable.repo"
         - "http://negativo17.org/repos/fedora-spotify.repo"
 
+      provision_repositories_manual:
+        - name: docker
+          content: |
+            [dockerrepo]
+            name=Docker Repository
+            baseurl=https://yum.dockerproject.org/repo/main/fedora/22
+            enabled=1
+            gpgcheck=1
+            gpgkey=https://yum.dockerproject.org/gpg
+
       provision_enable_rpmfusion: yes
 
       provision_packages:
@@ -23,6 +33,7 @@
         - cups
 
         # virtualization
+        - docker-engine
         - vagrant
         - libvirt
         - libvirt-devel
@@ -44,6 +55,7 @@
         - name: cups
         - name: sshd
         - name: firewalld
+        - name: docker
 
       provision_users:
         - name: badi
