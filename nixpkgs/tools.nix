@@ -22,6 +22,7 @@ in
   bc
   gnupg
   keychain
+  httpie
   irssi
   nix-repl
   screen
