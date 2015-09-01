@@ -117,6 +117,9 @@
    ;; http://emacswiki.org/emacs/CsvMode
    csv-mode
 
+   ;; dockerfile-mode for editing dockerfiles
+   dockerfile-mode
+
    ;; expande syntactic regions
    ;; https://github.com/magnars/expand-region.el
    expand-region
