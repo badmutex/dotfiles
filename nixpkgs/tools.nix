@@ -23,6 +23,7 @@ in
   irssi
   nix-repl
   screen
+  tmux
   terminator
   unzipNLS
   xclip
