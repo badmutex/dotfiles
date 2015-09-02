@@ -16,6 +16,10 @@ preloaded_ssh_keys=(
 eval $(keychain --eval --agents ssh ${preloaded_ssh_keys[@]})
 
 ######################################################################
+
+export EDITOR=emacs
+
+
 # 
 # Local Variables:
 # mode: shell-script

@@ -8,7 +8,6 @@
         tool = emerge
 [core]
         excludesfile = /Users/badi/.gitignore_global
-        editor = emacs
         pager = less -F -X
 [push]
         default = matching
