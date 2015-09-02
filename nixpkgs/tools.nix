@@ -25,6 +25,7 @@ in
   httpie
   irssi
   nix-repl
+  nmap
   screen
   tmux
   terminator
