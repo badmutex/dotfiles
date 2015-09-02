@@ -66,9 +66,9 @@
             - libvirt
 
       provision_kernel_modules:
-        - name: kvm-intel
+        - name: kvm_intel
           parameters:
-            - nested=y
+            - nested=Y
           state: reloaded
 
       provision_secure_sshd: yes

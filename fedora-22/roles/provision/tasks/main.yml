@@ -50,12 +50,11 @@
   tags:
     - users
 
-- name: Persist kernel modules
+- name: Configure kernel modules
   when: "item.persist | default(True)"
-  lineinfile:
-    dest: "/etc/modules-load.d/{{ item.name }}.conf"
-    line: "{{ item.name }} {{ ' '.join(item.parameters) | default('') }}"
-    create: yes
+  copy:
+    dest: "/etc/modprobe.d/{{ item.name }}.conf"
+    content: "options {{ item.name }} {{ ' '.join(item.parameters) | default('') }}\n"
   with_items: provision_kernel_modules
   tags:
     - kernel-modules
