@@ -7,6 +7,7 @@ card deploy {
 
   shell_shortcuts -> .shell_shortcuts
 
+  aspell.conf -> .aspell.conf
   bash_profile -> .bash_profile
   bashrc -> .bashrc
   emacs.el -> .emacs.el
