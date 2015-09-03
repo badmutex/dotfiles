@@ -64,6 +64,7 @@
             - badi
             - wheel
             - libvirt
+            - docker
 
       provision_kernel_modules:
         - name: kvm_intel
