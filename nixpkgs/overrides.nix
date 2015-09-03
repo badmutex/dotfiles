@@ -7,7 +7,7 @@ with pkgs;
 
 let
 
-  inherit (stdenv.lib) optional;
+  inherit (stdenv.lib) optionals;
   mylib = callPackage ./_lib.nix { } ;
   myOptions = callPackage ./_withOptions.nix { };
 
@@ -32,9 +32,9 @@ let
     ++ myCloudFS
     ++ myTools
     ++ myWeb
-    ++ optional withGames myGames
-    ++ optional withXmonad myXmonad
-    ++ optional withX11 myX11
+    ++ optionals withGames myGames
+    ++ optionals withXmonad myXmonad
+    ++ optionals withX11 myX11
     ;
 
   office = [
