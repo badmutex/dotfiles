@@ -5,7 +5,7 @@ pkgs.buildEnv {
   paths =
     with python27Packages;
     [
-      python
+      pkgs.python27Full
       pip
       virtualenv
       jedi
