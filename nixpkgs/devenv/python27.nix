@@ -6,6 +6,7 @@ pkgs.buildEnv {
     with python27Packages;
     [
       pkgs.python27Full
+      ipython
       pip
       virtualenv
       jedi
