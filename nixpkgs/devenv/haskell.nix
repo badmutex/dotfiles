@@ -9,6 +9,7 @@ let
       stack
       alex
       happy
+      hasktags
     ]
   );
 
