@@ -136,6 +136,9 @@
 
    ;; haskell-mode (since no ghc)
    haskell-mode
+   ac-haskell-process
+   company-ghci
+   flycheck-haskell
 
    ;; hungry delete
    ;; delete all whitespace in the direction you are deleting
@@ -283,15 +286,55 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
-;; indentation configuration
-;; https://github.com/haskell/haskell-mode/wiki/Indentation
-(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
-;; (setq haskell-indentation-show-indentations t)
-;; (setq haskell-indentation-show-indentations-after-eol t)
+;; see the link for documentation
+;; https://github.com/haskell/haskell-mode
+
 (eval-after-load "haskell-mode"
   '(progn
+     (require 'haskell-mode)
+     (require 'haskell-interactive-mode)
+     (require 'haskell-process)
+
+     (require 'flycheck)
+     (require 'flycheck-haskell)
+     (require 'ac-haskell-process)
+
+     ;; keybindings
+     (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+     (define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc)
      (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
-     (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right)))
+     (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right)
+     (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
+
+     ;; ghci
+     (setq haskell-process-type 'stack-ghci)
+     (setq haskell-process-path-ghci "stack")
+     (setq haskell-process-args-ghci "ghci")
+
+     ;; custom vars
+     (custom-set-variables
+      '(haskell-process-suggest-remove-import-lines t)
+      '(haskell-process-auto-import-loaded-modules t)
+      '(haskell-process-log t)
+      '(haskell-tags-on-save t))
+
+     ;; autocomplete
+     (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
+     (add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
+     (add-to-list 'ac-modes 'haskell-interactive-mode)
+
+     ;; haskell-mode-hooks
+     (let ((hooks (list
+                   'haskell-doc-mode
+                   'haskell-indentation-mode
+                   'interactive-haskell-mode
+                   'haskell-decl-scan-mode
+                   'flycheck-mode
+                   'flycheck-haskell-configure
+                   'auto-complete-mode
+                   )))
+       (dolist (hook hooks)
+         (add-hook 'haskell-mode-hook hook)))))
 
 (speedbar-add-supported-extension ".hs")
 
