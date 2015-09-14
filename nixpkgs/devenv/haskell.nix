@@ -10,6 +10,7 @@ let
       alex
       happy
       hasktags
+      stylish-haskell
     ]
   );
 

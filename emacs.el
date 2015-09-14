@@ -316,7 +316,8 @@
       '(haskell-process-suggest-remove-import-lines t)
       '(haskell-process-auto-import-loaded-modules t)
       '(haskell-process-log t)
-      '(haskell-tags-on-save t))
+      '(haskell-tags-on-save t)
+      '(haskell-stylish-on-save t))
 
      ;; autocomplete
      (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
