@@ -134,7 +134,7 @@
    ;; https://github.com/flycheck/flycheck-color-mode-line
    flycheck-color-mode-line
 
-   ;; haskell-mode (since no ghc)
+   ;; haskell-mode
    haskell-mode
    ac-haskell-process
    company-ghci
