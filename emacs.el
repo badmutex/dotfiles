@@ -317,7 +317,17 @@
       '(haskell-process-auto-import-loaded-modules t)
       '(haskell-process-log t)
       '(haskell-tags-on-save t)
-      '(haskell-stylish-on-save t))
+      '(haskell-stylish-on-save t)
+
+      ;; if t, causes emacs to hang
+      '(haskell-process-suggest-no-warn-orphans nil)
+      '(haskell-process-suggest-hoogle-imports nil)
+      '(haskell-process-suggest-hayoo-imports nil)
+      '(haskell-process-suggest-haskell-docs-imports nil)
+      '(haskell-process-suggest-add-package nil)
+      '(haskell-process-suggest-language-pragmas nil)
+      '(haskell-process-suggest-remove-import-lines nil)
+      '(haskell-process-suggest-overloaded-strings nil))
 
      ;; autocomplete
      (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
