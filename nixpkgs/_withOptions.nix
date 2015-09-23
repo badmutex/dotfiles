@@ -4,6 +4,7 @@
 let
 
   inherit (builtins) elem;
+  inherit (pkgs.stdenv) isLinux;
 
   envHostname = builtins.getEnv "HOSTNAME";
   nixosConfig  = pkgs.callPackage /etc/nixos/configuration.nix { };
@@ -24,6 +25,7 @@ in
   withGames       = isHomeMachine;
   withLatex       = false;
   withLibreOffice = false;
+  withSpotify     = isLinux;
   withSynergy     = ! isNixOS;
   withX11         = isNixOS;
   withXmonad      = isNixOS;

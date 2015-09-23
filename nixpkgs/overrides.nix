@@ -24,6 +24,7 @@ let
   myGames = callPackage ./games.nix args ;
   myCloudFS = callPackage ./cloudfs.nix args ;
   myTools = callPackage ./tools.nix args ;
+  myApps = callPackage ./apps.nix args ;
   myX11 = callPackage ./x11.nix args ;
   myWeb = callPackage ./web.nix args ;
 
@@ -32,6 +33,7 @@ let
     ++ myCloudFS
     ++ myTools
     ++ myWeb
+    ++ myApps
     ++ optionals withGames myGames
     ++ optionals withXmonad myXmonad
     ++ optionals withX11 myX11
