@@ -9,6 +9,7 @@ let
       stack
       alex
       happy
+      haddock
       hasktags
       stylish-haskell
     ]
