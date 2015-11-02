@@ -338,7 +338,6 @@
      ;; haskell-mode-hooks
      (let ((hooks (list
                    'haskell-doc-mode
-                   'haskell-indentation-mode
                    'interactive-haskell-mode
                    'haskell-decl-scan-mode
                    'flycheck-mode
