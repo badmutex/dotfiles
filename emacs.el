@@ -87,6 +87,28 @@
 (my/package/refresh-contents)
 
 
+
+;; el-get
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+;; list of packages unknown to el-get
+(setq my-el-get-sources
+      '(
+        (:name ebnf-mode
+               :description "Highlight mode for Extended Backus-Naur Form"
+               :features ebnf-mode
+               :type git
+               :url "git@github.com:jeramey/ebnf-mode.git")
+        ))
+
+(setq el-get-sources my-el-get-sources)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; install some useful packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -203,6 +225,13 @@
    yaml-mode
    ))
 
+(setq my-el-get-packages
+      (append
+       'nil  # change this to: '( foo bar baz ) when needed
+       (mapcar 'el-get-source-name el-get-sources)))
+
+(el-get 'sync my-el-get-packages)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; speed bar
 (require 'speedbar)
 
@@ -223,6 +252,13 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; csv mode
 (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ebnf configuration
+
+;; use iso ebnf
+;; https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form
+;; http://www.cl.cam.ac.uk/~mgk25/iso-ebnf.html
+(setq ebnf-syntax 'iso-ebnf)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; expand region
 (require 'expand-region)
