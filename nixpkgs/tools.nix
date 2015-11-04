@@ -24,6 +24,7 @@ in
   keychain
   httpie
   irssi
+  jq
   nix-repl
   nmap
   screen
