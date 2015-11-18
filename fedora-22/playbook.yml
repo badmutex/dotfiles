@@ -5,9 +5,7 @@
   roles:
     - role: provision
 
-      provision_repositories:
-        - "https://repos.fedorapeople.org/repos/spot/chromium/fedora-chromium-stable.repo"
-        - "http://negativo17.org/repos/fedora-spotify.repo"
+      provision_repositories: []
 
       provision_repositories_manual:
         - name: docker
