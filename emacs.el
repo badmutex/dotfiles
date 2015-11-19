@@ -42,11 +42,19 @@
     (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))))
 
 (defun my/package/update ()
-  "Updated installed packages"
+  "Update installed packages from 'package"
   (interactive)
   (package-list-packages)
   (package-menu-mark-upgrades)
   (package-menu-execute))
+
+;; don't use yet as this causes emacs to hang and not complete
+;; instead run 'my/package/udpate and 'el-get-update-all manually
+(defun my/update-packages ()
+  "Update all installed packaged"
+  (interactive)
+  (el-get-update-all)
+  (my/package/update))
 
 (defun my/switch-system-name (names-and-bodies)
   "Load overrides based on hostname
