@@ -228,7 +228,7 @@
 
 (setq my-el-get-packages
       (append
-       'nil  # change this to: '( foo bar baz ) when needed
+       'nil  ; change this to: '( foo bar baz ) when needed
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-el-get-packages)
