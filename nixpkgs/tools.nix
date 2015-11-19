@@ -19,6 +19,7 @@ in
   aria
   aspell
   aspellDicts.en
+  autoconf
   bc
   gnupg
   keychain
@@ -28,6 +29,8 @@ in
   nix-repl
   nmap
   screen
+  texinfo
+  #texLive  # core
   tmux
   terminator
   unzipNLS
