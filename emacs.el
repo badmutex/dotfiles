@@ -2,16 +2,6 @@
 ;; additional useful functions and variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun my/package-install (package)
-  "Install a package if it is not present already"
-  (unless (package-installed-p package)
-    (package-install package)))
-
-(defun my/package-install-list (package-list)
-  "Install a list of packages if necessary"
-  (dolist (package package-list)
-    (my/package-install package)))
-
 (defun my/joindirs (root &rest dirs)
   "Joins a series of directories together, like Python's os.path.join,
   (dotemacs-joindirs \"/tmp\" \"a\" \"b\" \"c\") => /tmp/a/b/c"
@@ -21,40 +11,6 @@
            (expand-file-name (car dirs) root)
            (cdr dirs))))
 
-(defun my/package/refresh-contents ()
-  "Refresh the package contents if necessary"
-  (let ((package/archive-file-exists-p
-         (lambda (name)
-           (let* ((archive (my/joindirs package-user-dir
-                                        "archives"
-                                        name
-                                        "archive-contents")))
-             (message
-              "[my/package/archive-file-exists-p] checking %s" archive)
-             (file-exists-p archive)))))
-    (dolist (package package-archives)
-      (unless (funcall package/archive-file-exists-p (car package))
-        (package-refresh-contents)))))
-
-(defun my/package/emacs-compat-fix ()
-  "Add gnu packages when emacs is v23 or less for libs like cl-lib"
-  (when (< emacs-major-version 24)
-    (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))))
-
-(defun my/package/update ()
-  "Update installed packages from 'package"
-  (interactive)
-  (package-list-packages)
-  (package-menu-mark-upgrades)
-  (package-menu-execute))
-
-;; don't use yet as this causes emacs to hang and not complete
-;; instead run 'my/package/udpate and 'el-get-update-all manually
-(defun my/update-packages ()
-  "Update all installed packaged"
-  (interactive)
-  (el-get-update-all)
-  (my/package/update))
 
 (defun my/switch-system-name (names-and-bodies)
   "Load overrides based on hostname
@@ -80,23 +36,6 @@
 ;; setup package repositories
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'package)
-(dolist (archive
-         '(
-           ("melpa" . "http://melpa.org/packages/")
-           ("melpa-stable" . "http://stable.melpa.org/packages/")
-           ("elpy" . "http://jorgenschaefer.github.io/packages/")
-           ("marmalade" . "http://marmalade-repo.org/packages/")
-           ))
-  (add-to-list 'package-archives archive))
-
-(my/package/emacs-compat-fix)
-(package-initialize)
-(my/package/refresh-contents)
-
-
-
-;; el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -104,19 +43,6 @@
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
     (goto-char (point-max))
     (eval-print-last-sexp)))
-
-;; list of packages unknown to el-get
-(setq my-el-get-sources
-      '(
-        (:name ebnf-mode
-               :description "Highlight mode for Extended Backus-Naur Form"
-               :features ebnf-mode
-               :type git
-               :url "git@github.com:jeramey/ebnf-mode.git")
-        ))
-
-(setq el-get-sources my-el-get-sources)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; install some useful packages
@@ -131,148 +57,52 @@
 ;;      - autocompletion (company-mode is recommended)
  
 
-(my/package-install-list
- '(
-   ;; auto-complete mode
-   ;; http://emacswiki.org/emacs/AutoComplete
-   auto-complete
 
-   ;; Color variables differently
-   ;; https://github.com/ankurdave/color-identifiers-mode
-   color-identifiers-mode
-
-   ;; enforce the 80 columns rule
-   ;; https://github.com/jordonbiondo/column-enforce-mode/
-   column-enforce-mode
-
-   ;; csv-mode for editing csv files
-   ;; http://emacswiki.org/emacs/CsvMode
-   csv-mode
-
-   ;; dockerfile-mode for editing dockerfiles
-   dockerfile-mode
-
-   ;; expande syntactic regions
-   ;; https://github.com/magnars/expand-region.el
-   expand-region
-
-   ;; flexible string matching
-   flx
-   flx-ido
-
-   ;; on-the-fly checking
-   flycheck
-   ;; colors the mode line according to the Flycheck state
-   ;; https://github.com/flycheck/flycheck-color-mode-line
-   flycheck-color-mode-line
-
-   ;; haskell-mode
-   haskell-mode
-   ac-haskell-process
-   company-ghci
-   flycheck-haskell
-
-   ;; hungry delete
-   ;; delete all whitespace in the direction you are deleting
-   ;; https://github.com/nflath/hungry-delete
-   hungry-delete
-
-   ;; vertial ido matches
-   ido-vertical-mode
-
-   ;; auctex
-   auctex
-   auto-complete-auctex
-
-   ;; jinja
-   jinja2-mode
-
-   ;; matlab
-   matlab-mode
-
-   ;; git
-   ;; http://www.emacswiki.org/emacs/Magit
-   ;; http://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
-   magit
-   ;; show changes in fringe
-   ;; https://github.com/syohex/emacs-git-gutter-fringe
-   git-gutter-fringe
-   ;; work in terminal
-   ;; https://github.com/nonsequitur/git-gutter-fringe-plus
-   git-gutter-fringe+
-
-   ;; markdown
-   ;; http://jblevins.org/projects/markdown-mode/
-   markdown-mode
-
-   ;; multiple cursors
-   ;;https://github.com/magnars/multiple-cursors.el
-   multiple-cursors
-
-   ;; nix mode for nix expression files
-   ;; https://nixos.org
-   nix-mode
-
-   ;; mark delimiters with different colors
-   ;; https://github.com/Fanael/rainbow-delimiters
-   rainbow-delimiters
-
-   ;; enhance M-x with IDO
-   ;; https://github.com/nonsequitur/smex
-   smex
-
-   ;; visual regexp (actual regex, not emacs-style)
-   ;; note: this requires python
-   ;; https://github.com/benma/visual-regexp-steroids.el/
-   visual-regexp-steroids
-
-   ;; snippets
-   ;; https://github.com/capitaomorte/yasnippet
-   yasnippet
-
-   ;; yaml editing
-   yaml-mode
-   ))
-
-(setq my-el-get-packages
-      (append
-       'nil  ; change this to: '( foo bar baz ) when needed
-       (mapcar 'el-get-source-name el-get-sources)))
-
-(el-get 'sync my-el-get-packages)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; speed bar
-(require 'speedbar)
+(el-get-bundle dockerfile-mode)
+(el-get-bundle flx)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 80 column rules
-(require 'column-enforce-mode)
+(el-get-bundle column-enforce-mode)
 (add-hook 'prog-mode-hook 'column-enforce-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; rainbow delimiters
+(el-get-bundle rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
+(el-get-bundle auto-complete)
 ;; globally enable auto-complete
 ;; (global-auto-complete-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; color identifiers
+(el-get-bundle color-identifiers-mode)
 ;; globally enable color-identifiers-mode
 (add-hook 'after-init-hook 'global-color-identifiers-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; csv mode
+(el-get-bundle csv-mode)
 (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ebnf configuration
-
+(el-get-bundle (:name ebnf-mode
+                      :description "Highlight mode for Extended Backus-Naur Form"
+                      :features ebnf-mode
+                      :type git
+                      :url "git@github.com:jeramey/ebnf-mode.git"))
 ;; use iso ebnf
 ;; https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form
 ;; http://www.cl.cam.ac.uk/~mgk25/iso-ebnf.html
 (setq ebnf-syntax 'iso-ebnf)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; expand region
-(require 'expand-region)
+(el-get-bundle expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C--") 'er/contract-region)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; emacs lisp mode
+(add-hook 'emacs-lisp-mode-hook 'projectile-mode)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ido
 ;; Interactively do things
@@ -287,17 +117,24 @@
 (flx-ido-mode 1)
 
 ;; use ido vertically (easier to read)
-(require 'ido-vertical-mode)
+(el-get-bundle ido-vertical-mode)
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-C-p-up-and-down) ; for arrow keys
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; flycheck
-(require 'flycheck-color-mode-line)
+(el-get-bundle flycheck)
+(el-get-bundle flycheck-color-mode-line)
 (eval-after-load "flycheck"
   '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; git
+
+(el-get-bundle magit)
+(el-get-bundle magit-filenotify)
+(el-get-bundle git-gutter-fringe)
+(el-get-bundle git-gutter-fringe+)
+
 (when (window-system)
   (when (require 'git-gutter-fringe nil t)
     (global-git-gutter-mode 1)
@@ -334,6 +171,24 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
 ;; see the link for documentation
 ;; https://github.com/haskell/haskell-mode
+
+
+(el-get-bundle haskell-mode)
+(el-get-bundle ac-haskell-process)
+(el-get-bundle flycheck-haskell)
+
+(el-get-bundle
+  (:name structured-haskell-mode
+         :type github
+         :pkgname "chrisdone/structured-haskell-mode"
+         :depends (haskell-mode)
+         :load-path "elisp"))
+
+(el-get-bundle
+  (:name ac-haskell-process
+         :type github
+         :pkgname "purcell/ac-haskell-process"
+         :depends (auto-complete haskell-mode)))
 
 (eval-after-load "haskell-mode"
   '(progn
@@ -388,47 +243,61 @@
                    'flycheck-mode
                    'flycheck-haskell-configure
                    'auto-complete-mode
+                   'projectile-mode
                    )))
        (dolist (hook hooks)
          (add-hook 'haskell-mode-hook hook)))))
 
-(speedbar-add-supported-extension ".hs")
+;; (speedbar-add-supported-extension ".hs")
+
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; helm
+;; (el-get-bundle helm)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; hungry delete
+(el-get-bundle hungry-delete)
 (global-hungry-delete-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Latex
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
-(add-hook 'LaTeX-mode-hook 'visual-line-mode)
-(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(add-hook 'LaTeX-mode-hook 'auto-complete-mode)
 
-; compile to PDF
-(setq TeX-PDF-mode t)
+;; (el-get-bundle auctex)
+;; (el-get-bundle auto-complete-auctex)
+
+;; (setq TeX-auto-save t)
+;; (setq TeX-parse-self t)
+;; (setq-default TeX-master nil)
+;; (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+;; (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+;; (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+;; (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+;; (add-hook 'LaTeX-mode-hook 'auto-complete-mode)
+
+;; ; compile to PDF
+;; (setq TeX-PDF-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; jinja2
+(el-get-bundle jinja2-mode)
 (autoload 'jinja2-mode "jinja2-mode")
 (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; markdown
+(el-get-bundle markdown-mode)
 (autoload 'markdown-mode "markdown-mode")
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; matlab
-(autoload 'matlab-mode "matlab" "Matlab Editing  Mode" t)
-(add-to-list 'auto-mode-alist '("\\.m$" . matlab-mode))
-(setq matlab-indent-function t)
+;;(el-get-bundle matlab-mode)
+;; (autoload 'matlab-mode "matlab" "Matlab Editing  Mode" t)
+;; (add-to-list 'auto-mode-alist '("\\.m$" . matlab-mode))
+;; (setq matlab-indent-function t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; multiple cursors
-(require 'multiple-cursors)
+(el-get-bundle multiple-cursors)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
@@ -436,34 +305,48 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; nix mode
+(el-get-bundle nix-mode)
 (autoload 'nix-mode "nix-mode" "Major mode for editing Nix expressions." t)
 (push '("\\.nix\\'" . nix-mode) auto-mode-alist)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; powerline
+
+(el-get-bundle (:name powerline
+                      :description "Update of original Emacs Powerline"
+                      :type Github
+                      :pkgname "milkypostman/powerline"))
+(powerline-center-theme)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; projectile
+(el-get-bundle projectile)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
-(require 'smex)
+(el-get-bundle smex)
 (smex-initialize)
 
 (global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; (global-set-key (kbd "C-M-x") 'smex-major-mode-commands)
 
 ;; the old M-x
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; visual regexp
-(require 'visual-regexp-steroids)
-(global-set-key (kbd "C-s")   'isearch-forward)
-(global-set-key (kbd "C-r")   'isearch-backward)
-(global-set-key (kbd "C-c s") 'vr/isearch-forward)
-(global-set-key (kbd "C-c r") 'vr/isearch-backward)
+;; (require 'visual-regexp-steroids)
+;; (global-set-key (kbd "C-s")   'isearch-forward)
+;; (global-set-key (kbd "C-r")   'isearch-backward)
+;; (global-set-key (kbd "C-c s") 'vr/isearch-forward)
+;; (global-set-key (kbd "C-c r") 'vr/isearch-backward)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; yasnippet
-(require 'yasnippet)
+(el-get-bundle yasnippet)
 (yas-global-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; yaml-mode
+(el-get-bundle yaml-mode)
 (autoload 'yaml-mode "yaml-mode")
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
@@ -508,15 +391,25 @@
  kept-old-version 2
  version-control 5)
  
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; themes
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(my/package-install 'atom-dark-theme)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; themes
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(el-get-bundle (:name atom-dark-theme
+                      :description "Port of the Atom Dark theme from Atom.io"
+                      :type github
+                      :pkgname "whitlockjc/atom-dark-theme-emacs"
+                      :after (add-to-list 'custom-theme-load-path default-directory)))
 (load-theme 'atom-dark t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python ide stuff
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(el-get-bundle elpy)
+(el-get-bundle flymake)
+(el-get-bundle jedi)
+(el-get-bundle sphinx-doc)
 
 ;; this requires jedi, flake8, and pyflakes to be availables.
 ;; The easiest path is to install them globally
@@ -525,10 +418,6 @@
 ;; flymake: on-the-fly checks
 ;; sphinx-doc: autoinsert sphinx-doc docstrings
 ;;             (C-c M-d at function def)
-(setq python-ide-package-list '(elpy flymake sphinx-doc))
-(my/package-install-list '(elpy
-                           flymake
-                           sphinx-doc))
 
 (elpy-enable)
 (add-hook 'python-mode-hook (lambda ()
