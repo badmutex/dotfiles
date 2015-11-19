@@ -3,8 +3,6 @@ card deploy {
   alternatives $(HOSTNAME) $(HOST) .
   into ~
 
-  . -> dotfiles
-
   shell_shortcuts -> .shell_shortcuts
 
   aspell.conf -> .aspell.conf
