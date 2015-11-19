@@ -9,8 +9,13 @@ let
       stack
       alex
       happy
+      hscolour
       hasktags
       stylish-haskell
+      structured-haskell-mode
+      ghc-mod ## not usable right now
+      hlint
+      hoogle
     ]
   );
 
