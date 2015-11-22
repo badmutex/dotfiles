@@ -3,7 +3,7 @@
 with pkgs.haskell.packages;
 
 let
-  hs = ghc7102.ghcWithPackages (
+  hs = ghc7102.ghcWithHoogle (
     hspkgs: with hspkgs; [
       cabal-install
       stack
@@ -15,7 +15,6 @@ let
       structured-haskell-mode
       ghc-mod ## not usable right now
       hlint
-      hoogle
       hdevtools
     ]
   );
