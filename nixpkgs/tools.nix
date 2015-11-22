@@ -21,6 +21,7 @@ in
   aspellDicts.en
   autoconf
   bc
+  gnumake
   gnupg
   keychain
   httpie
