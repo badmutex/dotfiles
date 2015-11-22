@@ -173,7 +173,7 @@
 (el-get-bundle ac-haskell-process)
 (el-get-bundle flycheck-haskell)
 (el-get-bundle flycheck-hdevtools)
-
+(el-get-bundle 'hi2)
 
 ;; not used right now
 (el-get-bundle chrisdone/structured-haskell-mode
@@ -238,6 +238,7 @@
                    'projectile-mode
                    'helm-projectile-on
                    '100-column-rule
+                   'turn-on-hi2
                    )))
        (dolist (hook hooks)
          (add-hook 'haskell-mode-hook hook)))))
