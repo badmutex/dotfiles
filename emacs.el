@@ -237,8 +237,9 @@
                    'auto-complete-mode
                    'projectile-mode
                    'helm-projectile-on
-                   '100-column-rule
                    'turn-on-hi2
+                   '(lambda ()
+                      (100-column-rule))
                    )))
        (dolist (hook hooks)
          (add-hook 'haskell-mode-hook hook)))))
