@@ -84,15 +84,7 @@
 (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ebnf configuration
-(el-get-bundle (:name ebnf-mode
-                      :description "Highlight mode for Extended Backus-Naur Form"
-                      :features ebnf-mode
-                      :type git
-                      :url "git@github.com:jeramey/ebnf-mode.git"))
-;; use iso ebnf
-;; https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form
-;; http://www.cl.cam.ac.uk/~mgk25/iso-ebnf.html
-(setq ebnf-syntax 'iso-ebnf)
+(el-get-bundle jeramey/ebnf-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; expand region
 (el-get-bundle expand-region)
@@ -177,18 +169,9 @@
 (el-get-bundle ac-haskell-process)
 (el-get-bundle flycheck-haskell)
 
-(el-get-bundle
-  (:name structured-haskell-mode
-         :type github
-         :pkgname "chrisdone/structured-haskell-mode"
-         :depends (haskell-mode)
-         :load-path "elisp"))
-
-(el-get-bundle
-  (:name ac-haskell-process
-         :type github
-         :pkgname "purcell/ac-haskell-process"
-         :depends (auto-complete haskell-mode)))
+;; not used right now
+(el-get-bundle chrisdone/structured-haskell-mode
+  :load-path "elisp")
 
 (eval-after-load "haskell-mode"
   '(progn
@@ -399,11 +382,14 @@
 ;; ;; themes
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(el-get-bundle (:name atom-dark-theme
-                      :description "Port of the Atom Dark theme from Atom.io"
-                      :type github
-                      :pkgname "whitlockjc/atom-dark-theme-emacs"
-                      :after (add-to-list 'custom-theme-load-path default-directory)))
+(el-get-bundle
+  (:name atom-dark-theme
+         :description "Port of the Atom Dark theme from Atom.io"
+         :type github
+         :pkgname "whitlockjc/atom-dark-theme-emacs"
+         :prepare (add-to-list 'custom-theme-load-path default-directory)))
+
+(require 'atom-dark-theme)
 (load-theme 'atom-dark t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
