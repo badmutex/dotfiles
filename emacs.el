@@ -172,6 +172,8 @@
 (el-get-bundle haskell-mode)
 (el-get-bundle ac-haskell-process)
 (el-get-bundle flycheck-haskell)
+(el-get-bundle flycheck-hdevtools)
+
 
 ;; not used right now
 (el-get-bundle chrisdone/structured-haskell-mode
@@ -185,6 +187,8 @@
 
      (require 'flycheck)
      (require 'flycheck-haskell)
+     (eval-after-load 'flycheck
+       '(require 'flycheck-hdevtools))
      (require 'ac-haskell-process)
 
      ;; keybindings

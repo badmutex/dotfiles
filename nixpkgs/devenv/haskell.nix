@@ -16,6 +16,7 @@ let
       ghc-mod ## not usable right now
       hlint
       hoogle
+      hdevtools
     ]
   );
 
