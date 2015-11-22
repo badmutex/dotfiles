@@ -123,7 +123,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; git
 
 (el-get-bundle magit)
-(el-get-bundle magit-filenotify)
 (el-get-bundle git-gutter-fringe)
 (el-get-bundle git-gutter-fringe+)
 
@@ -158,6 +157,11 @@
 ;; also:
 ;; https://github.com/magit/magit/commit/325a4fff
 (setq magit-push-always-verify nil)
+
+;; refresh status buffer when git tree changes
+(el-get-bundle magit-filenotify)
+(add-hook 'after-save-hook 'magit-after-save-refresh-status) ; refresh on save
+(add-hook 'magit-status-mode-hook 'magit-filenotify-mode)    ; refresh on changes
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
