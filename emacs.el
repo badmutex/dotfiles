@@ -322,8 +322,9 @@
 (el-get-bundle helm)
 (helm-projectile-on)
 
-;; perspective
-(el-get-bundle perspective) ;; "workspaces" for emacs
+;; perspective: "workspaces" for emacs
+(el-get-bundle perspective)
+(require 'perspective)
 (persp-mode)
 (require 'persp-projectile)
 
