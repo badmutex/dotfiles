@@ -160,7 +160,6 @@
 
 ;; refresh status buffer when git tree changes
 (el-get-bundle magit-filenotify)
-(add-hook 'after-save-hook 'magit-after-save-refresh-status) ; refresh on save
 (add-hook 'magit-status-mode-hook 'magit-filenotify-mode)    ; refresh on changes
 
 
