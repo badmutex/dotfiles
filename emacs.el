@@ -236,7 +236,6 @@
                    'flycheck-haskell-configure
                    'auto-complete-mode
                    'projectile-mode
-                   'helm-projectile-on
                    'turn-on-hi2
                    '(lambda ()
                       (100-column-rule))
@@ -246,10 +245,6 @@
 
 ;; (speedbar-add-supported-extension ".hs")
 
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; helm
-(el-get-bundle helm)
-;; (global-set-key (kbd "M-x") 'helm-M-x)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; hungry delete
 (el-get-bundle hungry-delete)
@@ -315,9 +310,22 @@
 (powerline-center-theme)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; projectile
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; project management
+
+;; projectile
 (el-get-bundle projectile)
 (setq projectile-enable-idle-timer nil)
+(setq projectile-indexing-method 'native)
+(setq projectile-enable-caching t)
+
+;; helm
+(el-get-bundle helm)
+(helm-projectile-on)
+
+;; perspective
+(el-get-bundle perspective) ;; "workspaces" for emacs
+(persp-mode)
+(require 'persp-projectile)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
 (el-get-bundle smex)
