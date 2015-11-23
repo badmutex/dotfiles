@@ -382,7 +382,7 @@
 (column-number-mode t)
 (global-linum-mode t)
 (show-paren-mode t)
-(hl-line-mode t)
+(global-hl-line-mode t)
 (subword-mode)
 (pending-delete-mode t)
 (transient-mark-mode t)
