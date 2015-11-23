@@ -320,6 +320,8 @@
 ;; helm
 (el-get-bundle helm)
 (helm-projectile-on)
+(set-face-attribute 'helm-selection nil
+                    :background "black")
 
 ;; perspective: "workspaces" for emacs
 (el-get-bundle perspective)
