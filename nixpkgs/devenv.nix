@@ -13,6 +13,8 @@ myGitTools ++
 haskellDevEnv ++
 [
   emacs
+  gcc
+  silver-searcher
   colordiff
   python27DevEnv
 ]
