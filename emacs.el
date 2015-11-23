@@ -173,7 +173,7 @@
 (el-get-bundle ac-haskell-process)
 (el-get-bundle flycheck-haskell)
 (el-get-bundle flycheck-hdevtools)
-(el-get-bundle 'hi2)
+(el-get-bundle hi2)
 
 ;; not used right now
 (el-get-bundle chrisdone/structured-haskell-mode
