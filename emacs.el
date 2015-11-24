@@ -323,12 +323,6 @@
 (set-face-attribute 'helm-selection nil
                     :background "black")
 
-;; perspective: "workspaces" for emacs
-(el-get-bundle perspective)
-(require 'perspective)
-(persp-mode)
-(require 'persp-projectile)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
 (el-get-bundle smex)
 (smex-initialize)
