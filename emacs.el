@@ -320,16 +320,30 @@
 (helm-projectile-on)
 (set-face-attribute 'helm-selection nil
                     :background "black")
+(helm-autoresize-mode t)
+
+(setq helm-M-x-fuzzy-match t)
+(setq helm-recentf-fuzzy-match t)
+(setq helm-buffers-fuzzy-matching t)
+(setq helm-locate-fuzzy-match t)
+(setq helm-semantic-fuzzy-match t)
+(setq helm-imenu-fuzzy-match t)
+(setq helm-apropos-fuzzy-match t)
+(setq helm-lisp-fuzzy-completion t)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
-(el-get-bundle smex)
-(smex-initialize)
 
-(global-set-key (kbd "M-x") 'smex)
+;; (el-get-bundle smex)
+;; (smex-initialize)
+
+;(global-set-key (kbd "M-x") 'smex)
 ;; (global-set-key (kbd "C-M-x") 'smex-major-mode-commands)
 
 ;; the old M-x
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+;; (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; visual regexp
