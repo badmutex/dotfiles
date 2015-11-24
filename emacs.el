@@ -49,8 +49,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; TODO prelude packages https://github.com/bbatsov/prelude
-;; TODO projectile https://github.com/bbatsov/projectile
-;; TODO helm http://tuhdo.github.io/helm-intro.html
 ;; TODO flyspell http://www.emacswiki.org/emacs/FlySpellx
 ;; TODO auctex
 ;;      - installed, configured
