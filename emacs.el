@@ -101,9 +101,9 @@
 (require 'flx-ido) ; flexible string matching
 (flx-ido-mode t)
 ;; disable ido faces to see flx highlighting
-(setq ido-enable-flex-matching t)
-(setq ido-use-faces nil)
-(setq ido-everywhere t)
+(setq ido-enable-flex-matching t
+      ido-use-faces nil
+      ido-everywhere t)
 (flx-ido-mode 1)
 
 ;; use ido vertically (easier to read)
@@ -127,7 +127,7 @@
 (when (window-system)
   (when (require 'git-gutter-fringe nil t)
     (global-git-gutter-mode 1)
-    (setq-default indicate-buffer-boundaries 'left)
+    (setq-default indicate-buffer-boundaries 'left
     (setq-default indicate-empty-lines 1)))
 
 (when (not (window-system))
@@ -192,9 +192,9 @@
 (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
 
 ;; ghci
-(setq haskell-process-type 'stack-ghci)
-(setq haskell-process-path-ghci "stack")
-(setq haskell-process-args-ghci "ghci")
+(setq haskell-process-type 'stack-ghci
+      haskell-process-path-ghci "stack"
+      haskell-process-args-ghci "ghci")
 
 ;; custom vars
 (custom-set-variables
@@ -309,9 +309,9 @@
 
 ;; projectile
 (el-get-bundle projectile)
-(setq projectile-enable-idle-timer nil)
-(setq projectile-indexing-method 'native)
-(setq projectile-enable-caching t)
+(setq projectile-enable-idle-timer nil
+      projectile-indexing-method 'native
+      projectile-enable-caching t)
 
 ;; helm
 (el-get-bundle helm)
@@ -325,14 +325,14 @@
                     :background "black")
 (helm-autoresize-mode t)
 
-(setq helm-M-x-fuzzy-match t)
-(setq helm-recentf-fuzzy-match t)
-(setq helm-buffers-fuzzy-matching t)
-(setq helm-locate-fuzzy-match t)
-(setq helm-semantic-fuzzy-match t)
-(setq helm-imenu-fuzzy-match t)
-(setq helm-apropos-fuzzy-match t)
-(setq helm-lisp-fuzzy-completion t)
+(setq helm-M-x-fuzzy-match t
+      helm-recentf-fuzzy-match t
+      helm-buffers-fuzzy-matching t
+      helm-locate-fuzzy-match t
+      helm-semantic-fuzzy-match t
+      helm-imenu-fuzzy-match t
+      helm-apropos-fuzzy-match t
+      helm-lisp-fuzzy-completion t)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
@@ -342,6 +342,7 @@
 (global-set-key (kbd "C-c h k") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c h r") 'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
@@ -389,8 +390,8 @@
 (tool-bar-mode -1)
 
 
-(setq inhibit-startup-screen t)
-(setq initial-scratch-message nil)
+(setq inhibit-startup-screen t
+      initial-scratch-message nil)
 
 ;; upcase/downcase regions is nice
 (put 'downcase-region 'disabled nil)
@@ -473,13 +474,13 @@
 (setq org-hide-leading-stars t)
 
 ;; block changes to DONE that have incomplete dependencies
-(setq org-enforce-todo-dependencies t)
-(setq org-enforce-todo-checkbox-dependencies t)
+(setq org-enforce-todo-dependencies t
+      org-enforce-todo-checkbox-dependencies t)
 
 
 ;; provide statistics
-(setq org-provide-todo-statistics t)
-(setq org-hierarchical-todo-statistics nil)
+(setq org-provide-todo-statistics t
+      org-hierarchical-todo-statistics nil)
 
 
 
