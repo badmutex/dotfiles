@@ -171,74 +171,68 @@
 (el-get-bundle flycheck-haskell)
 (el-get-bundle flycheck-hdevtools)
 (el-get-bundle hi2)
+(require 'haskell-mode)
+(require 'haskell-interactive-mode)
+(require 'haskell-process)
+;; (require 'flycheck-haskell)
+(require 'ac-haskell-process)
 
-;; not used right now
-(el-get-bundle chrisdone/structured-haskell-mode
-  :load-path "elisp")
+(setq haskell-process-show-debug-tips nil)
 
-(eval-after-load "haskell-mode"
-  '(progn
-     (require 'haskell-mode)
-     (require 'haskell-interactive-mode)
-     (require 'haskell-process)
+;; keybindings
+(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc)
+(define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
+(define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right)
+(define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
+(define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
 
-     (require 'flycheck)
-     (require 'flycheck-haskell)
-     (eval-after-load 'flycheck
-       '(require 'flycheck-hdevtools))
-     (require 'ac-haskell-process)
+;; ghci
+(setq haskell-process-type 'stack-ghci)
+(setq haskell-process-path-ghci "stack")
+(setq haskell-process-args-ghci "ghci")
 
-     ;; keybindings
-     (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
-     (define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc)
-     (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
-     (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right)
-     (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
-     (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
+;; custom vars
+(custom-set-variables
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t)
+ '(haskell-tags-on-save t)
+ '(haskell-stylish-on-save t)
 
-     ;; ghci
-     (setq haskell-process-type 'stack-ghci)
-     (setq haskell-process-path-ghci "stack")
-     (setq haskell-process-args-ghci "ghci")
+ ;; if t, causes emacs to hang
+ '(haskell-process-suggest-no-warn-orphans nil)
+ '(haskell-process-suggest-hoogle-imports nil)
+ '(haskell-process-suggest-hayoo-imports nil)
+ '(haskell-process-suggest-haskell-docs-imports nil)
+ '(haskell-process-suggest-add-package nil)
+ '(haskell-process-suggest-language-pragmas nil)
+ '(haskell-process-suggest-remove-import-lines nil)
+ '(haskell-process-suggest-overloaded-strings nil))
 
-     ;; custom vars
-     (custom-set-variables
-      '(haskell-process-suggest-remove-import-lines t)
-      '(haskell-process-auto-import-loaded-modules t)
-      '(haskell-process-log t)
-      '(haskell-tags-on-save t)
-      '(haskell-stylish-on-save t)
+;; autocomplete
+(add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
+(add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
+(add-to-list 'ac-modes 'haskell-interactive-mode)
 
-      ;; if t, causes emacs to hang
-      '(haskell-process-suggest-no-warn-orphans nil)
-      '(haskell-process-suggest-hoogle-imports nil)
-      '(haskell-process-suggest-hayoo-imports nil)
-      '(haskell-process-suggest-haskell-docs-imports nil)
-      '(haskell-process-suggest-add-package nil)
-      '(haskell-process-suggest-language-pragmas nil)
-      '(haskell-process-suggest-remove-import-lines nil)
-      '(haskell-process-suggest-overloaded-strings nil))
+;; haskell-mode-hooks
+(let ((hooks (list
+              'haskell-doc-mode
+              'interactive-haskell-mode
+              'haskell-decl-scan-mode
+              'flycheck-mode
+              'flycheck-haskell-configure
+              'auto-complete-mode
+              'projectile-mode
+              'turn-on-hi2
+              '(lambda ()
+                 (100-column-rule))
+              )))
+  (dolist (hook hooks)
+    (add-hook 'haskell-mode-hook hook)))
 
-     ;; autocomplete
-     (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
-     (add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
-     (add-to-list 'ac-modes 'haskell-interactive-mode)
-
-     ;; haskell-mode-hooks
-     (let ((hooks (list
-                   'haskell-doc-mode
-                   'interactive-haskell-mode
-                   'haskell-decl-scan-mode
-                   'flycheck-mode
-                   'flycheck-haskell-configure
-                   'auto-complete-mode
-                   'projectile-mode
-                   'turn-on-hi2
-                   '(lambda ()
-                      (100-column-rule))
-                   )))
-       (dolist (hook hooks)
-         (add-hook 'haskell-mode-hook hook)))))
+(add-hook 'haskell-cabal-mode-hook 'projectile-mode)
+(add-hook 'haskell-interactive-mode-hook 'projectile-mode)
 
 ;; (speedbar-add-supported-extension ".hs")
 
