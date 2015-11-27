@@ -311,6 +311,11 @@
 
 ;; helm
 (el-get-bundle helm)
+(el-get-bundle helm-helm-commands)
+(el-get-bundle helm-ag)
+(el-get-bundle helm-ls-git)
+(el-get-bundle helm-descbinds)
+(helm-descbinds-mode)
 (helm-projectile-on)
 (set-face-attribute 'helm-selection nil
                     :background "black")
@@ -326,6 +331,13 @@
 (setq helm-lisp-fuzzy-completion t)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-c h m") 'helm-imenu)
+(global-set-key (kbd "C-c h S-M") 'helm-imenu-in-all-buffers)
+(global-set-key (kbd "C-h a") 'helm-apropos)
+(global-set-key (kbd "C-c h k") 'helm-show-kill-ring)
+(global-set-key (kbd "C-c h r") 'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
