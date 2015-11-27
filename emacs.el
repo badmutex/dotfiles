@@ -414,6 +414,9 @@
  kept-new-versions 6
  kept-old-version 2
  version-control 5)
+
+;; https://stackoverflow.com/questions/4506249/
+(setq browse-url-browser-function 'browse-url-chromium)
  
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; themes
