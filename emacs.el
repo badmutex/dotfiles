@@ -166,6 +166,10 @@
 ;; https://github.com/haskell/haskell-mode
 
 
+;; ;; not used right now
+;; (el-get-bundle chrisdone/structured-haskell-mode
+;;   :load-path "elisp")
+
 (el-get-bundle haskell-mode)
 (el-get-bundle ac-haskell-process)
 (el-get-bundle flycheck-haskell)
