@@ -484,9 +484,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (my/switch-system-name
- '(("sulimo" . (set-face-attribute 'default nil :height 80))))
-
-(my/switch-system-name
  '(("gambit" . (set-face-attribute 'default nil :height 80))))
 
 (my/switch-system-name
