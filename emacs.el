@@ -128,7 +128,7 @@
   (when (require 'git-gutter-fringe nil t)
     (global-git-gutter-mode 1)
     (setq-default indicate-buffer-boundaries 'left
-    (setq-default indicate-empty-lines 1)))
+    (setq-default indicate-empty-lines 1))))
 
 (when (not (window-system))
   (require 'git-gutter-fringe+)
