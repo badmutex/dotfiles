@@ -333,6 +333,10 @@
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 
+;; ag (silver searcher
+(el-get-bundle ag)
+(el-get-bundle helm-ag)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
 
