@@ -173,6 +173,9 @@
 (el-get-bundle haskell-mode)
 (el-get-bundle ac-haskell-process)
 (el-get-bundle flycheck-haskell)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
+
 (el-get-bundle flycheck-hdevtools)
 (el-get-bundle hi2)
 (require 'haskell-mode)
