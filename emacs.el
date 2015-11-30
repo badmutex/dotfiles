@@ -101,9 +101,9 @@
 (require 'flx-ido) ; flexible string matching
 (flx-ido-mode t)
 ;; disable ido faces to see flx highlighting
-(setq ido-enable-flex-matching t)
-(setq ido-use-faces nil)
-(setq ido-everywhere t)
+(setq ido-enable-flex-matching t
+      ido-use-faces nil
+      ido-everywhere t)
 (flx-ido-mode 1)
 
 ;; use ido vertically (easier to read)
@@ -127,7 +127,7 @@
 (when (window-system)
   (when (require 'git-gutter-fringe nil t)
     (global-git-gutter-mode 1)
-    (setq-default indicate-buffer-boundaries 'left)
+    (setq-default indicate-buffer-boundaries 'left
     (setq-default indicate-empty-lines 1)))
 
 (when (not (window-system))
@@ -166,79 +166,77 @@
 ;; https://github.com/haskell/haskell-mode
 
 
+;; ;; not used right now
+;; (el-get-bundle chrisdone/structured-haskell-mode
+;;   :load-path "elisp")
+
 (el-get-bundle haskell-mode)
 (el-get-bundle ac-haskell-process)
 (el-get-bundle flycheck-haskell)
 (el-get-bundle flycheck-hdevtools)
 (el-get-bundle hi2)
+(require 'haskell-mode)
+(require 'haskell-interactive-mode)
+(require 'haskell-process)
+;; (require 'flycheck-haskell)
+(require 'ac-haskell-process)
 
-;; not used right now
-(el-get-bundle chrisdone/structured-haskell-mode
-  :load-path "elisp")
+(setq haskell-process-show-debug-tips nil)
 
-(eval-after-load "haskell-mode"
-  '(progn
-     (require 'haskell-mode)
-     (require 'haskell-interactive-mode)
-     (require 'haskell-process)
+;; keybindings
+(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc)
+(define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
+(define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right)
+(define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
+(define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
 
-     (require 'flycheck)
-     (require 'flycheck-haskell)
-     (eval-after-load 'flycheck
-       '(require 'flycheck-hdevtools))
-     (require 'ac-haskell-process)
+;; ghci
+(setq haskell-process-type 'stack-ghci
+      haskell-process-path-ghci "stack"
+      haskell-process-args-ghci "ghci")
 
-     ;; keybindings
-     (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
-     (define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc)
-     (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
-     (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right)
-     (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
-     (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
+;; custom vars
+(custom-set-variables
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t)
+ '(haskell-tags-on-save t)
+ '(haskell-stylish-on-save t)
 
-     ;; ghci
-     (setq haskell-process-type 'stack-ghci)
-     (setq haskell-process-path-ghci "stack")
-     (setq haskell-process-args-ghci "ghci")
+ ;; if t, causes emacs to hang
+ '(haskell-process-suggest-no-warn-orphans nil)
+ '(haskell-process-suggest-hoogle-imports nil)
+ '(haskell-process-suggest-hayoo-imports nil)
+ '(haskell-process-suggest-haskell-docs-imports nil)
+ '(haskell-process-suggest-add-package nil)
+ '(haskell-process-suggest-language-pragmas nil)
+ '(haskell-process-suggest-remove-import-lines nil)
+ '(haskell-process-suggest-overloaded-strings nil))
 
-     ;; custom vars
-     (custom-set-variables
-      '(haskell-process-suggest-remove-import-lines t)
-      '(haskell-process-auto-import-loaded-modules t)
-      '(haskell-process-log t)
-      '(haskell-tags-on-save t)
-      '(haskell-stylish-on-save t)
+;; autocomplete
+(add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
+(add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
+(add-to-list 'ac-modes 'haskell-interactive-mode)
 
-      ;; if t, causes emacs to hang
-      '(haskell-process-suggest-no-warn-orphans nil)
-      '(haskell-process-suggest-hoogle-imports nil)
-      '(haskell-process-suggest-hayoo-imports nil)
-      '(haskell-process-suggest-haskell-docs-imports nil)
-      '(haskell-process-suggest-add-package nil)
-      '(haskell-process-suggest-language-pragmas nil)
-      '(haskell-process-suggest-remove-import-lines nil)
-      '(haskell-process-suggest-overloaded-strings nil))
+;; haskell-mode-hooks
+(let ((hooks (list
+              'haskell-doc-mode
+              'interactive-haskell-mode
+              'haskell-decl-scan-mode
+              'flycheck-mode
+              'flycheck-haskell-configure
+              'auto-complete-mode
+              'projectile-mode
+              'turn-on-hi2
+              '(lambda ()
+                 (100-column-rule))
+              )))
+  (dolist (hook hooks)
+    (add-hook 'haskell-mode-hook hook)))
 
-     ;; autocomplete
-     (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
-     (add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
-     (add-to-list 'ac-modes 'haskell-interactive-mode)
-
-     ;; haskell-mode-hooks
-     (let ((hooks (list
-                   'haskell-doc-mode
-                   'interactive-haskell-mode
-                   'haskell-decl-scan-mode
-                   'flycheck-mode
-                   'flycheck-haskell-configure
-                   'auto-complete-mode
-                   'projectile-mode
-                   'turn-on-hi2
-                   '(lambda ()
-                      (100-column-rule))
-                   )))
-       (dolist (hook hooks)
-         (add-hook 'haskell-mode-hook hook)))))
+(add-hook 'haskell-cabal-mode-hook 'projectile-mode)
+(add-hook 'haskell-interactive-mode-hook 'projectile-mode)
 
 ;; (speedbar-add-supported-extension ".hs")
 
@@ -311,27 +309,40 @@
 
 ;; projectile
 (el-get-bundle projectile)
-(setq projectile-enable-idle-timer nil)
-(setq projectile-indexing-method 'native)
-(setq projectile-enable-caching t)
+(setq projectile-enable-idle-timer nil
+      projectile-indexing-method 'native
+      projectile-enable-caching t)
 
 ;; helm
 (el-get-bundle helm)
+(el-get-bundle helm-helm-commands)
+(el-get-bundle helm-ag)
+(el-get-bundle helm-ls-git)
+(el-get-bundle helm-descbinds)
+(helm-descbinds-mode)
 (helm-projectile-on)
 (set-face-attribute 'helm-selection nil
                     :background "black")
 (helm-autoresize-mode t)
 
-(setq helm-M-x-fuzzy-match t)
-(setq helm-recentf-fuzzy-match t)
-(setq helm-buffers-fuzzy-matching t)
-(setq helm-locate-fuzzy-match t)
-(setq helm-semantic-fuzzy-match t)
-(setq helm-imenu-fuzzy-match t)
-(setq helm-apropos-fuzzy-match t)
-(setq helm-lisp-fuzzy-completion t)
+(setq helm-M-x-fuzzy-match t
+      helm-recentf-fuzzy-match t
+      helm-buffers-fuzzy-matching t
+      helm-locate-fuzzy-match t
+      helm-semantic-fuzzy-match t
+      helm-imenu-fuzzy-match t
+      helm-apropos-fuzzy-match t
+      helm-lisp-fuzzy-completion t)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-c h m") 'helm-imenu)
+(global-set-key (kbd "C-c h S-M") 'helm-imenu-in-all-buffers)
+(global-set-key (kbd "C-h a") 'helm-apropos)
+(global-set-key (kbd "C-c h k") 'helm-show-kill-ring)
+(global-set-key (kbd "C-c h r") 'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 ;; ag (silver searcher
 (el-get-bundle ag)
@@ -383,8 +394,8 @@
 (tool-bar-mode -1)
 
 
-(setq inhibit-startup-screen t)
-(setq initial-scratch-message nil)
+(setq inhibit-startup-screen t
+      initial-scratch-message nil)
 
 ;; upcase/downcase regions is nice
 (put 'downcase-region 'disabled nil)
@@ -407,6 +418,9 @@
  kept-new-versions 6
  kept-old-version 2
  version-control 5)
+
+;; https://stackoverflow.com/questions/4506249/
+(setq browse-url-browser-function 'browse-url-chromium)
  
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; themes
@@ -467,22 +481,19 @@
 (setq org-hide-leading-stars t)
 
 ;; block changes to DONE that have incomplete dependencies
-(setq org-enforce-todo-dependencies t)
-(setq org-enforce-todo-checkbox-dependencies t)
+(setq org-enforce-todo-dependencies t
+      org-enforce-todo-checkbox-dependencies t)
 
 
 ;; provide statistics
-(setq org-provide-todo-statistics t)
-(setq org-hierarchical-todo-statistics nil)
+(setq org-provide-todo-statistics t
+      org-hierarchical-todo-statistics nil)
 
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load specific overrides based on system type
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(my/switch-system-name
- '(("sulimo" . (set-face-attribute 'default nil :height 80))))
 
 (my/switch-system-name
  '(("gambit" . (set-face-attribute 'default nil :height 80))))

@@ -17,4 +17,5 @@ haskellDevEnv ++
   silver-searcher
   colordiff
   python27DevEnv
+  zlib
 ]
