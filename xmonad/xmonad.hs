@@ -1,35 +1,35 @@
 
-import Control.Concurrent (forkIO, threadDelay)
-import Control.Monad (forever)
-import System.IO
-import System.Exit
-import System.Posix.Process (getProcessID)
-import System.Posix.Signals (signalProcess, sigTERM)
+import           Control.Concurrent           (forkIO, threadDelay)
+import           Control.Monad                (forever)
+import           System.Exit
+import           System.IO
+import           System.Posix.Process         (getProcessID)
+import           System.Posix.Signals         (sigTERM, signalProcess)
 
-import Graphics.X11.ExtraTypes.XF86
+import           Graphics.X11.ExtraTypes.XF86
 
-import XMonad
+import           XMonad
 
-import XMonad.Actions.CycleWS
-import XMonad.Actions.GridSelect
-import XMonad.Actions.Volume
+import           XMonad.Actions.CycleWS
+import           XMonad.Actions.GridSelect
+import           XMonad.Actions.Volume
 
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.SetWMName
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.ManageHelpers
+import           XMonad.Hooks.SetWMName
 
-import XMonad.Layout.Fullscreen
-import XMonad.Layout.NoBorders
-import XMonad.Layout.Spiral
-import XMonad.Layout.Tabbed
-import XMonad.Layout.ThreeColumns
+import           XMonad.Layout.Fullscreen
+import           XMonad.Layout.NoBorders
+import           XMonad.Layout.Spiral
+import           XMonad.Layout.Tabbed
+import           XMonad.Layout.ThreeColumns
 
-import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.EZConfig(additionalKeys)
+import           XMonad.Util.EZConfig         (additionalKeys)
+import           XMonad.Util.Run              (spawnPipe)
 
-import qualified XMonad.StackSet as W
-import qualified Data.Map        as M
+import qualified Data.Map                     as M
+import qualified XMonad.StackSet              as W
 
 
 myTerminal = "xfce4-terminal"
