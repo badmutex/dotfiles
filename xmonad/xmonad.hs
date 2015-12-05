@@ -32,7 +32,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
 
-myTerminal = "konsole"
+myTerminal = "xfce4-terminal"
 myModMask = mod4Mask
 
 

@@ -16,4 +16,5 @@ optionals (! stdenv.isLinux) [
   lxappearance
   gnome.gnomeicontheme
   hicolor_icon_theme
+  xfce.terminal
 ]
