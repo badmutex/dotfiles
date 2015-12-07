@@ -63,6 +63,9 @@
 (el-get-bundle column-enforce-mode)
 (add-hook 'prog-mode-hook 'column-enforce-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; encryption
+(require 'epa-file)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; rainbow delimiters
 (el-get-bundle rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
