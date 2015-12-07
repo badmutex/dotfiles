@@ -297,7 +297,7 @@
 (el-get-bundle nix-mode)
 (autoload 'nix-mode "nix-mode" "Major mode for editing Nix expressions." t)
 (push '("\\.nix\\'" . nix-mode) auto-mode-alist)
-
+(add-hook 'nix-mode-hook 'projectile-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; powerline
 
