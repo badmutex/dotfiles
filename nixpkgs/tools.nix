@@ -23,6 +23,7 @@ in
   bc
   gnumake
   gnupg
+  paperkey
   keychain
   httpie
   irssi
