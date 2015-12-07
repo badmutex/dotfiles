@@ -96,6 +96,13 @@ setopt completeinword
 autoload select-word-style
 select-word-style bash
 
+# haskell `stack` tool autocompletion
+# http://docs.haskellstack.org/en/stable/shell_autocompletion.html
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+eval "$(stack --bash-completion-script stack)"
+
+
 test -f /etc/zlogin && source /etc/zlogin
 
 ######################################################################
