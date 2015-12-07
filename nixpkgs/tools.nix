@@ -24,6 +24,7 @@ in
   gnumake
   gnupg
   paperkey
+  pinentry
   keychain
   httpie
   irssi

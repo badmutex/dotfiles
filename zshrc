@@ -105,7 +105,7 @@ preloaded_ssh_keys=(
     id_rsa
 )
 
-eval $(keychain --eval --agents ssh ${preloaded_ssh_keys[@]})
+eval $(keychain --eval --agents ssh,gpg ${preloaded_ssh_keys[@]})
 
 ## Local Variables:
 ## mode: shell-script

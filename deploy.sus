@@ -10,6 +10,7 @@ card deploy {
   bashrc -> .bashrc
   emacs.el -> .emacs.el
   gitconfig -> .gitconfig
+  gpg.conf -> .gnupg/gpg.conf
   nixpkgs -> .nixpkgs
   screenrc -> .screenrc
   synergy.conf -> .synergy.conf
