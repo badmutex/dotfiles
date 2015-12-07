@@ -348,7 +348,6 @@
 (global-set-key (kbd "C-c h k") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c h r") 'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 ;; ag (silver searcher
 (el-get-bundle ag)
