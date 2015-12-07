@@ -497,6 +497,37 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; irc
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(el-get-bundle! erc-highlight-nicknames)
+
+
+(defun start-irc ()
+  (interactive)
+  (load-library "~/.secrets.el.gpg")
+  (require 'erc)
+
+  (require 'erc-services)
+  (erc-services-mode 1)
+  (setq erc-prompt-for-nickserv-password nil)
+  (setq erc-nickserv-passwords
+        `((freenode (("badi" . ,irc-freenode-badi-pass)))))
+
+  (require 'erc-spelling)
+  (erc-spelling-mode 1)
+
+  (and (require 'erc-highlight-nicknames)
+       (add-to-list 'erc-modules 'highlight-nicknames)
+       (erc-update-modules))
+
+  (require 'erc-nicklist)
+  (require 'tls)
+  (erc-tls :server "chat.freenode.net" :port 7000))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load specific overrides based on system type
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
