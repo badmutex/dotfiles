@@ -13,6 +13,7 @@ card deploy {
   gpg.conf -> .gnupg/gpg.conf
   nixpkgs -> .nixpkgs
   screenrc -> .screenrc
+  secrets.el.gpg -> .secrets.el.gpg
   synergy.conf -> .synergy.conf
 
   tmux.conf -> .tmux.conf
