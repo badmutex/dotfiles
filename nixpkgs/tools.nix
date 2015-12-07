@@ -13,7 +13,7 @@
 with pkgs;
 let
   inherit (stdenv.lib) optional optionals;
-  yubikey = callPackage ./apps/yubikey-personalization-gui.nix { qt=qt4; };
+  yubikey = [ yubikey-personalization-gui yubikey-personalization ];
 in
 [
   aria
@@ -45,4 +45,4 @@ in
 ++ optional  withLibreOffice libreoffice
 ++ optional  withSynergy     synergy
 ++ optional  withThunderbird thunderbird
-++ optional  withYubikey     yubikey
+++ optionals withYubikey     yubikey
