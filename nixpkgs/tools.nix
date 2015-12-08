@@ -23,6 +23,7 @@ in
   bc
   gnumake
   gnupg
+  iotop
   paperkey
   pinentry
   keychain
