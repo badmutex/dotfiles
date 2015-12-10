@@ -302,6 +302,12 @@
 (push '("\\.nix\\'" . nix-mode) auto-mode-alist)
 (add-hook 'nix-mode-hook 'projectile-mode)
 
+;; WIP
+(el-get-bundle company-mode)
+(el-get-bundle nixos-options)
+(el-get-bundle travisbhartwell/nix-emacs)
+(add-to-list 'company-backends 'company-nixos-options)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; powerline
 
 (el-get-bundle (:name powerline
