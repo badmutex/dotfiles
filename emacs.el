@@ -444,7 +444,48 @@
 
 ;; https://stackoverflow.com/questions/4506249/
 (setq browse-url-browser-function 'browse-url-chromium)
- 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; simple mode lines
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(el-get-bundle diminish)
+
+;; major modes
+
+(defun set-mode-name (hook dynamic-name)
+  (lexical-let ((name dynamic-name)) ;; without lexical-let, access of
+    ;; `name` in the lambda below
+    ;; fails since `name` has changed
+    ;; scope.
+    (add-hook hook
+              (lambda ()
+                (setq mode-name name)))))
+
+(set-mode-name 'emacs-lisp-mode-hook "EL")
+(set-mode-name 'haskell-mode-hook "Λ")
+(set-mode-name 'haskell-interactive-mode-hook "λ")
+
+;; (add-hook 'emacs-lisp-mode-hook
+;;           (lambda ()
+;;             (setq mode-name "EL")))
+
+;; (add-hook 'haskell-mode-hook
+
+;; minor modes
+(eval-after-load "projectile" '(diminish 'projectile-mode))
+(eval-after-load "column-enforce-mode" '(diminish 'column-enforce-mode))
+(eval-after-load "color-identifiers-mode" '(diminish 'color-identifiers-mode))
+(eval-after-load "git-gutter" '(diminish 'git-gutter-mode))
+(eval-after-load "git-gutter+" '(diminish 'git-gutter+-mode))
+(eval-after-load "auto-complete-mode" '(diminish 'auto-complete-mode))
+(eval-after-load "aggressive-indent" '(diminish 'aggressive-indent-mode " Δ"))
+(eval-after-load "subword-mode" '(diminish 'subword-mode))
+(eval-after-load "hungry-delete" '(diminish 'hungry-delete-mode))
+
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; themes
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
