@@ -255,6 +255,9 @@
 
 ;; (speedbar-add-supported-extension ".hs")
 
+(el-get-bundle smartscan)
+(add-hook 'haskell-mode-hook 'smartscan-mode)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; hungry delete
 (el-get-bundle hungry-delete)
