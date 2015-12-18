@@ -314,7 +314,7 @@
 (el-get-bundle company-mode)
 (el-get-bundle nixos-options)
 (el-get-bundle travisbhartwell/nix-emacs)
-(add-to-list 'company-backends 'company-nixos-options)
+;;(add-to-list 'company-backends 'company-nixos-options)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; powerline
 
