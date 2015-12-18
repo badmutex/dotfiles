@@ -197,8 +197,8 @@
 ;; keybindings
 (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
 (define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc)
-(define-key haskell-mode-map (kbd "C-<") 'haskell-move-nested-left)
-(define-key haskell-mode-map (kbd "C->") 'haskell-move-nested-right)
+(define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-left)
+(define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-right)
 (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
 (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
 
