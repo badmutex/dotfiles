@@ -251,6 +251,7 @@
 (add-hook 'haskell-cabal-mode-hook 'projectile-mode)
 (add-hook 'haskell-interactive-mode-hook 'projectile-mode)
 (add-hook 'haskell-mode-hook #'aggressive-indent-mode)
+(add-hook 'haskell-mode-hook 'subword-mode)
 
 ;; (speedbar-add-supported-extension ".hs")
 
