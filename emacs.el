@@ -383,6 +383,7 @@
 (el-get-bundle helm-ag)
 (el-get-bundle helm-ls-git)
 (el-get-bundle helm-descbinds)
+(el-get-bundle helm-projectile)
 (helm-descbinds-mode)
 (helm-projectile-on)
 (set-face-attribute 'helm-selection nil
