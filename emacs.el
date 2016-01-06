@@ -264,6 +264,9 @@
 (global-hungry-delete-mode)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; java mode
+(add-hook 'java-mode-hook '(lambda () (100-column-rule)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Latex
 
 ;; (el-get-bundle auctex)
