@@ -21,6 +21,7 @@ in
   aspellDicts.en
   autoconf
   bc
+  graphviz-nox
   gnumake
   gnupg
   iotop

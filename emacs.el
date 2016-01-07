@@ -556,7 +556,10 @@
 (setq org-provide-todo-statistics t
       org-hierarchical-todo-statistics nil)
 
-
+;; enable inline graphviz images
+(el-get-bundle graphviz-dot-mode)
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((dot . t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; irc
