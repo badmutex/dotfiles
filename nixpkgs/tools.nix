@@ -23,6 +23,7 @@ in
   bc
   gnumake
   gnupg
+  gnutls
   iotop
   paperkey
   pinentry

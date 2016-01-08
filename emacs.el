@@ -586,7 +586,7 @@
 
   (require 'erc-nicklist)
   (require 'tls)
-  (erc-tls :server "chat.freenode.net" :port 7000))
+  (erc-tls :server "chat.freenode.net" :port 6697))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
