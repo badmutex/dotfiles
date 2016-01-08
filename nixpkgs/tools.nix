@@ -34,8 +34,6 @@ in
   nix-repl
   nmap
   screen
-  texinfo
-  #texLive  # core
   tmux
   terminator
   unzipNLS
