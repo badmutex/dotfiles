@@ -23,7 +23,7 @@ in
 {
   withDropbox     = isHomeMachine;
   withGames       = isHomeMachine;
-  withLatex       = false;
+  withLatex       = true;
   withLibreOffice = false;
   withSpotify     = isLinux;
   withSynergy     = ! isNixOS;

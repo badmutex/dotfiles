@@ -24,6 +24,7 @@ in
   graphviz-nox
   gnumake
   gnupg
+  gnutls
   iotop
   paperkey
   pinentry
@@ -34,8 +35,6 @@ in
   nix-repl
   nmap
   screen
-  texinfo
-  #texLive  # core
   tmux
   terminator
   unzipNLS
