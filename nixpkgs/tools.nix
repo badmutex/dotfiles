@@ -21,6 +21,7 @@ in
   aspellDicts.en
   autoconf
   bc
+  graphviz-nox
   gnumake
   gnupg
   gnutls
@@ -42,7 +43,7 @@ in
 ]
 ++ optional  withEvince      evince
 ++ optional  withInkscape    inkscape
-++ optionals withKeepass     [keepass keepassx2 xdotool]
+++ optionals withKeepass     [keepassx2 xdotool] # keepass 
 ++ optionals withLatex       [texLiveFull biber texmaker]
 ++ optional  withLibreOffice libreoffice
 ++ optional  withSynergy     synergy

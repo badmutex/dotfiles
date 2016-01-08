@@ -304,6 +304,9 @@
 (global-hungry-delete-mode)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; java mode
+(add-hook 'java-mode-hook '(lambda () (100-column-rule)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Latex
 
 ;; (el-get-bundle auctex)
@@ -556,7 +559,10 @@
 (setq org-provide-todo-statistics t
       org-hierarchical-todo-statistics nil)
 
-
+;; enable inline graphviz images
+(el-get-bundle graphviz-dot-mode)
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((dot . t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; irc
