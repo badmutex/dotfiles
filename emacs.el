@@ -225,7 +225,7 @@
  '(haskell-process-suggest-remove-import-lines nil)
  '(haskell-stylish-on-save t)
  '(haskell-tags-on-save t)
- '(safe-local-variable-values (quote ((epa-armor . t)))))
+ '(safe-local-variable-values (quote ((org-confirm-babel-evaluate) (epa-armor . t)))))
 
 ;; autocomplete
 (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
@@ -558,8 +558,13 @@
 
 ;; enable inline graphviz images
 (el-get-bundle graphviz-dot-mode)
+
+
+;; enable language execution
 (org-babel-do-load-languages
- 'org-babel-load-languages '((dot . t)))
+ 'org-babel-load-languages '((dot . t)
+                             (sh . t)
+                             (python . t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; irc
