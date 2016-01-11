@@ -403,7 +403,7 @@
       helm-lisp-fuzzy-completion t)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x C-b") 'ibuffer-list-buffers)
 (global-set-key (kbd "C-c h m") 'helm-imenu)
 (global-set-key (kbd "C-c h S-M") 'helm-imenu-in-all-buffers)
 (global-set-key (kbd "C-h a") 'helm-apropos)
