@@ -564,6 +564,8 @@
 
 
 ;; enable language execution
+
+(el-get-bundle htmlize)
 (org-babel-do-load-languages
  'org-babel-load-languages '((dot . t)
                              (sh . t)
