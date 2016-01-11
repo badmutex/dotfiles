@@ -112,9 +112,7 @@ preloaded_ssh_keys=(
     id_rsa
 )
 
-agent_timeout_minutes=60
-
-eval $(keychain --timeout $agent_timeout_minutes --eval --agents ssh,gpg ${preloaded_ssh_keys[@]})
+eval $(keychain --eval --agents ssh,gpg ${preloaded_ssh_keys[@]})
 
 ## Local Variables:
 ## mode: shell-script
