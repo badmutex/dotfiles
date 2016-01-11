@@ -515,6 +515,10 @@
 (el-get-bundle jedi)
 (el-get-bundle sphinx-doc)
 
+(el-get-bundle virtualenvwrapper)
+(venv-initialize-interactive-shells)
+(setq venv-location '())
+
 ;; this requires jedi, flake8, and pyflakes to be availables.
 ;; The easiest path is to install them globally
 
