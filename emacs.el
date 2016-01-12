@@ -107,6 +107,7 @@
 ;; https://github.com/Malabarba/aggressive-indent-mode
 (el-get-bundle aggressive-indent-mode)
 (global-aggressive-indent-mode 1)
+(add-to-list 'aggressive-indent-excluded-modes 'nix-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; encryption
 (require 'epa-file)
