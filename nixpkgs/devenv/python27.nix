@@ -9,6 +9,7 @@ pkgs.buildEnv {
       ipython
       pip
       virtualenv
+      virtualenvwrapper
       jedi
       pyflakes
       pep8

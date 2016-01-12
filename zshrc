@@ -60,7 +60,7 @@ plugins=(
     git git-extras git-flow github
 
     # python
-    python autopep8 pep8 pip
+    python autopep8 pep8 pip virtualenvwrapper
 
     # shell
     screen
