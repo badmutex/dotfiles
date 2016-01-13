@@ -28,4 +28,9 @@ card deploy {
   zprofile -> .zprofile
   oh-my-zsh -> .oh-my-zsh
 
+  {
+    into .stack
+    stack-config.yaml -> config.yaml
+  }
+
 }
