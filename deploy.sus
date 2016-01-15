@@ -5,15 +5,18 @@ card deploy {
 
   shell_shortcuts -> .shell_shortcuts
 
+  emacs.el -> .emacs.el
+  secrets.el.gpg -> .secrets.el.gpg
+  authinfo.el.gpg -> .authinfo.gpg
+  gnus.el -> .gnus.el
+
   aspell.conf -> .aspell.conf
   bash_profile -> .bash_profile
   bashrc -> .bashrc
-  emacs.el -> .emacs.el
   gitconfig -> .gitconfig
   gpg.conf -> .gnupg/gpg.conf
   nixpkgs -> .nixpkgs
   screenrc -> .screenrc
-  secrets.el.gpg -> .secrets.el.gpg
   synergy.conf -> .synergy.conf
 
   tmux.conf -> .tmux.conf
