@@ -20,6 +20,7 @@
    gnus-thread-sort-by-score
    gnus-thread-sort-by-most-recent-date)
 
+ ;; see C-u C-x = for information on character under cursor
  gnus-sum-thread-tree-root "╭▷" ; `>`
  gnus-sum-thread-tree-false-root "▷" ; `>`
  ;; gnus-sum-thread-tree-single-indent " " ; ``
