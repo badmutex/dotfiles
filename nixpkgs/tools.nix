@@ -38,6 +38,7 @@ in
   tmux
   terminator
   unzipNLS
+  w3m
   xclip
   zip
 ]
