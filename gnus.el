@@ -39,3 +39,9 @@
                                ((gnus-seconds-year) . "%b %d")
                                (t . "%b %d %Y"))
  gnus-summary-line-format "%U%R%z %-12&user-date; %(%[%-42,42n%]:%) %B %s\n")
+
+
+(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+
+;; FIXME: org-mime not working yet
+(el-get-bundle org-mime)
