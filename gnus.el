@@ -22,6 +22,7 @@
                               gnus-thread-sort-by-subject
                               gnus-thread-sort-by-score
                               gnus-thread-sort-by-most-recent-date)
+ gnus-use-adaptive-scoring '(word line)
 
  ;; see C-u C-x = for information on character under cursor
  gnus-sum-thread-tree-root "╭▷" ; `>`
