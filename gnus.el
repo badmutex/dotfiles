@@ -18,11 +18,10 @@
 (setq mm-text-html-renderer 'gnus-w3m)
 
 (setq
- gnus-thread-sort-functions
- '(gnus-thread-sort-by-number
-   gnus-thread-sort-by-subject
-   gnus-thread-sort-by-score
-   gnus-thread-sort-by-most-recent-date)
+ gnus-thread-sort-functions '(gnus-thread-sort-by-number
+                              gnus-thread-sort-by-subject
+                              gnus-thread-sort-by-score
+                              gnus-thread-sort-by-most-recent-date)
 
  ;; see C-u C-x = for information on character under cursor
  gnus-sum-thread-tree-root "╭▷" ; `>`
