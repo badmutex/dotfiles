@@ -37,6 +37,7 @@ in
   screen
   tmux
   terminator
+  unison
   unzipNLS
   w3m
   xclip

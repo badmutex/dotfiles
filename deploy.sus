@@ -9,6 +9,10 @@ card deploy {
   secrets.el.gpg -> .secrets.el.gpg
   authinfo.el.gpg -> .authinfo.gpg
   gnus.el -> .gnus.el
+  {
+    into .unison
+    unison-gnus.prf -> gnus.prf
+  }
 
   aspell.conf -> .aspell.conf
   bash_profile -> .bash_profile

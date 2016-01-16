@@ -1,0 +1,10 @@
+# see http://www.emacswiki.org/emacs/GnusSync
+
+path = Mail
+path = News
+path = .newsrc.eld
+path = .newsrc
+
+ignore = Name .DS_Store
+
+auto = true
