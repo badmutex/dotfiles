@@ -267,7 +267,15 @@
  '(haskell-process-suggest-remove-import-lines nil)
  '(haskell-stylish-on-save t)
  '(haskell-tags-on-save t)
- '(safe-local-variable-values (quote ((org-confirm-babel-evaluate) (epa-armor . t)))))
+ '(safe-local-variable-values
+   (quote
+    ((project-venv-name . "virtual-clusters-scripts")
+     (enforce-mode)
+     (column-epa-armor . t)
+     (column-enforce-mode)
+     (project-venv-name . "venv")
+     (org-confirm-babel-evaluate)
+     (epa-armor . t)))))
 
 ;; autocomplete
 (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
@@ -390,7 +398,7 @@
 (el-get-bundle helm-descbinds)
 (el-get-bundle helm-projectile)
 (helm-descbinds-mode)
-(helm-projectile-on)
+;; (helm-projectile-on)
 (set-face-attribute 'helm-selection nil
                     :background "black")
 (helm-autoresize-mode t)
@@ -567,6 +575,7 @@
 ;; enable inline graphviz images
 (el-get-bundle graphviz-dot-mode)
 
+(setq org-src-preserve-indentation nil)
 
 ;; enable language execution
 
