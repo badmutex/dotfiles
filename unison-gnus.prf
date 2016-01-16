@@ -1,5 +1,9 @@
 # see http://www.emacswiki.org/emacs/GnusSync
 
+root = ~
+root =  ssh://gambit
+servercmd = .nix-profile/bin/unison
+
 path = Mail
 path = News
 path = .newsrc.eld
