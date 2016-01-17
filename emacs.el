@@ -269,10 +269,10 @@
  '(haskell-tags-on-save t)
  '(safe-local-variable-values
    (quote
-    ((project-venv-name . "virtual-clusters-scripts")
-     (enforce-mode)
+    ((enforce-mode)
      (column-epa-armor . t)
      (column-enforce-mode)
+     (project-venv-name . "sempl")
      (project-venv-name . "venv")
      (org-confirm-babel-evaluate)
      (epa-armor . t)))))
