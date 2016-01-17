@@ -598,6 +598,11 @@
   (load-library "~/.secrets.el.gpg")
   (require 'erc)
 
+  (require 'erc-truncate)
+  (erc-truncate-mode 1)
+  ;; override if needed, default is 30,000
+  ;; (setq erc-max-buffer-size 30000)
+
   (require 'erc-services)
   (erc-services-mode 1)
   (setq erc-prompt-for-nickserv-password nil)
