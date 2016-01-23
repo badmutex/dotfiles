@@ -7,7 +7,7 @@ card deploy {
 
   emacs.el -> .emacs.el
   secrets.el.gpg -> .secrets.el.gpg
-  authinfo.el.gpg -> .authinfo.gpg
+  authinfo.gpg -> .authinfo.gpg
   gnus.el -> .gnus.el
   {
     into .unison
