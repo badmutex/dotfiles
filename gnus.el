@@ -25,7 +25,12 @@
  send-mail-function 'smtpmail-send-it
  smtpmail-smtp-server "smtp.gmail.com")
 
-(setq mm-text-html-renderer 'gnus-w3m)
+(setq mm-text-html-renderer 'shr
+      ;; SHR rendering is pretty terrible with a dark theme
+      ;; https://emacs.stackexchange.com/questions/2955
+      ;; https://lists.gnu.org/archive/html/help-gnu-emacs/2014-07/msg00243.html
+      shr-color-visible-distance-min 50
+      shr-color-visible-luminance-min 70)
 
 (setq
  gnus-thread-sort-functions '(gnus-thread-sort-by-number
