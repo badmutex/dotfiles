@@ -601,7 +601,7 @@
   (require 'erc-truncate)
   (erc-truncate-mode 1)
   ;; override if needed, default is 30,000
-  ;; (setq erc-max-buffer-size 30000)
+  (setq erc-max-buffer-size 5000)
 
   (require 'erc-services)
   (erc-services-mode 1)
