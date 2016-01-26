@@ -39,6 +39,12 @@
                               gnus-thread-sort-by-most-recent-date)
  gnus-use-adaptive-scoring '(word line)
 
+ ;; hide citations by default since I read by thread
+ gnus-treat-hide-citation t
+
+ ;; don't break threads when entering groups with new messages
+ gnus-fetch-old-headers 'some
+
  ;; see C-u C-x = for information on character under cursor
  gnus-sum-thread-tree-root "╭▷" ; `>`
  gnus-sum-thread-tree-false-root "▷" ; `>`
