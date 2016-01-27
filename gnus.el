@@ -38,6 +38,17 @@
                               gnus-thread-sort-by-score
                               gnus-thread-sort-by-most-recent-date)
  gnus-use-adaptive-scoring '(word line)
+ gnus-default-adaptive-score-alist '((gnus-unread-mark)
+                                     (gnus-ticked-mark (from 4))
+                                     (gnus-dormant-mark (from 5))
+                                     (gnus-del-mark (from -4) (subject -1))
+                                     (gnus-read-mark (from 4) (subject 2))
+                                     (gnus-expirable-mark (from -1) (subject -1))
+                                     (gnus-killed-mark (from -1) (subject -3))
+                                     (gnus-kill-file-mark)
+                                     (gnus-ancient-mark)
+                                     (gnus-low-score-mark)
+                                     (gnus-catchup-mark (from -1) (subject -1)))
 
  ;; hide citations by default since I read by thread
  gnus-treat-hide-citation t
