@@ -97,6 +97,10 @@
 
 
 
+;; spellcheck emails
+(add-hook 'message-mode-hook 'flyspell-mode)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org-mime for mime-ifying messages
 ;;
