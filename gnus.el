@@ -27,6 +27,26 @@
 
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; initial attempt add work address.
+;;
+;; Doesn't quite support sending emails as the recipient (eg if
+;; received @iu.edu then send from @iu.edu)
+;;
+
+;; (setq gnus-secondary-select-methods '((nnimap "iu"
+;;                                               (nnimap-address "imap.exchange.iu.edu")
+;;                                               (nnimap-server-port "imaps")
+;;                                               (nnimap-stream ssl))))
+
+;; gnus-agent nil
+
+;; user-mail-address "badi@iu.edu"
+;; smtpmail-smtp-service 587
+;; send-mail-function 'smtpmail-send-it
+;; smtpmail-smtp-user "badi"
+;; smtpmail-smtp-server "mail-relay.iu.edu")
+
 
 (setq mm-text-html-renderer 'shr
       ;; SHR rendering is pretty terrible with a dark theme
