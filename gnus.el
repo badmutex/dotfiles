@@ -77,7 +77,11 @@
 
 
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; org-mime for mime-ifying messages
+;;
+;; use org-mime that comes with org-mode
+;;
 ;; make sure that org-mime from elpa is not present, as it is an old
 ;; version that conflicts with one provided in org-mode/contrib/lisp.
 ;;
