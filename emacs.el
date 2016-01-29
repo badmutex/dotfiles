@@ -556,6 +556,30 @@
 ;; org mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Track the current stable version. Copied. directly from el-get's
+;; org-mode.rcp with the addition of the :checkout parameter
+(el-get-bundle (:name org-mode
+                      :website "http://orgmode.org/"
+                      :type git
+                      :url "git://orgmode.org/org-mode.git"
+                      :checkout "maint"
+                      :info "doc"
+                      :build/berkeley-unix `,(mapcar
+                                              (lambda (target)
+                                                (list "gmake"
+                                                      target
+                                                      (concat  "EMACS=" (shell-quote-argument el-get-emacs))))
+                                              '("oldorg"))
+                      :build `,((mapcar  )
+                                (lambda (target)
+                                  (list "make"
+                                        target
+                                        (concat "EMACS=" (shell-quote-argument el-get-emacs))))
+                                '("oldorg"))
+                      :load-path ("." "contrib/lisp" "lisp")
+                      :load ("lisp/org-loaddefs.el")))
+
+
 ;; automatically change entry to DONE when all children are DONE
 (defun my/org/summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
