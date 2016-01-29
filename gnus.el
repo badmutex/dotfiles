@@ -99,3 +99,26 @@
 ;; gnus message buffer
 (add-hook 'message-mode-hook 'turn-on-orgstruct++)
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; google-contacts for looking email address from google
+;;
+;; On first invokation, a web browser is opened to authorize the oauth
+;; access to contacts. The credentials are then stored in
+;; ~/.emacs.d/oauth2.plstore using gpg.
+;;
+;; The default encryption scheme is to use symetric encryption.  To
+;; use public-key encryption, set plstore-encrypt-to to the identifier
+;; in your gpg keys of the receiver.
+;;
+;; Do note that this sets it globally. If you do want to use symetric
+;; encryption with plstore, you will need to unset it (or set it to
+;; nil).
+
+(setq plstore-encrypt-to "Badi' Abdul-Wahid")
+
+(el-get-bundle google-contacts)
+(require 'google-contacts-gnus)
+(require 'google-contacts-message)
+
