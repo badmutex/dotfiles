@@ -76,9 +76,22 @@
       gnus-summary-line-format "%U%R%z %-12&user-date; %(%[%-42,42n%]:%) %B %s\n")
 
 
-;; (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
-;; FIXME: org-mime not working yet
-(el-get-bundle org-mime)
 
-(el-get-bundle google-contacts)
+;; make sure that org-mime from elpa is not present, as it is an old
+;; version that conflicts with one provided in org-mode/contrib/lisp.
+;;
+;; M-x package-show-package-list and uninstall it if necessary
+;;
+;; I was getting odd "symbol not found" error until I figured this
+;; out.
+
+
+;; org mime is autoloaded contrib/lisp and doesn't seem to be required
+;; after `el-get-bundle` so we do it manually
+(require 'org-mime)
+
+;; this allows org-mode-based fancy structure editing and tables in a
+;; gnus message buffer
+(add-hook 'message-mode-hook 'turn-on-orgstruct++)
+(add-hook 'message-mode-hook 'turn-on-orgtbl)
