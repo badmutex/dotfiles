@@ -1,51 +1,67 @@
+;; -*- column-enforce-mode: nil -*-
 
-(setq user-mail-address "abdulwahidc@gmail.com"
-      user-full-name "Badi' Abdul-Wahid")
 
-;; (setq gnus-select-method 
-;;       '(nnmaildir "gmail"
-;;                   (directory "~/.maildir/abdulwahidc@gmail.com/")))
+
+(el-get-bundle smtpmail-multi)
+
+(setq
+ user-full-name "Badi' Abdul-Wahid"
+
+ ;;; Use gnus-posting-styles customize responses
+ ;; Note the `header "To" ...` match parameters: This causes the match
+ ;; to be applied on the To header of the original message, allowing
+ ;; the correct From header to be determined in the reply.
+ gnus-posting-styles
+ '((".*"
+    (signature "Badi' Abdul-Wahid"))
+   ((header "To" ".*badi@iu\\.edu.*")
+    (address "badi@iu.edu")
+    (organization "Indiana University / FutureSystems"))
+   ((header "To" ".*abdulwahidc@gmail\\.com")
+    (address "abdulwahidc@gmail.com")))
+
+ smtpmail-multi-accounts
+ '((gmail-email . ("abdulwahidc@gmail.com" "smtp.gmail.com" 25
+                   header ssl nil nil nil))
+   (iu-email . ("badi" "mail-relay.iu.edu" 465
+                header ssl nil nil nil)))
+
+ smtpmail-multi-associations
+ '(("^.*@gmail\\.com.*" gmail-email)
+   ("^.*@iu\\.edu.*" iu-email))
+
+ smtpmail-multi-default-account 'gmail-email
+
+ send-mail-function 'smtpmail-multi-send-it
+ message-send-mail-function 'smtpmail-multi-send-it
+ )
+
 
 (setq gnus-select-method '(nnimap "gmail"
                                   (nnimap-address "imap.gmail.com")
                                   (nnimap-server-port "imaps")
-                                  (nnimap-stream ssl))
-
-      ;; where we store the password
-      ;; nntp-authinfo-file "~/.authinfo.gpg"
-      ;; auth-source-debug t
-
-      ;; agent seems to confuse nnimap
-      gnus-agent nil
-
-      smtpmail-smtp-service 587
-      gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]"
+                                  (nnimap-stream ssl)))
 
 
-      send-mail-function 'smtpmail-send-it
-      smtpmail-smtp-server "smtp.gmail.com")
+(setq gnus-secondary-select-methods '((nnimap "iu"
+                                              (nnimap-address "imap.exchange.iu.edu")
+                                              (nnimap-server-port "imaps")
+                                              (nnimap-stream ssl))))
 
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; initial attempt add work address.
-;;
-;; Doesn't quite support sending emails as the recipient (eg if
-;; received @iu.edu then send from @iu.edu)
-;;
+(setq
+ ;; where we store the password
+ ;; nntp-authinfo-file "~/.authinfo.gpg"
+ ;; auth-source-debug t
 
-;; (setq gnus-secondary-select-methods '((nnimap "iu"
-;;                                               (nnimap-address "imap.exchange.iu.edu")
-;;                                               (nnimap-server-port "imaps")
-;;                                               (nnimap-stream ssl))))
+ ;; agent seems to confuse nnimap
+ gnus-agent nil
+ ;; send-mail-function 'smtpmail-send-it
+ ;; smtpmail-smtp-service 587
+ gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]"
 
-;; gnus-agent nil
-
-;; user-mail-address "badi@iu.edu"
-;; smtpmail-smtp-service 587
-;; send-mail-function 'smtpmail-send-it
-;; smtpmail-smtp-user "badi"
-;; smtpmail-smtp-server "mail-relay.iu.edu")
+ )
 
 
 (setq mm-text-html-renderer 'shr
