@@ -668,3 +668,9 @@
      (project-venv-name . "venv")
      (org-confirm-babel-evaluate)
      (epa-armor . t)))))
+
+
+(global-set-key (kbd "C-S-<right>") #'next-buffer)
+(global-set-key (kbd "C-S-<left>")  #'previous-buffer)
+(global-set-key (kbd "C-M-<right>") #'next-multiframe-window)
+(global-set-key (kbd "C-M-<left>")  #'previous-multiframe-window)
