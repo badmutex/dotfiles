@@ -22,7 +22,7 @@
     (address "abdulwahidc@gmail.com")))
 
  smtpmail-multi-accounts
- '((gmail-email . ("abdulwahidc@gmail.com" "smtp.gmail.com" 25
+ '((gmail-email . ("abdulwahidc@gmail.com" "smtp.gmail.com" 465
                    header ssl nil nil nil))
    (iu-email . ("badi" "mail-relay.iu.edu" 465
                 header ssl nil nil nil)))
