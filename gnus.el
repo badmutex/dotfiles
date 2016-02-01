@@ -63,14 +63,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq
- ;; where we store the password
- ;; nntp-authinfo-file "~/.authinfo.gpg"
  ;; auth-source-debug t
 
  ;; agent seems to confuse nnimap
  gnus-agent nil
- ;; send-mail-function 'smtpmail-send-it
- ;; smtpmail-smtp-service 587
  gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]"
 
  mm-text-html-renderer 'shr
@@ -105,13 +101,13 @@
  gnus-fetch-old-headers 'some
 
  ;; see C-u C-x = for information on character under cursor
- gnus-sum-thread-tree-root "╭▷" ; `>`
- gnus-sum-thread-tree-false-root "▷" ; `>`
  ;; gnus-sum-thread-tree-single-indent " " ; ``
- gnus-sum-thread-tree-vertical "│" ; `| `
- gnus-sum-thread-tree-indent " " ; `-`
+ gnus-sum-thread-tree-indent          " " ; `-`
+ gnus-sum-thread-tree-false-root      "▷" ; `>`
+ gnus-sum-thread-tree-root            "╭▷" ; `>`
+ gnus-sum-thread-tree-vertical        "│" ; `| `
  gnus-sum-thread-tree-leaf-with-other "├► " ;`+->`
- gnus-sum-thread-tree-single-leaf "╰► " ; `\->`
+ gnus-sum-thread-tree-single-leaf     "╰► " ; `\->`
  gnus-user-date-format-alist '(((gnus-seconds-today) . "T   %H:%M")
                                ((+ 86400 (gnus-seconds-today)) . "Y   %H:%M")
                                (604800 . "%a %H:%M")
