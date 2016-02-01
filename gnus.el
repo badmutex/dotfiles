@@ -69,6 +69,9 @@
  gnus-agent nil
  gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]"
 
+ ;; set marker above quotation rather than inline on replies.
+ message-cite-reply-position 'above
+
  mm-text-html-renderer 'shr
  ;; SHR rendering is pretty terrible with a dark theme
  ;; https://emacs.stackexchange.com/questions/2955
