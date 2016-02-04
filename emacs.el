@@ -550,36 +550,39 @@
                       :load ("lisp/org-loaddefs.el")))
 
 
-;; automatically change entry to DONE when all children are DONE
-(defun my/org/summary-todo (n-done n-not-done)
-  "Switch entry to DONE when all subentries are done, to TODO otherwise."
-  (let (org-log-done org-log-states)   ; turn off logging
-    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
-(add-hook 'org-after-todo-statistics-hook 'my/org/summary-todo)
-
-(setq org-hide-leading-stars t)
-
-;; block changes to DONE that have incomplete dependencies
-(setq org-enforce-todo-dependencies t
-      org-enforce-todo-checkbox-dependencies t)
+(load "~/.org.el")
 
 
-;; provide statistics
-(setq org-provide-todo-statistics t
-      org-hierarchical-todo-statistics nil)
+;; ;; automatically change entry to DONE when all children are DONE
+;; (defun my/org/summary-todo (n-done n-not-done)
+;;   "Switch entry to DONE when all subentries are done, to TODO otherwise."
+;;   (let (org-log-done org-log-states)   ; turn off logging
+;;     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+;; (add-hook 'org-after-todo-statistics-hook 'my/org/summary-todo)
 
-;; enable inline graphviz images
-(el-get-bundle graphviz-dot-mode)
+;; (setq org-hide-leading-stars t)
 
-(setq org-src-preserve-indentation nil)
+;; ;; block changes to DONE that have incomplete dependencies
+;; (setq org-enforce-todo-dependencies t
+;;       org-enforce-todo-checkbox-dependencies t)
 
-;; enable language execution
 
-(el-get-bundle htmlize)
-(org-babel-do-load-languages
- 'org-babel-load-languages '((dot . t)
-                             (sh . t)
-                             (python . t)))
+;; ;; provide statistics
+;; (setq org-provide-todo-statistics t
+;;       org-hierarchical-todo-statistics nil)
+
+;; ;; enable inline graphviz images
+;; (el-get-bundle graphviz-dot-mode)
+
+;; (setq org-src-preserve-indentation nil)
+
+;; ;; enable language execution
+
+;; (el-get-bundle htmlize)
+;; (org-babel-do-load-languages
+;;  'org-babel-load-languages '((dot . t)
+;;                              (sh . t)
+;;                              (python . t)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

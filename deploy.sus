@@ -6,6 +6,7 @@ card deploy {
   shell_shortcuts -> .shell_shortcuts
 
   emacs.el -> .emacs.el
+  org.el -> .org.el
   secrets.el.gpg -> .secrets.el.gpg
   authinfo.gpg -> .authinfo.gpg
   gnus.el -> .gnus.el
