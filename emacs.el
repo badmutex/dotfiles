@@ -658,9 +658,8 @@
  '(haskell-tags-on-save t)
  '(safe-local-variable-values
    (quote
-    ((project-venv-name . "virtual-cluster-libs")
-     (project-venv-name . "python-workflow")
-     (project-venv-name . "virtual-clusters-libs")
+    ((project-venv-name . "workflow")
+     (project-venv-name . "virtual-cluster-libs")
      (enforce-mode)
      (column-epa-armor . t)
      (column-enforce-mode)
