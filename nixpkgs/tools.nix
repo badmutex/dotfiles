@@ -25,6 +25,7 @@ in
   gnumake
   gnupg
   gnutls
+  imagemagick
   iotop
   paperkey
   pinentry
