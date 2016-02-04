@@ -673,3 +673,4 @@
 (global-set-key (kbd "C-S-<left>")  #'previous-buffer)
 (global-set-key (kbd "C-M-<right>") #'next-multiframe-window)
 (global-set-key (kbd "C-M-<left>")  #'previous-multiframe-window)
+(put 'narrow-to-region 'disabled nil)
