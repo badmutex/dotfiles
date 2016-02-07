@@ -34,8 +34,22 @@
 ;; agenda
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; everything under ~/org is fair game
-(setq org-agenda-files '("~/org"))
+;; all my .org encrypted files
+(setq org-agenda-files
+      (append
+       (file-expand-wildcards "~/org/*.org")
+
+       ;; add to the top of the .org.gpg, replacing <KEY> with your
+       ;; gpg key name
+       ;;
+       ;; # -*- mode: org; epa-file-encrypt-to: ("<KEY>"); -*-
+       ;; #+ARCHIVE: %s_archive.gpg::
+       ;;
+       ;; this is to ensure that tasks are archived to an encrypted
+       ;; file
+
+       (file-expand-wildcards "~/org/*.org.gpg")))
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
