@@ -45,14 +45,15 @@
 
 (setq
 
- gnus-select-method
- '(nnimap "gmail"
-          (nnimap-address "imap.gmail.com")
-          (nnimap-server-port "imaps")
-          (nnimap-stream ssl))
+ gnus-select-method '(nnnil "")
 
  gnus-secondary-select-methods
- '((nnimap "iu"
+ '((nnimap "gmail"
+           (nnimap-address "imap.gmail.com")
+           (nnimap-server-port "imaps")
+           (nnimap-stream ssl))
+
+   (nnimap "iu"
            (nnimap-address "imap.exchange.iu.edu")
            (nnimap-server-port "imaps")
            (nnimap-stream ssl))))
