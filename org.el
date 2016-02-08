@@ -147,6 +147,24 @@
    ))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; UI
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq
+
+ ;;; provide statistics
+ org-provide-todo-statistics t
+ ;; all children
+ org-hierarchical-todo-statistics nil
+
+ ;;; block changes to DONE that have incomplete dependencies
+ org-enforce-todo-dependencies t
+ org-enforce-todo-checkbox-dependencies t
+
+ ;;; hide leading stars
+ org-hide-leading-stars t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; my functions
