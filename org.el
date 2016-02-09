@@ -14,6 +14,8 @@
                ;; (cons "<f9> <f9>" 'badi/show-org-agenda)
                (cons "<f9> c" 'calendar)
                (cons "<f9> g" 'gnus)
+               (cons "<f9> v" 'visible-mode)
+               (cons "<f9> l" 'org-toggle-link-display)
                ;; (cons "<f9> h" 'badi/hide-other)
                ;; (cons "<f9> n" 'badi/toggle-next-task-display)
                ;; (cons "<f9> I" 'badi/punch-in)
