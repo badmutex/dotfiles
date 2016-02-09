@@ -62,7 +62,7 @@
 
  org-todo-keywords
  '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-   (sequence "WAITING(w@!)" "|" "CANCELLED(c@/!)"
+   (sequence "WAITING(w@!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"
              "PHONE" "MEETING"))
 
  org-todo-keywork-faces
