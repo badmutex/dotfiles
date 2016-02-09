@@ -108,8 +108,17 @@
  ;; full outline paths for targets
  org-refile-use-outline-path t
 
+ ;; targets complete directly with IDO
+ org-outline-path-complete-in-steps nil
+
  ;; allow refile to create parent tasks
  org-refile-allow-creating-parent-nodes 'confirm
+
+ org-completion-use-ido t
+
+ ;; use current window when visiting files and buffers with ido
+ ido-default-file-method 'selected-window
+ ido-default-buffer-method 'selected-window
 
  ;; use current window for indirect buffer
  org-indirect-buffer-display 'current-window
