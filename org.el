@@ -57,9 +57,13 @@
       org-agenda-compact-blocks t
 
       org-agenda-custom-commands
-      '(("N" "Notes" tags "NOTE"
+      '(("n" "Notes" tags "NOTE"
          ((org-agenda-overriding-header "Notes")
           (org-tags-match-list-sublevels t)))
+
+        ("r" "Refile" tags "REFILE"
+         ((org-agenda-overriding-header "Tasks to Refile")
+          (org-tags-match-list-sublevels nil)))
 
         (" " "Agenda"
          ((agenda " " nil)
