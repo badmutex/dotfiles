@@ -126,10 +126,13 @@
 
 (setq
 
+ org-use-tag-inheritance t
+ org-tags-exclude-from-inheritance '("project")
+
  org-todo-keywords
  '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
    (sequence "WAITING(w@!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"
-             "PHONE" "MEETING"))
+             "PHONE(p)" "MEETING(m)"))
 
  org-todo-keywork-faces
  '(("TODO" :foreground "red" :weight bold)
