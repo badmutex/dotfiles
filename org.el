@@ -55,6 +55,7 @@
        (file-expand-wildcards "~/org/*.org.gpg"))
 
       org-agenda-compact-blocks t
+      org-agenda-todo-keyword-format "%-10s"
 
       org-agenda-custom-commands
       '(("n" "Notes" tags "NOTE"
