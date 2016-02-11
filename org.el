@@ -247,15 +247,15 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; my functions
+;; my functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
- (defun badi/narrow-to-org-subtree ()
-   "FIXME: documentation"
-   (widen)
-   (org-narrow-to-subtree)
-   (save-restriction
-     (org-agenda-set-restriction-lock)))
+(defun badi/narrow-to-org-subtree ()
+  "FIXME: documentation"
+  (widen)
+  (org-narrow-to-subtree)
+  (save-restriction
+    (org-agenda-set-restriction-lock)))
 
 (defun badi/org-todo-narrow-subtree (arg)
   "FIXME: documentation"
@@ -443,8 +443,8 @@ Skip project and sub-project tasks and project-related tasks."
                   nil)) ;; archivable
             (or subtree-end (point-max)))
         next-headline))))
-                  
-      
+
+
 (defun badi/is-project-p ()
   "Any task with a todo keyword subtask"
   (message "is-project-p")
