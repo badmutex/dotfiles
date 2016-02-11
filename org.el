@@ -65,6 +65,10 @@
          ((org-agenda-overriding-header "Tasks to Refile")
           (org-tags-match-list-sublevels nil)))
 
+        ("x" "Unscheduled" tags-todo "-someday/TODO"
+         ((org-agenda-overriding-header "Unscheduled tasks")
+          (org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
+
         (" " "Agenda"
          ((agenda " " nil)
           (tags "REFILE"
