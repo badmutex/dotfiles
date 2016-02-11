@@ -135,13 +135,12 @@
  org-tags-exclude-from-inheritance '("project")
 
  org-todo-keywords
- '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-   (sequence "WAITING(w@!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"
+ '((sequence "TODO(t)" "|" "DONE(d!)")
+   (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"
              "PHONE(p)" "MEETING(m)"))
 
  org-todo-keywork-faces
  '(("TODO" :foreground "red" :weight bold)
-   ("NEXT" :foreground "blue" :weight bold)
    ("DONE" :foreground "forest green" :weight bold)
    ("WAITING" :foreground "orange" :weight bold)
    ("HOLD" :foreground "magenta" :weight bold)
@@ -166,7 +165,6 @@
    ("HOLD" ("WAITING") ("HOLD" . t))
    (done ("WAITING") ("HOLD"))
    ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
-   ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
    ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))
 
  org-default-notes-file
@@ -210,7 +208,7 @@
    ;; :clock-in t :clock-resume t)
 
    ("r" "respond" entry (file "")
-    "* NEXT Respond to %:from about [%:subject]\n  SCHEDULED: %t\n  %U\n  %a\n  ")
+    "* TODO [#A] Respond to %:from about [%:subject] :EMAIL:\n  SCHEDULED: %t\n  %U\n  %a\n  ")
    ;; :clock-in t :clock-resume t :immediate-finish t)
 
    ("n" "note" entry (file "")
