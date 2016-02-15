@@ -56,6 +56,8 @@
 
       org-agenda-compact-blocks t
       org-agenda-todo-keyword-format "%-10s"
+      org-agenda-timerange-leaders '("" "(%d/%d): ")
+      org-agenda-scheduled-leaders '("" "Sched.%2dx: ")
 
       org-agenda-custom-commands
       '(("n" "Notes" tags "NOTE"
