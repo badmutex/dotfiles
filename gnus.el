@@ -98,8 +98,8 @@
                                      (gnus-low-score-mark)
                                      (gnus-catchup-mark (from -1) (subject -1)))
 
- ;; hide citations by default since I read by thread
- gnus-treat-hide-citation t
+ ;; don't hide citations
+ gnus-treat-hide-citation nil
 
  ;; don't break threads when entering groups with new messages
  gnus-fetch-old-headers 'some
