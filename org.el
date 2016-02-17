@@ -57,6 +57,10 @@
       ;; support multiple agenda frames
       org-agenda-sticky t
 
+      ;; bring up agenda in full window, restore windows after quiting
+      org-agenda-window-setup 'only-window
+      org-agenda-restore-windows-after-quit t
+
       org-agenda-compact-blocks t
       org-agenda-todo-keyword-format "%-10s"
       org-agenda-timerange-leaders '("" "(%d/%d): ")
