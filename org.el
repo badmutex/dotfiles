@@ -210,28 +210,28 @@
 
  org-capture-templates
  '(("t" "todo" entry (file "")
-    "* TODO %?\n  %U\n  %a\n  ")
-   ;; :clock-in t :clock-resume t)
+    "* TODO %?\n  %U\n  %a\n  "
+    :clock-in t :clock-resume t)
 
    ("r" "respond" entry (file "")
-    "* TODO [#A] Respond to %:from about [%:subject] :EMAIL:\n  SCHEDULED: %t\n  %U\n  %a\n  ")
-   ;; :clock-in t :clock-resume t :immediate-finish t)
+    "* TODO [#A] Respond to %:fromname :EMAIL:\n  SCHEDULED: %T\n  %U\n  %a\n  [%:subject]\n  "
+    :clock-in t :clock-resume t :immediate-finish t)
 
    ("n" "note" entry (file "")
-    "* %? :NOTE:\n  %U\n  %a\n  ")
-   ;; :clock-in t :clock-resume t)
+    "* %? :NOTE:\n  %U\n  %a\n  "
+    :clock-in t :clock-resume t)
 
    ("o" "org-protocol" entry (file "")
-    "* TODO Review %c\n  %U\n  ")
-   ;; :immediate-finish t)
+    "* TODO Review %c\n  %U\n  "
+    :immediate-finish t)
 
    ("m" "Meeting" entry (file "")
-    "* MEETING with %? :MEETING: \n  %U\n  ")
-   ;; :clock-in t :clock-resume t)
+    "* MEETING with %? :MEETING: \n  %U\n  "
+    :clock-in t :clock-resume t)
 
    ("p" "Phone call" entry (file "")
-    "* PHONE %? :PHONE:\n  %U\n  ")
-   ;; :clock-in t :clock-resume t)))
+    "* PHONE %? :PHONE:\n  %U\n  "
+    :clock-in t :clock-resume t)
 
    ))
 
