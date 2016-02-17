@@ -306,10 +306,6 @@
 ;; ; compile to PDF
 ;; (setq TeX-PDF-mode t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; nlinum
-(el-get-bundle nlinum)
-(global-nlinum-mode)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; jinja2
 (el-get-bundle jinja2-mode)
 (autoload 'jinja2-mode "jinja2-mode")
@@ -456,6 +452,7 @@
 
 (line-number-mode t)
 (column-number-mode t)
+(global-linum-mode t)
 (show-paren-mode t)
 (global-hl-line-mode t)
 (subword-mode)
