@@ -54,6 +54,9 @@
 
        (file-expand-wildcards "~/org/*.org.gpg"))
 
+      ;; support multiple agenda frames
+      org-agenda-sticky t
+
       org-agenda-compact-blocks t
       org-agenda-todo-keyword-format "%-10s"
       org-agenda-timerange-leaders '("" "(%d/%d): ")
