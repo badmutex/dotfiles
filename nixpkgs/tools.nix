@@ -38,6 +38,7 @@ in
   screen
   tmux
   terminator
+  tree
   unison
   unzipNLS
   w3m
