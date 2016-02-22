@@ -87,8 +87,7 @@
 
  gnus-thread-sort-functions '(gnus-thread-sort-by-number
                               gnus-thread-sort-by-subject
-                              gnus-thread-sort-by-score
-                              gnus-thread-sort-by-most-recent-date)
+                              gnus-thread-sort-by-score)
  gnus-use-adaptive-scoring '(word line)
  gnus-default-adaptive-score-alist '((gnus-unread-mark)
                                      (gnus-ticked-mark (from 4))
