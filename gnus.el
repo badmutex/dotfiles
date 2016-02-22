@@ -105,7 +105,7 @@
  gnus-treat-hide-citation nil
 
  ;; don't break threads when entering groups with new messages
- gnus-fetch-old-headers 'some
+ gnus-fetch-old-headers nil
 
  ;; see C-u C-x = for information on character under cursor
  ;; gnus-sum-thread-tree-single-indent " " ; ``
