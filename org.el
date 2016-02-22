@@ -247,16 +247,14 @@
 (setq
 
  org-clocktable-defaults
- (org-combine-plists
-  org-clocktable-defaults
-  (list
-   :maxlevel 3
-   :scope nil
-   :tstart "<-1w>"
-   :tend "<now>"
-   :step 'day
-   :stepskip0 t
-   :fileskip0 t))
+ (list
+  :maxlevel 3
+  :scope nil
+  :tstart "<-1w>"
+  :tend "<now>"
+  :step 'day
+  :stepskip0 t
+  :fileskip0 t)
 
  ;;; provide statistics
  org-provide-todo-statistics t
