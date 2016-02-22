@@ -478,12 +478,7 @@
 ;; ;; themes
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(el-get-bundle
-  (:name atom-dark-theme
-         :description "Port of the Atom Dark theme from Atom.io"
-         :type github
-         :pkgname "whitlockjc/atom-dark-theme-emacs"
-         :prepare (add-to-list 'custom-theme-load-path default-directory)))
+(el-get-bundle atom-dark-theme)
 
 (require 'atom-dark-theme)
 (load-theme 'atom-dark t)
