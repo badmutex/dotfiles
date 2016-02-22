@@ -56,7 +56,11 @@
    (nnimap "iu"
            (nnimap-address "imap.exchange.iu.edu")
            (nnimap-server-port "imaps")
-           (nnimap-stream ssl))))
+           (nnimap-stream ssl))
+   (nntp "gmane"
+         (nntp-address "news.gmane.org")))
+
+ )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
