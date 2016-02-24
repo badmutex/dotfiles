@@ -99,9 +99,11 @@
 (el-get-bundle dockerfile-mode)
 (el-get-bundle flx)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 80 column rules
 (el-get-bundle column-enforce-mode)
 (add-hook 'prog-mode-hook 'column-enforce-mode)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; aggressive indent
 ;; https://github.com/Malabarba/aggressive-indent-mode
@@ -110,29 +112,31 @@
 (add-to-list 'aggressive-indent-excluded-modes 'nix-mode)
 (add-to-list 'aggressive-indent-excluded-modes 'haskell-interactive-mode-hook)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; encryption
-(require 'epa-file)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; rainbow delimiters
-(el-get-bundle rainbow-delimiters)
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
 (el-get-bundle auto-complete)
 ;; globally enable auto-complete
 ;; (global-auto-complete-mode t)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; color identifiers
 (el-get-bundle color-identifiers-mode)
 ;; globally enable color-identifiers-mode
 (add-hook 'after-init-hook 'global-color-identifiers-mode)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; csv mode
 (el-get-bundle csv-mode)
 (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ebnf configuration
 (el-get-bundle jeramey/ebnf-mode)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; encryption
+(require 'epa-file)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; expand region
 (el-get-bundle expand-region)
@@ -144,29 +148,12 @@
 (add-hook 'emacs-lisp-mode-hook 'projectile-mode)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ido
-;; Interactively do things
-(ido-mode 1)
-(ido-everywhere t)
-(require 'flx-ido) ; flexible string matching
-(flx-ido-mode t)
-;; disable ido faces to see flx highlighting
-(setq ido-enable-flex-matching t
-      ido-use-faces nil
-      ido-everywhere t)
-(flx-ido-mode 1)
-
-;; use ido vertically (easier to read)
-(el-get-bundle ido-vertical-mode)
-(ido-vertical-mode 1)
-(setq ido-vertical-define-keys 'C-n-C-p-up-and-down) ; for arrow keys
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; flycheck
 (el-get-bundle flycheck)
 (el-get-bundle flycheck-color-mode-line)
 (eval-after-load "flycheck"
   '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; git
 
@@ -286,8 +273,33 @@
 (global-hungry-delete-mode)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ido
+;; Interactively do things
+(ido-mode 1)
+(ido-everywhere t)
+(require 'flx-ido) ; flexible string matching
+(flx-ido-mode t)
+;; disable ido faces to see flx highlighting
+(setq ido-enable-flex-matching t
+      ido-use-faces nil
+      ido-everywhere t)
+(flx-ido-mode 1)
+
+;; use ido vertically (easier to read)
+(el-get-bundle ido-vertical-mode)
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-C-p-up-and-down) ; for arrow keys
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; java mode
 (add-hook 'java-mode-hook '(lambda () (100-column-rule)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; jinja2
+(el-get-bundle jinja2-mode)
+(autoload 'jinja2-mode "jinja2-mode")
+(add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Latex
 
@@ -306,10 +318,6 @@
 ;; ; compile to PDF
 ;; (setq TeX-PDF-mode t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; jinja2
-(el-get-bundle jinja2-mode)
-(autoload 'jinja2-mode "jinja2-mode")
-(add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; markdown
 (el-get-bundle markdown-mode)
@@ -333,6 +341,7 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; nix mode
 (el-get-bundle nix-mode)
 (autoload 'nix-mode "nix-mode" "Major mode for editing Nix expressions." t)
@@ -344,6 +353,7 @@
 (el-get-bundle nixos-options)
 (el-get-bundle travisbhartwell/nix-emacs)
 ;;(add-to-list 'company-backends 'company-nixos-options)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; powerline
 
@@ -398,12 +408,17 @@
 (el-get-bundle helm-ag)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; rainbow delimiters
+(el-get-bundle rainbow-delimiters)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
 
 ;; (el-get-bundle smex)
 ;; (smex-initialize)
 
-;(global-set-key (kbd "M-x") 'smex)
+                                        ;(global-set-key (kbd "M-x") 'smex)
 ;; (global-set-key (kbd "C-M-x") 'smex-major-mode-commands)
 
 ;; the old M-x
@@ -422,11 +437,13 @@
 (el-get-bundle yasnippet)
 (yas-global-mode 1)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; yaml-mode
 (el-get-bundle yaml-mode)
 (autoload 'yaml-mode "yaml-mode")
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; user interface settings
@@ -478,12 +495,7 @@
 ;; ;; themes
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(el-get-bundle
-  (:name atom-dark-theme
-         :description "Port of the Atom Dark theme from Atom.io"
-         :type github
-         :pkgname "whitlockjc/atom-dark-theme-emacs"
-         :prepare (add-to-list 'custom-theme-load-path default-directory)))
+(el-get-bundle atom-dark-theme)
 
 (require 'atom-dark-theme)
 (load-theme 'atom-dark t)

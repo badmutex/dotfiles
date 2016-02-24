@@ -56,7 +56,11 @@
    (nnimap "iu"
            (nnimap-address "imap.exchange.iu.edu")
            (nnimap-server-port "imaps")
-           (nnimap-stream ssl))))
+           (nnimap-stream ssl))
+   (nntp "gmane"
+         (nntp-address "news.gmane.org")))
+
+ )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -71,7 +75,7 @@
  gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]"
 
  ;; set marker above quotation rather than inline on replies.
- message-cite-reply-position 'above
+ message-cite-reply-position 'traditional
 
  mm-text-html-renderer 'shr
  ;; SHR rendering is pretty terrible with a dark theme
@@ -83,8 +87,7 @@
 
  gnus-thread-sort-functions '(gnus-thread-sort-by-number
                               gnus-thread-sort-by-subject
-                              gnus-thread-sort-by-score
-                              gnus-thread-sort-by-most-recent-date)
+                              gnus-thread-sort-by-score)
  gnus-use-adaptive-scoring '(word line)
  gnus-default-adaptive-score-alist '((gnus-unread-mark)
                                      (gnus-ticked-mark (from 4))
@@ -98,11 +101,11 @@
                                      (gnus-low-score-mark)
                                      (gnus-catchup-mark (from -1) (subject -1)))
 
- ;; hide citations by default since I read by thread
- gnus-treat-hide-citation t
+ ;; don't hide citations
+ gnus-treat-hide-citation nil
 
  ;; don't break threads when entering groups with new messages
- gnus-fetch-old-headers 'some
+ gnus-fetch-old-headers nil
 
  ;; see C-u C-x = for information on character under cursor
  ;; gnus-sum-thread-tree-single-indent " " ; ``
