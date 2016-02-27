@@ -1,6 +1,6 @@
 { pkgs, stdenv
 , withDropbox ? stdenv.isLinux
-, withMega ? true
+, withMega ? stdenv.isLinux
 , ...}:
 
 with pkgs;

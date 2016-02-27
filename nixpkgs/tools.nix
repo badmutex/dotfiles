@@ -12,11 +12,11 @@
 
 with pkgs;
 let
+  inherit (stdenv) isLinux;
   inherit (stdenv.lib) optional optionals;
   yubikey = [ yubikey-personalization-gui yubikey-personalization ];
 in
 [
-  aria
   aspell
   aspellDicts.en
   autoconf
@@ -26,8 +26,6 @@ in
   gnupg
   gnutls
   imagemagick
-  iotop
-  paperkey
   pinentry
   keychain
   httpie
@@ -45,11 +43,16 @@ in
   xclip
   zip
 ]
+++ optional  isLinux         aria
 ++ optional  withEvince      evince
 ++ optional  withInkscape    inkscape
 ++ optionals withKeepass     [keepassx2 xdotool] # keepass 
+++ optional  isLinux         iotop
 ++ optionals withLatex       [texLiveFull biber texmaker]
 ++ optional  withLibreOffice libreoffice
+++ optional  isLinux         paperkey
 ++ optional  withSynergy     synergy
+++ optional  isLinux         terminator
 ++ optional  withThunderbird thunderbird
+++ optional  isLinux         unison
 ++ optionals withYubikey     yubikey

@@ -10,7 +10,7 @@ let
   nixosConfig  = pkgs.callPackage /etc/nixos/configuration.nix { };
 
   # a bit of a hack
-  isNixOS = envHostname == "";
+  isNixOS = isLinux && envHostname == "";
 
   hostname =
     if isNixOS
@@ -23,7 +23,7 @@ in
 {
   withDropbox     = isHomeMachine;
   withGames       = isHomeMachine;
-  withLatex       = true;
+  withLatex       = isLinux;
   withLibreOffice = false;
   withSpotify     = isLinux;
   withSynergy     = ! isNixOS;
