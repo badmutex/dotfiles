@@ -10,7 +10,7 @@ let
   nixosConfig  = pkgs.callPackage /etc/nixos/configuration.nix { };
 
   # a bit of a hack
-  isNixOS = isLinux && envHostname == "";
+  isNixOS = builtins.pathExists /etc/NIXOS;
 
   hostname =
     if isNixOS
