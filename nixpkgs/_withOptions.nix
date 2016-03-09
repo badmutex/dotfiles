@@ -21,7 +21,7 @@ let
 
 in
 {
-  withDropbox     = isHomeMachine;
+  withDropbox     = isNixOS;
   withGames       = isHomeMachine;
   withLatex       = isLinux;
   withLibreOffice = false;
