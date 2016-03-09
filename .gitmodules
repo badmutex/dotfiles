@@ -4,3 +4,6 @@
 [submodule "tmux-plugin-manager"]
 	path = tmux-plugin-manager
 	url = https://github.com/tmux-plugins/tpm
+[submodule "org"]
+	path = org
+	url = git@bitbucket.org:badi/org.git
