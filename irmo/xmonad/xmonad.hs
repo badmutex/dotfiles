@@ -34,7 +34,7 @@ import qualified Data.Map                     as M
 import qualified XMonad.StackSet              as W
 
 
-myTerminal = "konsole"
+myTerminal = "terminology"
 myModMask = mod4Mask
 
 
