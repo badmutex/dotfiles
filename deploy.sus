@@ -7,6 +7,7 @@ card deploy {
 
   emacs.el -> .emacs.el
   org.el -> .org.el
+  org -> org
   secrets.el.gpg -> .secrets.el.gpg
   authinfo.gpg -> .authinfo.gpg
   gnus.el -> .gnus.el
