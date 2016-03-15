@@ -74,7 +74,6 @@
 
 ;; minor modes
 (eval-after-load "projectile" '(diminish 'projectile-mode))
-(eval-after-load "column-enforce-mode" '(diminish 'column-enforce-mode))
 (eval-after-load "color-identifiers-mode" '(diminish 'color-identifiers-mode))
 (eval-after-load "git-gutter" '(diminish 'git-gutter-mode))
 (eval-after-load "git-gutter+" '(diminish 'git-gutter+-mode))
@@ -101,7 +100,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 80 column rules
-(el-get-bundle column-enforce-mode)
+;; (el-get-bundle column-enforce-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; aggressive indent
@@ -250,8 +249,6 @@
               'auto-complete-mode
               'projectile-mode
               'turn-on-hi2
-              '(lambda ()
-                 (100-column-rule))
               )))
   (dolist (hook hooks)
     (add-hook 'haskell-mode-hook hook)))
@@ -288,10 +285,6 @@
 (el-get-bundle ido-vertical-mode)
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-C-p-up-and-down) ; for arrow keys
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; java mode
-(add-hook 'java-mode-hook '(lambda () (100-column-rule)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; jinja2
@@ -676,7 +669,6 @@
      (project-venv-name . "virtual-cluster-libs")
      (enforce-mode)
      (column-epa-armor . t)
-     (column-enforce-mode)
      (project-venv-name . "sempl")
      (project-venv-name . "venv")
      (org-confirm-babel-evaluate)
