@@ -178,7 +178,7 @@
    ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))
 
  org-default-notes-file
- (concat (file-name-as-directory org-directory)  "refile.org.gpg")
+ (concat (file-name-as-directory org-directory)  "refile.org")
 
  org-refile-file org-default-notes-file
 
