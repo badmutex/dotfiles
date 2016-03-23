@@ -109,14 +109,14 @@ defaults =
   }
 
 main = do
-  -- xmobarProc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
+  xmobarProc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
   xmonad $  defaults {
-    -- logHook = dynamicLogWithPP $ xmobarPP {
-    --   ppOutput = \s -> hPutStrLn xmobarProc s
-    -- , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
-    -- , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-    -- , ppSep = "    "
-    -- }
-    manageHook = manageHook kde4Config <+> manageDocks <+> myManageHook
+    logHook = dynamicLogWithPP $ xmobarPP {
+      ppOutput = \s -> hPutStrLn xmobarProc s
+    , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+    , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
+    , ppSep = "    "
+    }
+  , manageHook = manageHook kde4Config <+> manageDocks <+> myManageHook
   }
 
