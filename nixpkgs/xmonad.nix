@@ -10,4 +10,5 @@ with pkgs;
   kde4.kmix
   haskellPackages.xmobar
   networkmanagerapplet
+  xorg.xev
 ]
