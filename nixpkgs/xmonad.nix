@@ -12,4 +12,5 @@ with pkgs;
   networkmanagerapplet
   xorg.xev
   xorg.xbacklight
+  gnome3.gnome_keyring
 ]

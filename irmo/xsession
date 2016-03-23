@@ -28,6 +28,10 @@ with-dbus \
     --SetDockType true \
     --SetPartialStrut true
 
+eval $(gnome-keyring-daemon -s)
+export SSH_AUTH_SOCK
+
+
 with-dbus dropbox
 with-dbus nm-applet
 with-dbus kmix
