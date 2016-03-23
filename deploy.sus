@@ -42,4 +42,6 @@ card deploy {
     stack-config.yaml -> config.yaml
   }
 
+  xscreensaver -> .xscreensaver
+
 }

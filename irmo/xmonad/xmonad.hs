@@ -7,6 +7,7 @@ import           System.Posix.Process         (getProcessID)
 import           System.Posix.Signals         (sigTERM, signalProcess)
 
 import           Graphics.X11.ExtraTypes.XF86
+import           Graphics.X11.Types
 
 import           XMonad
 
@@ -89,6 +90,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
          , ((modm               , xK_g)    , goToSelected myGSConfig)
          , ((noModMask, xF86XK_MonBrightnessUp)    , spawn "xbacklight +20")
          , ((noModMask, xF86XK_MonBrightnessDown)  , spawn "xbacklight -20")
+         , ((mod1Mask .|. controlMask, xK_l), spawn "xdg-screensaver lock")
          ]
 
 
