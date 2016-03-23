@@ -6,7 +6,7 @@ with pkgs;
   dmenu
   trayer
   rofi
-  xcompmgr
+  compton
   kde4.kmix
   haskellPackages.xmobar
   networkmanagerapplet

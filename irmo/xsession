@@ -11,7 +11,7 @@ with-dbus () {
 
 xsetroot -cursor_name left_ptr &
 
-with-dbus xcompmgr -c -C &
+with-dbus compton -c -C &
 with-dbus feh --bg-scale $HOME/Pictures/background
 
 with-dbus xmobar $HOME/dotfiles/xmonad/xmobar.hs &
