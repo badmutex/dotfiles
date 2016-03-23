@@ -81,8 +81,6 @@ rofi = "rofi -show run -fg '#505050' -bg '#000000' -hlfg '#ffb964' -hlbg '#00000
 myKeys conf@(XConfig {XMonad.modMask = modm}) =
     M.fromList [
            ((modm               , xK_p)    , spawn rofi)
-         , ((modm               , xK_q)    , return ())
-         , ((modm .|. shiftMask , xK_q)    , return ())
          , ((modm               , xK_Right), nextWS)
          , ((modm               , xK_Left) , prevWS)
          , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
