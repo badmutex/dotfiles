@@ -11,4 +11,5 @@ with pkgs;
   haskellPackages.xmobar
   networkmanagerapplet
   xorg.xev
+  xorg.xbacklight
 ]
