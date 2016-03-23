@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+start-if-cmd-exists () {
+    which $1 && $* &
+}
+
+with-dbus () {
+    echo "Running $@" 1>&2
+    start-if-cmd-exists dbus-launch --exit-with-session $*
+}
+
+xsetroot -cursor_name left_ptr &
+
+with-dbus xcompmgr -c -C &
+with-dbus feh --bg-scale $HOME/Pictures/background
+
+with-dbus xmobar $HOME/dotfiles/xmonad/xmobar.hs &
+
+with-dbus \
+    trayer \
+    --edge top \
+    --align center \
+    --expand true \
+    --width 10 --height 15 \
+    --transparent true \
+    --alpha 0 \
+    --tint 0x000000 \
+    --SetDockType true \
+    --SetPartialStrut true
+
+with-dbus dropbox
+with-dbus nm-applet
+with-dbus kmix
+
+exec xmonad

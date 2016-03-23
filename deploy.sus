@@ -43,5 +43,6 @@ card deploy {
   }
 
   xscreensaver -> .xscreensaver
+  xsession -> .xsession
 
 }
