@@ -87,8 +87,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
          , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
          , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
          , ((modm               , xK_g)    , goToSelected myGSConfig)
-         , ((0, xF86XK_MonBrightnessUp)    , spawn "xbacklight +20")
-         , ((0, xF86XK_MonBrightnessDown)  , spawn "xbacklight -20")
+         , ((noModMask, xF86XK_MonBrightnessUp)    , spawn "xbacklight +20")
+         , ((noModMask, xF86XK_MonBrightnessDown)  , spawn "xbacklight -20")
          ]
 
 
