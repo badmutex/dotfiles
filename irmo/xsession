@@ -32,6 +32,7 @@ eval $(gnome-keyring-daemon -s)
 export SSH_AUTH_SOCK
 
 with-dbus xscreensaver -no-splash &
+with-dbus parcellite &
 with-dbus dropbox
 with-dbus nm-applet
 with-dbus pa-applet

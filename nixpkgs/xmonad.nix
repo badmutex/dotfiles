@@ -11,6 +11,7 @@ with pkgs;
   haskellPackages.xmobar
   networkmanagerapplet
   pa_applet
+  parcellite
   xorg.xev
   xorg.xbacklight
   gnome3.gnome_keyring
