@@ -10,6 +10,7 @@ with pkgs;
   kde4.kmix
   haskellPackages.xmobar
   networkmanagerapplet
+  pa_applet
   xorg.xev
   xorg.xbacklight
   gnome3.gnome_keyring

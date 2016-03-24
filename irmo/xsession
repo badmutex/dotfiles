@@ -34,6 +34,6 @@ export SSH_AUTH_SOCK
 
 with-dbus dropbox
 with-dbus nm-applet
-with-dbus kmix
+with-dbus pa-applet
 
 exec xmonad

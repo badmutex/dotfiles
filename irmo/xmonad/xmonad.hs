@@ -88,6 +88,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
          , ((modm               , xK_g)    , goToSelected myGSConfig)
          , ((noModMask, xF86XK_MonBrightnessUp)    , spawn "xbacklight +20")
          , ((noModMask, xF86XK_MonBrightnessDown)  , spawn "xbacklight -20")
+         , ((noModMask, xF86XK_AudioRaiseVolume) , spawn "amixer set 'Master' 1%+")
+         , ((noModMask, xF86XK_AudioLowerVolume) , spawn "amixer set 'Master' 1%-")
+         , ((noModMask, xF86XK_AudioMute) , spawn "amixer set 'Master' toggle")
          , ((mod1Mask .|. controlMask, xK_l), spawn "xdg-screensaver lock")
          ]
 
