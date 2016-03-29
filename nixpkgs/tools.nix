@@ -36,7 +36,7 @@ in
   screen
   tmux
   terminator
-  e19.terminology
+  enlightenment.terminology
   tree
   unison
   unzipNLS
