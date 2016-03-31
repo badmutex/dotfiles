@@ -44,5 +44,6 @@ card deploy {
 
   xscreensaver -> .xscreensaver
   xsession -> .xsession
+  xsession-main -> .xsession-main
 
 }
