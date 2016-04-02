@@ -20,7 +20,7 @@ trayer \
     --tint 0x000000 \
     --SetDockType true \
     --SetPartialStrut true \
-    &
+&
 
 xscreensaver -no-splash &
 parcellite &
