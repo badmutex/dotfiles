@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+IMG=$HOME/.background.jpg
+test -f $IMG && feh --bg-scale $IMG
