@@ -114,7 +114,7 @@ defaults =
   }
 
 main = do
-  xmobarProc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
+  xmobarProc <- spawnPipe "xmobar ~/.xmobar.hs"
   xmonad $  defaults {
     logHook = dynamicLogWithPP $ xmobarPP {
       ppOutput = \s -> hPutStrLn xmobarProc s

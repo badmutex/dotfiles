@@ -31,6 +31,7 @@ card deploy {
     tmux-plugin-manager -> tpm
   }
 
+  xmobar.hs -> .xmobar.hs
   xmonad -> .xmonad
 
   zshrc -> .zshrc

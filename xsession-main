@@ -8,8 +8,6 @@ export $(gnome-keyring-daemon --replace)
 compton -c -C &
 ~/.xsession-background
 
-xmobar $HOME/dotfiles/xmonad/xmobar.hs &
-
 trayer \
     --edge top \
     --align center \
