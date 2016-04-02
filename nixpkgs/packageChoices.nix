@@ -6,27 +6,26 @@ let
   inherit (builtins) elem;
   inherit (pkgs.stdenv) isLinux;
 
-  envHostname = builtins.getEnv "HOSTNAME";
-  nixosConfig  = pkgs.callPackage /etc/nixos/configuration.nix { };
-
-  # a bit of a hack
   isNixOS = builtins.pathExists /etc/NIXOS;
-
-  hostname =
-    if isNixOS
-    then nixosConfig.networking.hostName
-    else envHostname;
+  hostname = builtins.getEnv "HOSTNAME";
 
   isHomeMachine = elem hostname ["fangorn"];
 
 in
 {
+  withChrome      = isLinux;
+  withChromium    = isLinux;
   withDropbox     = isNixOS;
+  withEvince      = isLinux;
   withGames       = isHomeMachine;
+  withInkscape    = isLinux;
   withLatex       = isLinux;
   withLibreOffice = false;
+  withMega        = false;
   withSpotify     = isLinux;
   withSynergy     = ! isNixOS;
+  withWesnoth     = isHomeMachine;
   withX11         = isNixOS;
   withXmonad      = isNixOS;
+  withYubikey     = isLinux;
 }

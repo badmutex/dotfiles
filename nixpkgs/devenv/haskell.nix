@@ -21,4 +21,4 @@ let
 
 in
 
-[ hs ]
+hs

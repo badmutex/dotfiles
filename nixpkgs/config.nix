@@ -1,3 +1,3 @@
 import ./settings.nix
 //
-{  packageOverrides = import ./overrides.nix; }
+{  packageOverrides = import ./packages.nix; }
