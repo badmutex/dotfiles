@@ -26,6 +26,6 @@ xscreensaver -no-splash &
 parcellite &
 nm-applet &
 pa-applet &
-# dropbox
+dropbox &
 
 exec xmonad
