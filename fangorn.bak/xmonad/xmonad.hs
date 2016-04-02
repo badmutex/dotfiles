@@ -7,7 +7,6 @@ import           System.Posix.Process         (getProcessID)
 import           System.Posix.Signals         (sigTERM, signalProcess)
 
 import           Graphics.X11.ExtraTypes.XF86
-import           Graphics.X11.Types
 
 import           XMonad
 
@@ -29,13 +28,11 @@ import           XMonad.Layout.ThreeColumns
 import           XMonad.Util.EZConfig         (additionalKeys)
 import           XMonad.Util.Run              (spawnPipe)
 
-import           XMonad.Config.Kde
-
 import qualified Data.Map                     as M
 import qualified XMonad.StackSet              as W
 
 
-myTerminal = "terminology"
+myTerminal = "xfce4-terminal"
 myModMask = mod4Mask
 
 
@@ -67,32 +64,31 @@ myLayout = avoidStruts (
 
 myManageHook = composeAll [
                  className =? "kmix" --> doFloat
+               , className =? "Kmix" --> doFloat
                , className =? "plasma-desktop" --> doFloat
                , className =? "Plasma-desktop" --> doFloat
-               , className =? "plasmashell" --> doFloat
+               , className =? ".xfce4-panel-wrapped" --> doFloat
+               , className =? ".xfce4-panel-wrapped" --> doFloat
                ]
 
 myGSConfig = defaultGSConfig
 
-
-rofi = "rofi -show run -fg '#505050' -bg '#000000' -hlfg '#ffb964' -hlbg '#000000' -hide-scrollbar"
-
-
 myKeys conf@(XConfig {XMonad.modMask = modm}) =
     M.fromList [
-           ((modm               , xK_p)    , spawn rofi)
+           ((modm               , xK_q)    , return ())
+         , ((modm .|. shiftMask , xK_q)    , return ())
          , ((modm               , xK_Right), nextWS)
          , ((modm               , xK_Left) , prevWS)
          , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
          , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
          , ((modm               , xK_g)    , goToSelected myGSConfig)
-         , ((noModMask, xF86XK_MonBrightnessUp)    , spawn "xbacklight +20")
-         , ((noModMask, xF86XK_MonBrightnessDown)  , spawn "xbacklight -20")
-         , ((noModMask, xF86XK_AudioRaiseVolume) , spawn "amixer set 'Master' 1%+")
-         , ((noModMask, xF86XK_AudioLowerVolume) , spawn "amixer set 'Master' 1%-")
-         , ((noModMask, xF86XK_AudioMute) , spawn "amixer set 'Master' toggle")
-         , ((mod1Mask .|. controlMask, xK_l), spawn "xdg-screensaver lock")
+         -- , ((0,   xF86XK_AudioLowerVolume) , lowerVol 3 >> return ())
+         -- , ((0,   xF86XK_AudioRaiseVolume) , raiseVol 3 >> return ())
+         -- , ((0,   xF86XK_AudioMute       ) , toggleMute >> return ())
+         , ((modm .|. shiftMask , xK_b)    , io (randomBackground>>return ()))
          ]
+    -- where lowerVol = lowerVolumeChannels ["Master"]
+    --       raiseVol = raiseVolumeChannels ["Master"]
 
 
 defaults =
@@ -113,15 +109,34 @@ defaults =
 
   }
 
+randomBackground = spawnPID "feh --no-fehbg --randomize --bg-scale $HOME/Backgrounds"
+
+-- | convert minutes into microseconds
+minutes :: Int -> Int
+minutes m = m * 10^6 * 60
+
+periodicRandomBackground interval =
+    forkIO $ forever $ do
+      randomBackground
+      threadDelay interval
+
+
 main = do
-  xmobarProc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
+  -- startCompositing
+  -- bgPID <- periodicRandomBackground (minutes 30)
+  spawn "xfdesktop --quit"
+  periodicRandomBackground (minutes 30)
+  xmobarProcLeft <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobar.hs"
+  xmobarProcRight <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobar.hs"
   xmonad $  defaults {
     logHook = dynamicLogWithPP $ xmobarPP {
-      ppOutput = \s -> hPutStrLn xmobarProc s
+      ppOutput = \s -> do
+                   hPutStrLn xmobarProcLeft  s
+                   hPutStrLn xmobarProcRight s
     , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
     , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
     , ppSep = "    "
     }
-  , manageHook = manageHook kde4Config <+> manageDocks <+> myManageHook
+  , manageHook = manageDocks <+> myManageHook
   }
 

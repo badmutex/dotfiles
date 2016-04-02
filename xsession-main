@@ -3,11 +3,10 @@
 xsetroot -cursor_name left_ptr &
 
 gnome-keyring-daemon -d
+export $(gnome-keyring-daemon --replace)
 
 compton -c -C &
-feh --bg-scale $HOME/Pictures/background
-
-xmobar $HOME/dotfiles/xmonad/xmobar.hs &
+~/.xsession-background
 
 trayer \
     --edge top \
@@ -19,12 +18,12 @@ trayer \
     --tint 0x000000 \
     --SetDockType true \
     --SetPartialStrut true \
-    &
+&
 
 xscreensaver -no-splash &
 parcellite &
 nm-applet &
 pa-applet &
-# dropbox
+dropbox &
 
 exec xmonad

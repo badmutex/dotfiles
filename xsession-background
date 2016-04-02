@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+BGPATH="$HOME/Backgrounds"
+test -d "$BGPATH" && feh --no-fehbg --randomize --bg-scale "$BGPATH"
