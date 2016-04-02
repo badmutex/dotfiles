@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-IMG=$HOME/.background.jpg
-test -f $IMG && feh --bg-scale $IMG
+BGPATH="$HOME/Backgrounds"
+test -d "$BGPATH" && feh --no-fehbg --randomize --bg-scale "$BGPATH"
