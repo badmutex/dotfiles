@@ -2,8 +2,8 @@
 
 xsetroot -cursor_name left_ptr &
 
-gnome-keyring-daemon -d
-export $(gnome-keyring-daemon --replace)
+# gnome-keyring-daemon -d
+# export $(gnome-keyring-daemon --replace)
 
 compton -c -C &
 ~/.xsession-background
