@@ -56,6 +56,7 @@ let
     ++ optional  withInkscape    inkscape
     ++ optionals withLatex       [texLiveFull biber texmaker]
     ++ optional  withLibreOffice libreoffice
+    ++ optional  withPopfile     popfile
 
     ### security
     ++ [ gnupg gnutls pinentry keychain keepassx2 ]

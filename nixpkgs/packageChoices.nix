@@ -22,6 +22,7 @@ in
   withLatex       = isLinux;
   withLibreOffice = false;
   withMega        = false;
+  withPopfile     = isHomeMachine;
   withSpotify     = isLinux;
   withSynergy     = ! isNixOS;
   withWesnoth     = isHomeMachine;
