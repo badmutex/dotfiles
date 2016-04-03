@@ -43,7 +43,7 @@ let
     ++ optional withWesnoth wesnoth
 
     ### monitoring
-    ++ optional  isLinux         iotop
+    ++ optionals isLinux [ iotop htop nethogs ]
 
     ### media
     ++ optional withSpotify spotify
