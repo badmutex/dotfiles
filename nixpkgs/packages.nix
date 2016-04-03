@@ -78,6 +78,7 @@ let
 
     ### web / network
     ++ [ httpie jq nmap w3m ]
+    ++ optional withChrome   google-chrome
     ++ optional withChromium chromium
 
     ### X11, window management
