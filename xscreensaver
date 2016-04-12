@@ -1,11 +1,11 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.34 for badi on Wed Mar 23 17:17:32 2016.
+# Written by xscreensaver-demo 5.34 for badi on Tue Apr 12 17:11:21 2016.
 # http://www.jwz.org/xscreensaver/
 
-timeout:	0:15:00
+timeout:	0:05:00
 cycle:		0:02:00
 lock:		True
-lockTimeout:	0:05:00
+lockTimeout:	0:01:00
 passwdTimeout:	0:00:30
 visualID:	default
 installColormap:    True
@@ -24,11 +24,11 @@ fadeTicks:	20
 captureStderr:	True
 ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
-dpmsEnabled:	False
-dpmsQuickOff:	False
-dpmsStandby:	2:00:00
-dpmsSuspend:	2:00:00
-dpmsOff:	4:00:00
+dpmsEnabled:	True
+dpmsQuickOff:	True
+dpmsStandby:	0:30:00
+dpmsSuspend:	1:00:00
+dpmsOff:	1:30:00
 grabDesktopImages:  True
 grabVideoFrames:    False
 chooseRandomImages: False
