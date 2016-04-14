@@ -23,7 +23,7 @@ in
   withLibreOffice = false;
   withMega        = false;
   withPopfile     = isHomeMachine;
-  withSpotify     = isLinux;
+  withSpotify     = false;
   withSynergy     = ! isNixOS;
   withWesnoth     = isHomeMachine;
   withX11         = isNixOS;
