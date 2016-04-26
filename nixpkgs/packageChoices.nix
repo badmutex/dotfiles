@@ -10,6 +10,7 @@ let
   hostname = builtins.getEnv "HOSTNAME";
 
   isHomeMachine = elem hostname ["fangorn"];
+  isWorkMachine = elem hostname ["gambit"];
 
 in
 {
@@ -20,7 +21,7 @@ in
   withGames       = isHomeMachine;
   withInkscape    = isLinux;
   withLatex       = isLinux;
-  withLibreOffice = false;
+  withLibreOffice = isWorkMachine;
   withMega        = false;
   withPopfile     = isHomeMachine;
   withSpotify     = false;
