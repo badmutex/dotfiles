@@ -231,7 +231,21 @@
 ;; ghci
 (setq haskell-process-type 'stack-ghci
       haskell-process-path-ghci "stack"
-      haskell-process-args-ghci "ghci")
+      haskell-process-args-ghci "ghci"
+
+      haskell-process-auto-import-loaded-modules t
+      haskell-process-log t
+      haskell-process-suggest-add-package nil
+      haskell-process-suggest-haskell-docs-imports nil
+      haskell-process-suggest-hayoo-imports nil
+      haskell-process-suggest-hoogle-imports nil
+      haskell-process-suggest-language-pragmas nil
+      haskell-process-suggest-no-warn-orphans nil
+      haskell-process-suggest-overloaded-strings nil
+      haskell-process-suggest-remove-import-lines nil
+      haskell-stylish-on-save t
+      haskell-tags-on-save t)
+
 
 ;; autocomplete
 (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
@@ -650,18 +664,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(haskell-process-auto-import-loaded-modules t)
- '(haskell-process-log t)
- '(haskell-process-suggest-add-package nil)
- '(haskell-process-suggest-haskell-docs-imports nil)
- '(haskell-process-suggest-hayoo-imports nil)
- '(haskell-process-suggest-hoogle-imports nil)
- '(haskell-process-suggest-language-pragmas nil)
- '(haskell-process-suggest-no-warn-orphans nil)
- '(haskell-process-suggest-overloaded-strings nil)
- '(haskell-process-suggest-remove-import-lines nil)
- '(haskell-stylish-on-save t)
- '(haskell-tags-on-save t)
  '(safe-local-variable-values
    (quote
     ((project-venv-name . "workflow")
