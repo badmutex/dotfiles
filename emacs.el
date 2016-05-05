@@ -266,6 +266,7 @@
               'auto-complete-mode
               'projectile-mode
               'turn-on-hi2
+              'turn-on-haskell-unicode-input-method
               'my/enable-tags-revert-without-query
               )))
   (dolist (hook hooks)
