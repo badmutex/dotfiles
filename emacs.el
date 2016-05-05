@@ -259,6 +259,7 @@
 ;; haskell-mode-hooks
 (let ((hooks (list
               'haskell-doc-mode
+              'haskell-auto-insert-module-template
               'interactive-haskell-mode
               'haskell-decl-scan-mode
               'flycheck-mode
