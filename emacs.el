@@ -153,6 +153,10 @@
   '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; flyspell
+(el-get-bundle flyspell)
+(add-hook 'prog-mode-hook #'flyspell-prog-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; git
 
 (el-get-bundle magit)
