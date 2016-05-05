@@ -252,6 +252,10 @@
 (add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
 (add-to-list 'ac-modes 'haskell-interactive-mode)
 
+;; my hooks
+(defun my/enable-tags-revert-without-query ()
+  (setq tags-revert-without-query t))
+
 ;; haskell-mode-hooks
 (let ((hooks (list
               'haskell-doc-mode
@@ -262,6 +266,7 @@
               'auto-complete-mode
               'projectile-mode
               'turn-on-hi2
+              'my/enable-tags-revert-without-query
               )))
   (dolist (hook hooks)
     (add-hook 'haskell-mode-hook hook)))
