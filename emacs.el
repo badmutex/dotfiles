@@ -208,10 +208,10 @@
 (el-get-bundle haskell-mode)
 (el-get-bundle ac-haskell-process)
 (el-get-bundle flycheck-haskell)
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
+;; (eval-after-load 'flycheck
+;;   '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
 
-(el-get-bundle flycheck-hdevtools)
+;; (el-get-bundle flycheck-hdevtools)
 (el-get-bundle hi2)
 (require 'haskell-mode)
 (require 'haskell-interactive-mode)
@@ -222,7 +222,13 @@
 (setq haskell-process-show-debug-tips nil)
 
 ;; keybindings
-(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile)
+(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile)
+(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
+(define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
+(define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
+(define-key haskell-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
+(define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-bring)
 (define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc)
 (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-left)
 (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-right)
@@ -232,6 +238,8 @@
 (setq haskell-process-type 'stack-ghci
       haskell-process-path-ghci "stack"
       haskell-process-args-ghci "ghci"
+      haskell-compile-cabal-build-command "stack build"
+      haskell-compile-cabal-build-alt-command "stack build --force-dirty --reconfigure"
 
       haskell-process-auto-import-loaded-modules t
       haskell-process-log t
@@ -253,17 +261,15 @@
 (add-to-list 'ac-modes 'haskell-interactive-mode)
 
 ;; my hooks
-(defun my/enable-tags-revert-without-query ()
+(defun my/turn-on-tags-revert-without-query ()
   (setq tags-revert-without-query t))
 
 ;; haskell-mode-hooks
 (let ((hooks (list
               'haskell-doc-mode
-              'haskell-auto-insert-module-template
               'interactive-haskell-mode
               'haskell-decl-scan-mode
-              'flycheck-mode
-              'flycheck-haskell-configure
+              ;; 'flycheck-mode
               'auto-complete-mode
               'projectile-mode
               'turn-on-hi2
