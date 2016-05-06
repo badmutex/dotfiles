@@ -3,7 +3,7 @@
 with pkgs.haskell.packages;
 
 let
-  hs = ghc7102.ghcWithHoogle (
+  hs = ghc7103.ghcWithHoogle (
     hspkgs: with hspkgs; [
       cabal-install
       stack
