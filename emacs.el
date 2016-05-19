@@ -153,6 +153,10 @@
   '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; flyspell
+(el-get-bundle flyspell)
+(add-hook 'prog-mode-hook #'flyspell-prog-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; git
 
 (el-get-bundle magit)
@@ -162,8 +166,8 @@
 (when (window-system)
   (when (require 'git-gutter-fringe nil t)
     (global-git-gutter-mode 1)
-    (setq-default indicate-buffer-boundaries 'left
-                  (setq-default indicate-empty-lines 1))))
+    (setq-default indicate-buffer-boundaries 'left)
+    (setq-default indicate-empty-lines 1)))
 
 (when (not (window-system))
   (require 'git-gutter-fringe+)
@@ -208,10 +212,10 @@
 (el-get-bundle haskell-mode)
 (el-get-bundle ac-haskell-process)
 (el-get-bundle flycheck-haskell)
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
+;; (eval-after-load 'flycheck
+;;   '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
 
-(el-get-bundle flycheck-hdevtools)
+;; (el-get-bundle flycheck-hdevtools)
 (el-get-bundle hi2)
 (require 'haskell-mode)
 (require 'haskell-interactive-mode)
@@ -222,33 +226,59 @@
 (setq haskell-process-show-debug-tips nil)
 
 ;; keybindings
-(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile)
+(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile)
+(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
+(define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
+(define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
+(define-key haskell-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
+(define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-bring)
 (define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc)
 (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-left)
 (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-right)
-(define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
-(define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
+(define-key haskell-mode-map (kbd "M-.") 'haskell-mode-jump-to-def-or-tag)
 
 ;; ghci
 (setq haskell-process-type 'stack-ghci
       haskell-process-path-ghci "stack"
-      haskell-process-args-ghci "ghci")
+      haskell-process-args-ghci "ghci"
+      haskell-compile-cabal-build-command "stack build"
+      haskell-compile-cabal-build-alt-command "stack build --force-dirty --reconfigure"
+
+      haskell-process-auto-import-loaded-modules t
+      haskell-process-log t
+      haskell-process-suggest-add-package nil
+      haskell-process-suggest-haskell-docs-imports nil
+      haskell-process-suggest-hayoo-imports nil
+      haskell-process-suggest-hoogle-imports nil
+      haskell-process-suggest-language-pragmas nil
+      haskell-process-suggest-no-warn-orphans nil
+      haskell-process-suggest-overloaded-strings nil
+      haskell-process-suggest-remove-import-lines nil
+      haskell-stylish-on-save t
+      haskell-tags-on-save t)
+
 
 ;; autocomplete
 (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
 (add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
 (add-to-list 'ac-modes 'haskell-interactive-mode)
 
+;; my hooks
+(defun my/turn-on-tags-revert-without-query ()
+  (setq tags-revert-without-query t))
+
 ;; haskell-mode-hooks
 (let ((hooks (list
               'haskell-doc-mode
               'interactive-haskell-mode
               'haskell-decl-scan-mode
-              'flycheck-mode
-              'flycheck-haskell-configure
+              ;; 'flycheck-mode
               'auto-complete-mode
               'projectile-mode
               'turn-on-hi2
+              'turn-on-haskell-unicode-input-method
+              'my/enable-tags-revert-without-query
               )))
   (dolist (hook hooks)
     (add-hook 'haskell-mode-hook hook)))
@@ -651,18 +681,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(haskell-process-auto-import-loaded-modules t)
- '(haskell-process-log t)
- '(haskell-process-suggest-add-package nil)
- '(haskell-process-suggest-haskell-docs-imports nil)
- '(haskell-process-suggest-hayoo-imports nil)
- '(haskell-process-suggest-hoogle-imports nil)
- '(haskell-process-suggest-language-pragmas nil)
- '(haskell-process-suggest-no-warn-orphans nil)
- '(haskell-process-suggest-overloaded-strings nil)
- '(haskell-process-suggest-remove-import-lines nil)
- '(haskell-stylish-on-save t)
- '(haskell-tags-on-save t)
  '(safe-local-variable-values
    (quote
     ((project-venv-name . "workflow")
