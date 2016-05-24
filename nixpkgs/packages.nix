@@ -13,6 +13,7 @@ let
 
   args = {inherit pkgs config stdenv;} // myOptions;
 
+  gitchangelog = callPackage ./apps/gitchangelog.nix { inherit (pkgs.python27Packages) d2to1; };
   devPython27 = callPackage ./devenv/python27.nix {};
   devHaskell  = with args; callPackage ./devenv/haskell.nix {};
 
@@ -33,7 +34,9 @@ let
     ### development / git tools
     ++ (with gitAndTools;
        [ git hub git-extras git-remote-hg
-         git2cl gitFastExport gitflow topGit ])
+         git2cl gitFastExport gitflow topGit
+         gitchangelog
+       ])
 
     # ### development / python
     ++ [ devPython27 ]
