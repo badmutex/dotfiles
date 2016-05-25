@@ -294,6 +294,10 @@
 (add-hook 'haskell-mode-hook 'smartscan-mode)
 
 
+;; support hamlet for yesod developmet
+(el-get-bundle hamlet-mode)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; hungry delete
 (el-get-bundle hungry-delete)
 (global-hungry-delete-mode)
