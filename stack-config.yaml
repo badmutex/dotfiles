@@ -6,4 +6,4 @@ templates:
     github-username: badi
 nix:
   enable: true
-  packages: [pcre, zlib]
+  packages: [pcre, zlib, pkgconfig]
