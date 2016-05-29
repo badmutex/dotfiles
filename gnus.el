@@ -27,6 +27,11 @@
    (iu-email . ("badi" "mail-relay.iu.edu" 465
                 header ssl nil nil nil)))
 
+ ;; don't include myself in wide replies
+ message-dont-reply-to-names
+ '("abdulwahidc.*@.*"
+   "badi@iu.edu")
+
  smtpmail-multi-associations
  '(("^.*@gmail\\.com.*" gmail-email)
    ("^.*@iu\\.edu.*" iu-email))
@@ -151,6 +156,7 @@
 ;; gnus message buffer
 (add-hook 'message-mode-hook 'turn-on-orgstruct++)
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
+(add-hook 'message-mode-hook (lambda () (auto-fill-mode -1)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

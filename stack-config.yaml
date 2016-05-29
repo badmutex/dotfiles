@@ -4,3 +4,6 @@ templates:
     author-name: Badi Abdul-Wahid
     copyright: Badi Abdul-Wahid
     github-username: badi
+nix:
+  enable: true
+  shell-file: shell.nix
