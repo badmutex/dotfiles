@@ -42,6 +42,10 @@ let
     ++ [ devPython27 ]
     ++ [ devHaskell  ]
 
+    # ### finance
+    ++ (with haskellPackages;
+       [ hledger hledger-ui hledger-web hledger-diff ])
+
     ### games
     ++ optional withWesnoth wesnoth
 
