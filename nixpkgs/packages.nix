@@ -54,6 +54,7 @@ let
 
     ### media
     ++ optional withSpotify spotify
+    ++ [vlc smplayer mplayer]
 
     ### nix
     ++ [ nix-repl ]
