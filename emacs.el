@@ -345,6 +345,14 @@
 ;; (setq TeX-PDF-mode t)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ledger
+
+(el-get-bundle ledger-mode)
+(add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+(setq
+ ledger-binary-path "hledger")
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; markdown
 (el-get-bundle markdown-mode)
 (autoload 'markdown-mode "markdown-mode")
