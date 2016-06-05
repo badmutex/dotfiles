@@ -634,10 +634,16 @@
 ;; ;; enable language execution
 
 ;; (el-get-bundle htmlize)
-;; (org-babel-do-load-languages
-;;  'org-babel-load-languages '((dot . t)
-;;                              (sh . t)
-;;                              (python . t)))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((dot . t)
+                             (shell . t)
+                             (python . t)))
+
+;; evaluate src blocks without confirmation.
+; NOTE: this is potentially dangerous, but all the org files I deal
+; with are my own
+(setq org-confirm-babel-evaluate nil)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
