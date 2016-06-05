@@ -132,6 +132,9 @@
 (el-get-bundle jeramey/ebnf-mode)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; elm
+(el-get-bundle elm-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; encryption
 (require 'epa-file)
 
