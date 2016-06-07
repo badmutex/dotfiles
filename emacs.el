@@ -345,6 +345,14 @@
 ;; (setq TeX-PDF-mode t)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ledger
+
+(el-get-bundle ledger-mode)
+(add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+(setq
+ ledger-binary-path "hledger")
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; markdown
 (el-get-bundle markdown-mode)
 (autoload 'markdown-mode "markdown-mode")
@@ -379,6 +387,12 @@
 (el-get-bundle nixos-options)
 (el-get-bundle travisbhartwell/nix-emacs)
 ;;(add-to-list 'company-backends 'company-nixos-options)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; plantuml
+(el-get-bundle puml-mode)
+(add-to-list 'auto-mode-alist '("\\.puml\\'" . puml-mode))
+(add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; powerline

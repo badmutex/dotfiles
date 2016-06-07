@@ -19,13 +19,17 @@
     (address "badi@iu.edu")
     (organization "Indiana University / FutureSystems"))
    ((header "To" ".*abdulwahidc@gmail\\.com")
-    (address "abdulwahidc@gmail.com")))
+    (address "abdulwahidc@gmail.com"))
+   ((header "To" "treasurer@bloomingtonbahai.org")
+    (address "treasurer@bloomingtonbahai.org")))
 
  smtpmail-multi-accounts
  '((gmail-email . ("abdulwahidc@gmail.com" "smtp.gmail.com" 465
                    header ssl nil nil nil))
    (iu-email . ("badi" "mail-relay.iu.edu" 465
-                header ssl nil nil nil)))
+                header ssl nil nil nil))
+   (bbl . ("treasurer+bloomingtonbahai.org" "mail.bloomingtonbahai.org" 465
+           header ssl nil nil nil)))
 
  ;; don't include myself in wide replies
  message-dont-reply-to-names
@@ -53,7 +57,8 @@
  gnus-select-method '(nnnil "")
 
  gnus-secondary-select-methods
- '((nnimap "gmail"
+ '(
+   (nnimap "gmail"
            (nnimap-address "imap.gmail.com")
            (nnimap-server-port "imaps")
            (nnimap-stream ssl))
@@ -62,8 +67,16 @@
            (nnimap-address "imap.exchange.iu.edu")
            (nnimap-server-port "imaps")
            (nnimap-stream ssl))
+
+   (nnimap "bbl"
+           (nnimap-address "mail.bloomingtonbahai.org")
+           (nnimap-server-port "imaps")
+           (nnimap-stream ssl))
+
    (nntp "gmane"
-         (nntp-address "news.gmane.org")))
+         (nntp-address "news.gmane.org"))
+
+   )
 
  )
 

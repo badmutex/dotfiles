@@ -42,6 +42,10 @@ let
     ++ [ devPython27 ]
     ++ [ devHaskell  ]
 
+    # ### finance
+    ++ (with haskellPackages;
+       [ hledger hledger-ui hledger-web hledger-diff ])
+
     ### games
     ++ optional withWesnoth wesnoth
 
@@ -50,6 +54,7 @@ let
 
     ### media
     ++ optional withSpotify spotify
+    ++ [vlc smplayer mplayer]
 
     ### nix
     ++ [ nix-repl ]
