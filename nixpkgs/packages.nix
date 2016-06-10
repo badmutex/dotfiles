@@ -62,7 +62,7 @@ let
     ### office / productivity
     ++ optional  withEvince evince
     ++ optional  withInkscape    inkscape
-    ++ optionals withLatex       [texLiveFull biber texmaker ghostscript]
+    ++ optionals withLatex       [texlive.combined.scheme-full biber ghostscript]
     ++ optional  withLibreOffice libreoffice
     ++ optional  withPopfile     popfile
 
