@@ -642,8 +642,8 @@
                              (python . t)))
 
 ;; evaluate src blocks without confirmation.
-; NOTE: this is potentially dangerous, but all the org files I deal
-; with are my own
+;; NOTE: this is potentially dangerous, but all the org files I deal
+;; with are my own
 (setq org-confirm-babel-evaluate nil)
 
 
