@@ -10,7 +10,7 @@ let
   hostname = builtins.getEnv "HOSTNAME";
 
   isHomeMachine = elem hostname ["fangorn"];
-  isWorkMachine = elem hostname ["gambit"];
+  isWorkMachine = elem hostname ["gambit" "irmo"];
 
 in
 {
