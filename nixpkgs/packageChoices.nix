@@ -21,7 +21,7 @@ in
   withGames       = isHomeMachine;
   withInkscape    = isLinux;
   withLatex       = isLinux;
-  withLibreOffice = isWorkMachine;
+  withLibreOffice = true;
   withMega        = false;
   withPopfile     = isHomeMachine;
   withSpotify     = false;
