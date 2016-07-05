@@ -475,6 +475,17 @@
 ;; (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; sublimity
+
+(el-get-bundle sublimity)
+(require 'sublimity)
+
+;; smooth scrolling
+(require 'sublimity-scroll)
+
+(sublimity-mode 1)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; visual regexp
 ;; (require 'visual-regexp-steroids)
 ;; (global-set-key (kbd "C-s")   'isearch-forward)
