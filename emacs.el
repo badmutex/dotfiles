@@ -457,6 +457,12 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; scala
+(el-get-bundle scala-mode2)
+(el-get-bundle sbt-mode)
+(add-to-list 'aggressive-indent-excluded-modes 'scala-mode)
+(add-to-list 'aggressive-indent-excluded-modes 'sbt-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
 
 ;; (el-get-bundle smex)
