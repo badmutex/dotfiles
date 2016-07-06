@@ -108,7 +108,7 @@
 (el-get-bundle aggressive-indent-mode)
 (global-aggressive-indent-mode 1)
 (add-to-list 'aggressive-indent-excluded-modes 'nix-mode)
-(add-to-list 'aggressive-indent-excluded-modes 'haskell-interactive-mode-hook)
+(add-to-list 'aggressive-indent-excluded-modes 'haskell-interactive-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
