@@ -472,6 +472,8 @@
 (el-get-bundle sbt-mode)
 (add-to-list 'aggressive-indent-excluded-modes 'scala-mode)
 (add-to-list 'aggressive-indent-excluded-modes 'sbt-mode)
+(add-hook 'scala-mode-hook 'subword-mode)
+(add-hook 'sbt-mode-hook 'subword-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
 
