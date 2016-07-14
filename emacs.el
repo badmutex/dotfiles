@@ -557,10 +557,20 @@
 ;; ;; themes
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(el-get-bundle atom-dark-theme)
+;;(el-get-bundle atom-dark-theme)
+;; (require 'atom-dark-theme)
+;; (load-theme 'atom-dark t)
 
-(require 'atom-dark-theme)
-(load-theme 'atom-dark t)
+;; (el-get-bundle darcula-theme)
+;; (require 'darcula-theme)
+
+;; (el-get-bundle jazz-theme)
+;; (require 'jazz-theme)
+
+(el-get-bundle naquadah-theme)
+(require 'naquadah-theme)
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python ide stuff
