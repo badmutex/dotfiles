@@ -371,16 +371,6 @@
 ;; (setq matlab-indent-function t)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; minimap
-
-(el-get-bundle dengste/minimap)
-(setq
- minimap-width-fraction 0.05
- minimap-minimum-width 10
- )
-(minimap-mode)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; multiple cursors
 (el-get-bundle multiple-cursors)
 
