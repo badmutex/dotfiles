@@ -1,24 +1,19 @@
 { pkgs, stdenv, ... }:
 
-with pkgs.haskell.packages;
+with pkgs.haskell.packages.ghc7103;
 
-let
-  hs = ghc7103.ghcWithHoogle (
-    hspkgs: with hspkgs; [
-      cabal-install
-      stack
-      alex
-      happy
-      hscolour
-      hasktags
-      stylish-haskell
-      structured-haskell-mode
-      ghc-mod ## not usable right now
-      hlint
-      hdevtools
-    ]
-  );
-
-in
-
-hs
+ghcWithHoogle (
+  hspkgs: with hspkgs; [
+    cabal-install
+    stack
+    alex
+    happy
+    hscolour
+    hasktags
+    stylish-haskell
+    structured-haskell-mode
+    ghc-mod ## not usable right now
+    hlint
+    hdevtools
+  ]
+)
