@@ -6,4 +6,4 @@
 	url = https://github.com/tmux-plugins/tpm
 [submodule "org"]
 	path = org
-	url = git@bitbucket.org:badi/org.git
+	url = git@gitlab.com:badi/org.git
