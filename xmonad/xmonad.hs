@@ -124,5 +124,6 @@ main = do
     , ppSep = "    "
     }
   , manageHook = manageHook kde4Config <+> manageDocks <+> myManageHook
+  , handleEventHook = fullscreenEventHook
   }
 
