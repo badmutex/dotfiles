@@ -112,6 +112,6 @@ in {
   };
   badi-recordings = buildEnv {
     name = "badi-recordings";
-    paths = with pkgs; [recordmydesktop pitivi simplescreenrecorder];
+    paths = with pkgs; [blender simplescreenrecorder];
   };
 }
