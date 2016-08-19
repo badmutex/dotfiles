@@ -10,6 +10,10 @@ fi
 
 export EDITOR=emacs
 
+if [ $(command -v most >/dev/null) ]; then
+    export MANPAGER=most
+fi
+
 
 # 
 # Local Variables:
