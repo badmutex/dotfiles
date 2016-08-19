@@ -98,9 +98,11 @@ select-word-style bash
 
 # haskell `stack` tool autocompletion
 # http://docs.haskellstack.org/en/stable/shell_autocompletion.html
-autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
-eval "$(stack --bash-completion-script stack)"
+if [ $(command -v stack) ]; then
+    autoload -U +X compinit && compinit
+    autoload -U +X bashcompinit && bashcompinit
+    eval "$(stack --bash-completion-script stack)"
+fi
 
 
 test -f /etc/zlogin && source /etc/zlogin
