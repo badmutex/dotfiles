@@ -78,6 +78,7 @@ let
          graphviz-nox
          imagemagick
          inotify-tools
+         most
          tree
          unison
          unzipNLS
