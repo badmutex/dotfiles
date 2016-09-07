@@ -62,6 +62,7 @@ let
     ++ [ nix-repl ]
 
     ### office / productivity
+    ++ [ mendeley ]
     ++ optional  withEvince evince
     ++ optional  withInkscape    inkscape
     ++ optionals withLatex       [texlive.combined.scheme-full biber ghostscript]
