@@ -70,7 +70,7 @@ let
     ++ optional  withPopfile     popfile
 
     ### security
-    ++ [ gnupg gnutls pinentry keychain keepassx2 ]
+    ++ [ gnupg gnutls pinentry keychain keepass keepassx2 ]
     ++ optional  isLinux paperkey
     ++ optionals withYubikey [ yubikey-personalization-gui
                                yubikey-personalization ]
@@ -98,7 +98,7 @@ let
     ### X11, window management
     ++ [ screen tmux ]                     # terminal multiplexers
     ++ [ enlightenment.terminology ]       # terminals
-    ++ [ xclip xdotool                     # X management
+    ++ [ xclip xsel xdotool                # X management
          gnome3.gnome_keyring ]
     ++ [ feh rofi ]                        # X tools
     ++ (with xorg; [xev xbacklight ])
