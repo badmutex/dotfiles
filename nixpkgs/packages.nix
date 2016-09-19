@@ -35,9 +35,7 @@ let
 
     ### development / git tools
     ++ (with gitAndTools;
-       [ git hub git-extras git-remote-hg
-         git2cl gitFastExport gitflow topGit
-         gitchangelog
+       [ git hub git-extras topGit gitchangelog
        ])
 
     # ### development / python
