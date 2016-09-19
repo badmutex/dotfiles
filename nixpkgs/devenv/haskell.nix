@@ -1,6 +1,6 @@
 { pkgs, stdenv, ... }:
 
-with pkgs.haskell.packages.ghc7103;
+with pkgs.haskell.packages.ghc801;
 
 ghcWithHoogle (
   hspkgs: with hspkgs; [
