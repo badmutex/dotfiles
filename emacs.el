@@ -379,6 +379,10 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; neotree
+(el-get-bundle neotree)
+
+(global-set-key [f8] 'neotree-toggle)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; nix mode
 (el-get-bundle nix-mode)
@@ -423,6 +427,7 @@
 (el-get-bundle helm-ls-git)
 (el-get-bundle helm-descbinds)
 (el-get-bundle helm-projectile)
+(el-get-bundle helm-swoop)
 (helm-descbinds-mode)
 ;; (helm-projectile-on)
 (set-face-attribute 'helm-selection nil
@@ -446,6 +451,7 @@
 (global-set-key (kbd "C-c h k") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c h r") 'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
+(global-set-key (kbd "C-c C-s") 'helm-swoop)
 
 ;; ag (silver searcher
 (el-get-bundle ag)

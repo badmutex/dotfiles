@@ -17,6 +17,8 @@ let
   devPython27 = callPackage ./devenv/python27.nix {};
   devHaskell  = with args; callPackage ./devenv/haskell.nix {};
 
+  zoom = qt55.callPackage ./apps/zoom-us.nix { };
+
 in
 
 let
@@ -60,6 +62,7 @@ let
     ++ [ nix-repl ]
 
     ### office / productivity
+    ++ [ mendeley ]
     ++ optional  withEvince evince
     ++ optional  withInkscape    inkscape
     ++ optionals withLatex       [texlive.combined.scheme-full biber ghostscript]
@@ -83,6 +86,7 @@ let
          unison
          unzipNLS
          zip
+         zoom
        ]
     ++ optional isLinux aria
 
