@@ -382,7 +382,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; neotree
 (el-get-bundle neotree)
 
-(global-set-key [f8] 'neotree-toggle)
+(global-set-key (kbd "<f11>") 'neotree-toggle)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; nix mode
 (el-get-bundle nix-mode)
