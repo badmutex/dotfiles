@@ -117,6 +117,13 @@
 ;; (global-auto-complete-mode t)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; visible bookmarks
+(el-get-bundle bm)
+(global-set-key (kbd "<f1>") 'bm-toggle)
+(global-set-key (kbd "<f2>") 'bm-next)
+(global-set-key (kbd "<f3>") 'bm-previous)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; color identifiers
 (el-get-bundle color-identifiers-mode)
 ;; globally enable color-identifiers-mode
