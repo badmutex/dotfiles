@@ -25,5 +25,6 @@ parcellite &
 nm-applet &
 pa-applet &
 
+emacs --daemon
 
 exec xmonad
