@@ -24,7 +24,7 @@ in
   withLibreOffice = isLinux;
   withMega        = false;
   withPopfile     = isHomeMachine;
-  withSpotify     = false;
+  withSpotify     = true;
   withSynergy     = ! isNixOS;
   withWesnoth     = isHomeMachine;
   withX11         = isNixOS;
