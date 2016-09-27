@@ -19,7 +19,6 @@ card deploy {
   aspell.conf -> .aspell.conf
   bash_profile -> .bash_profile
   bashrc -> .bashrc
-  gitconfig -> .gitconfig
   gpg.conf -> .gnupg/gpg.conf
   nixpkgs -> .nixpkgs
   screenrc -> .screenrc
@@ -48,5 +47,8 @@ card deploy {
   xsession-background -> .xsession-background
   xsession-main -> .xsession-main
   xsession-custom -> .xsession-custom
+
+  spark file git.sus
+
 
 }

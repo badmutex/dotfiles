@@ -1,0 +1,8 @@
+card git {
+
+  alternatives $(HOST) .
+  into ~
+
+  gitconfig -> .gitconfig
+
+}
