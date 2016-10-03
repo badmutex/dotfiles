@@ -79,6 +79,7 @@ let
          graphviz-nox
          imagemagick
          inotify-tools
+         rsync
          most
          tree
          unison
