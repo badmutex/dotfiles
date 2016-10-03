@@ -25,6 +25,8 @@ parcellite &
 nm-applet &
 pa-applet &
 
+eval $(keychain --eval --agents ssh,gpg --noask)
+
 emacs --daemon
 
 exec xmonad

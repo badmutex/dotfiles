@@ -107,14 +107,6 @@ fi
 
 test -f /etc/zlogin && source /etc/zlogin
 
-######################################################################
-# keychain
-
-preloaded_ssh_keys=(
-    id_rsa
-)
-
-eval $(keychain --eval --agents ssh,gpg ${preloaded_ssh_keys[@]})
 
 ## Local Variables:
 ## mode: shell-script
