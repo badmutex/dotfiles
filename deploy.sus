@@ -47,6 +47,7 @@ card deploy {
   xsession-background -> .xsession-background
   xsession-main -> .xsession-main
   xsession-custom -> .xsession-custom
+  xsettingsd -> .xsettingsd
 
   spark file git.sus
 
