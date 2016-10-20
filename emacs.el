@@ -340,20 +340,20 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Latex
 
-;; (el-get-bundle auctex)
-;; (el-get-bundle auto-complete-auctex)
+(el-get-bundle auctex)
+(el-get-bundle auto-complete-auctex)
 
-;; (setq TeX-auto-save t)
-;; (setq TeX-parse-self t)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
 ;; (setq-default TeX-master nil)
-;; (add-hook 'LaTeX-mode-hook 'visual-line-mode)
-;; (add-hook 'LaTeX-mode-hook 'flyspell-mode)
-;; (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-;; (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-;; (add-hook 'LaTeX-mode-hook 'auto-complete-mode)
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook 'auto-complete-mode)
 
-;; ; compile to PDF
-;; (setq TeX-PDF-mode t)
+                                        ; compile to PDF
+(setq TeX-PDF-mode t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ledger
