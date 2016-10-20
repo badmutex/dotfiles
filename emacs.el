@@ -404,6 +404,13 @@
 ;;(add-to-list 'company-backends 'company-nixos-options)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; openwith
+(el-get-bundle openwith)
+(setq openwith-associations
+      '(("\\.pdf\\'" "evince" (file))))
+(openwith-mode t)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; plantuml
 (el-get-bundle puml-mode)
 (add-to-list 'auto-mode-alist '("\\.puml\\'" . puml-mode))
