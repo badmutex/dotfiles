@@ -602,7 +602,7 @@
 ;; sphinx-doc: autoinsert sphinx-doc docstrings
 ;;             (C-c M-d at function def)
 
-(elpy-enable)
+(add-hook 'python-mode-hook 'elpy-mode)
 (add-hook 'python-mode-hook (lambda ()
                               (require 'sphinx-doc)
                               (sphinx-doc-mode t)))
