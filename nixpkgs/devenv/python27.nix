@@ -11,9 +11,12 @@ pkgs.buildEnv {
       virtualenv
       # virtualenvwrapper
       jedi
-      pyflakes
-      pep8
+      flake8
+      importmagic
       autopep8
+      yapf
+      pep8
+      pyflakes
     ]
     ;
 }
