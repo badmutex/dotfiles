@@ -13,7 +13,7 @@ let
 
   args = {inherit pkgs config stdenv;} // myOptions;
 
-  gitchangelog = callPackage ./apps/gitchangelog.nix { inherit (pkgs.python27Packages) d2to1; };
+  gitchangelog = callPackage ./apps/gitchangelog.nix { inherit (pkgs.python27Packages) buildPythonPackage d2to1; };
   devPython27 = callPackage ./devenv/python27.nix {};
   devHaskell  = with args; callPackage ./devenv/haskell.nix {};
 
