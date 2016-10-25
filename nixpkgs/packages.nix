@@ -43,6 +43,7 @@ let
     # ### development / python
     ++ [ devPython27 ]
     ++ [ devHaskell  ]
+    ++ [ sqlite sqlitebrowser ]
 
     # ### finance
     ++ (with haskellPackages;
