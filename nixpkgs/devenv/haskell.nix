@@ -10,7 +10,7 @@ ghcWithHoogle (
     happy
     hscolour
     hasktags
-    stylish-haskell
+    # stylish-haskell
     structured-haskell-mode
     ghc-mod ## not usable right now
     hlint
