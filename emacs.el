@@ -343,6 +343,9 @@
 (el-get-bundle auctex)
 (el-get-bundle auto-complete-auctex)
 
+;; pdf-tools installed vial nix
+(pdf-tools-install)
+
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 ;; (setq-default TeX-master nil)
@@ -406,8 +409,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; openwith
 (el-get-bundle openwith)
-(setq openwith-associations
-      '(("\\.pdf\\'" "evince" (file))))
+(setq openwith-associations '())
+;; '(("\\.pdf\\'" "evince" (file))))
 (openwith-mode t)
 
 

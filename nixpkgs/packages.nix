@@ -19,6 +19,8 @@ let
 
   zoom = qt55.callPackage ./apps/zoom-us.nix { };
 
+  emacsSetup = emacsWithPackages (self: with self; [pdf-tools]);
+
 in
 
 let
@@ -31,7 +33,7 @@ let
     ++ optional isLinux      unison
 
     ### development
-    ++ [ emacs autoconf gnumake gcc silver-searcher colordiff ]
+    ++ [ emacsSetup autoconf automake gnumake gcc silver-searcher colordiff ]
 
     ### development / git tools
     ++ (with gitAndTools;
