@@ -47,7 +47,11 @@ let
 
     # ### finance
     ++ (with haskellPackages;
-       [ hledger hledger-ui hledger-web hledger-diff ])
+       [ hledger
+         # hledger-ui
+         # hledger-web
+         hledger-diff
+       ])
 
     ### games
     ++ optional withWesnoth wesnoth
