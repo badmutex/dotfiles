@@ -5,10 +5,10 @@ gcc, xlibs, mesa, mesa_glu
 let
 
   shortname = "vmd";
-  version = "1.9.2";
+  version = "1.9.3beta3";
 
   deps = [
-    gcc.gcc
+    gcc.cc
     mesa
     mesa_glu
     xlibs.libICE
@@ -25,13 +25,15 @@ stdenv.mkDerivation {
   name = "${shortname}-${version}";
 
   src = requireFile {
-    name = "vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar.gz";
-    sha256 = "c7a9520abe0526f90a74c8a1b699a83f4b3cca4446c70b627af1ba3b599aad19";
+    name = "vmd-1.9.3beta3.bin.LINUXAMD64-OptiX.opengl.tar.gz";
+    sha256 = "032174926b24a21fd7d777dc72631b7295998d1ebf4f3b05a95ea95f62eef2c5";
     url = "http://www.ks.uiuc.edu/Research/vmd";
   };
 
 
-  buildInputs = [ makeWrapper which perl gnutar gnumake ];
+  buildInputs = [ makeWrapper which perl gnutar gnumake xlibs.libX11 xlibs.libXinerama ];
+
+  phases = [ "unpackPhase" "installPhase" ];  
 
   unpackPhase = "true";
 
@@ -42,7 +44,8 @@ stdenv.mkDerivation {
 
     export VMDINSTALLBINDIR=$out/bin
     export VMDINSTALLLIBRARYDIR=$out/lib/vmd
-    ./configure
+    echo LINUXAMD64 OPENGL OPENGLPBUFFER FLTK TK XINERAMA XINPUT TCL PYTHON PTHREADS > configure.options
+    perl ./configure
 
     cd src
     make install
