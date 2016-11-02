@@ -131,6 +131,17 @@
 
 
 
+(defun my/org-agenda-exclude-function (tag)
+  (and
+   (cond
+    ((equal tag "someday")
+     t))
+   (concat "-" tag)))
+
+(setq org-agenda-(and )uto-exclude-function 'my/org-agenda-exclude-function)
+
+
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
