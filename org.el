@@ -32,6 +32,10 @@
     (global-set-key (kbd key) fun)))
 
 
+;; on agenda view
+(define-key org-agenda-mode-map (kbd "M") #'org-agenda-month-view)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; agenda
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
