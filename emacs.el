@@ -762,6 +762,11 @@
      (epa-armor . t)))))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; keybindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-set-key (kbd "<f8>") #'gnus)
 (global-set-key (kbd "C-S-<right>") #'next-buffer)
 (global-set-key (kbd "C-S-<left>")  #'previous-buffer)
 (global-set-key (kbd "C-M-<right>") #'next-multiframe-window)

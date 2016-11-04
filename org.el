@@ -13,10 +13,8 @@
                (cons "<f5>" 'badi/org-todo-narrow-subtree) ; bh/org-todo
                (cons "<S-f5>" 'badi/org-todo-widen-subtree) ;bh/widen
                (cons "<f7>" 'badi/set-truncate-lines)
-               (cons "<f8>" 'org-cycle-agenda-files)
                ;; (cons "<f9> <f9>" 'badi/show-org-agenda)
                (cons "<f9> c" 'calendar)
-               (cons "<f9> g" 'gnus)
                (cons "<f9> v" 'visible-mode)
                (cons "<f9> l" 'org-toggle-link-display)
                ;; (cons "<f9> h" 'badi/hide-other)
