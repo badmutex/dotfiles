@@ -278,6 +278,73 @@
  org-hide-leading-stars t)
 
 
+(setq
+  ;;; configure column view entries
+ ;;; http://orgmode.org/manual/Column-attributes.html#Column-attributes
+ ;;; http://orgmode.org/manual/Special-properties.html#Special-properties
+ ;;; http://orgmode.org/worg/org-tutorials/org-column-view-tutorial.html
+ ;;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;
+ ;;; definition format:
+ ;;;
+ ;; %[width]property[(title)][{summary-type}]
+ ;;;
+ ;;;
+ ;; width           An integer specifying the width of the column in characters.
+ ;;                 If omitted, the width will be determined automatically.
+ ;; property        The property that should be edited in this column.
+ ;;                 Special properties representing meta data are allowed here
+ ;;                 as well (see Special properties)
+ ;; title           The header text for the column.  If omitted, the property
+ ;;                 name is used.
+ ;; {summary-type}  The summary type.  If specified, the column values for
+ ;;                 parent nodes are computed from the children1.
+ ;;                 Supported summary types are:
+ ;;                 {+}       Sum numbers in this column.
+ ;;                 {+;%.1f}  Like ‘+’, but format result with ‘%.1f’.
+ ;;                 {$}       Currency, short for ‘+;%.2f’.
+ ;;                 {min}     Smallest number in column.
+ ;;                 {max}     Largest number.
+ ;;                 {mean}    Arithmetic mean of numbers.
+ ;;                 {X}       Checkbox status, ‘[X]’ if all children are ‘[X]’.
+ ;;                 {X/}      Checkbox status, ‘[n/m]’.
+ ;;                 {X%}      Checkbox status, ‘[n%]’.
+ ;;                 {:}       Sum times, HH:MM, plain numbers are
+ ;;                 hours2.
+ ;;                 {:min}    Smallest time value in column.
+ ;;                 {:max}    Largest time value.
+ ;;                 {:mean}   Arithmetic mean of time values.
+ ;;                 {@min}    Minimum age3 (in
+ ;;                           days/hours/mins/seconds).
+ ;;                 {@max}    Maximum age (in days/hours/mins/seconds).
+ ;;                 {@mean}   Arithmetic mean of ages (in days/hours/mins/seconds).
+ ;;                 {est+}    Add ‘low-high’ estimates.
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;
+ ;;; property options:
+ ;;;
+ ;; ALLTAGS      All tags, including inherited ones.
+ ;; BLOCKED      "t" if task is currently blocked by children or siblings.
+ ;; CLOCKSUM     The sum of CLOCK intervals in the subtree.  org-clock-sum
+ ;;              must be run first to compute the values in the current buffer.
+ ;; CLOCKSUM_T   The sum of CLOCK intervals in the subtree for today.
+ ;;              org-clock-sum-today must be run first to compute the
+ ;;              values in the current buffer.
+ ;; CLOSED       When was this entry closed?
+ ;; DEADLINE     The deadline time string, without the angular brackets.
+ ;; FILE         The filename the entry is located in.
+ ;; ITEM         The headline of the entry.
+ ;; PRIORITY     The priority of the entry, a string with a single letter.
+ ;; SCHEDULED    The scheduling timestamp, without the angular brackets.
+ ;; TAGS         The tags defined directly in the headline.
+ ;; TIMESTAMP    The first keyword-less timestamp in the entry.
+ ;; TIMESTAMP_IA The first inactive timestamp in the entry.
+ ;; TODO         The TODO keyword of the entry.
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ org-columns-default-format "%38ITEM(Details) %TAGS(Context) %7TODO(To Do) %Effort(Time){:} %6CLOCKSUM{Total}")
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; my functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
