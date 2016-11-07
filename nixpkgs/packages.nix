@@ -52,6 +52,7 @@ let
          # hledger-web
          hledger-diff
        ])
+    ++ [ gnuplot ]
 
     ### games
     ++ optional withWesnoth wesnoth
