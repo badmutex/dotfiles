@@ -618,6 +618,9 @@
 (setq elpy-test-runner 'elpy-test-nose-runner)
 (setq elpy-test-nose-runner-command '("nosetests" "--all-modules" "-s"))
 
+(setq elpy-project-ignored-directories
+      (append elpy-project-ignored-directories '("venv")))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org mode
