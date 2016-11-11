@@ -209,8 +209,10 @@
  org-indirect-buffer-display 'current-window
 
  ;; exclude DONE tasks
- org-refile-target-verify-function 'badi/org-refile-target-verify
+ org-refile-target-verify-function 'badi/org-refile-target-verify)
 
+
+(setq
  ;;; Capture templates:
  ;; TODO tasks, Notes, Appointments, Phone calls, Meetings, Org
  ;; protocol
