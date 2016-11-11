@@ -222,6 +222,14 @@
     "* TODO %?\n  %U\n  %a\n  "
     :clock-in t :clock-resume t)
 
+   ("w" "Tasks for work")
+
+   ("wc" "cloudmesh" entry (file+headline "work.org" "Cloudmesh")
+    "* TODO %?\n  %U\n  %a\n  ")
+
+   ("wl" "class" entry (file+headline "work.org" "Class")
+    "* TODO %?\n  %U\n  %a\n  ")
+
    ("r" "respond" entry (file "")
     "* TODO [#A] Respond to %:fromname :EMAIL:\n  SCHEDULED: %T\n  %U\n  %a\n  [%:subject]\n  "
     :clock-in t :clock-resume t :immediate-finish t)
