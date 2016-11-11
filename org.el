@@ -239,7 +239,7 @@
     "* TODO Review %c\n  %U\n  "
     :immediate-finish t)
 
-   ("m" "Meeting" entry (file "")
+   ("m" "Meeting" entry (file+headline "work.org" "Meetings")
     "* MEETING with %? :MEETING: \n  %U\n  "
     :clock-in t :clock-resume t)
 
