@@ -224,8 +224,8 @@
     "* TODO [#A] Respond to %:fromname :EMAIL:\n  SCHEDULED: %T\n  %U\n  %a\n  [%:subject]\n  "
     :clock-in t :clock-resume t :immediate-finish t)
 
-   ("n" "note" entry (file "")
-    "* %? :NOTE:\n  %U\n  %a\n  "
+   ("n" "note" entry (file "notes.org")
+    "* %?\n  %U\n  %a\n  "
     :clock-in t :clock-resume t)
 
    ("o" "org-protocol" entry (file "")
