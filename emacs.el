@@ -541,12 +541,14 @@
 
 (line-number-mode t)
 (column-number-mode t)
-(global-linum-mode t)
 (show-paren-mode t)
 (global-hl-line-mode t)
 (subword-mode)
 (pending-delete-mode t)
 (transient-mark-mode t)
+
+;; linum-mode causes performance problems
+(global-linum-mode 0)
 
 ;;; use versioned backups, don't clobber symlinks, don't litter fs tree
 (setq
