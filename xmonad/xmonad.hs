@@ -90,27 +90,27 @@ rofi = "rofi -show run -fg '#505050' -bg '#000000' -hlfg '#ffb964' -hlbg '#00000
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) =
     M.fromList [
-           ((modm               , xK_p)    , spawn rofi)
-         -- , ((modm               , xK_equal) , sendMessage MagnifyMore)
-         -- , ((modm               , xK_minus), sendMessage MagnifyLess)
-         , ((modm               , xK_Right), nextWS)
-         , ((modm               , xK_Left) , prevWS)
-         , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
-         , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
-         , ((modm               , xK_g)    , goToSelected myGSConfig)
-         , ((modm               , xK_b)    , spawn "google-chrome-stable")
-         , ((noModMask, xF86XK_MonBrightnessUp)    , spawn "xbacklight +20")
-         , ((noModMask, xF86XK_MonBrightnessDown)  , spawn "xbacklight -20")
-         , ((noModMask, xF86XK_AudioRaiseVolume) , spawn "amixer set 'Master' 1%+")
-         , ((noModMask, xF86XK_AudioLowerVolume) , spawn "amixer set 'Master' 1%-")
-         , ((noModMask, xF86XK_AudioMute) , spawn "amixer set 'Master' toggle")
-         , ((mod1Mask .|. controlMask, xK_l), spawn "xdg-screensaver lock")
-         ]
+  ((modm               , xK_p)    , spawn rofi)
+    -- , ((modm               , xK_equal) , sendMessage MagnifyMore)
+    -- , ((modm               , xK_minus), sendMessage MagnifyLess)
+  , ((modm               , xK_Right), nextWS)
+  , ((modm               , xK_Left) , prevWS)
+  , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
+  , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
+  , ((modm               , xK_g)    , goToSelected myGSConfig)
+  , ((modm               , xK_b)    , spawn "google-chrome-stable")
+  , ((noModMask, xF86XK_MonBrightnessUp)    , spawn "xbacklight +20")
+  , ((noModMask, xF86XK_MonBrightnessDown)  , spawn "xbacklight -20")
+  , ((noModMask, xF86XK_AudioRaiseVolume) , spawn "amixer set 'Master' 1%+")
+  , ((noModMask, xF86XK_AudioLowerVolume) , spawn "amixer set 'Master' 1%-")
+  , ((noModMask, xF86XK_AudioMute) , spawn "amixer set 'Master' toggle")
+  , ((mod1Mask .|. controlMask, xK_l), spawn "xdg-screensaver lock")
+  ]
 
 
 defaults =
-    let cfg = defaultConfig
-    in cfg {
+  let cfg = defaultConfig
+  in cfg {
     -- simple stuff
     terminal           = myTerminal
   , modMask            = myModMask
