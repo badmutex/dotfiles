@@ -2,6 +2,13 @@
 ;; additional useful functions and variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+;; (package-initialize)
+
 (defun my/joindirs (root &rest dirs)
   "Joins a series of directories together, like Python's os.path.join,
   (dotemacs-joindirs \"/tmp\" \"a\" \"b\" \"c\") => /tmp/a/b/c"
@@ -219,10 +226,9 @@
 ;; see the link for documentation
 ;; https://github.com/haskell/haskell-mode
 
-
-;; ;; not used right now
-;; (el-get-bundle chrisdone/structured-haskell-mode
-;;   :load-path "elisp")
+;; not used right now
+(el-get-bundle chrisdone/structured-haskell-mode
+  :load-path "elisp")
 
 (el-get-bundle haskell-mode)
 (el-get-bundle ac-haskell-process)
@@ -625,8 +631,7 @@
 (setq elpy-test-runner 'elpy-test-nose-runner)
 (setq elpy-test-nose-runner-command '("nosetests" "--all-modules" "-s"))
 
-(setq elpy-project-ignored-directories
-      (append elpy-project-ignored-directories '("venv")))
+(setq elpy-project-ignored-directories '("venv"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -732,9 +737,25 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (nlinum dumb-jump nil smtpmail-multi oauth2 nixos-options let-alist helm-helm-commands csv-mode ac-haskell-process)))
  '(safe-local-variable-values
    (quote
-    ((project-venv-name . "workflow")
+    ((hamlet/basic-offset . 4)
+     (haskell-process-use-ghci . t)
+     (haskell-indent-spaces . 4)
+     (eval global-set-key
+           (kbd "C-c C-v t")
+           (quote
+            (lambda nil
+              (interactive)
+              (setq current-prefix-arg
+                    (quote
+                     (4)))
+              (org-babel-tangle-jump-to-org))))
+     (eval setq org-src-preserve-indentation t)
+     (project-venv-name . "workflow")
      (project-venv-name . "virtual-cluster-libs")
      (enforce-mode)
      (column-epa-armor . t)
