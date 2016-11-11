@@ -230,6 +230,11 @@
     "* %?\n  %U\n  %a\n  "
     :clock-in t :clock-resume t)
 
+   ;; add a note to the currently clocked item
+   ("N" "clocked note" entry (clock)
+    "* %?  :NOTE:\n  %U\n  %a\n  "
+    :clock-in t :clock-resume t)
+
    ("o" "org-protocol" entry (file "")
     "* TODO Review %c\n  %U\n  "
     :immediate-finish t)
