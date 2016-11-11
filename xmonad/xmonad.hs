@@ -21,6 +21,11 @@ import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.ManageHelpers
 import           XMonad.Hooks.SetWMName
 
+import XMonad.Layout.AutoMaster
+import XMonad.Layout.Column
+import XMonad.Layout.Renamed
+-- import XMonad.Layout.Spiral
+-- import XMonad.Layout.Magnifier
 import           XMonad.Layout.Fullscreen as Fullscreen
 import           XMonad.Layout.NoBorders
 import           XMonad.Layout.Spiral
@@ -57,10 +62,14 @@ xmobarTitleColor = "#FFB6B0"
 xmobarCurrentWorkspaceColor = "#CEFFAC"
 
 myLayout = avoidStruts (
-    Tall 1 (3/100) (1/2) |||
-    threeCol |||
+    renamed [Replace "Auto Master"] (autoMaster 1 (1/100) (Column 1.6)) |||
     tabbed shrinkText tabConfig |||
-    Full
+    Tall 1 (3/100) (1/2) |||
+    Column 1.6
+    -- spiral (6/7) |||
+    -- magnifier (Column 1.5) |||
+    -- threeCol |||
+    -- Full
     )
     where threeCol = ThreeColMid 1 (3/100) (1/2)
 
@@ -82,6 +91,8 @@ rofi = "rofi -show run -fg '#505050' -bg '#000000' -hlfg '#ffb964' -hlbg '#00000
 myKeys conf@(XConfig {XMonad.modMask = modm}) =
     M.fromList [
            ((modm               , xK_p)    , spawn rofi)
+         -- , ((modm               , xK_equal) , sendMessage MagnifyMore)
+         -- , ((modm               , xK_minus), sendMessage MagnifyLess)
          , ((modm               , xK_Right), nextWS)
          , ((modm               , xK_Left) , prevWS)
          , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
