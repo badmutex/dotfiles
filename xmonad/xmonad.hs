@@ -16,11 +16,12 @@ import           XMonad.Actions.GridSelect
 import           XMonad.Actions.Volume
 
 import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.EwmhDesktops as EWMH
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.ManageHelpers
 import           XMonad.Hooks.SetWMName
 
-import           XMonad.Layout.Fullscreen
+import           XMonad.Layout.Fullscreen as Fullscreen
 import           XMonad.Layout.NoBorders
 import           XMonad.Layout.Spiral
 import           XMonad.Layout.Tabbed
@@ -125,6 +126,6 @@ main = do
     , ppSep = "    "
     }
   , manageHook = manageHook kde4Config <+> manageDocks <+> myManageHook
-  , handleEventHook = fullscreenEventHook
+  , handleEventHook = Fullscreen.fullscreenEventHook <+> EWMH.fullscreenEventHook
   }
 
