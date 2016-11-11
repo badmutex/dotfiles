@@ -41,24 +41,13 @@
 ;; agenda
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; all my .org encrypted files
-(setq org-agenda-files
-      (append
-       (file-expand-wildcards "~/org/*.org")
+(setq
+ ;; match *.org and *.org.gpg files
+ org-agenda-file-regexp "\\`[^.].*\\.org\\(\\.gpg\\)\\{0,1\\}\\'"
+ org-agenda-files '("~/org"))
 
-       ;; add to the top of the .org.gpg, replacing <KEY> with your
-       ;; gpg key name
-       ;;
-       ;; # -*- mode: org; epa-file-encrypt-to: ("<KEY>"); -*-
-       ;; #+ARCHIVE: %s_archive.gpg::
-       ;;
-       ;; this is to ensure that tasks are archived to an encrypted
-       ;; file
-
-       (file-expand-wildcards "~/org/*.org.gpg"))
-
+(setq org-agenda-sticky t
       ;; support multiple agenda frames
-      org-agenda-sticky t
 
       ;; bring up agenda in full window, restore windows after quiting
       org-agenda-window-setup 'only-window
