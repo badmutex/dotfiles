@@ -551,8 +551,12 @@
 (pending-delete-mode t)
 (transient-mark-mode t)
 
-;; linum-mode causes performance problems
+;; linum-mode causes performance problems.
+;;
+;;linum-ex modifies it to use display line numbers on demand
 (global-linum-mode 0)
+(el-get-bundle linum-ex)
+(global-linum-mode t)
 
 ;;; use versioned backups, don't clobber symlinks, don't litter fs tree
 (setq
