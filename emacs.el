@@ -211,6 +211,11 @@
 (add-hook 'magit-status-mode-hook 'magit-filenotify-mode)    ; refresh on changes
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; gnuplot
+;; https://github.com/bruceravel/gnuplot-mode
+(el-get-bundle gnuplot-mode)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
 ;; see the link for documentation
 ;; https://github.com/haskell/haskell-mode
@@ -680,7 +685,8 @@
 (org-babel-do-load-languages
  'org-babel-load-languages '((dot . t)
                              (shell . t)
-                             (python . t)))
+                             (python . t)
+                             (gnuplot . t)))
 
 ;; evaluate src blocks without confirmation.
 ;; NOTE: this is potentially dangerous, but all the org files I deal
