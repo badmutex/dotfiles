@@ -16,11 +16,17 @@ import           XMonad.Actions.GridSelect
 import           XMonad.Actions.Volume
 
 import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.EwmhDesktops as EWMH
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.ManageHelpers
 import           XMonad.Hooks.SetWMName
 
-import           XMonad.Layout.Fullscreen
+import XMonad.Layout.AutoMaster
+import XMonad.Layout.Column
+import XMonad.Layout.Renamed
+-- import XMonad.Layout.Spiral
+-- import XMonad.Layout.Magnifier
+import           XMonad.Layout.Fullscreen as Fullscreen
 import           XMonad.Layout.NoBorders
 import           XMonad.Layout.Spiral
 import           XMonad.Layout.Tabbed
@@ -56,10 +62,14 @@ xmobarTitleColor = "#FFB6B0"
 xmobarCurrentWorkspaceColor = "#CEFFAC"
 
 myLayout = avoidStruts (
-    Tall 1 (3/100) (1/2) |||
-    threeCol |||
+    renamed [Replace "Auto Master"] (autoMaster 1 (1/100) (Column 1.6)) |||
     tabbed shrinkText tabConfig |||
-    Full
+    Tall 1 (3/100) (1/2) |||
+    Column 1.6
+    -- spiral (6/7) |||
+    -- magnifier (Column 1.5) |||
+    -- threeCol |||
+    -- Full
     )
     where threeCol = ThreeColMid 1 (3/100) (1/2)
 
@@ -80,25 +90,27 @@ rofi = "rofi -show run -fg '#505050' -bg '#000000' -hlfg '#ffb964' -hlbg '#00000
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) =
     M.fromList [
-           ((modm               , xK_p)    , spawn rofi)
-         , ((modm               , xK_Right), nextWS)
-         , ((modm               , xK_Left) , prevWS)
-         , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
-         , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
-         , ((modm               , xK_g)    , goToSelected myGSConfig)
-         , ((modm               , xK_b)    , spawn "google-chrome-stable")
-         , ((noModMask, xF86XK_MonBrightnessUp)    , spawn "xbacklight +20")
-         , ((noModMask, xF86XK_MonBrightnessDown)  , spawn "xbacklight -20")
-         , ((noModMask, xF86XK_AudioRaiseVolume) , spawn "amixer set 'Master' 1%+")
-         , ((noModMask, xF86XK_AudioLowerVolume) , spawn "amixer set 'Master' 1%-")
-         , ((noModMask, xF86XK_AudioMute) , spawn "amixer set 'Master' toggle")
-         , ((mod1Mask .|. controlMask, xK_l), spawn "xdg-screensaver lock")
-         ]
+  ((modm               , xK_p)    , spawn rofi)
+    -- , ((modm               , xK_equal) , sendMessage MagnifyMore)
+    -- , ((modm               , xK_minus), sendMessage MagnifyLess)
+  , ((modm               , xK_Right), nextWS)
+  , ((modm               , xK_Left) , prevWS)
+  , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
+  , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
+  , ((modm               , xK_g)    , goToSelected myGSConfig)
+  , ((modm               , xK_b)    , spawn "google-chrome-stable")
+  , ((noModMask, xF86XK_MonBrightnessUp)    , spawn "xbacklight +20")
+  , ((noModMask, xF86XK_MonBrightnessDown)  , spawn "xbacklight -20")
+  , ((noModMask, xF86XK_AudioRaiseVolume) , spawn "amixer set 'Master' 1%+")
+  , ((noModMask, xF86XK_AudioLowerVolume) , spawn "amixer set 'Master' 1%-")
+  , ((noModMask, xF86XK_AudioMute) , spawn "amixer set 'Master' toggle")
+  , ((mod1Mask .|. controlMask, xK_l), spawn "xdg-screensaver lock")
+  ]
 
 
 defaults =
-    let cfg = defaultConfig
-    in cfg {
+  let cfg = defaultConfig
+  in cfg {
     -- simple stuff
     terminal           = myTerminal
   , modMask            = myModMask
@@ -125,6 +137,6 @@ main = do
     , ppSep = "    "
     }
   , manageHook = manageHook kde4Config <+> manageDocks <+> myManageHook
-  , handleEventHook = fullscreenEventHook
+  , handleEventHook = Fullscreen.fullscreenEventHook <+> EWMH.fullscreenEventHook
   }
 

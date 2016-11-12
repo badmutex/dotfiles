@@ -2,6 +2,13 @@
 ;; additional useful functions and variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+;; (package-initialize)
+
 (defun my/joindirs (root &rest dirs)
   "Joins a series of directories together, like Python's os.path.join,
   (dotemacs-joindirs \"/tmp\" \"a\" \"b\" \"c\") => /tmp/a/b/c"
@@ -43,6 +50,10 @@
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
     (goto-char (point-max))
     (eval-print-last-sexp)))
+
+(require 'el-get-elpa)
+(unless (file-directory-p el-get-recipe-path-elpa)
+  (el-get-elpa-build-local-recipes))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; simple mode lines
@@ -220,10 +231,9 @@
 ;; see the link for documentation
 ;; https://github.com/haskell/haskell-mode
 
-
-;; ;; not used right now
-;; (el-get-bundle chrisdone/structured-haskell-mode
-;;   :load-path "elisp")
+;; not used right now
+(el-get-bundle chrisdone/structured-haskell-mode
+  :load-path "elisp")
 
 (el-get-bundle haskell-mode)
 (el-get-bundle ac-haskell-process)
@@ -348,9 +358,6 @@
 (el-get-bundle auctex)
 (el-get-bundle auto-complete-auctex)
 
-;; pdf-tools installed vial nix
-(pdf-tools-install)
-
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 ;; (setq-default TeX-master nil)
@@ -414,8 +421,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; openwith
 (el-get-bundle openwith)
-(setq openwith-associations '())
-;; '(("\\.pdf\\'" "evince" (file))))
+(setq openwith-associations
+      '(("\\.pdf\\'" "evince" (file))))
 (openwith-mode t)
 
 
@@ -549,12 +556,18 @@
 
 (line-number-mode t)
 (column-number-mode t)
-(global-linum-mode t)
 (show-paren-mode t)
 (global-hl-line-mode t)
 (subword-mode)
 (pending-delete-mode t)
 (transient-mark-mode t)
+
+;; linum-mode causes performance problems.
+;;
+;;linum-ex modifies it to use display line numbers on demand
+(global-linum-mode 0)
+(el-get-bundle linum-ex)
+(global-linum-mode t)
 
 ;;; use versioned backups, don't clobber symlinks, don't litter fs tree
 (setq
@@ -623,6 +636,8 @@
 (setq elpy-test-runner 'elpy-test-nose-runner)
 (setq elpy-test-nose-runner-command '("nosetests" "--all-modules" "-s"))
 
+(setq elpy-project-ignored-directories '("venv"))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org mode
@@ -653,34 +668,6 @@
 
 
 (load "~/.org.el")
-
-
-;; ;; automatically change entry to DONE when all children are DONE
-;; (defun my/org/summary-todo (n-done n-not-done)
-;;   "Switch entry to DONE when all subentries are done, to TODO otherwise."
-;;   (let (org-log-done org-log-states)   ; turn off logging
-;;     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
-;; (add-hook 'org-after-todo-statistics-hook 'my/org/summary-todo)
-
-;; (setq org-hide-leading-stars t)
-
-;; ;; block changes to DONE that have incomplete dependencies
-;; (setq org-enforce-todo-dependencies t
-;;       org-enforce-todo-checkbox-dependencies t)
-
-
-;; ;; provide statistics
-;; (setq org-provide-todo-statistics t
-;;       org-hierarchical-todo-statistics nil)
-
-;; ;; enable inline graphviz images
-;; (el-get-bundle graphviz-dot-mode)
-
-;; (setq org-src-preserve-indentation nil)
-
-;; ;; enable language execution
-
-;; (el-get-bundle htmlize)
 
 (org-babel-do-load-languages
  'org-babel-load-languages '((dot . t)
@@ -756,9 +743,25 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (nlinum dumb-jump nil smtpmail-multi oauth2 nixos-options let-alist helm-helm-commands csv-mode ac-haskell-process)))
  '(safe-local-variable-values
    (quote
-    ((project-venv-name . "workflow")
+    ((hamlet/basic-offset . 4)
+     (haskell-process-use-ghci . t)
+     (haskell-indent-spaces . 4)
+     (eval global-set-key
+           (kbd "C-c C-v t")
+           (quote
+            (lambda nil
+              (interactive)
+              (setq current-prefix-arg
+                    (quote
+                     (4)))
+              (org-babel-tangle-jump-to-org))))
+     (eval setq org-src-preserve-indentation t)
+     (project-venv-name . "workflow")
      (project-venv-name . "virtual-cluster-libs")
      (enforce-mode)
      (column-epa-armor . t)

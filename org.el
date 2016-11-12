@@ -41,24 +41,13 @@
 ;; agenda
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; all my .org encrypted files
-(setq org-agenda-files
-      (append
-       (file-expand-wildcards "~/org/*.org")
+(setq
+ ;; match *.org and *.org.gpg files
+ org-agenda-file-regexp "\\`[^.].*\\.org\\(\\.gpg\\)\\{0,1\\}\\'"
+ org-agenda-files '("~/org"))
 
-       ;; add to the top of the .org.gpg, replacing <KEY> with your
-       ;; gpg key name
-       ;;
-       ;; # -*- mode: org; epa-file-encrypt-to: ("<KEY>"); -*-
-       ;; #+ARCHIVE: %s_archive.gpg::
-       ;;
-       ;; this is to ensure that tasks are archived to an encrypted
-       ;; file
-
-       (file-expand-wildcards "~/org/*.org.gpg"))
-
+(setq org-agenda-sticky t
       ;; support multiple agenda frames
-      org-agenda-sticky t
 
       ;; bring up agenda in full window, restore windows after quiting
       org-agenda-window-setup 'only-window
@@ -220,8 +209,10 @@
  org-indirect-buffer-display 'current-window
 
  ;; exclude DONE tasks
- org-refile-target-verify-function 'badi/org-refile-target-verify
+ org-refile-target-verify-function 'badi/org-refile-target-verify)
 
+
+(setq
  ;;; Capture templates:
  ;; TODO tasks, Notes, Appointments, Phone calls, Meetings, Org
  ;; protocol
@@ -231,19 +222,32 @@
     "* TODO %?\n  %U\n  %a\n  "
     :clock-in t :clock-resume t)
 
+   ("w" "Tasks for work")
+
+   ("wc" "cloudmesh" entry (file+headline "work.org" "Cloudmesh")
+    "* TODO %?\n  %U\n  %a\n  ")
+
+   ("wl" "class" entry (file+headline "work.org" "Class")
+    "* TODO %?\n  %U\n  %a\n  ")
+
    ("r" "respond" entry (file "")
     "* TODO [#A] Respond to %:fromname :EMAIL:\n  SCHEDULED: %T\n  %U\n  %a\n  [%:subject]\n  "
     :clock-in t :clock-resume t :immediate-finish t)
 
-   ("n" "note" entry (file "")
-    "* %? :NOTE:\n  %U\n  %a\n  "
+   ("n" "note" entry (file "notes.org")
+    "* %?\n  %U\n  %a\n  "
+    :clock-in t :clock-resume t)
+
+   ;; add a note to the currently clocked item
+   ("N" "clocked note" entry (clock)
+    "* %?  :NOTE:\n  %U\n  %a\n  "
     :clock-in t :clock-resume t)
 
    ("o" "org-protocol" entry (file "")
     "* TODO Review %c\n  %U\n  "
     :immediate-finish t)
 
-   ("m" "Meeting" entry (file "")
+   ("m" "Meeting" entry (file+headline "work.org" "Meetings")
     "* MEETING with %? :MEETING: \n  %U\n  "
     :clock-in t :clock-resume t)
 
