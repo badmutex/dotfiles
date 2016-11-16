@@ -120,6 +120,7 @@
 (global-aggressive-indent-mode 1)
 (add-to-list 'aggressive-indent-excluded-modes 'nix-mode)
 (add-to-list 'aggressive-indent-excluded-modes 'haskell-interactive-mode)
+(add-to-list 'aggressive-indent-excluded-modes 'shakespeare-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
@@ -315,7 +316,7 @@
 
 
 ;; support hamlet for yesod developmet
-(el-get-bundle hamlet-mode)
+(el-get-bundle shakespeare-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; hungry delete
