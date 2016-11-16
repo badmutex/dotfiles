@@ -24,6 +24,7 @@ import           XMonad.Hooks.SetWMName
 import XMonad.Layout.AutoMaster
 import XMonad.Layout.Column
 import XMonad.Layout.Renamed
+import XMonad.Layout.Accordion
 -- import XMonad.Layout.Spiral
 -- import XMonad.Layout.Magnifier
 import           XMonad.Layout.Fullscreen as Fullscreen
@@ -61,9 +62,9 @@ xmobarTitleColor = "#FFB6B0"
 -- Color of current workspace in xmobar.
 xmobarCurrentWorkspaceColor = "#CEFFAC"
 
-myLayout = avoidStruts (
-    renamed [Replace "Auto Master"] (autoMaster 1 (1/100) (Column 1.6)) |||
-    tabbed shrinkText tabConfig |||
+myLayout = smartBorders $ avoidStruts (
+    autoMasterLayout Accordion |||
+    tabs |||
     Tall 1 (3/100) (1/2) |||
     Column 1.6
     -- spiral (6/7) |||
@@ -72,6 +73,8 @@ myLayout = avoidStruts (
     -- Full
     )
     where threeCol = ThreeColMid 1 (3/100) (1/2)
+          tabs = tabbed shrinkText tabConfig
+          autoMasterLayout otherLayout = renamed [Replace "Auto Master"] (autoMaster 1 (1/100) otherLayout)
 
 
 
