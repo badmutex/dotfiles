@@ -251,6 +251,10 @@
     "* MEETING with %? :MEETING: \n  %U\n  "
     :clock-in t :clock-resume t)
 
+   ("h" "Hangouts" entry (file+headline "work.org" "Hangouts")
+    "* with $?\n  %U\n  "
+    :clock-in t :clock-resume t)
+
    ("p" "Phone call" entry (file "")
     "* PHONE %? :PHONE:\n  %U\n  "
     :clock-in t :clock-resume t)
