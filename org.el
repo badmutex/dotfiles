@@ -248,7 +248,7 @@
     :immediate-finish t)
 
    ("m" "Meeting" entry (file+headline "work.org" "Meetings")
-    "* MEETING with %? :MEETING: \n  %U\n  "
+    "* with %? \n  %U\n  "
     :clock-in t :clock-resume t)
 
    ("h" "Hangouts" entry (file+headline "work.org" "Hangouts")
