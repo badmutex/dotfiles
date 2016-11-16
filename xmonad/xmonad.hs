@@ -138,7 +138,7 @@ main = do
   xmobarProc <- spawnPipe "xmobar ~/.xmobar.hs"
   spawn "~/.xsession-custom"
   xmonad $  defaults {
-    logHook = (fadeInactiveLogHook 0.9) >> (dynamicLogWithPP $ xmobarPP {
+    logHook = (fadeInactiveLogHook 0.8) >> (dynamicLogWithPP $ xmobarPP {
       ppOutput = \s -> hPutStrLn xmobarProc s
     , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
     , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
