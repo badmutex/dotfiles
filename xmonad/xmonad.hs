@@ -99,7 +99,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   ((modm               , xK_p)    , spawn rofi)
     -- , ((modm               , xK_equal) , sendMessage MagnifyMore)
     -- , ((modm               , xK_minus), sendMessage MagnifyLess)
-  , ((modm               , xK_Return), withFocused (sendMessage . maximizeRestore))  
+  , ((modm .|. mod1Mask       , xK_Return), withFocused (sendMessage . maximizeRestore))
   , ((modm               , xK_Right), nextWS)
   , ((modm               , xK_Left) , prevWS)
   , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
