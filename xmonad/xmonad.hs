@@ -17,6 +17,7 @@ import           XMonad.Actions.Volume
 
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.EwmhDesktops as EWMH
+import           XMonad.Hooks.FadeInactive
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.ManageHelpers
 import           XMonad.Hooks.SetWMName
@@ -136,12 +137,13 @@ main = do
   xmobarProc <- spawnPipe "xmobar ~/.xmobar.hs"
   spawn "~/.xsession-custom"
   xmonad $  defaults {
-    logHook = dynamicLogWithPP $ xmobarPP {
+    logHook = (fadeInactiveLogHook 0.9) >> (dynamicLogWithPP $ xmobarPP {
       ppOutput = \s -> hPutStrLn xmobarProc s
     , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
     , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
     , ppSep = "    "
-    }
+    })
+  , borderWidth = 3
   , manageHook = manageHook kde4Config <+> manageDocks <+> myManageHook
   , handleEventHook = Fullscreen.fullscreenEventHook <+> EWMH.fullscreenEventHook
   }
