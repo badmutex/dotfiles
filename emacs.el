@@ -85,7 +85,7 @@
 
 ;; minor modes
 (eval-after-load "projectile" '(diminish 'projectile-mode))
-(eval-after-load "color-identifiers-mode" '(diminish 'color-identifiers-mode))
+(eval-after-load "rainbow-identifiers-mode" '(diminish 'rainbow-identifiers-mode))
 (eval-after-load "git-gutter" '(diminish 'git-gutter-mode))
 (eval-after-load "git-gutter+" '(diminish 'git-gutter+-mode))
 (eval-after-load "auto-complete-mode" '(diminish 'auto-complete-mode))
@@ -133,12 +133,6 @@
 (global-set-key (kbd "<f1>") 'bm-toggle)
 (global-set-key (kbd "<f2>") 'bm-next)
 (global-set-key (kbd "<f3>") 'bm-previous)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; color identifiers
-(el-get-bundle color-identifiers-mode)
-;; globally enable color-identifiers-mode
-(add-hook 'after-init-hook 'global-color-identifiers-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; csv mode
@@ -491,6 +485,10 @@
 (el-get-bundle rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; rainbow identifiers
+(el-get-bundle rainbow-identifiers)
+(add-hook 'prog-mode-hook #'rainbow-identifiers-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; scala
 (el-get-bundle scala-mode2)
