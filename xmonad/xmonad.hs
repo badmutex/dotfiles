@@ -25,6 +25,8 @@ import XMonad.Layout.AutoMaster
 import XMonad.Layout.Column
 import XMonad.Layout.Renamed
 import XMonad.Layout.Accordion
+import XMonad.Layout.Maximize
+import XMonad.Layout.Spacing
 -- import XMonad.Layout.Spiral
 -- import XMonad.Layout.Magnifier
 import           XMonad.Layout.Fullscreen as Fullscreen
@@ -62,7 +64,7 @@ xmobarTitleColor = "#FFB6B0"
 -- Color of current workspace in xmobar.
 xmobarCurrentWorkspaceColor = "#CEFFAC"
 
-myLayout = smartBorders $ avoidStruts (
+myLayout = smartSpacing 5 $ maximize $ avoidStruts (
     autoMasterLayout Accordion |||
     tabs |||
     Tall 1 (3/100) (1/2) |||
@@ -96,6 +98,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   ((modm               , xK_p)    , spawn rofi)
     -- , ((modm               , xK_equal) , sendMessage MagnifyMore)
     -- , ((modm               , xK_minus), sendMessage MagnifyLess)
+  , ((modm               , xK_Return), withFocused (sendMessage . maximizeRestore))  
   , ((modm               , xK_Right), nextWS)
   , ((modm               , xK_Left) , prevWS)
   , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
