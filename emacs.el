@@ -348,6 +348,12 @@
 (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; indentation guides
+(el-get-bundle indent-guide)
+(setq indent-guide-recursive t)
+(set-face-foreground 'indent-guide-face "teal")
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Latex
 
 (el-get-bundle auctex)
