@@ -317,6 +317,9 @@
 
 ;; support hamlet for yesod developmet
 (el-get-bundle shakespeare-mode)
+(add-hook 'shakespeare-hamlet-mode-hook #'indent-guide)
+(define-key shakespeare-hamlet-mode-map (kbd "C-c C-.") #'shakespeare-hamlet-mode-indent-region)
+(define-key shakespeare-hamlet-mode-map (kbd "C-c C-,") #'shakespeare-hamlet-mode-indent-region-backward)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; hungry delete
