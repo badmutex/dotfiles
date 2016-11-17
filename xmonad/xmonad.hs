@@ -65,7 +65,7 @@ xmobarTitleColor = "#FFB6B0"
 -- Color of current workspace in xmobar.
 xmobarCurrentWorkspaceColor = "#CEFFAC"
 
-myLayout = smartSpacing 5 $ maximize $ avoidStruts (
+myLayout = smartSpacing 10 $ maximize $ avoidStruts (
     autoMasterLayout Accordion |||
     tabs |||
     Tall 1 (3/100) (1/2) |||
