@@ -733,7 +733,7 @@
  '(("gambit" . (set-face-attribute 'default nil :height 80))))
 
 (my/switch-system-name
- '(("lorien" . (set-face-attribute 'default nil :height 120))))
+ '(("irmo" . (set-face-attribute 'default nil :height 80))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
