@@ -7,7 +7,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-;; (package-initialize)
+(package-initialize)
 
 (defun my/joindirs (root &rest dirs)
   "Joins a series of directories together, like Python's os.path.join,
@@ -54,6 +54,8 @@
 (require 'el-get-elpa)
 (unless (file-directory-p el-get-recipe-path-elpa)
   (el-get-elpa-build-local-recipes))
+
+(package-refresh-contents)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; simple mode lines
@@ -120,7 +122,6 @@
 (global-aggressive-indent-mode 1)
 (add-to-list 'aggressive-indent-excluded-modes 'nix-mode)
 (add-to-list 'aggressive-indent-excluded-modes 'haskell-interactive-mode)
-(add-to-list 'aggressive-indent-excluded-modes 'shakespeare-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
@@ -219,7 +220,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; gnuplot
 ;; https://github.com/bruceravel/gnuplot-mode
-(el-get-bundle gnuplot-mode)
+;; (el-get-bundle gnuplot-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
@@ -231,7 +232,7 @@
   :load-path "elisp")
 
 (el-get-bundle haskell-mode)
-(el-get-bundle ac-haskell-process)
+;; (el-get-bundle ac-haskell-process)
 (el-get-bundle flycheck-haskell)
 ;; (eval-after-load 'flycheck
 ;;   '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
@@ -242,7 +243,7 @@
 (require 'haskell-interactive-mode)
 (require 'haskell-process)
 ;; (require 'flycheck-haskell)
-(require 'ac-haskell-process)
+;; (require 'ac-haskell-process)
 
 (setq haskell-process-show-debug-tips nil)
 
@@ -318,6 +319,7 @@
 ;; support hamlet for yesod developmet
 (el-get-bundle shakespeare-mode)
 (require 'shakespeare-mode)
+(add-to-list 'aggressive-indent-excluded-modes 'shakespeare-mode)
 (add-hook 'shakespeare-hamlet-mode-hook #'indent-guide)
 (define-key shakespeare-hamlet-mode-map (kbd "C-c >") #'shakespeare-hamlet-mode-indent-region)
 (define-key shakespeare-hamlet-mode-map (kbd "C-c <") #'shakespeare-hamlet-mode-indent-region-backward)
@@ -354,6 +356,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; indentation guides
 (el-get-bundle indent-guide)
+(require 'indent-guide)
 (setq indent-guide-recursive t)
 (set-face-foreground 'indent-guide-face "teal")
 
@@ -419,7 +422,7 @@
 
 ;; WIP
 (el-get-bundle company-mode)
-(el-get-bundle nixos-options)
+;; (el-get-bundle nixos-options) FIXME
 (el-get-bundle travisbhartwell/nix-emacs)
 ;;(add-to-list 'company-backends 'company-nixos-options)
 
@@ -502,12 +505,13 @@
 (add-hook 'prog-mode-hook #'rainbow-identifiers-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; scala
-(el-get-bundle scala-mode2)
-(el-get-bundle sbt-mode)
-(add-to-list 'aggressive-indent-excluded-modes 'scala-mode)
-(add-to-list 'aggressive-indent-excluded-modes 'sbt-mode)
-(add-hook 'scala-mode-hook 'subword-mode)
-(add-hook 'sbt-mode-hook 'subword-mode)
+
+;; (el-get-bundle scala-mode2) FIXME
+;; (el-get-bundle sbt-mode)
+;; (add-to-list 'aggressive-indent-excluded-modes 'scala-mode)
+;; (add-to-list 'aggressive-indent-excluded-modes 'sbt-mode)
+;; (add-hook 'scala-mode-hook 'subword-mode)
+;; (add-hook 'sbt-mode-hook 'subword-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; smex
 
@@ -567,9 +571,10 @@
 (column-number-mode t)
 (show-paren-mode t)
 (global-hl-line-mode t)
-(subword-mode)
 (pending-delete-mode t)
 (transient-mark-mode t)
+
+(add-hook 'prog-mode-hook #'subword-mode)
 
 ;; linum-mode causes performance problems.
 ;;
