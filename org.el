@@ -222,18 +222,6 @@
     "* TODO %?\n  %U\n  %a\n  "
     :clock-in t :clock-resume t)
 
-   ("w" "Tasks for work")
-
-   ("wc" "cloudmesh" entry (file+headline "work.org" "Cloudmesh")
-    "* TODO %?\n  %U\n  %a\n  ")
-
-   ("wl" "class" entry (file+headline "work.org" "Class")
-    "* TODO %?\n  %U\n  %a\n  ")
-
-   ("r" "respond" entry (file "")
-    "* TODO [#A] Respond to %:fromname :EMAIL:\n  SCHEDULED: %T\n  %U\n  %a\n  [%:subject]\n  "
-    :clock-in t :clock-resume t :immediate-finish t)
-
    ("n" "note" entry (file "notes.org")
     "* %?\n  %U\n  %a\n  "
     :clock-in t :clock-resume t)
@@ -243,20 +231,44 @@
     "* %?  :NOTE:\n  %U\n  %a\n  "
     :clock-in t :clock-resume t)
 
-   ("o" "org-protocol" entry (file "")
-    "* TODO Review %c\n  %U\n  "
-    :immediate-finish t)
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; work
+   ("w" "Tasks for work")
 
-   ("m" "Meeting" entry (file+headline "work.org" "Meetings")
-    "* with %? \n  %U\n  "
-    :clock-in t :clock-resume t)
+   ("wc" "cloudmesh" entry (file+headline "work.org" "Cloudmesh")
+    "* TODO %?\n  %U\n  %a\n  ")
 
-   ("h" "Hangouts" entry (file+headline "work.org" "Hangouts")
+   ("wl" "class" entry (file+headline "work.org" "Class")
+    "* TODO %?\n  %U\n  %a\n  ")
+
+   ("wh" "Hangouts" entry (file+headline "work.org" "Hangout")
     "* with $?\n  %U\n  "
     :clock-in t :clock-resume t)
 
-   ("p" "Phone call" entry (file "")
+   ("wr" "respond" entry (file+headline "work.org" "Email")
+    "* TODO [#A] Respond to %:fromname :EMAIL:\n  SCHEDULED: %T\n  %U\n  %a\n  [%:subject]\n  "
+    :clock-in t :clock-resume t :immediate-finish t)
+
+   ("wn" "note" entry (file+headline "work.org" "Note")
+    "* %?\n  %U\n  %a\n  "
+    :clock-in t :clock-resume t)
+
+   ("wm" "Meeting" entry (file+headline "work.org" "Meetings")
+    "* with %? \n  %U\n  "
+    :clock-in t :clock-resume t)
+
+   ("wp" "Phone call" entry (file "")
     "* PHONE %? :PHONE:\n  %U\n  "
+    :clock-in t :clock-resume t)
+
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; emacs/org
+   ("e" "Emacs/Org")
+
+   ("eo" "org-protocol" entry (file+headline "tasks.org" "Emacs/Org Mode")
+    "* TODO Review %c\n  %U\n  "
+    :clock-in t :clock-resume t)
+
+   ("ep" "Emacs Package" entry (file+headline "tasks.org" "Emacs")
+    "(* TODO Checkout %c\n  %U\n  "
     :clock-in t :clock-resume t)
 
    ))
