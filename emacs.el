@@ -116,6 +116,19 @@
 ;; (el-get-bundle column-enforce-mode)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ace-jump
+(el-get-bundle ace-jump-mode)
+(autoload #'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
+(autoload #'ace-jump-mode-pop-mark "ace-jump-mode" "Ace jump back" t)
+
+;;         C-c SPC -> jump to word
+;; C-u     C-c SPC -> jump to char
+;; C-u C-u C-c SPC -> jump to line
+(define-key global-map (kbd "C-c SPC") #'ace-jump-mode)
+
+;; C-x SPC -> pop mark
+(define-key global-map (kbd "C-x SPC") #'ace-jump-mode-pop-mark)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; aggressive indent
 ;; https://github.com/Malabarba/aggressive-indent-mode
 (el-get-bundle aggressive-indent-mode)
