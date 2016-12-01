@@ -272,7 +272,18 @@
     :clock-in t :clock-resume t)
 
    ("ep" "Emacs Package" entry (file+headline "tasks.org" "Emacs")
-    "(* TODO Checkout %c\n  %U\n  "
+    "* TODO Checkout %c\n  %U\n  "
+    :clock-in t :clock-resume t)
+
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; jobsearch
+   ("j" "Jobsearch")
+
+   ("jp" "Posting" entry (file+headline "jobsearch.org" "Postings")
+    "* TODO %?\n  %U\n  %a\n"
+    :clock-in t :clock-resume t)
+
+   ("jr" "Resources" entry (file+headline "jobsearch.org" "Resources")
+    "* %?\n  %U\n  %a\n"
     :clock-in t :clock-resume t)
 
    ))
