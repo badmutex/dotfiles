@@ -23,6 +23,7 @@ xscreensaver -no-splash &
 parcellite &
 nm-applet &
 pa-applet &
+blueman-applet &
 
 eval $(keychain --eval --agents ssh,gpg --noask)
 
