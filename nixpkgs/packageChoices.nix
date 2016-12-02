@@ -15,7 +15,7 @@ let
 in
 {
   withChrome      = isLinux;
-  withChromium    = isLinux;
+  withChromium    = false;
   withDropbox     = false;
   withEvince      = isLinux;
   withGames       = isHomeMachine;
