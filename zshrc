@@ -104,6 +104,12 @@ if [ $(command -v stack) ]; then
     eval "$(stack --bash-completion-script stack)"
 fi
 
+# enable direnv
+# http://direnv.net/
+if [ $(command -v direnv) ]; then
+    eval "$(direnv hook zsh)"
+fi
+
 
 test -f /etc/zlogin && source /etc/zlogin
 
