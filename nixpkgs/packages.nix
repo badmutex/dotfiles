@@ -33,7 +33,7 @@ let
     ++ optional isLinux      unison
 
     ### development
-    ++ [ emacsSetup autoconf gnumake gcc silver-searcher colordiff ]
+    ++ [ emacsSetup autoconf gnumake gcc silver-searcher colordiff direnv ]
 
     ### development / git tools
     ++ (with gitAndTools;
