@@ -35,6 +35,9 @@ let
     ### development
     ++ [ emacsSetup autoconf gnumake gcc silver-searcher colordiff direnv ]
 
+    ### developtment / cloud
+    ++ [ nixops ]
+
     ### development / git tools
     ++ (with gitAndTools;
        [ git hub git-extras topGit gitchangelog
