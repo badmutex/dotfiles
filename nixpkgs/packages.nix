@@ -38,6 +38,7 @@ let
     ### development / git tools
     ++ (with gitAndTools;
        [ git hub git-extras topGit gitchangelog
+         git-crypt
        ])
 
     # ### development / python
