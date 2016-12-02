@@ -1,11 +1,11 @@
-{ pkgs, python27Packages }:
+{ pkgs, python2Packages }:
 
 pkgs.buildEnv {
-  name = "python27-devenv";
+  name = "python2-devenv";
   paths =
-    with python27Packages;
+    with python2Packages;
     [
-      pkgs.python27Full
+      pkgs.python2Full
       ipython
       pip
       virtualenv
