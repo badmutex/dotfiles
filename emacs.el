@@ -199,7 +199,7 @@
 (setq-default indicate-buffer-boundaries 'left)
 (setq-default indicate-empty-lines 1)
 
-(global-set-key (kbd "C-c C-g") 'magit-status)
+(global-set-key (kbd "<f4>") #'magit-status)
 
 ;; restore windows after exiting magit buffers
 ;; http://magit.vc/manual/magit.html#Modes-and-Buffers
