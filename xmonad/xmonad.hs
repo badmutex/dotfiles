@@ -137,7 +137,7 @@ defaults =
 main = do
   xmobarProc <- spawnPipe "xmobar ~/.xmobar.hs"
   spawn "~/.xsession-custom"
-  xmonad $  defaults {
+  xmonad $ ewmh defaults {
     logHook = (fadeInactiveLogHook 0.8) >> (dynamicLogWithPP $ xmobarPP {
       ppOutput = \s -> hPutStrLn xmobarProc s
     , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
@@ -145,6 +145,7 @@ main = do
     , ppSep = "    "
     })
   , borderWidth = 3
+  , startupHook = ewmhDesktopsStartup >> ewmhDesktopsLogHook
   , manageHook = manageHook kde4Config <+> manageDocks <+> myManageHook
   , handleEventHook = Fullscreen.fullscreenEventHook <+> EWMH.fullscreenEventHook
   }
