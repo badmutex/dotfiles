@@ -1,9 +1,22 @@
 { pkgs
-, stdenv
 , ...
 }:
 
-with pkgs;
+let
+
+  # to update, run:
+  # nix-prefetch-git git://github.com/NixOS/nixpkgs-channels refs/heads/nixpkgs-unstable
+  src = pkgs.fetchFromGitHub {
+    owner = "NixOS";
+    repo = "nixpkgs-channels";
+    rev = "497e6d2f1d149f5fbe004e15fe8c384eed993943"; # 2016/12/05
+    sha256 = "1mh1pmgfi6xrfhx3c7r47iip06w66r9xzqwda79z73hmgq5zbvhx";
+  };
+
+  pinned-pkgs = import src {};
+
+in
+with pinned-pkgs;
 
 let
 
