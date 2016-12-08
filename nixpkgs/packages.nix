@@ -30,8 +30,6 @@ let
   devPython27 = callPackage ./devenv/python27.nix {};
   devHaskell  = with args; callPackage ./devenv/haskell.nix {};
 
-  zoom = qt55.callPackage ./apps/zoom-us.nix { };
-
   emacsSetup = emacsWithPackages (self: with self; []);
 
 in
