@@ -67,7 +67,7 @@ let
        [ hledger
          # hledger-ui
          # hledger-web
-         hledger-diff
+         # hledger-diff # broken in 2016/12/05
        ])
     ++ [ gnuplot ]
 
@@ -110,7 +110,7 @@ let
          unison
          unzipNLS
          zip
-         zoom
+         # zoom-us # broken in 2016/12/05
        ]
     ++ optional isLinux aria
 
