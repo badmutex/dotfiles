@@ -89,6 +89,7 @@ let
     ++ optionals withLatex       [texlive.combined.scheme-full biber ghostscript]
     ++ optional  withLibreOffice libreoffice
     ++ optional  withPopfile     popfile
+    ++ optional  withDigikam     digikam5
 
     ### security
     ++ [ gnupg gnutls pinentry keychain keepass keepassx2 ]

@@ -16,6 +16,7 @@ in
 {
   withChrome      = isLinux;
   withChromium    = false;
+  withDigikam     = true;
   withDropbox     = false;
   withEvince      = isLinux;
   withGames       = isHomeMachine;
