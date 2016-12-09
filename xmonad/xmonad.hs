@@ -44,6 +44,8 @@ import           XMonad.Config.Kde
 import qualified Data.Map                     as M
 import qualified XMonad.StackSet              as W
 
+import System.Environment (setEnv)
+
 
 myTerminal = "terminology"
 myModMask = mod4Mask
@@ -137,6 +139,11 @@ defaults =
 main = do
   xmobarProc <- spawnPipe "xmobar ~/.xmobar.hs"
   spawn "~/.xsession-custom"
+
+  -- fix java applications for jdk 6,7
+  -- https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Preferred_Method
+  setEnv "_JAVA_AWT_WM_NONREPARENTING" "1"
+
   xmonad $ ewmh defaults {
     logHook = (fadeInactiveLogHook 0.8) >> (dynamicLogWithPP $ xmobarPP {
       ppOutput = \s -> hPutStrLn xmobarProc s
