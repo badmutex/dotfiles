@@ -604,6 +604,7 @@
 ;; https://stackoverflow.com/questions/4506249/
 (setq browse-url-browser-function 'browse-url-xdg-open)
 
+(el-get-bundle font-lock+ :type emacswiki)
 (el-get-bundle domtronn/all-the-icons.el)
 (el-get-bundle jtbm37/all-the-icons-dired)
 (add-hook 'dired-mode-hook #'all-the-icons-dired-mode)
