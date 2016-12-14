@@ -178,8 +178,7 @@
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; git
-
-;; (el-get-bundle magit)
+(el-get-bundle magit)
 (el-get-bundle git-gutter-fringe)
 (el-get-bundle git-gutter-fringe+)
 
