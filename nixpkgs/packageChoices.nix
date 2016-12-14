@@ -25,6 +25,7 @@ in
   withLibreOffice = isLinux;
   withMega        = false;
   withPopfile     = isHomeMachine;
+  withPyCharm     = true;
   withSpotify     = true;
   withSynergy     = ! isNixOS;
   withWesnoth     = isHomeMachine;
