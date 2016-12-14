@@ -773,28 +773,13 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (nlinum dumb-jump nil smtpmail-multi oauth2 nixos-options let-alist helm-helm-commands csv-mode ac-haskell-process)))
+    (nil shakespeare-mode oauth2 nixos-options let-alist csv-mode ac-haskell-process)))
  '(safe-local-variable-values
    (quote
-    ((hamlet/basic-offset . 4)
-     (haskell-process-use-ghci . t)
+    ((haskell-process-use-ghci . t)
      (haskell-indent-spaces . 4)
-     (eval global-set-key
-           (kbd "C-c C-v t")
-           (quote
-            (lambda nil
-              (interactive)
-              (setq current-prefix-arg
-                    (quote
-                     (4)))
-              (org-babel-tangle-jump-to-org))))
-     (eval setq org-src-preserve-indentation t)
-     (project-venv-name . "workflow")
-     (project-venv-name . "virtual-cluster-libs")
      (enforce-mode)
      (column-epa-armor . t)
-     (project-venv-name . "sempl")
-     (project-venv-name . "venv")
      (org-confirm-babel-evaluate)
      (epa-armor . t)))))
 
