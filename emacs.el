@@ -463,6 +463,8 @@
 (setq projectile-enable-idle-timer nil
       projectile-indexing-method 'native
       projectile-enable-caching t)
+(projectile-global-mode)
+
 
 ;; helm
 (el-get-bundle helm)
