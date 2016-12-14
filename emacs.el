@@ -145,9 +145,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; visible bookmarks
 (el-get-bundle bm)
-(global-set-key (kbd "<f1>") 'bm-toggle)
-(global-set-key (kbd "<f2>") 'bm-next)
-(global-set-key (kbd "<f3>") 'bm-previous)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; csv mode
@@ -169,9 +166,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; expand region
 (el-get-bundle expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C--") 'er/contract-region)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; emacs lisp mode
 (add-hook 'emacs-lisp-mode-hook 'projectile-mode)
@@ -199,7 +193,6 @@
 (setq-default indicate-buffer-boundaries 'left)
 (setq-default indicate-empty-lines 1)
 
-(global-set-key (kbd "<f4>") #'magit-status)
 
 ;; restore windows after exiting magit buffers
 ;; http://magit.vc/manual/magit.html#Modes-and-Buffers
@@ -411,15 +404,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; multiple cursors
 (el-get-bundle multiple-cursors)
 
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; neotree
 (el-get-bundle neotree)
-
-(global-set-key (kbd "<f11>") 'neotree-toggle)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; nix mode
 (el-get-bundle nix-mode)
@@ -488,16 +474,6 @@
       helm-imenu-fuzzy-match t
       helm-apropos-fuzzy-match t
       helm-lisp-fuzzy-completion t)
-
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-b") 'ibuffer-list-buffers)
-(global-set-key (kbd "C-c h m") 'helm-imenu)
-(global-set-key (kbd "C-c h S-M") 'helm-imenu-in-all-buffers)
-(global-set-key (kbd "C-h a") 'helm-apropos)
-(global-set-key (kbd "C-c h k") 'helm-show-kill-ring)
-(global-set-key (kbd "C-c h r") 'helm-filtered-bookmarks)
-(global-set-key (kbd "C-x C-d") 'helm-browse-project)
-(global-set-key (kbd "C-c C-s") 'helm-swoop)
 
 ;; ag (silver searcher
 (el-get-bundle ag)
@@ -767,9 +743,46 @@
 ;; keybindings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; bookmarks
+(global-set-key (kbd "<f1>") 'bm-toggle)
+(global-set-key (kbd "<f2>") 'bm-next)
+(global-set-key (kbd "<f3>") 'bm-previous)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; expand region
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C--") 'er/contract-region)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; VCS
+(global-set-key (kbd "<f4>") #'magit-status)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; multi cursors
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; neotree
+(global-set-key (kbd "<f11>") 'neotree-toggle)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; helm
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-b") 'ibuffer-list-buffers)
+(global-set-key (kbd "C-c h m") 'helm-imenu)
+(global-set-key (kbd "C-c h S-M") 'helm-imenu-in-all-buffers)
+(global-set-key (kbd "C-h a") 'helm-apropos)
+(global-set-key (kbd "C-c h k") 'helm-show-kill-ring)
+(global-set-key (kbd "C-c h r") 'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
+(global-set-key (kbd "C-c C-s") 'helm-swoop)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; gnus
 (global-set-key (kbd "<f8>") #'gnus)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; buffer movements
 (global-set-key (kbd "C-S-<right>") #'next-buffer)
 (global-set-key (kbd "C-S-<left>")  #'previous-buffer)
 (global-set-key (kbd "C-M-<right>") #'next-multiframe-window)
 (global-set-key (kbd "C-M-<left>")  #'previous-multiframe-window)
-(put 'narrow-to-region 'disabled nil)
+
+
+;; (put 'narrow-to-region 'disabled nil)
