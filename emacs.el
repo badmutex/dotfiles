@@ -106,7 +106,6 @@
 ;; TODO auctex
 ;;      - installed, configured
 ;;      - autocompletion (company-mode is recommended)
- 
 
 
 (el-get-bundle dockerfile-mode)
