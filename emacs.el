@@ -94,6 +94,7 @@
 (eval-after-load "aggressive-indent" '(diminish 'aggressive-indent-mode " Δ"))
 (eval-after-load "subword-mode" '(diminish 'subword-mode))
 (eval-after-load "hungry-delete" '(diminish 'hungry-delete-mode))
+(eval-after-load "all-the-icons-dired" #'(diminish 'all-the-icons-dired-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
