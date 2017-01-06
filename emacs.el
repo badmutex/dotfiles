@@ -727,7 +727,7 @@
  '(("irmo" . (set-face-attribute 'default nil :height 80))))
 
 (my/switch-system-name
- '(("fangorn" . (set-face-attribute 'default nil :height 110))))
+ '(("fangorn" . (set-face-attribute 'default nil :height 100))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; custom vars
