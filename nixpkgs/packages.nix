@@ -55,11 +55,15 @@ let
        [ git hub git-extras topGit gitchangelog
          git-crypt
        ])
+    ++ [ mercurialFull ]
 
     # ### development / python
     ++ [ devPython27 ]
     ++ [ devHaskell  ]
     ++ [ sqlite sqlitebrowser ]
+
+    # ### development / android
+    ++ optional withAndroidDev androidsdk
 
     # ### finance
     ++ (with haskellPackages;

@@ -14,6 +14,7 @@ let
 
 in
 {
+  withAndroidDev  = isHomeMachine;
   withChrome      = isLinux;
   withChromium    = false;
   withDigikam     = true;
