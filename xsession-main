@@ -2,6 +2,28 @@
 
 xsetroot -cursor_name left_ptr &
 
+# See for description of properties:
+# https://www.x.org/wiki/Development/Documentation/PointerAcceleration/
+
+# acceleration profile
+xinput set-prop \
+       'Kensington Kensington Slimblade Trackball' \
+       'Device Accel Profile' \
+       2  # polynomial
+
+# # pointer acceleration
+# xinput set-prop \
+    #        'Kensington Kensington Slimblade Trackball' \
+    #        'Device Accel Constant Deceleration' \
+    #        0.5
+
+xinput set-prop \
+       'Kensington Kensington Slimblade Trackball' \
+       'Device Accel Adaptive Deceleration' \
+       1
+
+
+
 xsettingsd &
 
 compton -c -C &
@@ -17,16 +39,16 @@ trayer \
     --tint 0x000000 \
     --SetDockType true \
     --SetPartialStrut true \
-&
+    &
 
-xscreensaver -no-splash &
-parcellite &
-nm-applet &
-pa-applet &
-blueman-applet &
+    xscreensaver -no-splash &
+    parcellite &
+    nm-applet &
+    pa-applet &
+    blueman-applet &
 
-eval $(keychain --eval --agents ssh,gpg --noask)
+    eval $(keychain --eval --agents ssh,gpg --noask)
 
-emacs --daemon
+    emacs --daemon
 
-exec xmonad
+    exec xmonad
