@@ -94,7 +94,7 @@ let
     ++ optionals withLatex       [texlive.combined.scheme-full biber ghostscript]
     ++ optional  withLibreOffice libreoffice
     ++ optional  withPopfile     popfile
-    ++ optional  withDigikam     digikam5
+    ++ optionals withDigikam     [digikam5 fdupes perlPackages.ImageExifTool]
 
     ### security
     ++ [ gnupg gnutls pinentry keychain keepass keepassx2 ]
@@ -108,8 +108,10 @@ let
          graphviz-nox
          imagemagick
          inotify-tools
+         libav
          rsync
          most
+         mediainfo
          tree
          unison
          unzipNLS
