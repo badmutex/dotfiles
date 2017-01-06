@@ -153,7 +153,7 @@ main = do
     })
   , borderWidth = 3
   , startupHook = ewmhDesktopsStartup >> ewmhDesktopsLogHook
-  , manageHook = manageHook kde4Config <+> manageDocks <+> myManageHook
-  , handleEventHook = Fullscreen.fullscreenEventHook <+> EWMH.fullscreenEventHook
+  , manageHook = manageDocks <+> myManageHook
+  , handleEventHook = Fullscreen.fullscreenEventHook <+> EWMH.fullscreenEventHook <+> ewmhDesktopsEventHook
   }
 
