@@ -1,22 +1,8 @@
-{ pkgs
-, ...
+{ ...
 }:
 
-let
-
-  # to update, run:
-  # nix-prefetch-git git://github.com/NixOS/nixpkgs-channels refs/heads/nixpkgs-unstable
-  src = pkgs.fetchFromGitHub {
-    owner = "NixOS";
-    repo = "nixpkgs-channels";
-    rev = "497e6d2f1d149f5fbe004e15fe8c384eed993943"; # 2016/12/05
-    sha256 = "1mh1pmgfi6xrfhx3c7r47iip06w66r9xzqwda79z73hmgq5zbvhx";
-  };
-
-  pinned-pkgs = import src {};
-
-in
-with pinned-pkgs;
+# use a pinned version of nixpkgs, bypassing nix-channel
+with import ./nixpkgs.nix;
 
 let
 
@@ -26,7 +12,7 @@ let
 
   args = {inherit pkgs config stdenv;} // myOptions;
 
-  gitchangelog = callPackage ./apps/gitchangelog.nix { inherit (pkgs.python27Packages) buildPythonPackage d2to1; };
+  gitchangelog = callPackage ./apps/gitchangelog.nix { inherit (python27Packages) buildPythonPackage d2to1; };
   devPython27 = callPackage ./devenv/python27.nix {};
   devHaskell  = with args; callPackage ./devenv/haskell.nix {};
 
@@ -116,7 +102,7 @@ let
          unison
          unzipNLS
          zip
-         # zoom-us # broken in 2016/12/05
+         zoom-us
        ]
     ++ optional isLinux aria
 
@@ -147,6 +133,6 @@ in {
   };
   badi-recordings = buildEnv {
     name = "badi-recordings";
-    paths = with pkgs; [blender simplescreenrecorder];
+    paths = [blender simplescreenrecorder];
   };
 }
