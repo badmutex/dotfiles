@@ -48,6 +48,7 @@ card deploy {
   xsession-main -> .xsession-main
   xsession-custom -> .xsession-custom
   xsettingsd -> .xsettingsd
+  Xmodmap -> .Xmodmap
 
   spark file git.sus
 

@@ -1,1 +1,3 @@
 #!/usr/bin/env bash
+
+[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
