@@ -117,7 +117,7 @@ let
     ++ [ xclip xsel xdotool                # X management
          gnome3.gnome_keyring ]
     ++ [ feh rofi ]                        # X tools
-    ++ (with xorg; [xev xbacklight ])
+    ++ (with xorg; [xev xbacklight xmodmap ])
     ++ [ networkmanagerapplet pa_applet    # applets
          parcellite ]
 
