@@ -107,6 +107,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   , ((modm .|. shiftMask , xK_Right), shiftToNext >> nextWS)
   , ((modm .|. shiftMask , xK_Left) , shiftToPrev >> prevWS)
   , ((modm               , xK_g)    , goToSelected myGSConfig)
+  , ((modm               , xK_t)    , spawn "emacsclient -c")
   , ((modm               , xK_b)    , spawn "google-chrome-stable")
   , ((modm .|. shiftMask , xK_b)    , spawn "feh --no-fehbg --randomize --bg-scale ~/Backgrounds")
   , ((noModMask, xF86XK_MonBrightnessUp)    , spawn "xbacklight +20")
