@@ -28,6 +28,7 @@ let
        optional withDropbox dropbox
     ++ optional withMega    megatools
     ++ optional isLinux      unison
+    ++ optional withBox     boxfs
 
     ### development
     ++ [ emacsSetup autoconf gnumake gcc silver-searcher colordiff direnv ]

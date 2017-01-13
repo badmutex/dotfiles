@@ -15,6 +15,7 @@ let
 in
 {
   withAndroidDev  = isHomeMachine;
+  withBox         = hostname == "gambit";
   withChrome      = isLinux;
   withChromium    = false;
   withDigikam     = true;
