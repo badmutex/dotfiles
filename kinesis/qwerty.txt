@@ -1,0 +1,10 @@
+[caps]>[rwin]
+[lalt]>[lshift]
+[home]>[pup]
+[end]>[pdown]
+[lctrl]>[space]
+[delete]>[lalt]
+[bspace]>[lctrl]
+[rctrl]>[bspace]
+[rwin]>[delete]
+{bspace}>{-lctrl}{+lctrl}{-lctrl}{+lctrl}
