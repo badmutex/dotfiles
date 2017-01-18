@@ -1,7 +1,7 @@
 
 
 !! Extensions
-URxvt.perl-ext-common: font-size,matcher,tabbedex,url-select
+URxvt.perl-ext-common: clipboard,font-size,keyboard-select,matcher,selection-to-clipboard,tabbedex,url-select,vtwheel
 
 ! font-size: dynamic changing of font size
 URxvt.keysym.C-Down: perl:font-size:decrease
