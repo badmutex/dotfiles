@@ -1,7 +1,7 @@
 
 
 !! Extensions
-URxvt.perl-ext-common: matcher,tabbed,url-select
+URxvt.perl-ext-common: matcher,tabbedex,url-select
 
 ! matcher: clickable urls with mouse
 URxvt.url-launcher: xdg-open
@@ -19,13 +19,26 @@ URxvt.keysym.M-y: perl:url-select:select_next
 URxvt.url-select.launcher: xdg-open
 URxvt.url-select.underline: true
 
-! tabbed:
-! Shift+Down: new tab
-! Shift+Left: go left
-! Shift+Right: go right
-! Control+Left: move to left
-! Control+Right: move to right
+! tabbedex:
+! Ctrl+t: new tab
+! Ctrl+TAB: go right
+! Ctrl+Shift+TAB: go left
+! Control+Left: go left
+! Control+Right: go right
+! Ctrl+Shift+Left: move left
+! Ctrl+Shift+Right: move right
+! Ctrl+Shift+R: rename tab
 ! Control+d: close
+
+URxvt.tabbed.new-button          : false
+URxvt.tabbed.autohide            : true
+URxvt.keysym.Control-t           : perl:tabbedex:new_tab
+URxvt.keysym.Control-Right       : perl:tabbedex:next_tab
+URxvt.keysym.Control-Left        : perl:tabbedex:prev_tab
+URxvt.keysym.Control-Shift-Right : perl:tabbedex:move_tab_right
+URxvt.keysym.Control-Shift-Left  : perl:tabbedex:move_tab_left
+URxvt.keysym.Control-Shift-Tab   : perl:tabbedex:prev_tab
+URxvt.keysym.Control-Shift-R     : perl:tabbedex:rename_tab
 
 
 !! Scrollback position
