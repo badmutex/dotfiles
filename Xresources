@@ -76,6 +76,10 @@ URxvt*secondaryScroll: false
 ! used with rxvt-unicode-better-wheel-scrolling (Arch Linux AUR)
 ! URxvt*secondaryWheel: true
 
+! disable scrollbar
+URxvt.scrollBar: false
+
+
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 URxvt*shading:		10
