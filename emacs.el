@@ -79,6 +79,12 @@
 (set-mode-name 'haskell-mode-hook "Λ")
 (set-mode-name 'haskell-interactive-mode-hook "λ")
 
+(el-get-bundle edit-server)
+(require 'edit-server)
+(edit-server-start)
+
+
+
 ;; (add-hook 'emacs-lisp-mode-hook
 ;;           (lambda ()
 ;;             (setq mode-name "EL")))
