@@ -1,7 +1,14 @@
 
 
 !! Extensions
-URxvt.perl-ext-common: matcher,tabbedex,url-select
+URxvt.perl-ext-common: font-size,matcher,tabbedex,url-select
+
+! font-size: dynamic changing of font size
+URxvt.keysym.C-Down: perl:font-size:decrease
+URxvt.keysym.C-Up: perl:font-size:increase
+URxvt.keysym.C-equal: perl:font-size:reset
+URxvt.keysym.C-slash: perl:font-size:show
+
 
 ! matcher: clickable urls with mouse
 URxvt.url-launcher: xdg-open
