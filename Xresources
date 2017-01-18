@@ -1,0 +1,99 @@
+
+
+!! Extensions
+URxvt.perl-ext-common: matcher,tabbed,url-select
+
+! matcher: clickable urls with mouse
+URxvt.url-launcher: xdg-open
+URxvt.matcher.button: 1
+
+! Yankable URLs w/o mouse
+! M-y : enter select mode, select last URL on screen
+! k   : select next upward url
+! j   : select next downward url
+! Ret : open selected, exit mode
+! o   : open select
+! y   : yank selected, exit mode
+! Esc : exit mode
+URxvt.keysym.M-y: perl:url-select:select_next
+URxvt.url-select.launcher: xdg-open
+URxvt.url-select.underline: true
+
+! tabbed:
+! Shift+Down: new tab
+! Shift+Left: go left
+! Shift+Right: go right
+! Control+Left: move to left
+! Control+Right: move to right
+! Control+d: close
+
+
+!! Scrollback position
+! By default, when shell output appears the scrollback view will
+! automatically jump to the bottom. The following supports cases where
+! you want to see previous output (eg compiler messages)
+
+! do not scroll with output
+! -si|+si: T|F
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+! -sw|+sw: T|F
+URxvt*scrollWithBuffer: true
+
+! scroll back to bottom on keypress
+! -sk|+sk: T|F
+URxvt*scrollTtyKeypress: true
+
+
+!! Scrollback using mouse within pager
+! When scrolling a pager in a secondary screen (eg less without -X) we
+! want to be able scroll in the pager itself instead instead of the
+! terminals buffer
+URxvt*secondaryScreen: true
+URxvt*secondaryScroll: false
+
+! used with rxvt-unicode-better-wheel-scrolling (Arch Linux AUR)
+! URxvt*secondaryWheel: true
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+URxvt*shading:		10
+URxvt*transparent:	true
+
+! font
+URxvt*font:		xft:DejaVu Sans Mono:antialias=true:size=9
+URxvt*boldFont:		xft:DejaVu Sans Mono:antialias=true:size=9:bold
+URxvt*italicFont:	xft:Bitstream Vera Sans Mono:italic:autohint=true
+URxvt*bolditalicFont:	xft:Bitstream Vera Sans Mono:bold:italic:autohint=true
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! adapted from chaoflow
+! https://github.com/chaoflow/skel/blob/master/.Xdefaults
+
+URxvt*color0:           black
+URxvt*background:       [92]black
+URxvt*color1:           #800000
+URxvt*color2:           #008000
+URxvt*color3:           #d0d090
+URxvt*color4:           #000080
+URxvt*color5:           #800080
+URxvt*color6:           #a6caf0
+URxvt*color7:           grey90
+URxvt*foreground:       grey90
+ URxvt*color8:           #b0b0b0
+URxvt*color9:           #f08060
+URxvt*color10:          #60f080
+URxvt*color11:          #e0c060
+URxvt*color12:          #80c0e0
+URxvt*color13:          #f0c0f0
+URxvt*color14:          #c0d8f8
+URxvt*color15:          #e0e0e0
+URxvt*cursorColor:      #e0e080
+URxvt*underlineColor:	yellow
+URxvt*depth:            32
+URxvt*loginShell:	false
+URxvt*keysym.Home:	\033[1~
+URxvt*keysym.End:	\033[4~
+URxvt*urgentOnBell:	true

@@ -111,6 +111,14 @@ let
     ++ [ httpie jq nmap w3m ]
     ++ optional withChrome   google-chrome
     ++ optional withChromium chromium
+    ++ optionals withUrxvt   [ rxvt_unicode_with-plugins
+                               urxvt_font_size
+                               urxvt_perl
+                               urxvt_perls
+                               urxvt_tabbedex
+                               urxvt_theme_switch
+                               urxvt_vtwheel
+                             ]
 
     ### X11, window management
     ++ [ screen tmux ]                     # terminal multiplexers

@@ -47,7 +47,7 @@ import qualified XMonad.StackSet              as W
 import System.Environment (setEnv)
 
 
-myTerminal = "terminology"
+myTerminal = "urxvtc"
 myModMask = mod4Mask
 
 

@@ -30,6 +30,7 @@ in
   withPyCharm     = true;
   withSpotify     = true;
   withSynergy     = ! isNixOS;
+  withUrxvt       = true;
   withWesnoth     = isHomeMachine;
   withX11         = isNixOS;
   withXmonad      = isNixOS;

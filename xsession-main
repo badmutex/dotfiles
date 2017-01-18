@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
+urxvtd -q -f -o
+
 xsetroot -cursor_name left_ptr &
 
 # See for description of properties:
