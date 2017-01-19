@@ -96,9 +96,9 @@ let
          imagemagick
          inotify-tools
          libav
-         rsync
-         most
          mediainfo
+         most
+         rsync
          tree
          unison
          unzipNLS
