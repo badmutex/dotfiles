@@ -98,6 +98,7 @@ let
          libav
          mediainfo
          most
+         pandoc
          rsync
          tree
          unison
