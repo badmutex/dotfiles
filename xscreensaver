@@ -1,6 +1,6 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.34 for badi on Tue Apr 12 17:11:21 2016.
-# http://www.jwz.org/xscreensaver/
+# Written by xscreensaver-demo 5.35 for badi on Thu Jan 19 23:19:26 2017.
+# https://www.jwz.org/xscreensaver/
 
 timeout:	0:05:00
 cycle:		0:02:00
@@ -62,16 +62,16 @@ programs:								      \
 -				halo -root				    \n\
 -				slidescreen -root			    \n\
 -				pedal -root				    \n\
-				bouboule -root				    \n\
+-				bouboule -root				    \n\
 -				braid -root				    \n\
 -				coral -root				    \n\
 -				deco -root				    \n\
 -				drift -root				    \n\
 -				fadeplot -root				    \n\
-				galaxy -root				    \n\
+-				galaxy -root				    \n\
 -				goop -root				    \n\
 				grav -root				    \n\
--				ifs -root				    \n\
+				ifs -root				    \n\
 - GL: 				jigsaw -root				    \n\
 -				julia -root				    \n\
 -				kaleidescope -root			    \n\
@@ -125,7 +125,7 @@ programs:								      \
 -				phosphor -root				    \n\
 - GL: 				pulsar -root				    \n\
 -				ripples -root				    \n\
--				shadebobs -root				    \n\
+				shadebobs -root				    \n\
 - GL: 				sierpinski3d -root			    \n\
 -				spotlight -root				    \n\
 -				squiral -root				    \n\
@@ -135,7 +135,7 @@ programs:								      \
 -				xmatrix -root				    \n\
 - GL: 				gflux -root				    \n\
 -				nerverot -root				    \n\
-				xrayswarm -root				    \n\
+-				xrayswarm -root				    \n\
 -				xspirograph -root			    \n\
 - GL: 				circuit -root				    \n\
 - GL: 				dangerball -root			    \n\
@@ -150,14 +150,14 @@ programs:								      \
 - GL: 				starwars -root				    \n\
 - GL: 				stonerview -root			    \n\
 -				vermiculate -root			    \n\
-				whirlwindwarp -root			    \n\
+-				whirlwindwarp -root			    \n\
 -				zoom -root				    \n\
 -				anemone -root				    \n\
 -				apollonian -root			    \n\
 - GL: 				boxed -root				    \n\
 - GL: 				cubenetic -root				    \n\
 - GL: 				endgame -root				    \n\
-				euler2d -root				    \n\
+-				euler2d -root				    \n\
 -				fluidballs -root			    \n\
   GL: 				flurry -root				    \n\
 - GL: 				glblur -root				    \n\
@@ -186,7 +186,7 @@ programs:								      \
 -				fontglide -root				    \n\
 - GL: 				gleidescope -root			    \n\
 - GL: 				glknots -root				    \n\
-  GL: 				glmatrix -root				    \n\
+- GL: 				glmatrix -root				    \n\
 - GL: 				glslideshow -root			    \n\
 - GL: 				hypertorus -root			    \n\
 - GL: 				jigglypuff -root			    \n\
@@ -203,7 +203,7 @@ programs:								      \
 - GL: 				antinspect -root			    \n\
 -				fireworkx -root				    \n\
 -				fuzzyflakes -root			    \n\
--				interaggregate -root			    \n\
+				interaggregate -root			    \n\
 				intermomentary -root			    \n\
 -				memscroller -root			    \n\
 - GL: 				noof -root				    \n\
@@ -211,8 +211,8 @@ programs:								      \
 - GL: 				pinion -root				    \n\
 - GL: 				polyhedra -root				    \n\
 - GL: 				providence -root			    \n\
--				substrate -root				    \n\
-				wormhole -root				    \n\
+				substrate -root				    \n\
+-				wormhole -root				    \n\
 - GL: 				antmaze -root				    \n\
 - GL: 				boing -root				    \n\
 -				boxfit -root				    \n\
@@ -230,7 +230,7 @@ programs:								      \
 - GL: 				cubicgrid -root				    \n\
 -				cwaves -root				    \n\
 - GL: 				gears -root				    \n\
-  GL: 				glcells -root				    \n\
+- GL: 				glcells -root				    \n\
 - GL: 				lockward -root				    \n\
 -				m6502 -root				    \n\
 - GL: 				moebiusgears -root			    \n\
@@ -249,7 +249,7 @@ programs:								      \
 - GL: 				kaleidocycle -root			    \n\
 - GL: 				quasicrystal -root			    \n\
 - GL: 				unknownpleasures -root			    \n\
-				binaryring -root			    \n\
+-				binaryring -root			    \n\
 - GL: 				cityflow -root				    \n\
 - GL: 				geodesicgears -root			    \n\
 - GL: 				projectiveplane -root			    \n\
@@ -258,6 +258,11 @@ programs:								      \
 - GL: 				winduprobot -root			    \n\
 - GL: 				splitflap -root				    \n\
 -				testx11 -root				    \n\
+- GL: 				dymaxionmap -root			    \n\
+- GL: 				energystream -root			    \n\
+- GL: 				hydrostat -root				    \n\
+- GL: 				raverhoop -root				    \n\
+- GL: 				unicrud -root				    \n\
 
 
 pointerPollTime:    0:00:05
