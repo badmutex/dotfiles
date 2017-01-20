@@ -45,7 +45,7 @@ trayer \
     --SetPartialStrut true \
     &
 
-    xscreensaver -no-splash &
+    xscreensaver -no-capture-stderr -no-splash &
     parcellite &
     nm-applet &
     pa-applet &
