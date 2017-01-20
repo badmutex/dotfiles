@@ -35,4 +35,5 @@ in
   withX11         = isNixOS;
   withXmonad      = isNixOS;
   withYubikey     = isLinux;
+  withXpdf        = isLinux;
 }

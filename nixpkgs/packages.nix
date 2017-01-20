@@ -82,6 +82,7 @@ let
     ++ optional  withLibreOffice libreoffice
     ++ optional  withPopfile     popfile
     ++ optionals withDigikam     [digikam5 fdupes perlPackages.ImageExifTool]
+    ++ optional  withXpdf        xpdf
 
     ### security
     ++ [ gnupg gnutls pinentry keychain keepass keepassx2 ]
