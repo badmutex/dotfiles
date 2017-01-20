@@ -80,7 +80,11 @@
 (set-mode-name 'haskell-interactive-mode-hook "λ")
 
 (el-get-bundle edit-server)
+(el-get-bundle frobtech/edit-server-htmlize)
 (require 'edit-server)
+(require 'edit-server-htmlize)
+(add-hook 'edit-server-start-hook 'edit-server-maybe-dehtmlize-buffer)
+(add-hook 'edit-server-done-hook  'edit-server-maybe-htmlize-buffer)
 (edit-server-start)
 
 
