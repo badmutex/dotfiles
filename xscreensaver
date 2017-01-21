@@ -1,9 +1,9 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.35 for badi on Thu Jan 19 23:19:26 2017.
+# Written by xscreensaver-demo 5.35 for badi on Fri Jan 20 00:37:24 2017.
 # https://www.jwz.org/xscreensaver/
 
-timeout:	0:05:00
-cycle:		0:02:00
+timeout:	0:30:00
+cycle:		0:05:00
 lock:		True
 lockTimeout:	0:01:00
 passwdTimeout:	0:00:30
@@ -25,16 +25,16 @@ captureStderr:	True
 ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
 dpmsEnabled:	True
-dpmsQuickOff:	True
-dpmsStandby:	0:30:00
-dpmsSuspend:	1:00:00
-dpmsOff:	1:30:00
+dpmsQuickOff:	False
+dpmsStandby:	1:00:00
+dpmsSuspend:	1:30:00
+dpmsOff:	2:00:00
 grabDesktopImages:  True
 grabVideoFrames:    False
 chooseRandomImages: False
 imageDirectory:	
 
-mode:		random
+mode:		random-same
 selected:	-1
 
 textMode:	file
@@ -46,7 +46,7 @@ textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
 programs:								      \
 -				maze -root				    \n\
 - GL: 				superquadrics -root			    \n\
--				attraction -root			    \n\
+-				attraction -root -points 9 -fps		    \n\
 -				blitspin -root				    \n\
 -				greynetic -root				    \n\
 -				helix -root				    \n\
@@ -67,11 +67,14 @@ programs:								      \
 -				coral -root				    \n\
 -				deco -root				    \n\
 -				drift -root				    \n\
--				fadeplot -root				    \n\
+-				fadeplot -root -count 16 -cycles 2500	      \
+				  -ncolors 174 -fps			    \n\
 -				galaxy -root				    \n\
--				goop -root				    \n\
-				grav -root				    \n\
-				ifs -root				    \n\
+-				goop -root -planes 17 -elasticity 2.9	      \
+				  -max-velocity 1.4858 -fps		    \n\
+				grav -root -no-trail -fps		    \n\
+				ifs -root -functions 4 -detail 10 -colors     \
+				  250 -fps				    \n\
 - GL: 				jigsaw -root				    \n\
 -				julia -root				    \n\
 -				kaleidescope -root			    \n\
@@ -98,7 +101,7 @@ programs:								      \
 - GL: 				bubble3d -root				    \n\
 - GL: 				cage -root				    \n\
 -				crystal -root				    \n\
--				cynosure -root				    \n\
+-				cynosure -root -fps			    \n\
 -				discrete -root				    \n\
 -				distort -root				    \n\
 -				epicycle -root				    \n\
@@ -114,14 +117,15 @@ programs:								      \
 -				vidwhacker -root			    \n\
 -				blaster -root				    \n\
 -				bumps -root				    \n\
--				ccurve -root				    \n\
+-				ccurve -root -delay 6 -pause 2.4 -limit	      \
+				  170000 -fps				    \n\
 -				compass -root				    \n\
 -				deluxe -root				    \n\
 -				demon -root				    \n\
 - GL: 				extrusion -root				    \n\
 -				loop -root				    \n\
 -				penetrate -root				    \n\
--				petri -root				    \n\
+-				petri -root -fps			    \n\
 -				phosphor -root				    \n\
 - GL: 				pulsar -root				    \n\
 -				ripples -root				    \n\
@@ -144,7 +148,7 @@ programs:								      \
 - GL: 				flipscreen3d -root			    \n\
 - GL: 				gltext -root				    \n\
 - GL: 				menger -root				    \n\
-  GL: 				molecule -root				    \n\
+- GL: 				molecule -root				    \n\
 -				rotzoomer -root				    \n\
 -				speedmine -root				    \n\
 - GL: 				starwars -root				    \n\
@@ -178,7 +182,9 @@ programs:								      \
 - GL: 				blinkbox -root				    \n\
 - GL: 				blocktube -root				    \n\
 - GL: 				bouncingcow -root			    \n\
--				cloudlife -root				    \n\
+-				cloudlife -root -cycle-delay 45000	      \
+				  -max-age 114 -initial-density 10	      \
+				  -cell-size 5 -fps			    \n\
 - GL: 				cubestorm -root				    \n\
 -				eruption -root				    \n\
 - GL: 				flipflop -root				    \n\
@@ -190,12 +196,13 @@ programs:								      \
 - GL: 				glslideshow -root			    \n\
 - GL: 				hypertorus -root			    \n\
 - GL: 				jigglypuff -root			    \n\
-				metaballs -root				    \n\
+-				metaballs -root -count 110 -radius 50	      \
+				  -delta 15 -fps			    \n\
 - GL: 				mirrorblob -root			    \n\
 -				piecewise -root				    \n\
 - GL: 				polytopes -root				    \n\
 -				pong -root				    \n\
--				popsquares -root			    \n\
+-				popsquares -root -border 0 -bg #FFFF00 -fps \n\
 - GL: 				surfaces -root				    \n\
 -				xanalogtv -root				    \n\
 -				abstractile -root			    \n\
@@ -203,19 +210,20 @@ programs:								      \
 - GL: 				antinspect -root			    \n\
 -				fireworkx -root				    \n\
 -				fuzzyflakes -root			    \n\
-				interaggregate -root			    \n\
-				intermomentary -root			    \n\
+				interaggregate -root -num-circles 170 -fps  \n\
+				intermomentary -root -num-discs 155 -fps    \n\
 -				memscroller -root			    \n\
 - GL: 				noof -root				    \n\
 -				pacman -root				    \n\
 - GL: 				pinion -root				    \n\
 - GL: 				polyhedra -root				    \n\
 - GL: 				providence -root			    \n\
-				substrate -root				    \n\
+				substrate -root -max-cycles 14600	      \
+				  -sand-grains 75 -circle-percent 43 -fps   \n\
 -				wormhole -root				    \n\
 - GL: 				antmaze -root				    \n\
 - GL: 				boing -root				    \n\
--				boxfit -root				    \n\
+				boxfit -root -fps			    \n\
 - GL: 				carousel -root				    \n\
 -				celtic -root				    \n\
 - GL: 				crackberg -root				    \n\
@@ -249,7 +257,8 @@ programs:								      \
 - GL: 				kaleidocycle -root			    \n\
 - GL: 				quasicrystal -root			    \n\
 - GL: 				unknownpleasures -root			    \n\
--				binaryring -root			    \n\
+				binaryring -root -growth-delay 90000	      \
+				  -ring-radius 119 -particles-number 500    \n\
 - GL: 				cityflow -root				    \n\
 - GL: 				geodesicgears -root			    \n\
 - GL: 				projectiveplane -root			    \n\
