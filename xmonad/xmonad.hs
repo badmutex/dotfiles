@@ -29,7 +29,6 @@ import XMonad.Layout.Accordion
 import XMonad.Layout.Maximize
 import XMonad.Layout.Spacing
 -- import XMonad.Layout.Spiral
--- import XMonad.Layout.Magnifier
 import           XMonad.Layout.Fullscreen as Fullscreen
 import           XMonad.Layout.NoBorders
 import           XMonad.Layout.Spiral
@@ -99,8 +98,6 @@ rofi = "rofi -show run -fg '#505050' -bg '#000000' -hlfg '#ffb964' -hlbg '#00000
 myKeys conf@(XConfig {XMonad.modMask = modm}) =
     M.fromList [
   ((modm               , xK_p)    , spawn rofi)
-    -- , ((modm               , xK_equal) , sendMessage MagnifyMore)
-    -- , ((modm               , xK_minus), sendMessage MagnifyLess)
   , ((modm .|. mod1Mask       , xK_Return), withFocused (sendMessage . maximizeRestore))
   , ((modm               , xK_Right), nextWS)
   , ((modm               , xK_Left) , prevWS)
