@@ -9,20 +9,33 @@ URxvt.keysym.C-Up: perl:font-size:increase
 URxvt.keysym.C-equal: perl:font-size:reset
 URxvt.keysym.C-slash: perl:font-size:show
 
+! Select regions to copy to clipboard
+! M-y                                 : activate
+! h/j/k/l                             : Move cursor left/down/up/right (also with arrow keys)
+! g/G/0/^/$/H/M/L/f/F/;/,/w/W/b/B/e/E : More vi-like cursor movement keys
+! '/'/?                               : Start forward/backward search
+! n/N                                 : Repeat last search, N: in reverse direction
+! Ctrl-f/b                            : Scroll down/up one screen
+! Ctrl-d/u                            : Scroll down/up half a screen
+! v/V/Ctrl-v                          : Toggle normal/linewise/blockwise selection
+! y/Return                            : Copy selection to primary buffer, Return: quit afterwards
+! Y                                   : Copy selected lines to primary buffer or cursor line and quit
+! q/Escape                            : Quit keyboard selection mode
+URxvt.keysym.M-y: perl:keyboard-select:activate
 
 ! matcher: clickable urls with mouse
 URxvt.url-launcher: xdg-open
 URxvt.matcher.button: 1
 
 ! Yankable URLs w/o mouse
-! M-y : enter select mode, select last URL on screen
+! M-u : enter select mode, select last URL on screen
 ! k   : select next upward url
 ! j   : select next downward url
 ! Ret : open selected, exit mode
 ! o   : open select
 ! y   : yank selected, exit mode
 ! Esc : exit mode
-URxvt.keysym.M-y: perl:url-select:select_next
+URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: xdg-open
 URxvt.url-select.underline: true
 
