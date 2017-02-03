@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.35 for badi on Fri Jan 20 00:37:24 2017.
+# Written by xscreensaver-demo 5.35 for badi on Wed Feb  1 23:35:35 2017.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:30:00
@@ -64,9 +64,9 @@ programs:								      \
 -				pedal -root				    \n\
 -				bouboule -root				    \n\
 -				braid -root				    \n\
--				coral -root				    \n\
+				coral -root -density 34 -seeds 50 -fps	    \n\
 -				deco -root				    \n\
--				drift -root				    \n\
+-				drift -root -delay 30000 -count 10 -fps	    \n\
 -				fadeplot -root -count 16 -cycles 2500	      \
 				  -ncolors 174 -fps			    \n\
 -				galaxy -root				    \n\
@@ -133,13 +133,13 @@ programs:								      \
 - GL: 				sierpinski3d -root			    \n\
 -				spotlight -root				    \n\
 -				squiral -root				    \n\
--				wander -root				    \n\
+				wander -root -circles -fps		    \n\
 -				webcollage -root			    \n\
 -				xflame -root				    \n\
 -				xmatrix -root				    \n\
 - GL: 				gflux -root				    \n\
 -				nerverot -root				    \n\
--				xrayswarm -root				    \n\
+				xrayswarm -root -fps			    \n\
 -				xspirograph -root			    \n\
 - GL: 				circuit -root				    \n\
 - GL: 				dangerball -root			    \n\
@@ -166,7 +166,7 @@ programs:								      \
   GL: 				flurry -root				    \n\
 - GL: 				glblur -root				    \n\
 - GL: 				glsnake -root				    \n\
--				halftone -root				    \n\
+-				halftone -root -delay 40000 -count 15 -fps  \n\
 - GL: 				juggler3d -root				    \n\
 - GL: 				lavalite -root				    \n\
 -				polyominoes -root			    \n\
@@ -253,11 +253,11 @@ programs:								      \
 - GL: 				hilbert -root				    \n\
 - GL: 				tronbit -root				    \n\
 - GL: 				geodesic -root				    \n\
--				hexadrop -root				    \n\
+				hexadrop -root -fps			    \n\
 - GL: 				kaleidocycle -root			    \n\
 - GL: 				quasicrystal -root			    \n\
 - GL: 				unknownpleasures -root			    \n\
-				binaryring -root -growth-delay 90000	      \
+-				binaryring -root -growth-delay 90000	      \
 				  -ring-radius 119 -particles-number 500    \n\
 - GL: 				cityflow -root				    \n\
 - GL: 				geodesicgears -root			    \n\
