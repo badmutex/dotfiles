@@ -33,11 +33,15 @@ let
       sha256 = "19hkwa3yx33z42jprfkdcdabcdrg13cjwwf7s36fzn8i9rlp8bls";
     };
 
+    "2017-01-22" = {
+      rev = "cb602a472885f0b32c917b73ec1e5353f8e5e450";
+      sha256 = "178xwvb9qjw43da2frd8q5zmli2zm2rxm0vbx68wv8myhhlmpwgj";
+    };
 
 
   };
 
-  origin = hashes."2017-01-18" // {
+  origin = hashes."2017-01-22" // {
     owner = "NixOS";
     repo = "nixpkgs-channels";
   };
