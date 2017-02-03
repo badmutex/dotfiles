@@ -57,7 +57,7 @@ let
     ++ (with haskellPackages;
        [ hledger
          # hledger-ui
-         # hledger-web
+         hledger-web
          # hledger-diff # broken in 2016/12/05
        ])
     ++ [ gnuplot ]
