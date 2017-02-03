@@ -43,6 +43,7 @@ let
          git-crypt
        ])
     ++ [ mercurialFull ]
+    ++ [ vagrant ]
 
     # ### development / python
     ++ [ devPython27 ]
