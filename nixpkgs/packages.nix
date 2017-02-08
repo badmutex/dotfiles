@@ -15,7 +15,7 @@ let
   gitchangelog = callPackage ./apps/gitchangelog.nix { inherit (python27Packages) buildPythonPackage d2to1; };
   devPython27 = callPackage ./devenv/python27.nix {};
   devHaskell  = with args; callPackage ./devenv/haskell.nix {};
-
+  keepassxc = callPackage ./apps/keepassxc.nix { withHTTP=true; withAutoType=true; withYubikey=true; };
   emacsSetup = emacsWithPackages (self: with self; []);
 
 in
@@ -86,7 +86,7 @@ let
     ++ optional  withXpdf        xpdf
 
     ### security
-    ++ [ gnupg gnutls pinentry keychain keepass keepassx2 ]
+    ++ [ gnupg gnutls pinentry keychain keepassxc ]
     ++ optional  isLinux paperkey
     ++ optionals withYubikey [ yubikey-personalization-gui
                                yubikey-personalization ]
