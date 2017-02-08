@@ -94,6 +94,7 @@ let
     ### tools
     ++ [ aspell aspellDicts.en
          bc
+         dos2unix
          graphviz-nox
          imagemagick
          inotify-tools
