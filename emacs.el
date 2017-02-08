@@ -145,6 +145,7 @@
 (global-aggressive-indent-mode 1)
 (add-to-list 'aggressive-indent-excluded-modes 'nix-mode)
 (add-to-list 'aggressive-indent-excluded-modes 'haskell-interactive-mode)
+(add-to-list 'aggressive-indent-excluded-modes 'latex-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
