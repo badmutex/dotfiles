@@ -107,6 +107,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   , ((modm               , xK_t)    , spawn "emacsclient -c")
   , ((modm               , xK_b)    , spawn "google-chrome-stable")
   , ((modm .|. shiftMask , xK_b)    , spawn "feh --no-fehbg --randomize --bg-scale ~/Backgrounds")
+  , ((modm               , xK_f)    , sendMessage ToggleStruts)
   , ((noModMask, xF86XK_MonBrightnessUp)    , spawn "xbacklight +20")
   , ((noModMask, xF86XK_MonBrightnessDown)  , spawn "xbacklight -20")
   , ((noModMask, xF86XK_AudioRaiseVolume) , spawn "amixer set 'Master' 1%+")
