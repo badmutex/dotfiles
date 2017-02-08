@@ -272,7 +272,7 @@
 (setq haskell-process-type 'stack-ghci
       haskell-process-path-ghci "stack"
       haskell-process-args-ghci "ghci"
-      haskell-process-args-stack-ghci nil
+      haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans")
       haskell-compile-cabal-build-command "stack build"
       haskell-compile-cabal-build-alt-command "stack build --force-dirty --reconfigure"
 
