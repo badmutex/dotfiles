@@ -1,22 +1,26 @@
-{ pkgs, python2Packages }:
+{ python2Full, python2Packages }:
 
-pkgs.buildEnv {
-  name = "python2-devenv";
-  paths =
-    with python2Packages;
-    [
-      pkgs.python2Full
-      ipython
+let pypkgs = pkgs: with pkgs; [
       pip
       virtualenv
-      # virtualenvwrapper
+      ipython
+      jupyter
+      ipykernel
+      matplotlib
+      attrs
       jedi
+      rope
       flake8
       importmagic
       autopep8
       yapf
       pep8
       pyflakes
-    ]
-    ;
+    ];
+
+in
+
+python2Full.buildEnv.override {
+  extraLibs = pypkgs python2Packages;
+  ignoreCollisions = true;
 }
