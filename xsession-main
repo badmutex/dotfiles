@@ -30,7 +30,7 @@ xinput set-prop \
 
 xsettingsd &
 
-compton -c -C &
+compton -b
 ~/.xsession-background
 
 trayer \
