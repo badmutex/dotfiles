@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+export XDG_CONFIG_HOME=$HOME/.config
+
+
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 urxvtd -q -f -o
