@@ -114,6 +114,21 @@ fi
 
 test -f /etc/zlogin && source /etc/zlogin
 
+######################################################################
+
+repl() {
+    local arg="${1:=$HOME/dotfiles/nixpkgs/nixpkgs.nix}"
+    nix-repl $arg
+}
+
+
+client() {
+    cd ~/work/cloudmesh/client
+}
+
+classes() {
+    cd ~/work/classes
+}
 
 ## Local Variables:
 ## mode: shell-script
