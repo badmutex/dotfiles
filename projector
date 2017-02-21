@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+usage() {
+    cat <<EOF
+USAGE:
+  $0 [-p POSITION] -d NAME
+
+DESCRIPTION:
+
+  Turn on display called NAME at position POSITION
+
+POSITIONS
+
+  > RIGHT: default
+    LEFT
+    ABOVE
+    BELOW
+
+EOF
+}
+set -x
+################################################################
+declare -r LAPTOP=LVDS1
+declare POSITION=RIGHT;
+declare PROJECTOR;
+declare XRANDR_POSITION;
+
+################################################################
+
+while getopts "p:d:h" opt; do
+    case $opt in
+        p)
+            POSITION=${OPTARG}
+            ;;
+        d)
+            PROJECTOR=${OPTARG}
+            ;;
+        *)
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+case $POSITION in
+    LEFT)  XRANDR_POSITION=--left-of;;
+    RIGHT) XRANDR_POSITION=--right-of;;
+    ABOVE) XRANDR_POSITION=--above;;
+    BELOW) XRANDR_POSITION=--below;;
+    *) usage; exit 2;;
+esac
+
+################################################################
+
+test -z $PROJECTOR && usage && exit 3
+
+################################################################
+
+xrandr --output $PROJECTOR --auto $XRANDR_POSITION $LAPTOP
