@@ -42,6 +42,7 @@ let
        [ git hub git-extras topGit gitchangelog
          git-crypt
        ])
+    ++ [ github-release ]
     ++ [ mercurialFull ]
     ++ [ vagrant ]
 
