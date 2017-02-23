@@ -17,6 +17,7 @@ let
   devHaskell  = with args; callPackage ./devenv/haskell.nix {};
   keepassxc = callPackage ./apps/keepassxc.nix { withHTTP=true; withAutoType=true; withYubikey=true; };
   emacsSetup = emacsWithPackages (self: with self; []);
+  pnix-shell = callPackage ./apps/pnix-shell.nix {};
 
 in
 
@@ -33,6 +34,7 @@ let
     ### development
     ++ [ emacsSetup autoconf gnumake gcc silver-searcher colordiff direnv ]
     ++ optional withPyCharm idea.pycharm-community
+    ++ [ pnix-shell ]
 
     ### developtment / cloud
     ++ [ nixops ]
