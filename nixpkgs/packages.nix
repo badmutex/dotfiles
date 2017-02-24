@@ -118,6 +118,8 @@ let
     ++ [ httpie jq nmap w3m ]
     ++ optional withChrome   google-chrome
     ++ optional withChromium chromium
+    ++ optional withFirefox  firefox-beta-bin
+    ++ optional withVivaldi  vivaldi
     ++ optionals withUrxvt   [ rxvt_unicode_with-plugins
                                urxvt_font_size
                                urxvt_perl

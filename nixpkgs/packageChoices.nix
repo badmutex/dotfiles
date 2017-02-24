@@ -21,6 +21,7 @@ in
   withDigikam     = true;
   withDropbox     = false;
   withEvince      = isLinux;
+  withFirefox     = isLinux;
   withGames       = isHomeMachine;
   withInkscape    = isLinux;
   withLatex       = isLinux;
@@ -31,6 +32,7 @@ in
   withSpotify     = true;
   withSynergy     = ! isNixOS;
   withUrxvt       = true;
+  withVivaldi     = isLinux;
   withWesnoth     = isHomeMachine;
   withX11         = isNixOS;
   withXmonad      = isNixOS;
