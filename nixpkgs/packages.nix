@@ -123,7 +123,7 @@ let
     ++ optional  withXpdf        xpdf
 
     ### security
-    ++ [ gnupg gnutls pinentry keychain keepassxc ]
+    ++ [ gnupg1 gnupg gnutls pinentry keychain keepassxc ]
     ++ optional  isLinux paperkey
     ++ optionals withYubikey [ yubikey-personalization-gui
                                yubikey-personalization ]
