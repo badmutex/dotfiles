@@ -139,9 +139,11 @@ let
          mediainfo
          most
          pandoc
+         p7zip
          rsync
          tree
          unison
+         unrar
          unzipNLS
          zip
          zoom-us
