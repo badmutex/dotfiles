@@ -19,6 +19,40 @@ let
   emacsSetup = emacsWithPackages (self: with self; []);
   pnix-shell = callPackage ./apps/pnix-shell.nix {};
 
+
+  play-on-linux = buildFHSUserEnv {
+    name = "playonlinux";
+    targetPkgs = pkgs: with pkgs; [ playonlinux freetype sudo file which binutils glxinfo wine ];
+    multiPkgs  = pkgs: with pkgs; [ freetype openssl gnutls mesa mesa_noglu.osmesa libdrm libudev fontconfig libpng libjpeg libtiff fontconfig alsaLib libpulseaudio gtk3 glib ncurses ]
+                   ++ (with xorg; [ libICE libSM libX11 libXi libXcursor libXrandr libXrender libXxf86vm libXcomposite libXext libXinerama ]);
+    profile = ''
+      export TERM=xterm
+      export USER=$(whoami)
+    '';
+    runScript = "playonlinux";
+  };
+
+  run-pharaoh-drv =
+    { stdenv, bash, wineFull, ...}:
+    stdenv.mkDerivation {
+      name = "run-pharaoh";
+      src = builtins.toFile "run-pharaoh.sh" ''
+        #!/usr/bin/env bash
+        cd ~/.wine/drive_c/SIERRA/Pharaoh/
+        exec wine Pharaoh.exe
+      '';
+      phases = [ "installPhase" ];
+      installPhase = ''
+        mkdir -p $out/bin
+        cp $src $out/bin/run-pharaoh
+        chmod +x $out/bin/run-pharaoh
+      '';
+      buildInputs = [  ];
+      propagatedBuildInputs = [ wineFull ];
+  };
+
+  run-pharaoh = callPackage run-pharaoh-drv {} ;
+
 in
 
 let
@@ -66,7 +100,7 @@ let
     ++ [ gnuplot ]
 
     ### games
-    ++ optional withWesnoth wesnoth
+    ++ optionals withGames [ run-pharaoh play-on-linux wineFull winetricks freeciv widelands freeorion pingus wesnoth ]
 
     ### monitoring
     ++ optionals isLinux [ iotop htop nethogs ]
