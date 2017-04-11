@@ -130,6 +130,11 @@ classes() {
     cd ~/work/classes
 }
 
+cmcore() {
+    cd ~/work/cloudmesh/cloudmesh.core
+}
+
+
 ## Local Variables:
 ## mode: shell-script
 ## End:
