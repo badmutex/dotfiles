@@ -25,10 +25,10 @@ captureStderr:	True
 ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
 dpmsEnabled:	True
-dpmsQuickOff:	False
-dpmsStandby:	1:00:00
-dpmsSuspend:	1:30:00
-dpmsOff:	2:00:00
+dpmsQuickOff:	True
+dpmsStandby:	0:30:00
+dpmsSuspend:	0:45:00
+dpmsOff:	1:00:00
 grabDesktopImages:  True
 grabVideoFrames:    False
 chooseRandomImages: False
