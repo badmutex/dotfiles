@@ -10,3 +10,4 @@
         pager = less -F -X
 [push]
         default = simple
+        followTags = true
