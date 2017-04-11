@@ -13,3 +13,5 @@
         followTags = true
 [status]
         showUntrackedFiles = all
+[status]
+        fsckobjects = true
