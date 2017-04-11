@@ -6,6 +6,7 @@
 [merge]
         summary = true
         tool = emerge
+        conflictstyle = diff3
 [core]
         pager = less -F -X
 [push]
