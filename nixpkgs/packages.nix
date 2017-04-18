@@ -18,6 +18,7 @@ let
   keepassxc = callPackage ./apps/keepassxc.nix { withHTTP=true; withAutoType=true; withYubikey=true; };
   emacsSetup = emacsWithPackages (self: with self; []);
   pnix-shell = callPackage ./apps/pnix-shell.nix {};
+  zoom-us = libsForQt56.callPackage ./apps/zoom-us.nix {};
 
 
   play-on-linux = buildFHSUserEnv {
