@@ -3,6 +3,9 @@
 [user]
         name = Badi Abdul-Wahid
         email = abdulwahidc@gmail.com
+        signingKey = abdulwahidc@gmail.com
+[commit]
+        gpgSign = true
 [merge]
         summary = true
         tool = emerge
