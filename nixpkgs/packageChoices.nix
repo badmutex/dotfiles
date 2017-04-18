@@ -33,7 +33,6 @@ in
   withSynergy     = ! isNixOS;
   withUrxvt       = true;
   withVivaldi     = isLinux;
-  withWesnoth     = isHomeMachine;
   withX11         = isNixOS;
   withXmonad      = isNixOS;
   withYubikey     = isLinux;
