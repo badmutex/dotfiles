@@ -32,26 +32,51 @@ let
     runScript = "playonlinux";
   };
 
-  run-pharaoh-drv =
-    { stdenv, bash, wineFull, ...}:
+  run-in-wine =
+    { name
+    , cpath
+    , exe
+    , prefix
+    , stdenv, bash, wineFull, ...
+    }:
     stdenv.mkDerivation {
-      name = "run-pharaoh";
-      src = builtins.toFile "run-pharaoh.sh" ''
+      name = "run-${name}";
+      src = builtins.toFile "run-${name}.sh" ''
         #!/usr/bin/env bash
-        cd ~/.wine/drive_c/SIERRA/Pharaoh/
-        exec wine Pharaoh.exe
+        cd "${prefix}/drive_c/${cpath}"
+        exec wine "${exe}"
       '';
       phases = [ "installPhase" ];
       installPhase = ''
         mkdir -p $out/bin
-        cp $src $out/bin/run-pharaoh
-        chmod +x $out/bin/run-pharaoh
+        cp $src $out/bin/run-${name}
+        chmod +x $out/bin/run-${name}
       '';
-      buildInputs = [  ];
+      buildInputs = [];
       propagatedBuildInputs = [ wineFull ];
+    };
+
+
+  run-pharaoh = callPackage run-in-wine {
+    prefix = "~/.wine";
+    name = "pharaoh";
+    cpath = "SIERRA/Pharaoh";
+    exe = "Pharaoh.exe";
   };
 
-  run-pharaoh = callPackage run-pharaoh-drv {} ;
+  run-torment = callPackage run-in-wine {
+    name = "torment";
+    prefix = "$HOME/wineprefix/planescape-torment";
+    cpath = "Program Files/Planescape Torment Enhanced Edition";
+    exe = "Torment.exe";
+  };
+
+  run-baldursgate = callPackage run-in-wine {
+    name = "baldursgate";
+    prefix = "$HOME/wineprefix/baldurs-gate-EE";
+    cpath = "Program Files/Baldur's Gate - Enhanced Edition";
+    exe = "Baldur.exe";
+  };
 
 in
 
@@ -101,7 +126,7 @@ let
     ++ [ gnuplot ]
 
     ### games
-    ++ optionals withGames [ run-pharaoh play-on-linux wineFull winetricks freeciv widelands freeorion pingus wesnoth ]
+    ++ optionals withGames [ run-pharaoh run-torment run-baldursgate play-on-linux wineFull winetricks freeciv widelands freeorion pingus wesnoth ]
 
     ### monitoring
     ++ optionals isLinux [ iotop htop nethogs ]
