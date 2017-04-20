@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-set -x
-xrandr --output DisplayPort-0 --rotate left
-xrandr --output DisplayPort-3 --rotate left
-set +x
+LEFT=DisplayPort-0
+MIDDLE=DisplayPort-2
+RIGHT=DisplayPort-3
+
+xrandr --output $LEFT --primary --rotate left
+xrandr --output $MIDDLE --right-of $LEFT
+xrandr --output $RIGHT --right-of $MIDDLE --rotate left
