@@ -1,34 +1,41 @@
-{ stdenv, lib, fetchurl, cmake, libgcrypt, qt5, zlib, libmicrohttpd, libXtst, libgpgerror
+{ stdenv, fetchFromGitHub, makeQtWrapper
+, cmake, libgcrypt, zlib, libmicrohttpd, libXtst, qtbase, qttools, libgpgerror
 , withHTTP ? false
 , withAutoType ? false
 , withYubikey ? false
 }:
 
-stdenv.mkDerivation rec {
-  name = "keepassxc-${version}";
-  version = "2.1.1";
+with stdenv.lib;
 
-  src = fetchurl {
-    url = "https://github.com/keepassxreboot/keepassxc/releases/download/${version}/${name}-src.tar.xz";
-    sha256 = "1028h23gcwv3dmq306l4n74mm9vvqx2n8gm9i877ki6z3qzhc2an";
+stdenv.mkDerivation rec {
+  name = "keepassx-community-${version}";
+  version = "2.1.4";
+
+  src = fetchFromGitHub {
+    owner = "keepassxreboot";
+    repo = "keepassxc";
+    rev = "${version}";
+    sha256 = "1znnw2xpv58x0rbpmm4y662377mbmcilhf8mhhjsz8vhahms33a8";
   };
 
-  buildInputs = [ cmake libgcrypt zlib qt5.full libXtst libmicrohttpd libgpgerror ];
-  enableParallelBilding = true;
-
-  cmakeFlags = with lib; strings.concatStringsSep " " [
+  cmakeFlags = [
     (optionalString withHTTP "-DWITH_XC_HTTP=ON")
     (optionalString withAutoType "-DWITH_XC_AUTOTYPE=ON")
     (optionalString withYubikey "-DWITH_XC_YUBIKEY=ON")
   ];
 
+  postFixup = ''
+    wrapQtProgram $out/bin/keepassxc --suffix-each LD_LIBRARY_PATH ':' "${qtbase}/lib"
+  '';
+
+  buildInputs = [ cmake libgcrypt zlib qtbase qttools libXtst libmicrohttpd libgpgerror ];
+  nativeBuildInputs = [ makeQtWrapper ];
+
   meta = {
     description = "Fork of the keepassX password-manager with additional http-interface to allow browser-integration an use with plugins such as PasslFox (https://github.com/pfn/passifox). See also keepassX2.";
-    homepage = https://github.com/keepassxreboot/keepassx;
+    homepage = https://github.com/keepassxreboot/keepassxc;
     license = stdenv.lib.licenses.gpl2;
     maintainers = with stdenv.lib.maintainers; [ s1lvester jonafato ];
     platforms = with stdenv.lib.platforms; linux;
   };
-
 }
-
