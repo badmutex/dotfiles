@@ -43,14 +43,11 @@ card deploy {
   }
 
   xscreensaver -> .xscreensaver
-  xsession -> .xsession
-  xsession-background -> .xsession-background
-  xsession-main -> .xsession-main
-  xsession-custom -> .xsession-custom
   xsettingsd -> .xsettingsd
   Xresources -> .Xresources
 
   spark file git.sus
+  spark file desktop-setup.sus
 
 
   into .config

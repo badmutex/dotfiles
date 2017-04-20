@@ -1,0 +1,11 @@
+card desktopsetup {
+
+  into ~/.config/plasma-workspace/env
+  outof desktop-setup
+
+  emacs.sh -> emacs.sh
+  keychain.sh
+  set_window_manager.sh
+  urxvtd.sh
+
+}

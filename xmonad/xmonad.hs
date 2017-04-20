@@ -118,7 +118,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
 
 
 defaults =
-  let cfg = defaultConfig
+  let cfg = kde4Config
   in cfg {
     -- simple stuff
     terminal           = myTerminal
@@ -127,7 +127,7 @@ defaults =
   -- hooks, layouts
   , layoutHook = smartBorders $ myLayout
 
-  , manageHook = manageDocks <+> myManageHook <+> manageHook cfg
+  -- , manageHook = manageDocks <+> myManageHook <+> manageHook cfg
 
 
   -- key bindings
@@ -136,23 +136,22 @@ defaults =
   }
 
 main = do
-  xmobarProc <- spawnPipe "xmobar ~/.xmobar.hs"
-  spawn "~/.xsession-custom"
+  -- xmobarProc <- spawnPipe "xmobar ~/.xmobar.hs"
 
   -- fix java applications for jdk 6,7
   -- https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Preferred_Method
   setEnv "_JAVA_AWT_WM_NONREPARENTING" "1"
 
   xmonad $ ewmh defaults {
-    logHook = (fadeInactiveLogHook 0.8) >> (dynamicLogWithPP $ xmobarPP {
-      ppOutput = \s -> hPutStrLn xmobarProc s
-    , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
-    , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-    , ppSep = "    "
-    })
-  , borderWidth = 3
-  , startupHook = ewmhDesktopsStartup >> ewmhDesktopsLogHook
-  , manageHook = manageDocks <+> myManageHook
-  , handleEventHook = Fullscreen.fullscreenEventHook <+> EWMH.fullscreenEventHook <+> ewmhDesktopsEventHook
+    -- logHook = (fadeInactiveLogHook 0.8) >> (dynamicLogWithPP $ xmobarPP {
+    --   ppOutput = \s -> hPutStrLn xmobarProc s
+    -- , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+    -- , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
+    -- , ppSep = "    "
+    -- })
+   borderWidth = 3
+  -- , startupHook = ewmhDesktopsStartup >> ewmhDesktopsLogHook
+  -- , manageHook = manageDocks <+> myManageHook
+  -- , handleEventHook = Fullscreen.fullscreenEventHook <+> EWMH.fullscreenEventHook <+> ewmhDesktopsEventHook
   }
 

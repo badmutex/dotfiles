@@ -1,0 +1,1 @@
+urxvtd -q -f -o
