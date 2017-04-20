@@ -127,7 +127,7 @@ let
     ++ [ gnuplot ]
 
     ### games
-    ++ optionals withGames [ run-pharaoh run-torment run-baldursgate play-on-linux wineFull winetricks freeciv widelands freeorion pingus wesnoth ]
+    ++ optionals withGames [ run-pharaoh run-torment run-baldursgate wineFull winetricks pingus ]
 
     ### monitoring
     ++ optionals isLinux [ iotop htop nethogs ]
