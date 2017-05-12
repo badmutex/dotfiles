@@ -1,8 +1,0 @@
----
-
-- name: yubikey | write udev rules
-  get_url:
-    dest: /etc/udev/rules.d/70-u2f.rules
-    url:
-      "https://raw.githubusercontent.com/Yubico/libu2f-host/master/70-u2f.rules"
-  notify: reload udev rules
