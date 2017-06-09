@@ -117,41 +117,55 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   ]
 
 
-defaults =
-  let cfg = kde4Config
+configuration =
+  let cfg = defaultConfig
   in cfg {
     -- simple stuff
     terminal           = myTerminal
   , modMask            = myModMask
 
   -- hooks, layouts
-  , layoutHook = smartBorders $ myLayout
-
-  -- , manageHook = manageDocks <+> myManageHook <+> manageHook cfg
-
+  , layoutHook = avoidStruts $ smartBorders $ myLayout
+  , manageHook = manageDocks <+> manageHook cfg
+  , startupHook = ewmhDesktopsStartup >> ewmhDesktopsLogHook
+  , handleEventHook = Fullscreen.fullscreenEventHook <+> EWMH.fullscreenEventHook <+> ewmhDesktopsEventHook <+> docksEventHook <+> handleEventHook cfg
+  -- , handleEventHook = mconcat [ docksEventHook, handleEventHook cfg ]
 
   -- key bindings
   , keys = myKeys <+> keys cfg
 
   }
 
+tray = unwords [
+  "trayer"
+  , "--edge top"
+  ,  "--align center"
+  ,  "--expand true"
+  ,  "--width 10 --height 15"
+  ,  "--transparent true"
+  ,  "--alpha 0"
+  ,  "--tint 0x000000"
+  ,  "--SetDockType true"
+  ,  "--SetPartialStrut true"
+  ]
+
+
+
 main = do
-  -- xmobarProc <- spawnPipe "xmobar ~/.xmobar.hs"
+  xmobarProc <- spawnPipe "xmobar ~/.xmobar.hs"
+  spawn tray
 
   -- fix java applications for jdk 6,7
   -- https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Preferred_Method
   setEnv "_JAVA_AWT_WM_NONREPARENTING" "1"
 
-  xmonad $ ewmh defaults {
-    -- logHook = (fadeInactiveLogHook 0.8) >> (dynamicLogWithPP $ xmobarPP {
-    --   ppOutput = \s -> hPutStrLn xmobarProc s
-    -- , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
-    -- , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-    -- , ppSep = "    "
-    -- })
-   borderWidth = 3
-  -- , startupHook = ewmhDesktopsStartup >> ewmhDesktopsLogHook
-  -- , manageHook = manageDocks <+> myManageHook
-  -- , handleEventHook = Fullscreen.fullscreenEventHook <+> EWMH.fullscreenEventHook <+> ewmhDesktopsEventHook
+  xmonad $ ewmh configuration {
+    logHook = (fadeInactiveLogHook 0.8) >> (dynamicLogWithPP $ xmobarPP {
+      ppOutput = \s -> hPutStrLn xmobarProc s
+    , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+    , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
+    , ppSep = "    "
+    })
+  , borderWidth = 3
   }
 
