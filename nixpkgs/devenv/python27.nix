@@ -10,7 +10,7 @@ let pypkgs = pkgs: with pkgs; [
       ipykernel
       matplotlib
       attrs
-      jedi
+      jedi.overrideDerivation (super:  { doCheck = false; })
       rope
       flake8
       importmagic
