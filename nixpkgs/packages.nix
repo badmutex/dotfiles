@@ -98,7 +98,7 @@ let
     ++ [ pnix-shell ]
 
     ### developtment / cloud
-    ++ [ nixops ]
+    ++ [ nixops aws ]
 
     ### development / git tools
     ++ (with gitAndTools;
