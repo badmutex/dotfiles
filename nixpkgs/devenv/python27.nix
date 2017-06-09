@@ -5,6 +5,8 @@ let pypkgs = pkgs: with pkgs; [
       virtualenv
       ipython
       jupyter
+      numpy
+      scipy
       ipykernel
       matplotlib
       attrs
