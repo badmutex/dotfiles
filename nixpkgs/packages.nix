@@ -94,7 +94,7 @@ let
     ### development
     ++ [ emacsSetup autoconf gnumake gcc silver-searcher colordiff direnv ]
     ++ optional withPyCharm idea.pycharm-community
-    ++ [ pythonPackages.icdiff ]
+    ++ [ icdiff ]
     ++ [ pnix-shell ]
 
     ### developtment / cloud
