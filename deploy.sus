@@ -34,7 +34,7 @@ card deploy {
   }
 
   xmobar.hs -> .xmobar.hs
-  xmonad -> .xmonad
+  xmonad.hs -> .xmonad/xmonad.hs
 
   zshrc -> .zshrc
   zprofile -> .zprofile
