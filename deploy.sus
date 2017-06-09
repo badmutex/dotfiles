@@ -3,6 +3,9 @@ card deploy {
   alternatives $(HOSTNAME) $(HOST) .
   into ~
 
+  xsession -> .xsession
+  xsession-custom -> .xsession-custom
+
   shell_shortcuts -> .shell_shortcuts
 
   emacs.el -> .emacs.el

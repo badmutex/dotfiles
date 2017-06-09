@@ -7,5 +7,6 @@ card desktopsetup {
   keychain.sh
   set_window_manager.sh
   urxvtd.sh
+  set_xdg_config_home.sh
 
 }
