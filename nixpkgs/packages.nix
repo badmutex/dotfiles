@@ -15,7 +15,7 @@ let
   gitchangelog = callPackage ./apps/gitchangelog.nix { inherit (python27Packages) buildPythonPackage d2to1; };
   devPython27 = callPackage ./devenv/python27.nix {};
   devHaskell  = with args; callPackage ./devenv/haskell.nix {};
-  keepassxc = libsForQt5.callPackage ./apps/keepassxc.nix { withHTTP=true; withAutoType=true; withYubikey=true; };
+  keepassxc = keepassx-community;
   emacsSetup = emacsWithPackages (self: with self; []);
   pnix-shell = callPackage ./apps/pnix-shell.nix {};
   zoom-us = libsForQt56.callPackage ./apps/zoom-us.nix {};
