@@ -33,7 +33,7 @@ xinput set-prop \
 
 xsettingsd &
 
-# compton -b
+compton -b
 # ~/.xsession-background
 
 
