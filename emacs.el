@@ -51,11 +51,18 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
+(setq package-archives
+      '(("marmalade" . "https://marmalade-repo.org/packages/")
+        ("gnu" . "https://elpa.gnu.org/packages/")
+        ("gnu" . "http://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
+
 (require 'el-get-elpa)
 (unless (file-directory-p el-get-recipe-path-elpa)
   (el-get-elpa-build-local-recipes))
 
 (package-refresh-contents)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; simple mode lines
@@ -88,12 +95,15 @@
 (edit-server-start)
 
 
+;; disable yasnippets in terminal
+(add-hook 'term-mode-hook (lambda ()
+                            (linum-mode -1)
+                            (setq yas-dont-activate t)))
+(setq term-mode-hook nil)
 
 ;; (add-hook 'emacs-lisp-mode-hook
 ;;           (lambda ()
 ;;             (setq mode-name "EL")))
-
-;; (add-hook 'haskell-mode-hook
 
 ;; minor modes
 (eval-after-load "projectile" '(diminish 'projectile-mode))
@@ -146,6 +156,7 @@
 (add-to-list 'aggressive-indent-excluded-modes 'nix-mode)
 (add-to-list 'aggressive-indent-excluded-modes 'haskell-interactive-mode)
 (add-to-list 'aggressive-indent-excluded-modes 'latex-mode)
+(add-to-list 'aggressive-indent-excluded-modes 'c-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; auto complete
@@ -167,6 +178,9 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ebnf configuration
 (el-get-bundle jeramey/ebnf-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; elixir
+(el-get-bundle elixir)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; elm
 (el-get-bundle elm-mode)
@@ -309,17 +323,19 @@
               'projectile-mode
               'turn-on-hi2
               'turn-on-haskell-unicode-input-method
-              'my/enable-tags-revert-without-query
               )))
   (dolist (hook hooks)
     (add-hook 'haskell-mode-hook hook)))
 
+(remove-hook 'haskell-mode-hook 'turn-on-haskell-unicode-input-method)
 (add-hook 'haskell-cabal-mode-hook 'projectile-mode)
 (add-hook 'haskell-interactive-mode-hook 'projectile-mode)
-(add-hook 'haskell-mode-hook #'aggressive-indent-mode)
 (add-hook 'haskell-mode-hook 'subword-mode)
 
 ;; (speedbar-add-supported-extension ".hs")
+
+(define-key haskell-mode-map (kbd "C-c e n") #'haskell-goto-next-error)
+(define-key haskell-mode-map (kbd "C-c e p") #'haskell-goto-prev-error)
 
 (el-get-bundle smartscan)
 (add-hook 'haskell-mode-hook 'smartscan-mode)
@@ -329,6 +345,7 @@
 (el-get-bundle shakespeare-mode)
 (require 'shakespeare-mode)
 (add-to-list 'aggressive-indent-excluded-modes 'shakespeare-mode)
+(add-to-list 'aggressive-indent-excluded-modes 'hamlet-mode)
 (add-hook 'shakespeare-hamlet-mode-hook #'indent-guide)
 (define-key shakespeare-hamlet-mode-map (kbd "C-c >") #'shakespeare-hamlet-mode-indent-region)
 (define-key shakespeare-hamlet-mode-map (kbd "C-c <") #'shakespeare-hamlet-mode-indent-region-backward)

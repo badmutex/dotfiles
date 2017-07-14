@@ -5,7 +5,7 @@
         email = abdulwahidc@gmail.com
         signingKey = abdulwahidc@gmail.com
 [commit]
-        gpgSign = true
+        gpgSign = false
 [merge]
         summary = true
         tool = emerge

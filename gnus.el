@@ -58,23 +58,23 @@
 
  gnus-secondary-select-methods
  '(
-   (nnimap "gmail"
-           (nnimap-address "imap.gmail.com")
-           (nnimap-server-port "imaps")
-           (nnimap-stream ssl))
+   ;; (nnimap "gmail"
+   ;;         (nnimap-address "imap.gmail.com")
+   ;;         (nnimap-server-port "imaps")
+   ;;         (nnimap-stream ssl))
 
    (nnimap "iu"
            (nnimap-address "imap.exchange.iu.edu")
            (nnimap-server-port "imaps")
            (nnimap-stream ssl))
 
-   (nnimap "bbl"
-           (nnimap-address "mail.bloomingtonbahai.org")
-           (nnimap-server-port "imaps")
-           (nnimap-stream ssl))
+   ;; (nnimap "bbl"
+   ;;         (nnimap-address "mail.bloomingtonbahai.org")
+   ;;         (nnimap-server-port "imaps")
+   ;;         (nnimap-stream ssl))
 
-   (nntp "gmane"
-         (nntp-address "news.gmane.org"))
+   ;; (nntp "gmane"
+   ;;       (nntp-address "news.gmane.org"))
 
    )
 

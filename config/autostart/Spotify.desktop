@@ -1,12 +1,11 @@
 [Desktop Entry]
-Encoding=UTF-8
-Version=0.9.4
-Type=Application
-Name=Spotify
 Comment=Run Spotify
+Encoding=UTF-8
 Exec=spotify
+Hidden=true
+Name=Spotify
 OnlyShowIn=XFCE;
 StartupNotify=false
 Terminal=false
-Hidden=false
-
+Type=Application
+Version=0.9.4
