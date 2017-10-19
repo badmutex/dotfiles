@@ -121,20 +121,6 @@ repl() {
     nix-repl $arg
 }
 
-
-client() {
-    cd ~/work/cloudmesh/client
-}
-
-classes() {
-    cd ~/work/classes
-}
-
-cmcore() {
-    cd ~/work/cloudmesh/cloudmesh.core
-}
-
-
 ## Local Variables:
 ## mode: shell-script
 ## End:
