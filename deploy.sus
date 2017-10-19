@@ -3,7 +3,7 @@ card deploy {
   alternatives $(HOSTNAME) $(HOST) .
   into ~
 
-  xsession -> .xsession
+  # xsession -> .xsession
   xsession-custom -> .xsession-custom
 
   shell_shortcuts -> .shell_shortcuts
@@ -38,7 +38,6 @@ card deploy {
 
   zshrc -> .zshrc
   zprofile -> .zprofile
-  oh-my-zsh -> .oh-my-zsh
 
   {
     into .stack
@@ -54,6 +53,6 @@ card deploy {
 
 
   into .config
-  compton.conf
+  # compton.conf
 
 }
