@@ -18,7 +18,6 @@ let
   keepassxc = keepassx-community;
   emacsSetup = emacsWithPackages (self: with self; []);
   pnix-shell = callPackage ./apps/pnix-shell.nix {};
-  zoom-us = libsForQt56.callPackage ./apps/zoom-us.nix {};
 
 
   play-on-linux = buildFHSUserEnv {
@@ -144,12 +143,14 @@ let
     ### office / productivity
     ++ [ mendeley ]
     ++ optional  withEvince evince
-    ++ optional  withInkscape    inkscape
-    ++ optionals withLatex       [texlive.combined.scheme-full biber ghostscript]
-    ++ optional  withLibreOffice libreoffice
+    # ++ optional  withInkscape    inkscape
+    # ++ optionals withLatex       [texlive.combined.scheme-full biber ghostscript]
+    # ++ optional  withLibreOffice libreoffice
     ++ optional  withPopfile     popfile
-    ++ optionals withDigikam     [digikam5 fdupes perlPackages.ImageExifTool]
+    ++ optionals withDigikam     [fdupes exiftool perlPackages.ImageExifTool]
     ++ optional  withXpdf        xpdf
+    ++ optional  withSynergy     synergy
+    ++ optional  withGimp        gimp-with-plugins
 
     ### security
     ++ [ gnupg1 gnupg gnutls pinentry keychain keepassxc ]

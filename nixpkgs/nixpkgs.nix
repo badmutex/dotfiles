@@ -53,9 +53,19 @@ let
       sha256 = "09d225y0a4ldx08b5rfhy7jk4qp0nj4q7xsjb49hvb5an79xmgdl";
     };
 
+    "2017-09-02" = {
+      rev = "991654fa4ab7be07ce70b02bcc935491239a52c5";
+      sha256 = "0365f340xcbx9vl4cfkjv0i9330jsv7i6dcmpqgk7wpsnx52sl6m";
+    };
+
+    "2017-10-15" = {
+      rev = "5a21efdcdf7c3f4349192036e661247e2cd07916";
+      sha256 = "1c7bjp25mlhjww0ngw3cabh4s92wmsv53l59b53cm6pjd0c4ijc1";
+    };
+
   };
 
-  origin = hashes."2017-05-30" // {
+  origin = hashes."2017-10-15" // {
     owner = "NixOS";
     repo = "nixpkgs-channels";
   };

@@ -10,29 +10,30 @@ let
   hostname = builtins.getEnv "HOSTNAME";
 
   isHomeMachine = elem hostname ["fangorn"];
-  isWorkMachine = elem hostname ["gambit" "irmo"];
+  isWorkMachine = elem hostname ["tolu"];
 
 in
 {
   withAndroidDev  = isHomeMachine;
-  withBox         = hostname == "gambit";
+  withBox         = false;
   withChrome      = isLinux;
   withChromium    = false;
   withDigikam     = true;
   withDropbox     = false;
   withEvince      = isLinux;
-  withFirefox     = isLinux;
+  withFirefox     = false;
   withGames       = isHomeMachine;
+  withGimp        = isHomeMachine;
   withInkscape    = isLinux;
   withLatex       = isLinux;
   withLibreOffice = isLinux;
   withMega        = false;
   withPopfile     = isHomeMachine;
-  withPyCharm     = true;
+  withPyCharm     = false;
   withSpotify     = true;
-  withSynergy     = ! isNixOS;
+  withSynergy     = hostname == "fangorn";
   withUrxvt       = true;
-  withVivaldi     = isLinux;
+  withVivaldi     = false;
   withX11         = isNixOS;
   withXmonad      = isNixOS;
   withYubikey     = isLinux;
