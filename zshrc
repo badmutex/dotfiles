@@ -1,5 +1,21 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$(nix-env -q --out-path badi-packages | cut -d' ' -f3)/share/oh-my-zsh
+
+cache-oh-my-zsh() {
+    set -x
+    local today="$(date +%F)"
+    local cachedir=$XDG_CONFIG_HOME/oh-my-zsh/zshrc_cache
+    local todays_file="$cachedir/$today"
+    if ! test -f "$todays_file"; then
+        rm -rf "$cachedir"
+        mkdir -p "$cachedir"
+        local oh_my_zsh="$(nix-env -q --out-path badi-packages | cut -d' ' -f3)/share/oh-my-zsh"
+        echo "$oh_my_zsh" > "$todays_file"
+    fi
+    cat "$todays_file"
+    set +x
+}
+
+export ZSH=$(cache-oh-my-zsh)
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
