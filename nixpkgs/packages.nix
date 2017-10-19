@@ -169,6 +169,7 @@ let
          most
          pandoc
          p7zip
+         pv
          rsync
          tree
          unison
