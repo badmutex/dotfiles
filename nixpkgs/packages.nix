@@ -85,8 +85,10 @@ let
 
   all = with args;
 
+       [ oh-my-zsh ]
+
     ### cloudfs / synchronization
-       optional withDropbox dropbox
+    ++ optional withDropbox dropbox
     ++ optional withMega    megatools
     ++ optional isLinux      unison
     ++ optional withBox     boxfs
