@@ -113,6 +113,7 @@ fi
 
 
 test -f /etc/zlogin && source /etc/zlogin
+test -f $HOME/dotfiles/desktop-setup/keychain.sh && source $HOME/dotfiles/desktop-setup/keychain.sh
 
 ######################################################################
 
