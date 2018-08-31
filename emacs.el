@@ -192,9 +192,24 @@
 (use-package flycheck-color-mode-line
   ;; https://github.com/flycheck/flycheck-color-mode-line
   :ensure t
+  :after (flycheck-inline)
   :config
-  (eval-after-load "flycheck"
-    '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)))
+  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
+  (flycheck-inline-mode))
+
+(use-package flycheck-inline
+  ;; https://github.com/flycheck/flycheck-inline
+  :ensure t
+  :after (quick-peek)
+  :config
+  (setq flycheck-inline-display-function
+      (lambda (msg pos)
+        (let* ((ov (quick-peek-overlay-ensure-at pos))
+               (contents (quick-peek-overlay-contents ov)))
+          (setf (quick-peek-overlay-contents ov)
+                (concat contents (when contents "\n") msg))
+          (quick-peek-update ov)))
+      flycheck-inline-clear-function #'quick-peek-hide))
 
 (use-package flyspell
   ;; https://www.emacswiki.org/emacs/FlySpell
@@ -409,6 +424,12 @@
 (use-package toml-mode :ensure t)
 (use-package cargo :ensure t)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package quick-peek
+  ;; https://github.com/cpitclaudel/quick-peek
+  :ensure t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Extra
 
