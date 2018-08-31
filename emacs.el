@@ -155,6 +155,12 @@
 (use-package diminish
   :ensure t)
 
+(use-package direnv
+  :ensure t
+  :config
+  (setq direnv-always-show-summary nil)
+  (direnv-mode))
+
 (use-package dockerfile-mode
   :ensure t)
 
