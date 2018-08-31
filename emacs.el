@@ -353,9 +353,14 @@
   :config
   (add-to-list 'projectile-globally-ignored-directories ".stack-*")
   (add-to-list 'projectile-globally-ignored-directories ".pyc")
-  (projectile-mode))
+  (projectile-mode)
+  :bind-keymap
+  ("C-c p" . projectile-command-map))
 
 (use-package ag
+  :ensure t)
+
+(use-package helm-projectile
   :ensure t)
 
 (use-package helm :ensure t
@@ -373,6 +378,8 @@
   :config
   ;; https://tuhdo.github.io/helm-intro.html
   (require 'helm-config)
+  (require 'helm-projectile)
+  (helm-projectile-on)
   (global-set-key (kbd "M-x") #'helm-M-x)
   (global-set-key (kbd "M-y") #'helm-show-kill-ring)
   (global-set-key (kbd "C-x b") #'helm-mini)
@@ -394,14 +401,11 @@
   :config
   (helm-descbinds-mode))
 
-(use-package helm-helm-commands
-  ;; https://github.com/nonsequitur/helm-helm-commands
-  :ensure t)
+;; (use-package helm-helm-commands
+;;   ;; https://github.com/nonsequitur/helm-helm-commands
+;;   :ensure t)
 
-(use-package helm-projectile
-  :ensure t
-  :config
-  (helm-projectile-on))
+
 (use-package helm-flx
   :ensure t
   :config (helm-flx-mode +1))
