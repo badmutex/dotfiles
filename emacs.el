@@ -416,7 +416,6 @@
   ;; https://elpy.readthedocs.io/en/latest/introduction.html
   :ensure t
   :config
-  (setq pyvenv-workon "adroll")
   (elpy-enable))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
