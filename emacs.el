@@ -419,6 +419,11 @@
 
 (use-package rust-mode
   ;; https://github.com/rust-lang/rust-mode
+  :ensure t
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+(use-package flycheck-rust
   :ensure t)
 
 (use-package toml-mode :ensure t)
